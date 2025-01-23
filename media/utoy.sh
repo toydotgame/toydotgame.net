@@ -44,24 +44,18 @@ log_center() {
 }
 
 # Update checking:
-VERSION="a1.0.3"          # Local version is checked against the one at toydotgame.net/media/utoy.sh
+VERSION="a1.0.4"          # Local version is checked against the one at toydotgame.net/media/utoy.sh
 LATEST="$(curl -sLm 5 https://toydotgame.net/media/utoy.sh | grep 'VERSION=' | cut -d '"' -f2 | awk 'FNR==1')"
 LAST_UPDATE_YEAR="2025"
 if [ "$VERSION" != "$LATEST" ]; then
 	log "${COLOR_WARN}UToy is not up to date! Latest: $LATEST, local: $VERSION.\nRun ${COLOR_RESET}utoy update$COLOR_WARN to update\n"
 fi
 # pacman needs array format, not just space delimited packages:
-DEPENDENCIES=("coreutils" "discord" "ffmpeg" "firefox" "iproute2" "kwin" "openssh" "plasma-desktop" "procps-ng" "sshpass" "systemd" "vim" "wmctrl" "yt-dlp")
+DEPENDENCIES=("coreutils" "discord" "ffmpeg" "firefox" "git" "iproute2" "kwin" "openssh" "plasma-desktop" "procps-ng" "sshpass" "systemd" "vim" "wmctrl" "yt-dlp")
 
 # FEATURE LIST TODO:
-# * AUR installer
-#     * follows dependents (if missing)
-#     * recursive uninstaller
 # * help command listing for utoy
 # * yt-dlp to mp4 or mp3, and list formats available too
-# * live timedatectl current time viewer
-#     * full output
-#     * short output by default (pretty pls :3)
 # * iccmcssh access
 # * iccmcscp (decode some kind of shorthand to replace with `iccmc@192.168.1.100:`)
 # * shortcut to toydotgame.net/utils
@@ -78,10 +72,9 @@ DEPENDENCIES=("coreutils" "discord" "ffmpeg" "firefox" "iproute2" "kwin" "openss
 # * updater of local script (good luck lol)
 # * zsh completions
 # * update check once a day max (use $(date))
-# back buttons on all menus thx
 # remember every module can be run also with `utoy <cmd> [args]`
 
-module_restart_plasma() { # Restart Plasma
+module_restart_plasma() { # Restart plasma
 	case "${OPTIONS[1]}" in;
 		"soft") MENU_SELECTION="Soft restart (kill plasmashell)" ;;
 		"hard") MENU_SELECTION="Hard restart (replace kwin_x11 and plasmashell)" ;;
@@ -108,7 +101,7 @@ module_restart_plasma() { # Restart Plasma
 	esac
 }
 
-module_test() { # Test Zsh Syntax
+module_test() { # Test Zsh syntax
 	TMPFILE="/tmp/utoy-$(date +%s%N).sh"
 	echo "#!/bin/zsh\n# Blank syntax test file created by UToy $VERSION\n# CREATED ON: $(date +%Y-%m-%d)\n\n\n" >> "$TMPFILE"
 	vim +5 -c "startinsert" "$TMPFILE"
@@ -176,19 +169,20 @@ module_test() { # Test Zsh Syntax
 	done
 }
 
-module_post_update() { # Fix Vencord and KWin Post-Update
+module_post_update() { # Fix Vencord, KWin, & Yay post-update
 	case "${OPTIONS[1]}" in;
 		"discord") ;& "vencord") MENU_SELECTION="Vencord" ;;
-		"kwin") MENU_SELECTION="KWin Window Decorations" ;;
-		"both") MENU_SELECTION="Both" ;;
+		"kwin") MENU_SELECTION="KWin window decorations" ;;
+		"yay") MENU_SELECTION="Yay" ;;
+		"all") MENU_SELECTION="All" ;;
 		*) MENU_SELECTION="" ;; # Reset menu selection because we kinda bodgily use it to parse cmdline inputs into this module
 	esac
 	if [ -z "$MENU_SELECTION" ]; then
-		log "What would you like to patch?"
+		log "What would you like to patch/update?"
 		if [ "$RUN_FROM_CMD" = "true" ]; then
-			menu "Vencord" "KWin Window Decorations" "Both"
+			menu "Vencord" "KWin window decorations" "Yay" "All"
 		else
-			menu "Vencord" "KWin Window Decorations" "Both" "Cancel"
+			menu "Vencord" "KWin window decorations" "Yay" "All" "Cancel"
 		fi
 	fi
 
@@ -196,14 +190,14 @@ module_post_update() { # Fix Vencord and KWin Post-Update
 		main
 	fi
 
-	if [ "$MENU_SELECTION" = "Vencord" ] || [ "$MENU_SELECTION" = "Both" ]; then
+	if [ "$MENU_SELECTION" = "Vencord" ] || [ "$MENU_SELECTION" = "All" ]; then
 		sudo rm -f /opt/discord/discord.desktop /opt/discord/discord.png
 		sudo ln -s ~/pkgs/discord.desktop /opt/discord/discord.desktop
 		sudo ln -s ~/pkgs/discord.png /opt/discord/discord.png
 		sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 	fi
 
-	if [ "$MENU_SELECTION" = "KWin Window Decorations" ] || [ "$MENU_SELECTION" = "Both" ]; then
+	if [ "$MENU_SELECTION" = "KWin window decorations" ] || [ "$MENU_SELECTION" = "All" ]; then
 		#########################################################################
 		#### AUTHOR: toydotgame                                                 #
 		#### CREATED ON: 2025-01-17                                             #
@@ -211,7 +205,6 @@ module_post_update() { # Fix Vencord and KWin Post-Update
 		#### Quick script to recompile KWin Aero effects after a system upgrade #
 		#########################################################################
 		
-		SAVE_PWD="$PWD" # Restore working dir once script is done
 		AEROTHEMEPLASMA_DIR="$HOME/pkgs/aerothemeplasma/"
 		cd "$AEROTHEMEPLASMA_DIR"
 
@@ -232,11 +225,29 @@ module_post_update() { # Fix Vencord and KWin Post-Update
 
 		kwin_x11 --replace >/dev/null 2>&1 & disown
 		plasmashell --replace >/dev/null 2>&1 & disown
-		cd "$SAVE_PWD"
+	fi
+
+	if [ "$MENU_SELECTION" = "Yay" ] || [ "$MENU_SELECTION" = "All" ]; then
+		PKGS_DIR="$HOME/pkgs/"
+
+		if [ -d "$PKGS_DIR/yay/" ]; then
+			if ! rm -rf "$PKGS_DIR/yay/" >/dev/null 2>&1; then
+				err "Existing Yay folder found in $PKGS_DIR/yay/ and couldn't be removed!"
+				log "Please remove it manually before trying to recompile."
+				return
+			fi
+		fi
+
+		cd "$PKGS_DIR"
+		git clone "https://aur.archlinux.org/yay.git" "yay/" && \
+		cd "yay/" && \
+		makepkg -sirc --noconfirm && \
+		cd .. && \
+		rm -rf "yay/"
 	fi
 }
 
-module_status() { # Computer Status & Version Info
+module_status() { # Computer status & version info
 	print_title
 	log_center "STATUS"
 	log "\tUToy Version:$COLOR_RESET $VERSION (Latest: $LATEST)"
@@ -266,7 +277,7 @@ module_status() { # Computer Status & Version Info
 	exit
 }
 
-module_ip() {
+module_ip() { # IP info
 	log "$((echo "Interface" "IPv4" "IPv6"; ip -br addr show | awk '{print "\033[0;36m" $1 ":\033[0m " $3 " " $4}') | column -tR 1)"
 	if [ "$RUN_FROM_CMD" = "false" ]; then
 		log "\nWhere would you like to go?"
@@ -278,7 +289,7 @@ module_ip() {
 	fi
 }
 
-module_clock() {
+module_clock() { # View date & time
 	if [ "$RUN_FROM_CMD" = "false" ]; then
 		log "Loading clock...\n"
 	fi
@@ -403,11 +414,11 @@ main() {
 	log_center "MAIN MENU"
 	log "Please choose from an option below:"
 	menu \
-		"Test Zsh Syntax" \
-		"Fix Vencord and KWin Post-Update" \
-			"\tRestart Plasma" \
-		"Computer Status & Version Info" \
-			"\tIP Info" \
+		"Test Zsh syntax" \
+		"Fix Vencord, KWin, & Yay post-update" \
+			"\tRestart plasma" \
+		"Computer status & version info" \
+			"\tIP info" \
 		"View date & time" \
 		"Search Google" \
 		"Exit"
@@ -418,11 +429,11 @@ load_module() { # Main menu function that takes either cmdline shortcut or menu(
 	case "$1" in
 		"") ;& "main") main ;;
 		"install") install ;;
-		"restartplasma") RUN_FROM_CMD="true" ;& "\tRestart Plasma") module_restart_plasma ;;
-		"test") RUN_FROM_CMD="true" ;& "Test Zsh Syntax") module_test ;;
-		"postupdate") RUN_FROM_CMD="true" ;& "Fix Vencord and KWin Post-Update") module_post_update ;;
-		"status") RUN_FROM_CMD="true" ;& "Computer Status & Version Info") module_status ;;
-		"ip") RUN_FROM_CMD="true" ;& "\tIP Info") module_ip ;;
+		"restartplasma") RUN_FROM_CMD="true" ;& "\tRestart plasma") module_restart_plasma ;;
+		"test") RUN_FROM_CMD="true" ;& "Test Zsh syntax") module_test ;;
+		"postupdate") RUN_FROM_CMD="true" ;& "Fix Vencord, KWin, & Yay post-update") module_post_update ;;
+		"status") RUN_FROM_CMD="true" ;& "Computer status & version info") module_status ;;
+		"ip") RUN_FROM_CMD="true" ;& "\tIP info") module_ip ;;
 		"clock") RUN_FROM_CMD="true" ;& "View date & time"); module_clock ;;
 		"search") RUN_FROM_CMD="true" ;& "Search Google") module_search ;;
 		"Exit") exit ;;
