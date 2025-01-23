@@ -14,8 +14,8 @@
 ########
 # INIT #
 ########
-if [ -f "$HOME/.zshrc" ]; then . ~/.zshrc; fi
 setopt aliases
+if [ -f "$HOME/.zshrc" ]; then . ~/.zshrc; fi
 SOURCE="$(realpath $0)"   # Script location
 VWIDTH="$(tput cols)"
 OPTIONS=("${@:2}")        # Later fetched by functions as if they were a command and these were $@
@@ -336,7 +336,7 @@ install() {
 		echo "alias utoy=\"$SOURCE\"" >> "$HOME/.zshrc"
 		log "Done!\nYou will need to refresh your aliases with: $COLOR_RESET. ~/.zshrc"
 	else
-		err "Couldn't find .zshrc or aliases file! You'll have to add the following line to your terminal config:"
+		err "Couldn't find .zshrc or aliases file! You'll have to add the following line to your terminal rc:"
 		echo "alias utoy=\"$SOURCE\"" >&2
 		err "and reload with: $COLOR_RESET. ~/.zshrc"
 	fi
