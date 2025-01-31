@@ -454,7 +454,7 @@ print_help() {
 
 \t\t- '$COLOR_UNDER'soft'$COLOR_RESET' will kill and restart the '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' process. This is useful to fix desktop backgrounds not loading after the screen is locked.
 
-\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' calls '\''restartplasma hard'\'' when updating the KWin window decorations.
+\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' calls '\''utoy restartplasma hard'\'' when updating the KWin window decorations.
 
 \t'$COLOR_BOLD'test'$COLOR_RESET'
 \t\tOpens a Vim editor window to write a Zsh script. Upon saving and quitting Vim, you will be prompted if you'\''d like to run the script you just wrote. This is intended for small tests of shell syntax too complicated to write in one line, and provides access to the Vim editor for additional editing tools. After running, you can re-edit or save your script if desired.
@@ -474,17 +474,26 @@ print_help() {
 
 \t'$COLOR_BOLD'status'$COLOR_RESET'
 \t\tPrints out the following:
+
 \t\t- UToy version, and latest version online
+
 \t\t- Current CPU utilisation (non-idle time)
+
 \t\t- Current VRAM usage (allocated)
+
 \t\t- Information about the filesystem containing the working directory
-\t\t- 
+
+\t\t- '\''utoy ip'\'' printout (see '$COLOR_BOLD'ip'$COLOR_RESET')
+
+\t\t- Linux kernel version
+
+\t\t- Versions of all dependency packages
 
 \t'$COLOR_BOLD'ip'$COLOR_RESET'
-\t\t
+\t\tPrints IPs for LAN (v4/v6) interfaces, and WAN IP (v4).
 
 \t'$COLOR_BOLD'clock'$COLOR_RESET'
-\t\t
+\t\tPrints a live view of the system time using '$COLOR_BOLD'date(1)'$COLOR_RESET'. Refreshes every 10 ms until ^C is hit.
 
 \t'$COLOR_BOLD'search [query]'$COLOR_RESET'
 \t\tSearches Google for the specified query.
