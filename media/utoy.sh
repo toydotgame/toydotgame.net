@@ -280,7 +280,16 @@ module_status() { # Computer status & version info
 }
 
 module_ip() { # IP info
-	log "$((echo "Interface" "IPv4" "IPv6"; ip -br addr show | grep -v '127.0.0.1/8' | awk '{print "\033[0;36m" $1 ":\033[0m " $3 " " $4}') | column -tR 1)"
+	log "$( \
+		( \
+			echo 'Interface' 'IPv4' 'IPv6'; ip -br addr show \
+			| grep -v '127.0.0.1/8' \
+			| awk '{print "\033[0;36m" $1 ":\033[0m " $3 " " $4}' \
+			; printf '\033[0;36mWAN:\033[0m ' \
+			; curl -sLm 5 ident.me \
+		) \
+		| column -tR 1 \
+	)"
 	if [ "$RUN_FROM_CMD" = "false" ]; then
 		log "\nWhere would you like to go?"
 		menu "Exit" "Main menu"
@@ -469,7 +478,7 @@ print_help() {
 \t\t- Current CPU utilisation (non-idle time)
 \t\t- Current VRAM usage (allocated)
 \t\t- Information about the filesystem containing the working directory
-\t\t-
+\t\t- 
 
 \t'$COLOR_BOLD'ip'$COLOR_RESET'
 \t\t
