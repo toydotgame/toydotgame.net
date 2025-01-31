@@ -424,81 +424,82 @@ print_help() {
 	(
 	PADDING=$((($VWIDTH-25)/2))
 	PADDING="$(for i in {1..$PADDING}; do printf ' '; done)"
-	echo "${COLOR_UNDER}UTOY$COLOR_RESET(1)${PADDING}UToy Manual"
+	# Extra \t here and at the first line of the manual's body as the first char is removed with `cut` later
+	echo "\t${COLOR_UNDER}UTOY$COLOR_RESET(1)${PADDING}UToy Manual"
 	echo
-	echo $COLOR_BOLD'NAME'$COLOR_RESET'
-\tutoy - a collection of day-to-day useful Linux utilities
+	echo '\t'$COLOR_BOLD'NAME'$COLOR_RESET'
+	\tutoy - a collection of day-to-day useful Linux utilities
 
-'$COLOR_BOLD'SYNOPSIS'$COLOR_RESET'
-\t'$COLOR_UNDER'utoy'$COLOR_RESET' <command> [args]
+	'$COLOR_BOLD'SYNOPSIS'$COLOR_RESET'
+	\t'$COLOR_UNDER'utoy'$COLOR_RESET' <command> [args]
 
-\t'$COLOR_UNDER'utoy'$COLOR_RESET'
+	\t'$COLOR_UNDER'utoy'$COLOR_RESET'
 
-'$COLOR_BOLD'DESCRIPTION'$COLOR_RESET'
-\tUToy is a menial-task-automation script and effective '$COLOR_BOLD'alias'$COLOR_RESET'(1) wrapper with a command-line and text interface. Its purpose is to provide quicker, easier to remember aliases and shortcuts for day-to-day Linux tasks.
+	'$COLOR_BOLD'DESCRIPTION'$COLOR_RESET'
+	\tUToy is a menial-task-automation script and effective '$COLOR_BOLD'alias'$COLOR_RESET'(1) wrapper with a command-line and text interface. Its purpose is to provide quicker, easier to remember aliases and shortcuts for day-to-day Linux tasks.
 
-\tUToy has a text UI, but this manual is for the command-line. See '$COLOR_BOLD'USER INTERFACES'$COLOR_RESET' for details.
+	\tUToy has a text UI, but this manual is for the command-line. See '$COLOR_BOLD'USER INTERFACES'$COLOR_RESET' for details.
 
-'$COLOR_BOLD'OPERATIONS'$COLOR_RESET'
-\t'$COLOR_BOLD'main'$COLOR_RESET'
-\t\tOpens the main menu.
+	'$COLOR_BOLD'OPERATIONS'$COLOR_RESET'
+	\t'$COLOR_BOLD'main'$COLOR_RESET'
+	\t\tOpens the main menu.
 
-\t'$COLOR_BOLD'install'$COLOR_RESET'
-\t\tFirst checks all dependencies are installed with '$COLOR_BOLD'pacman'$COLOR_RESET'(8), and installs them if not. Checks if '\''utoy'\'' is aliased in the current shell (through '$COLOR_UNDER'.zshrc'$COLOR_RESET'). If UToy is not found, it first tries to install an alias to '$COLOR_UNDER'.zsh-aliases'$COLOR_RESET', and failing that, to '$COLOR_UNDER'.zshrc'$COLOR_RESET'.
+	\t'$COLOR_BOLD'install'$COLOR_RESET'
+	\t\tFirst checks all dependencies are installed with '$COLOR_BOLD'pacman'$COLOR_RESET'(8), and installs them if not. Checks if '\''utoy'\'' is aliased in the current shell (through '$COLOR_UNDER'.zshrc'$COLOR_RESET'). If UToy is not found, it first tries to install an alias to '$COLOR_UNDER'.zsh-aliases'$COLOR_RESET', and failing that, to '$COLOR_UNDER'.zshrc'$COLOR_RESET'.
 
-\t'$COLOR_BOLD'help'$COLOR_RESET'
-\t\tOpens this manual page.
+	\t'$COLOR_BOLD'help'$COLOR_RESET'
+	\t\tOpens this manual page.
 
-\t'$COLOR_BOLD'restartplasma [soft|hard]'$COLOR_RESET'
-\t\tShortcuts to replace DE tasks in the event of something breaking.
+	\t'$COLOR_BOLD'restartplasma [soft|hard]'$COLOR_RESET'
+	\t\tShortcuts to replace DE tasks in the event of something breaking.
 
-\t\t- '$COLOR_UNDER'soft'$COLOR_RESET' will kill and restart the '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' process. This is useful to fix desktop backgrounds not loading after the screen is locked.
+	\t\t- '$COLOR_UNDER'soft'$COLOR_RESET' will kill and restart the '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' process. This is useful to fix desktop backgrounds not loading after the screen is locked.
 
-\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' calls '\''utoy restartplasma hard'\'' when updating the KWin window decorations.
+	\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' calls '\''utoy restartplasma hard'\'' when updating the KWin window decorations.
 
-\t'$COLOR_BOLD'test'$COLOR_RESET'
-\t\tOpens a Vim editor window to write a Zsh script. Upon saving and quitting Vim, you will be prompted if you'\''d like to run the script you just wrote. This is intended for small tests of shell syntax too complicated to write in one line, and provides access to the Vim editor for additional editing tools. After running, you can re-edit or save your script if desired.
+	\t'$COLOR_BOLD'test'$COLOR_RESET'
+	\t\tOpens a Vim editor window to write a Zsh script. Upon saving and quitting Vim, you will be prompted if you'\''d like to run the script you just wrote. This is intended for small tests of shell syntax too complicated to write in one line, and provides access to the Vim editor for additional editing tools. After running, you can re-edit or save your script if desired.
 
-\t\tBy defalt, scripts are given a generic name ('$COLOR_UNDER'utoy-<date in ns>.sh'$COLOR_RESET') and saved in '$COLOR_UNDER'/tmp/'$COLOR_RESET', and '$COLOR_BOLD'chmod'$COLOR_RESET'(1) makes them executable right after Vim quits. When saving, file paths support both relative and absolute locations, and '$COLOR_UNDER'~'$COLOR_RESET' is substituted with the value of '$COLOR_UNDER'$HOME'$COLOR_RESET'. If the save location is a directory and does not end with a file name, the generic name of the script is used.
+	\t\tBy defalt, scripts are given a generic name ('$COLOR_UNDER'utoy-<date in ns>.sh'$COLOR_RESET') and saved in '$COLOR_UNDER'/tmp/'$COLOR_RESET', and '$COLOR_BOLD'chmod'$COLOR_RESET'(1) makes them executable right after Vim quits. When saving, file paths support both relative and absolute locations, and '$COLOR_UNDER'~'$COLOR_RESET' is substituted with the value of '$COLOR_UNDER'$HOME'$COLOR_RESET'. If the save location is a directory and does not end with a file name, the generic name of the script is used.
 
-\t'$COLOR_BOLD'postupdate [discord|kwin|yay|all]'$COLOR_RESET'
-\t\tRuns tools to rebuild patches to certain software that breaks with '$COLOR_BOLD'pacman'$COLOR_RESET'(8) updates over time.
+	\t'$COLOR_BOLD'postupdate [discord|kwin|yay|all]'$COLOR_RESET'
+	\t\tRuns tools to rebuild patches to certain software that breaks with '$COLOR_BOLD'pacman'$COLOR_RESET'(8) updates over time.
 
-\t\t- '$COLOR_UNDER'discord'$COLOR_RESET' replaces the official Discord icon PNG and application entry with custom ones in '$COLOR_UNDER'~/pkgs/'$COLOR_RESET' and runs the Vencord installer from the Web. It is useful to run this after noticing the '$COLOR_BOLD'discord'$COLOR_RESET' package has updated.
+	\t\t- '$COLOR_UNDER'discord'$COLOR_RESET' replaces the official Discord icon PNG and application entry with custom ones in '$COLOR_UNDER'~/pkgs/'$COLOR_RESET' and runs the Vencord installer from the Web. It is useful to run this after noticing the '$COLOR_BOLD'discord'$COLOR_RESET' package has updated.
 
-\t\t- '$COLOR_UNDER'kwin'$COLOR_RESET' goes into '$COLOR_UNDER'$AEROTHEMEPLASMA_DIR'$COLOR_RESET' (hardcoded in this script) and recompiles the KWin decorations before installing them. When some DE libraries or '$COLOR_BOLD'plasma'$COLOR_RESET'* updates, it is useful to run this.
+	\t\t- '$COLOR_UNDER'kwin'$COLOR_RESET' goes into '$COLOR_UNDER'$AEROTHEMEPLASMA_DIR'$COLOR_RESET' (hardcoded in this script) and recompiles the KWin decorations before installing them. When some DE libraries or '$COLOR_BOLD'plasma'$COLOR_RESET'* updates, it is useful to run this.
 
-\t\t- '$COLOR_UNDER'yay'$COLOR_RESET' recompiles '$COLOR_BOLD'yay'$COLOR_RESET'(8) from the AUR. Yay tends to break after most system updates because it has fragile dependencies on libraries.
+	\t\t- '$COLOR_UNDER'yay'$COLOR_RESET' recompiles '$COLOR_BOLD'yay'$COLOR_RESET'(8) from the AUR. Yay tends to break after most system updates because it has fragile dependencies on libraries.
 
-\t\t- '$COLOR_UNDER'all'$COLOR_RESET' runs all of the above.
+	\t\t- '$COLOR_UNDER'all'$COLOR_RESET' runs all of the above.
 
-\t'$COLOR_BOLD'status'$COLOR_RESET'
-\t\tPrints out information about resource usage, UToy/kernel/dependency versions, working filesystem, and '\''utoy ip'\'' output.
+	\t'$COLOR_BOLD'status'$COLOR_RESET'
+	\t\tPrints out information about resource usage, UToy/kernel/dependency versions, working filesystem, and '\''utoy ip'\'' output.
 
-\t'$COLOR_BOLD'ip'$COLOR_RESET'
-\t\tPrints IPs for LAN (v4/v6) interfaces, and WAN IP (v4).
+	\t'$COLOR_BOLD'ip'$COLOR_RESET'
+	\t\tPrints IPs for LAN (v4/v6) interfaces, and WAN IP (v4).
 
-\t'$COLOR_BOLD'clock'$COLOR_RESET'
-\t\tPrints a live view of the system time using '$COLOR_BOLD'date'$COLOR_RESET'(1). Refreshes every 10 ms until ^C is hit.
+	\t'$COLOR_BOLD'clock'$COLOR_RESET'
+	\t\tPrints a live view of the system time using '$COLOR_BOLD'date'$COLOR_RESET'(1). Refreshes every 10 ms until ^C is hit.
 
-\t'$COLOR_BOLD'search [query]'$COLOR_RESET'
-\t\tSearches Google for the specified query.
+	\t'$COLOR_BOLD'search [query]'$COLOR_RESET'
+	\t\tSearches Google for the specified query.
 
-\tIf no operation is specified, '\''utoy main'\'' is implied.
+	\tIf no operation is specified, '\''utoy main'\'' is implied.
 
-\tIf no arguments are specified to the operation, a text UI will be opened as if you had selected the operation through the main menu.
+	\tIf no arguments are specified to the operation, a text UI will be opened as if you had selected the operation through the main menu.
 
-'$COLOR_BOLD'USER INTERFACES'$COLOR_RESET'
-\tAll text UI operations have command-line interfaces, but not all command-line operations have text UIs.
+	'$COLOR_BOLD'USER INTERFACES'$COLOR_RESET'
+	\tAll text UI operations have command-line interfaces, but not all command-line operations have text UIs.
 
-\t'$COLOR_BOLD'install'$COLOR_RESET' and '$COLOR_BOLD'help'$COLOR_RESET' do not have text interfaces. They can only be accessed from the command-line.
+	\t'$COLOR_BOLD'install'$COLOR_RESET' and '$COLOR_BOLD'help'$COLOR_RESET' do not have text interfaces. They can only be accessed from the command-line.
 
-'$COLOR_BOLD'SEE ALSO'$COLOR_RESET'
-\t'$COLOR_BOLD'pacman'$COLOR_RESET'(8), '$COLOR_BOLD'vim'$COLOR_RESET'(1), '$COLOR_BOLD'yay'$COLOR_RESET'(8), '$COLOR_BOLD'zsh'$COLOR_RESET'(1)
+	'$COLOR_BOLD'SEE ALSO'$COLOR_RESET'
+	\t'$COLOR_BOLD'pacman'$COLOR_RESET'(8), '$COLOR_BOLD'vim'$COLOR_RESET'(1), '$COLOR_BOLD'yay'$COLOR_RESET'(8), '$COLOR_BOLD'zsh'$COLOR_RESET'(1)
 
-'$COLOR_BOLD'AUTHORS'$COLOR_RESET'
-\ttoydotgame <toydotgame.net>
-') | fmt | less -cR
+	'$COLOR_BOLD'AUTHORS'$COLOR_RESET'
+	\ttoydotgame <toydotgame.net>
+	') | cut -c 2- | fmt | less -cR # `cut` is needed due to the single quote's content being indented
 }
 
 main() {
