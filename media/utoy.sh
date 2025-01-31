@@ -2,7 +2,7 @@
 #################################################################
 #### AUTHOR: toydotgame                                         #
 #### CREATED ON: 2025-01-18                                     #
-#### UToy: A collection of day-to-day useful Linux utilities. #
+#### UToy: A collection of day-to-day useful Linux utilities.   #
 #### Runs best at 40 columns or more.                           #
 #################################################################
 
@@ -28,6 +28,8 @@ COLOR_WARN="\e[1;33m"     # Warnings
 COLOR_ERR="\e[1;31m"      # Errors
 COLOR_LOGO="\e[1;35m"     # Warnings
 COLOR_SELECT="\e[30;107m" # Selected text
+COLOR_BOLD="\e[1m"        # Highlights in the help command
+COLOR_UNDER="\e[4m"       # Command highlights in the help command
 COLOR_RESET="\e[0m"       # Reset colour/highlight text
 HIDE_CURSOR="\e[?25l"
 SHOW_CURSOR="\e[?25h"
@@ -278,7 +280,7 @@ module_status() { # Computer status & version info
 }
 
 module_ip() { # IP info
-	log "$((echo "Interface" "IPv4" "IPv6"; ip -br addr show | awk '{print "\033[0;36m" $1 ":\033[0m " $3 " " $4}') | column -tR 1)"
+	log "$((echo "Interface" "IPv4" "IPv6"; ip -br addr show | grep -v '127.0.0.1/8' | awk '{print "\033[0;36m" $1 ":\033[0m " $3 " " $4}') | column -tR 1)"
 	if [ "$RUN_FROM_CMD" = "false" ]; then
 		log "\nWhere would you like to go?"
 		menu "Exit" "Main menu"
@@ -409,6 +411,81 @@ print_title() {
 	echo
 }
 
+print_help() {
+	(
+	PADDING=$((($VWIDTH-25)/2))
+	PADDING="$(for i in {1..$PADDING}; do printf ' '; done)"
+	echo "${COLOR_UNDER}UTOY$COLOR_RESET(1)${PADDING}UToy Manual"
+	echo
+	echo $COLOR_BOLD'NAME'$COLOR_RESET'
+\tutoy - a collection of day-to-day useful Linux utilities
+
+'$COLOR_BOLD'SYNOPSIS'$COLOR_RESET'
+\t'$COLOR_UNDER'utoy'$COLOR_RESET' <command> [args]
+
+\t'$COLOR_UNDER'utoy'$COLOR_RESET'
+
+'$COLOR_BOLD'DESCRIPTION'$COLOR_RESET'
+\tUToy is a menial-task-automation Zsh script and effective '$COLOR_BOLD'alias(1)'$COLOR_RESET' wrapper that provides a command-line utility and a text-based interface. Its purpose is to provide easy-to-remember syntax aliases for common command-line tasks and small automated scripts for ease-of-life purposes.
+
+\tThis manual will focus more on the command-line interface with this script, rather than the text-based UI. The '$COLOR_BOLD'OPERATIONS'$COLOR_RESET' section will still however describe all the functions available in the text UI. All text UI operations have command-line interfaces, but not all command-line operations have text UIs.
+
+'$COLOR_BOLD'OPERATIONS'$COLOR_RESET'
+\t'$COLOR_BOLD'main'$COLOR_RESET'
+\t\tOpens the main menu.
+
+\t'$COLOR_BOLD'install'$COLOR_RESET'
+\t\tFirst checks all dependencies are installed with '$COLOR_BOLD'pacman(8)'$COLOR_RESET', and installs them if not. Checks if '\''utoy'\'' is aliased in the current shell (through '$COLOR_UNDER'.zshrc'$COLOR_RESET'). If UToy is not found, it first tries to install an alias to '$COLOR_UNDER'.zsh-aliases'$COLOR_RESET', and failing that, to '$COLOR_UNDER'.zshrc'$COLOR_RESET'.
+
+\t'$COLOR_BOLD'help'$COLOR_RESET'
+\t\tOpens this manual page.
+
+\t'$COLOR_BOLD'restartplasma [soft|hard]'$COLOR_RESET'
+\t\tShortcuts to replace DE tasks in the event of something breaking.
+
+\t\t- '$COLOR_UNDER'soft'$COLOR_RESET' will kill and restart the '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' process. This is useful to fix desktop backgrounds not loading after the screen is locked.
+
+\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' calls '\''restartplasma hard'\'' when updating the KWin window decorations.
+
+\t'$COLOR_BOLD'test'$COLOR_RESET'
+\t\tOpens a Vim editor window to write a Zsh script. Upon saving and quitting Vim, you will be prompted if you'\''d like to run the script you just wrote. This is intended for small tests of shell syntax too complicated to write in one line, and provides access to the Vim editor for additional editing tools. After running, you can re-edit or save your script if desired.
+
+\t\tBy defalt, scripts are given a generic name ('$COLOR_UNDER'utoy-<date in ns>.sh'$COLOR_RESET') and saved in '$COLOR_UNDER'/tmp/'$COLOR_RESET', and '$COLOR_BOLD'chmod(1)'$COLOR_RESET' makes them executable right after Vim quits. When saving, file paths support both relative and absolute locations, and '$COLOR_UNDER'~'$COLOR_RESET' is substituted with the value of '$COLOR_UNDER'$HOME'$COLOR_RESET'. If the save location is a directory and does not end with a file name, the generic name of the script is used.
+
+\t'$COLOR_BOLD'postupdate [discord|kwin|yay|all]'$COLOR_RESET'
+\t\tRuns tools to rebuild patches to certain software that breaks with '$COLOR_BOLD'pacman(8)'$COLOR_RESET' updates over time.
+
+\t\t- '$COLOR_UNDER'discord'$COLOR_RESET' replaces the official Discord icon PNG and application entry with custom ones in '$COLOR_UNDER'~/pkgs/'$COLOR_RESET' and runs the Vencord installer from the Web. It is useful to run this after noticing the '$COLOR_BOLD'discord'$COLOR_RESET' package has updated.
+
+\t\t- '$COLOR_UNDER'kwin'$COLOR_RESET' goes into '$COLOR_UNDER'$AEROTHEMEPLASMA_DIR'$COLOR_RESET' (hardcoded in this script) and recompiles the KWin decorations before installing them. When some DE libraries or '$COLOR_BOLD'plasma*'$COLOR_RESET' update, it is useful to run this.
+
+\t\t- '$COLOR_UNDER'yay'$COLOR_RESET' recompiles Yay from the AUR. Yay tends to break after most system updates because it has fragile dependencies on libraries.
+
+\t\t- '$COLOR_UNDER'all'$COLOR_RESET' runs all of the above.
+
+\t'$COLOR_BOLD'status'$COLOR_RESET'
+\t\tPrints out the following:
+\t\t- UToy version, and latest version online
+\t\t- Current CPU utilisation (non-idle time)
+\t\t- Current VRAM usage (allocated)
+\t\t- Information about the filesystem containing the working directory
+\t\t-
+
+\t'$COLOR_BOLD'ip'$COLOR_RESET'
+\t\t
+
+\t'$COLOR_BOLD'clock'$COLOR_RESET'
+\t\t
+
+\t'$COLOR_BOLD'search [query]'$COLOR_RESET'
+\t\tSearches Google for the specified query.
+
+\tIf no operation is specified, '\''utoy main'\'' is implied.
+
+\tIf no arguments are specified to the operation, a text UI will be opened as if you had selected the operation through the main menu.
+') | fmt | less -cR
+}
+
 main() {
 	print_title
 	log_center "MAIN MENU"
@@ -429,6 +506,7 @@ load_module() { # Main menu function that takes either cmdline shortcut or menu(
 	case "$1" in
 		"") ;& "main") main ;;
 		"install") install ;;
+		"help") print_help ;;
 		"restartplasma") RUN_FROM_CMD="true" ;& "\tRestart plasma") module_restart_plasma ;;
 		"test") RUN_FROM_CMD="true" ;& "Test Zsh syntax") module_test ;;
 		"postupdate") RUN_FROM_CMD="true" ;& "Fix Vencord, KWin, & Yay post-update") module_post_update ;;
