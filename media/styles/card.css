@@ -6,12 +6,17 @@
  * so that the footer is always at the bottom of the viewport.
  */
 
-body {
+body::before { /* iOS background display hack: https://jsfiddle.net/saeokn81/ */
+	content: "";
+	position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
 	background-image: url("/media/resources/card/background.jpg");
-	background-repeat: repeat;
-	background-attachment: fixed;
-	background-position: center bottom;
-	background-size: cover;
+		background-repeat: repeat;
+		background-position: center bottom;
+		background-size: cover;
 }
 
 #card {
