@@ -74,6 +74,7 @@ DEPENDENCIES=("coreutils" "discord" "ffmpeg" "firefox" "git" "iproute2" "kwin" "
 # * updater of local script (good luck lol)
 # * zsh completions
 # * update check once a day max (use $(date))
+# * chmod numerical abbreviations cheat sheet, note 755 default for dirs and 644 default for files
 # remember every module can be run also with `utoy <cmd> [args]`
 
 module_restart_plasma() { # Restart plasma
@@ -209,18 +210,21 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 		
 		AEROTHEMEPLASMA_DIR="$HOME/pkgs/aerothemeplasma/"
 		cd "$AEROTHEMEPLASMA_DIR"
+		# Force git pull:
+		git fetch && \
+		git reset --hard HEAD && \
+		git merge origin/main
 
 		# Re-compile KWin effects:
 		cd "kwin/decoration/"
-		for i in *; do
-			cd "$i"
-			./install.sh
-			cd ..
-		done
+		chmod +x install.sh
+		./install.sh
+		cd ..
 
-		cd "kwin/effects_cpp/"
+		cd "effects_cpp/"
 		for i in *; do
 			cd "$i"
+			chmod +x install.sh
 			./install.sh
 			cd ..
 		done
