@@ -103,6 +103,7 @@ module_restart_plasma() { # Restart plasma
 			plasmashell --replace >/dev/null 2>&1 & disown ;;
 		"Cancel") main ;;
 	esac
+	main_menu_prompt
 }
 
 module_test() { # Test Zsh syntax
@@ -264,6 +265,8 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 			sudo pacman -Rsn $(pacman -Qdtq)
 		fi
 	fi
+
+	main_menu_prompt
 }
 
 module_status() { # Computer status & version info
