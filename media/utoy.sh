@@ -285,15 +285,7 @@ module_status() { # Computer status & version info
 	log "\tPacman:$COLOR_RESET $(echo $PACMAN_OUTPUT | awk 'FNR==1')"
 	          log "$COLOR_RESET$(echo $PACMAN_OUTPUT | awk 'FNR>=2{print "\t        " $0}')"
 
-	if [ "$RUN_FROM_CMD" = "true" ]; then
-		exit
-	fi
-	log "\nWhere would you like to go?"
-	menu "Exit" "Main menu"
-	if [ "$MENU_SELECTION" = "Main menu" ]; then
-		main
-	fi
-	exit
+	main_menu_prompt
 }
 
 module_ip() { # IP info
@@ -307,14 +299,7 @@ module_ip() { # IP info
 		) \
 		| column -tR 1 \
 	)"
-	if [ "$RUN_FROM_CMD" = "false" ]; then
-		log "\nWhere would you like to go?"
-		menu "Exit" "Main menu"
-		if [ "$MENU_SELECTION" = "Main menu" ]; then
-			main
-		fi
-		exit
-	fi
+	main_menu_prompt
 }
 
 module_clock() { # View date & time
@@ -332,11 +317,10 @@ module_clock() { # View date & time
 }
 
 module_search() { # Search Google
-	SEARCH_QUERY=""
+	SEARCH_QUERY="$OPTIONS" # Doubles as also initialising $SEARCH_QUERY for `vared`
 	if [ -z "$(echo $OPTIONS)" ]; then # Wrap $OPTIONS in `echo` because it is of type array and `-z` won't work accurately
 		log "Where do you want to go today?"; vared SEARCH_QUERY # Microsoft: Making it easier
 	fi
-	SEARCH_QUERY="$OPTIONS"
 	firefox "https://google.com/search?q=$SEARCH_QUERY" & disown && \
 	wmctrl -a firefox
 }
@@ -419,6 +403,20 @@ menu() {
 			return
 		fi
 	done
+}
+
+main_menu_prompt() {
+	# This will cause function nesting as main() will call module_*() which will then call main(), etc.
+	# However, it doesn't matter too much because the iteration limit is something like 500.
+	if [ "$RUN_FROM_CMD" = "true" ]; then
+		exit
+	fi
+	log "\nWhere would you like to go?"
+	menu "Exit" "Main menu"
+	if [ "$MENU_SELECTION" = "Main menu" ]; then
+		main
+	fi
+	exit
 }
 
 print_title() {
