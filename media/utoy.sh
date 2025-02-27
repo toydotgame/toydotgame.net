@@ -232,8 +232,7 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 			cd ..
 		done
 
-		kwin_x11 --replace >/dev/null 2>&1 & disown
-		plasmashell --replace >/dev/null 2>&1 & disown
+		RUN_FROM_CMD="true" OPTIONS=("hard") module_restart_plasma # Call `utoy restartplasma hard`
 	fi
 
 	if [ "$MENU_SELECTION" = "Yay" ] || [ "$MENU_SELECTION" = "All" ]; then
@@ -473,7 +472,7 @@ print_help() {
 
 	\t\t- '$COLOR_UNDER'soft'$COLOR_RESET' will kill and restart the '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' process. This is useful to fix desktop backgrounds not loading after the screen is locked.
 
-	\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' does the same function as '\''utoy restartplasma hard'\'' after updating the KWin window decorations.
+	\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' calls '\''utoy restartplasma hard'\'' after updating the KWin window decorations.
 
 	\t'$COLOR_BOLD'test'$COLOR_RESET'
 	\t\tOpens a Vim editor window to write a Zsh script. Upon saving and quitting Vim, you will be prompted if you'\''d like to run the script you just wrote. This is intended for small tests of shell syntax too complicated to write in one line, and provides access to the Vim editor for additional editing tools. After running, you can re-edit or save your script if desired.
