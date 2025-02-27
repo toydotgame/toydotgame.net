@@ -75,6 +75,7 @@ DEPENDENCIES=("coreutils" "discord" "ffmpeg" "firefox" "git" "iproute2" "kwin" "
 # * zsh completions
 # * update check once a day max (use $(date))
 # * chmod numerical abbreviations cheat sheet, note 755 default for dirs and 644 default for files
+# * pacman -Qdtq orphan list and -Rsn remove all orphans prompt (probably sub of postupdate?)
 # remember every module can be run also with `utoy <cmd> [args]`
 
 module_restart_plasma() { # Restart plasma
@@ -177,15 +178,16 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 		"discord") ;& "vencord") MENU_SELECTION="Vencord" ;;
 		"kwin") MENU_SELECTION="KWin window decorations" ;;
 		"yay") MENU_SELECTION="Yay" ;;
+		"orphans") MENU_SELECTION="List orphaned packages" ;;
 		"all") MENU_SELECTION="All" ;;
 		*) MENU_SELECTION="" ;; # Reset menu selection because we kinda bodgily use it to parse cmdline inputs into this module
 	esac
 	if [ -z "$MENU_SELECTION" ]; then
 		log "What would you like to patch/update?"
 		if [ "$RUN_FROM_CMD" = "true" ]; then
-			menu "Vencord" "KWin window decorations" "Yay" "All"
+			menu "Vencord" "KWin window decorations" "Yay" "List orphaned packages" "All"
 		else
-			menu "Vencord" "KWin window decorations" "Yay" "All" "Cancel"
+			menu "Vencord" "KWin window decorations" "Yay" "List orphaned packages" "All" "Cancel"
 		fi
 	fi
 
@@ -250,6 +252,17 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 		makepkg -sirc --noconfirm && \
 		cd .. && \
 		rm -rf "yay/"
+	fi
+
+	if [ "$MENU_SELECTION" = "List orphaned packages" ] || [ "$MENU_SELECTION" = "All" ]; then
+		log "Finding orphans..."
+		pacman -Qdt
+
+		log "Would you like to remove these packages?"
+		menu "Yes" "No"
+		if [ "$MENU_SELECTION" = "Yes" ]; then
+			sudo pacman -Rsn $(pacman -Qdtq)
+		fi
 	fi
 }
 
@@ -459,14 +472,14 @@ print_help() {
 
 	\t\t- '$COLOR_UNDER'soft'$COLOR_RESET' will kill and restart the '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' process. This is useful to fix desktop backgrounds not loading after the screen is locked.
 
-	\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' calls '\''utoy restartplasma hard'\'' when updating the KWin window decorations.
+	\t\t- '$COLOR_UNDER'hard'$COLOR_RESET' will replace/launch '$COLOR_BOLD'plasmadesktop'$COLOR_RESET' and '$COLOR_BOLD'kwin_x11'$COLOR_RESET', which is a bit more intense but will fix things like broken window decorations and windows not responding to the mouse. '$COLOR_BOLD'postupdate'$COLOR_RESET' does the same function as '\''utoy restartplasma hard'\'' after updating the KWin window decorations.
 
 	\t'$COLOR_BOLD'test'$COLOR_RESET'
 	\t\tOpens a Vim editor window to write a Zsh script. Upon saving and quitting Vim, you will be prompted if you'\''d like to run the script you just wrote. This is intended for small tests of shell syntax too complicated to write in one line, and provides access to the Vim editor for additional editing tools. After running, you can re-edit or save your script if desired.
 
 	\t\tBy defalt, scripts are given a generic name ('$COLOR_UNDER'utoy-<date in ns>.sh'$COLOR_RESET') and saved in '$COLOR_UNDER'/tmp/'$COLOR_RESET', and '$COLOR_BOLD'chmod'$COLOR_RESET'(1) makes them executable right after Vim quits. When saving, file paths support both relative and absolute locations, and '$COLOR_UNDER'~'$COLOR_RESET' is substituted with the value of '$COLOR_UNDER'$HOME'$COLOR_RESET'. If the save location is a directory and does not end with a file name, the generic name of the script is used.
 
-	\t'$COLOR_BOLD'postupdate [discord|kwin|yay|all]'$COLOR_RESET'
+	\t'$COLOR_BOLD'postupdate [discord|kwin|yay|orphans|all]'$COLOR_RESET'
 	\t\tRuns tools to rebuild patches to certain software that breaks with '$COLOR_BOLD'pacman'$COLOR_RESET'(8) updates over time.
 
 	\t\t- '$COLOR_UNDER'discord'$COLOR_RESET' replaces the official Discord icon PNG and application entry with custom ones in '$COLOR_UNDER'~/pkgs/'$COLOR_RESET' and runs the Vencord installer from the Web. It is useful to run this after noticing the '$COLOR_BOLD'discord'$COLOR_RESET' package has updated.
@@ -474,6 +487,8 @@ print_help() {
 	\t\t- '$COLOR_UNDER'kwin'$COLOR_RESET' goes into '$COLOR_UNDER'$AEROTHEMEPLASMA_DIR'$COLOR_RESET' (hardcoded in this script) and recompiles the KWin decorations before installing them. When some DE libraries or '$COLOR_BOLD'plasma'$COLOR_RESET'* updates, it is useful to run this.
 
 	\t\t- '$COLOR_UNDER'yay'$COLOR_RESET' recompiles '$COLOR_BOLD'yay'$COLOR_RESET'(8) from the AUR. Yay tends to break after most system updates because it has fragile dependencies on libraries.
+
+	\t\t- '$COLOR_UNDER'orphans'$COLOR_RESET' will list redundant packages which are marked as dependencies but have no dependent packages present on the system. The option is given to uninstall these packages.
 
 	\t\t- '$COLOR_UNDER'all'$COLOR_RESET' runs all of the above.
 
