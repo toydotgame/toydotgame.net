@@ -75,7 +75,6 @@ DEPENDENCIES=("coreutils" "discord" "ffmpeg" "firefox" "git" "iproute2" "kwin" "
 # * zsh completions
 # * update check once a day max (use $(date))
 # * chmod numerical abbreviations cheat sheet, note 755 default for dirs and 644 default for files
-# * pacman -Qdtq orphan list and -Rsn remove all orphans prompt (probably sub of postupdate?)
 # remember every module can be run also with `utoy <cmd> [args]`
 
 module_restart_plasma() { # Restart plasma
@@ -261,7 +260,7 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 		log "Would you like to remove these packages?"
 		menu "Yes" "No"
 		if [ "$MENU_SELECTION" = "Yes" ]; then
-			sudo pacman -Rsn $(pacman -Qdtq)
+			sudo pacman -Rsn $(pacman -Qdtq) --noconfirm
 		fi
 	fi
 
