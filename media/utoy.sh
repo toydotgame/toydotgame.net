@@ -53,7 +53,7 @@ if [ "$VERSION" != "$LATEST" ]; then
 	log "${COLOR_WARN}UToy is not up to date! Latest: $LATEST, local: $VERSION.\nRun ${COLOR_RESET}utoy update$COLOR_WARN to update\n"
 fi
 # pacman needs array format, not just space delimited packages:
-DEPENDENCIES=("coreutils" "discord" "ffmpeg" "firefox" "git" "iproute2" "kwin" "openssh" "plasma-desktop" "procps-ng" "sshpass" "systemd" "vim" "wmctrl" "yt-dlp")
+DEPENDENCIES=("coreutils" "discord" "extra-cmake-modules" "ffmpeg" "firefox" "git" "iproute2" "kwin" "openssh" "plasma-desktop" "procps-ng" "sshpass" "systemd" "vim" "wmctrl" "yt-dlp")
 
 # FEATURE LIST TODO:
 # * help command listing for utoy
