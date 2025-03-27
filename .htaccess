@@ -1,6 +1,8 @@
 # gh-pages ignores htaccess files but this makes development easier.
 # Set the root of this repo as webserver's root and done.
 
+ErrorDocument 404 /404.html
+
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME}.html -f
