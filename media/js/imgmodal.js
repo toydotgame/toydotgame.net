@@ -5,16 +5,15 @@
  */
 
 document.getElementById("content").innerHTML += '<div id="modaldim" style="display:none;"></div>';
-var overlay = document.getElementById("modaldim");
+let overlay = document.getElementById("modaldim");
 overlay.addEventListener("click", onClick);
 
-var imgs = document.getElementById("content").getElementsByTagName("img");
-for(var i = 0; i <= imgs.length - 1; i++) {
+let imgs = document.getElementById("content").getElementsByTagName("img");
+for(let i = 0; i < imgs.length; i++)
 	imgs[i].addEventListener("click", onClick);
-}
 
 overlay.innerHTML = '<img id="modalimg">';
-var img = document.getElementById("modalimg");
+let img = document.getElementById("modalimg");
 
 function onClick(e) {
 	img.src = e.target.src;
