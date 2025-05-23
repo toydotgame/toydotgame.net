@@ -24,7 +24,7 @@
 		<div id="nav"></div>
 		<div id="content">
 			<h1>toy's Standardised Versioning</h1>
-			<h2 id="subtitle">Written: <b>2024-06-17</b> &centerdot; Last Updated: <b>Never</b></h2>
+			<h2 id="subtitle">Written: <b>2024-06-17</b> &centerdot; Last Updated: <b>2025-05-23</b></h2>
 			<p>After seven years or so of releasing software, I felt it was time to address a common problem in my personal programming style: the lack of a consistent versioning standard.</p>
 			<p>The most common standard for a single versioning system is <a href="https://semver.org/">Semantic Versioning</a>. Overall, it's pretty good, but it has one main drawback: it is designed exclusively for APIs. I'm a desktop dev at heart, and my stuff doesn't have dependent software packages. So, for years, I've been ad-libbing my versioning system from project to project; every time I switched between projects I'd need to check the convention I had set in place before, which quickly gets annoying.</p>
 			<p>I have a couple goals for my new standard:</p>
@@ -51,10 +51,10 @@
 				<li>
 					The final part of the version is two mutually exclusive options:
 					<ul>
-						<li><b><code>[hotfix]</code>:</b> A hotfix is a small <b>bugfix-only</b> update that contains fixes for <b>critical</b> bugs in the latest release of your production software. The hotfix number is padded with zeroes to be two digits long and is appended to the latest version with an underscore, <i>e.g:</i> <code>_01</code>.</li>
-						<li><b><code>[rc]</code>:</b> Release candidates are for the <i>release</i> channel of your software <b>only</b>, and should not have hotfix updates shipped for them—as the user knowingly accepts that a release candidate version is inherently an unstable preview version. The number for RCs starts at 1 and increments indefinitely until the production release arrives. <i>e.g:</i> The first beta build of <code>v1.2</code>, based on <code>v1.1</code>'s codebase, is <code>v1.2-rc1</code>. Whilst you're releasing RC pre-releases, you can still update your production releases:
+						<li><b><code>[hotfix]</code>:</b> A hotfix is a small <b>bugfix-only</b> update that contains fixes for <b>critical</b> bugs in the latest release of your production software. This means they <i>shouldn't</i> contain regular bugfixes for non-critical stuff; non-critical fixes should be rolled up into <i>patch</i> versions. The hotfix number is padded with zeroes to be two digits long and is appended to the latest version with an underscore, <i>e.g:</i> <code>_01</code>. Because this is a standard, I shoudld specify that hot fix numbers &gt;2 digits are written without any padding, e.g. <code>_99</code>, </code>_100</code>, <code>_101</code>, …. However, it is my opinion as a programmer that you should never touch a computer again and/or have your hands chopped off of you need to ship <b>a hundred</b> <u>urgent</u> singular bugfixes consecutively.</li>
+						<li><b><code>[rc]</code>:</b> Release candidates are for the preview/beta channel of your software <b>only</b>, and should not have hotfix updates shipped for them—as the user knowingly accepts that a release candidate version is inherently an unstable preview version. The number for RCs starts at 1 and increments indefinitely until the production release arrives. <i>e.g:</i> The first beta build of <code>v1.2</code>, based on <code>v1.1</code>'s codebase, is <code>v1.2-rc1</code>. Whilst you're releasing RC pre-releases, you can still update your production releases:
 						<img src="/media/blog/2024/06-17_versioning/rc-branching.png" class="fcenter" width="75%">
-						</li>
+						Due to a release candidate's nature as a rapid prototype, it won't <i>need</i> patch or hotfix versions because—functionally—whenever you'd normally ship one of those, on the preview branch, you'd just ship a release candidate instead.</li>
 					</ul>
 				</li>
 			</ul>
