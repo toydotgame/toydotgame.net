@@ -199,32 +199,34 @@ h4, h5, h6 { /* Minor headings */
 	cursor: pointer; /* For image modals */
 }
 
+/* Float type margins are otherwise overridden by `#content img` specificity */
 .fleft {
 	float: left;
-	margin-right: 10px !important;
-}
-
-figure.fcenter { /* Figures provide their own 5px margins */
-	margin: 0 auto !important;
+	margin-right: 2% !important; /* Close enough on a standard view to 10px, and more predictable */
+} .fright {
+	float: right;
+	margin-left: 2% !important;
 }
 
 .fcenter {
 	display: block;
-	margin: 5px auto !important;
-}
-
-.fright {
-	float: right;
-	margin-left: 10px !important;
+	margin: 5px auto !important; /* Inherit 5px from `#content img` */
 }
 
 .freset { /* Clearfix to display below floats instead of wrapping around */
 	clear: both;
 }
 
+/* Figure float margins are otherwise override by float type margins (above) */
+figure.fcenter { /* Figures provide their own 5px margins */
+	margin: 0 auto !important;
+}
+
 figure > img {
-	margin-bottom: 0 !important;
-} figcaption {
+	margin-bottom: 0 !important; /* Overridden by `#content img` specificity */
+}
+
+figcaption {
 	margin-bottom: 5px;
 	text-align: center;
 }
@@ -247,8 +249,8 @@ pre, code {
 	background-color: var(--bg2);
 	word-wrap: break-word;
 	font-family: "Fira Mono", "Twemoji", monospace;
-	tab-size: 4; /* For some reason this is the one thing Firefox ignores */
-	-moz-tab-size: 4;
+	tab-size: 4;
+	-moz-tab-size: 4; /* For some reason this is the one thing Firefox ignores */
 }
 
 pre {
