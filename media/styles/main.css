@@ -161,25 +161,25 @@ small, figcaption {
 	line-height: 20px; /* Anything that isn't a heading basically */
 }
 
-#content > h1 {
+#content > h1 { /* Title */
 	border-bottom: 1px solid var(--acc);
 	color: var(--acc);
 	font-family: "DM Serif Display", "Twemoji", serif;
 }
 
-h2#subtitle {
+h2#subtitle { /* Subtitle */
 	margin-bottom: 16px;
 	font-size: 14px;
 	font-weight: normal;
 	color: var(--sec);
 }
 
-h2:not(#subtitle), h3, h4 {
+h2:not(#subtitle), h3, h4, h5, h6 { /* Body headings */
 	font-family: "DM Serif Display", "Twemoji", serif;
 	color: var(--acc);
 }
 
-h4 {
+h4, h5, h6 { /* Minor headings */
 	color: var(--sec);
 }
 
