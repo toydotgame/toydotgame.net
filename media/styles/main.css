@@ -109,7 +109,7 @@ small, figcaption {
 #nav {
 	width: 50%;
 		min-width: 600px;
-		max-width: 1000px; /* 1500px max-width for #content ÷ 75% × 50% = 1000px */
+		max-width: 1000px; /* 1500px max-width for #content ÷ 75% #content width × 50% #nav width = 1000px */
 	margin: 16px auto;
 	text-align: center;
 	user-select: none;
@@ -405,7 +405,7 @@ figcaption {
 #recentblogs {
 	width: calc(50% + 10px);
 		min-width: 600px;
-		max-width: 1100px; /* #content max-width ÷ 75% × 50% + 10px = 1100px */
+		max-width: 1100px; /* #content max-width ÷ 75% #content width × (50% + 10px) #recentblogs width = 1100px */
 	margin: 16px auto;
 	color: var(--acc);
 	text-align: left;
@@ -454,10 +454,11 @@ figcaption {
 	}
 }
 
-/*
- * Earlier, the width of the #recentblogs div was set by `calc(50% + 10px)`, to counteract the 2x 5px padding set
- * by its parent (the #footer div). So, to make the responsive design smooth like it is with the #nav div, we have
- * to start shrinking the #recentblogs div once the viewport reaches 610px rather than 600px. 
+/* Earlier, the width of the #recentblogs div was set by `calc(50% + 10px)`, to
+ * counteract the 2x 5px padding set by its parent (the #footer div). So, to
+ * make the responsive design smooth like it is with the #nav div, we have to
+ * start shrinking the #recentblogs div once the viewport reaches 610px rather
+ * than 600px. 
  */
 @media only screen and (max-width: 610px) {
 	#recentblogs {
