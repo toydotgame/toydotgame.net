@@ -175,6 +175,7 @@ h2#subtitle { /* Subtitle */
 }
 
 h2:not(#subtitle), h3, h4, h5, h6 { /* Body headings */
+	clear: both; /* Clearfix */
 	font-family: "DM Serif Display", "Twemoji", serif;
 	color: var(--acc);
 }
