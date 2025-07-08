@@ -158,7 +158,7 @@ small, figcaption {
 }
 
 #content p, #content pre, #content code, #content td, #content blockquote {
-	line-height: 20px; /* Anything that isn't a heading basically */
+	line-height: 20px; /* Anything that isn't a heading or small text basically */
 }
 
 #content > h1 { /* Title */
@@ -229,6 +229,7 @@ figure > img {
 figcaption {
 	margin-bottom: 5px;
 	text-align: center;
+	font-size: smaller;
 }
 
 #content ol, #content ul {
@@ -320,28 +321,28 @@ tr:nth-child(odd) {
 	font-family: "Fira Mono", "Twemoji", monospace;
 }
 
-sub, sup, .cite {
+sup, sub, .cite {
 	position: relative;
 	vertical-align: top;
 }
 
-sub {
-	bottom: -4px;
-}
-
 sup, .cite {
 	top: -4px;
+} small sup {
+	top: -1px; /* 3px adjustment for smaller font */
+}
+
+sub {
+	bottom: -4px;
+} small sub {
+	bottom: -5px; /* 1 px adjustment for smaller font */
 }
 
 .cite:before {
 	content: "[";
-}
-
-.cite {
+} .cite {
 	font-size: smaller;
-}
-
-.cite:after {
+} .cite:after {
 	content: "]";
 }
 
@@ -356,10 +357,6 @@ ol.reflist {
 
 ol.reflist > li {
 	padding: unset !important;
-}
-
-figcaption {
-	font-size: smaller;
 }
 
 /* IMAGE MODAL, child of #content */
