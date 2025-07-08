@@ -184,8 +184,16 @@ h4, h5, h6 { /* Minor headings */
 	color: var(--sec);
 }
 
-#content > p {
+#content p {
 	margin: 0 0 14px 0; /* 14px between paragraphs */
+}
+
+#content small {
+	display: block;
+	margin: 0 0 14px 0; /* Inherited from `#content p` */
+} #content p > small { /* Unset for when <p> is already providing style */
+	display: unset;
+	margin: unset;
 }
 
 #content img:not([width]) {
