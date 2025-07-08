@@ -185,7 +185,7 @@ h4, h5, h6 { /* Minor headings */
 }
 
 #content > p {
-	margin: 0 0 7px 0; /* 7px between paragraphs */
+	margin: 0 0 14px 0; /* 14px between paragraphs */
 }
 
 #content img:not([width]) {
