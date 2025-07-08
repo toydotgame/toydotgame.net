@@ -336,13 +336,13 @@ sup, sub, .cite {
 
 sup, .cite {
 	top: -4px;
-} small sup {
+} small sup, figcaption sup {
 	top: -1px; /* 3px adjustment for smaller font */
 }
 
 sub {
 	bottom: -4px;
-} small sub {
+} small sub, figcaption sub {
 	bottom: -5px; /* 1 px adjustment for smaller font */
 }
 
