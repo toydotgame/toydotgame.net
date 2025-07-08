@@ -290,6 +290,8 @@ blockquote {
 	background-color: color-mix(in srgb, var(--acc), transparent 90%);
 	color: var(--sec);
 	font-style: italic;
+} blockquote :is(h1, h2, h3, h4, h5, h6) { /* De-italicise headings because their font is already italic */
+	font-style: normal; /* `unset` won't work */
 }
 
 table { /* Vaguely hacky */
