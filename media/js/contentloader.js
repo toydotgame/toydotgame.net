@@ -53,7 +53,6 @@ var badges = `
 <img src="/media/resources/badges/trans.gif" width="88">
 <img src="/media/resources/badges/virtualdiva.gif" width="88">
 <a href="https://en.wikipedia.org/"><img src="/media/resources/badges/wikipedia.gif" width="88"></a>
-<img src="/media/resources/badges/lucida.gif" width="88">
 <a href="https://www.7-zip.org/"><img src="/media/resources/badges/7z.gif" width="88"></a>
 <img src="/media/resources/badges/win7.gif" width="88">
 <img src="/media/resources/badges/invalidator.gif" width="88">
