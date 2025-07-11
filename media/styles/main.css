@@ -145,7 +145,10 @@ small, figcaption {
 		max-width: 1500px;
 	margin: 0 auto;
 	padding: 0 10px;
-	overflow: hidden; /* Hack to fix if floating images exceed text length and break footer */
+} #content:after { /* Clearfix hack to avoid using overflow:hidden for #content */
+	content: "";
+	display: block;
+	clear: both;
 }
 
 #content p, #content pre, #content code, #content td, #content blockquote {
