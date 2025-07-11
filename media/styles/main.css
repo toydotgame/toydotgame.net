@@ -274,15 +274,25 @@ a > code {
 blockquote {
 	display: table;
 	margin: 0 0 14px 0; /* Inherit `#content p` margins */
-	padding: 5px 10px;
+	padding: 7px 10px;
 		padding-right: 1.5em;
 	border-left: 5px solid var(--acc);
 		border-radius: 2px 10px 10px 2px;
 	background-color: color-mix(in srgb, var(--acc), transparent 90%);
 	color: var(--sec);
 	font-style: italic;
+} blockquote:has(blockquote) { /* Parent blockquote that has child quotes is therefore an inset container */
+	border: 5px double var(--acc);
+		border-radius: 14px;
+	background-color: color-mix(in srgb, var(--lnk), transparent 97.5%);
+	color: var(--pri);
+	font-style: normal;
+} blockquote :is(blockquote) {
+	margin: 7px 0; /* Inherit and modify `#content p` margins */
 } blockquote :is(h1, h2, h3, h4, h5, h6) { /* De-italicise headings because their font is already italic */
 	font-style: normal; /* `unset` won't work */
+} blockquote p { /* Overridden by `#content p` specificity */
+	margin: unset !important;
 }
 
 table { /* Vaguely hacky */
