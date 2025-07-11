@@ -9,7 +9,7 @@
 	--bg2: #1c1c1c;
 	--acc: #b29abb;
 	--pri: #fff;
-	--sec: #ccc;
+	--sec: #c8c8c8; /* 90% brightness --pri */
 	--lnk: #5865f2;
 }
 
@@ -210,21 +210,6 @@ h4, h5, h6 { /* Minor headings */
 	clear: both;
 }
 
-/* Figure float margins are otherwise override by float type margins (above) */
-figure.fcenter { /* Figures provide their own 5px margins */
-	margin: 0 auto !important;
-}
-
-figure > img {
-	margin-bottom: 0 !important; /* Overridden by `#content img` specificity */
-}
-
-figcaption {
-	margin-bottom: 5px;
-	text-align: center;
-	font-size: smaller;
-}
-
 #content ol, #content ul {
 	padding-left: 1.5em;
 }
@@ -265,8 +250,8 @@ a > code {
 	color: var(--lnk);
 }
 
-blockquote {
-	display: table;
+blockquote, aside {
+	display: table; /* Displays like `block`, but width only as wide as elements */
 	margin: 0 0 14px 0; /* Inherit `#content p` margins */
 	padding: 7px 10px;
 		padding-right: 1.5em;
@@ -275,18 +260,42 @@ blockquote {
 	background-color: color-mix(in srgb, var(--acc), transparent 90%);
 	color: var(--sec);
 	font-style: italic;
-} blockquote:has(blockquote) { /* Parent blockquote that has child quotes is therefore an inset container */
-	border: 5px double var(--acc);
-		border-radius: 14px;
-	background-color: color-mix(in srgb, var(--lnk), transparent 97.5%);
-	color: var(--pri);
-	font-style: normal;
-} blockquote :is(blockquote) {
-	margin: 7px 0; /* Inherit and modify `#content p` margins */
-} blockquote :is(h1, h2, h3, h4, h5, h6) { /* De-italicise headings because their font is already italic */
+} blockquote :is(h1, h2, h3, h4, h5, h6), aside { /* De-italicise headings because their font is already italic */
 	font-style: normal; /* `unset` won't work */
-} blockquote p { /* Overridden by `#content p` specificity */
-	margin: unset !important;
+} blockquote p, aside p {
+	margin: unset !important; /* Overridden by `#content p` specificity; unset to match untagged lines of text */
+} blockquote :is(h1, h2, h3) {
+	color: color-mix(in srgb, var(--acc), #000 10%) !important; /* Inherited from heading colour, dimmed; overridden by h2:not(#subtitle) specificity */
+}
+
+/* Figure float margins are otherwise override by float type margins (above) */
+figure.fcenter { /* Figures provide their own 5px margins */
+	margin: 0 auto !important;
+}
+
+figure > img {
+	margin-bottom: 0 !important; /* Overridden by `#content img` specificity */
+}
+
+figcaption {
+	margin-bottom: 5px;
+	text-align: center;
+	font-size: smaller;
+}
+
+aside {
+	border: 2px dashed var(--acc);
+		border-radius: 10px;
+	color: var(--pri); /* Inherit from `body` */
+} aside :is(blockquote) {
+	margin: 7px 0; /* Inherit and modify `#content p` margins */
+}
+/* Vaguely fix first and last children (namely blockquotes) from having uneven
+ * padding relative to the aside box itself, which already provides padding: */
+aside > :first-child {
+	margin-top: 0;
+} aside > :last-child {
+	margin-bottom: 0;
 }
 
 table { /* Vaguely hacky */
@@ -351,17 +360,28 @@ sub {
 	content: "]";
 }
 
-h2.reflist {
+#reflist:before {
+	content: "Reference list";
+	display: block;
+	width: 100%;
 	margin: 5px 0;
 	border-bottom: 1px solid var(--acc);
+	/* Copy h2:not(#subtitle) styles: */
+	color: var(--acc);
+	font-family: "DM Serif Display", "Twemoji", serif;
+	/* I believe these are the HTML5 defaults for h2: */
+	font-size: 1.5em;
+	font-weight: bold;
 }
 
-ol.reflist {
-	padding-left: 1em; /* Reset */
+#reflist {
+	clear: both; /* Clearfix */
+	padding-left: 0 !important; /* Overridden by `#content ol` */
 }
 
-ol.reflist > li {
-	padding: unset !important;
+#reflist li {
+	margin-left: 1em;
+	padding: unset;
 }
 
 /* IMAGE MODAL, child of #content */
