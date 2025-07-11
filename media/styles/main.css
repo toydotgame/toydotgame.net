@@ -283,7 +283,7 @@ figure > img {
 figcaption {
 	margin-bottom: 5px;
 	text-align: center;
-	font-size: smaller;
+	font-size: small;
 }
 
 aside {
@@ -356,11 +356,11 @@ sub {
 }
 
 .cite:before {
-	content: "[";
+	content: var(--txt);
 } .cite {
-	font-size: smaller;
-} .cite:after {
-	content: "]";
+	--txt: "[" attr(href) "]"; /* Easier to set style here in JS */
+	display: inline-block; /* Enable ::first-letter selector */
+	font-size: small;
 }
 
 #reflist:before {
@@ -369,6 +369,8 @@ sub {
 	width: 100%;
 	margin: 5px 0;
 	border-bottom: 1px solid var(--acc);
+	column-span: all; /* Heading full width of reflist */
+	
 	/* Copy h2:not(#subtitle) styles: */
 	color: var(--acc);
 	font-family: "DM Serif Display", "Twemoji", serif;
@@ -378,13 +380,20 @@ sub {
 }
 
 #reflist {
-	clear: both; /* Clearfix */
 	padding-left: 0 !important; /* Overridden by `#content ol` */
+	list-style: none inside none;
+	counter-increment: item;
+	column-count: 2;
+	clear: both; /* Clearfix */
 }
 
-#reflist li {
-	margin-left: 1em;
+#reflist li::marker {
+	content: attr(id, "???") ". "; /* Specify fallback */
+} #reflist li {
 	padding: unset;
+		padding-bottom: 7px;
+	font-size: small;
+	break-inside: avoid; /* Allow columns to be uneven heights in order for text of each reference to remain together */
 }
 
 /* IMAGE MODAL, child of #content */

@@ -19,6 +19,12 @@ document.getElementById("nav").innerHTML = `
 <hr>
 `;
 
+for(let element of document.querySelectorAll(".cite")) {
+	let refNumber = element.getAttribute("href");            // element.href yields mangled result
+	refNumber = refNumber.substring(1);                      // Trim off "#"
+	element.style.setProperty("--txt", '"['+refNumber+']"'); // CSS cascade effectively overwrites content
+}
+
 import {} from "/media/js/imgmodal.js";
 
 var recentblogs = `
