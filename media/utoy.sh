@@ -196,10 +196,21 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 	fi
 
 	if [ "$MENU_SELECTION" = "Vencord" ] || [ "$MENU_SELECTION" = "All" ]; then
-		sudo rm -f /opt/discord/discord.desktop /opt/discord/discord.png
-		sudo ln -s ~/pkgs/discord.desktop /opt/discord/discord.desktop
-		sudo ln -s ~/pkgs/discord.png /opt/discord/discord.png
-		sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
+		# Code for extras/discord:
+		#sudo rm -f /opt/discord/discord.desktop /opt/discord/discord.png
+		#sudo ln -s ~/pkgs/discord.desktop /opt/discord/discord.desktop
+		#sudo ln -s ~/pkgs/discord.png /opt/discord/discord.png
+		
+		# Code for aur/discord_arch_electron:
+		#sudo rm -f /usr/share/applications/discord.desktop
+		#sudo ln -s ~/pkgs/discord.desktop /usr/share/applications/discord.desktop
+
+		# Code for aur/vesktop-bin:
+		sudo rm -f /usr/share/applications/vesktop.desktop
+		sudo ln -s ~/pkgs/vesktop.desktop /usr/share/applications/vesktop.desktop
+		
+		# Needed only for discord-based installs, not Vesktop-based ones:
+		#sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 	fi
 
 	if [ "$MENU_SELECTION" = "KWin window decorations" ] || [ "$MENU_SELECTION" = "All" ]; then
@@ -217,19 +228,22 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 		git reset --hard HEAD && \
 		git merge origin/main
 
-		# Re-compile KWin effects:
-		cd "kwin/decoration/"
-		chmod +x install.sh
-		./install.sh
-		cd ..
+		# See https://gitgud.io/wackyideas/aerothemeplasma/-/blob/master/INSTALL.md?ref_type=heads#getting-started-
+		sh compile.sh
 
-		cd "effects_cpp/"
-		for i in *; do
-			cd "$i"
-			chmod +x install.sh
-			./install.sh
-			cd ..
-		done
+		# Re-compile KWin effects:
+		#cd "kwin/decoration/"
+		#chmod +x install.sh
+		#./install.sh
+		#cd ..
+		#
+		#cd "effects_cpp/"
+		#for i in *; do
+		#	cd "$i"
+		#	chmod +x install.sh
+		#	./install.sh
+		#	cd ..
+		#done
 
 		RUN_FROM_CMD="true" OPTIONS=("hard") module_restart_plasma # Call `utoy restartplasma hard`
 	fi
