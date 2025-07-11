@@ -28,8 +28,8 @@
 			<p>I use Eclipse to program in Java. I love it (please throw your comments about how I'm about 5 billion years old and my development environment is too directly into my e-mail inbox for me to not care about). Anyway, I started using it in late 2020, and wanted to remember what the splash screen was <i>then</i> back when I got started. Turns out, a Google Images search yielded nothing. And so, that's where the question came from:</p>
 			<blockquote><i>What does every incarnation of the Eclipse splash window look like?</i></blockquote>
 			<p>…And so this article was born. This article will be a timeline of the <code>splash.bmp</code> (and later/currently <code>splash.png</code>) file as found in the <i>Eclipse Platform</i> core component of the Eclipse Project.</p>
-			<p>We'll start with Eclipse 1.0, released November 7<sup>th</sup>, 2001 (date from <a href="https://archive.eclipse.org/eclipse/downloads/">Eclipse Project Archives</a>, Wikipedia disagrees and states the 29<sup>th</sup>). No Git history exists for this version, nor could my (rather shallow) research find any pre-release versions from before this. By this time, the Eclipse Platform project existed, but in a vaguely different scope and implementation than it does today. As I understand it, the Eclipse project was kicked off by IBM, who—prior to Eclipse 1.0's release—invested upwards of US$40 million (~US$72.7 million in 2025)<a class="cite" href="#1">1</a> in R&amp;D alone.<a class="cite" href="#2">2</a> In that month<a class="cite" href="#2">2</a>, the Eclipse Foundation was created to officially hold the project, with IBM as a major contributor (to this very day!).</p>
-			<p>Regardless, the 1.0 build available in the Archives holds the Eclipse 1.0 SDK (I'm assuming the "Eclipse Platform" software's purpose/implementation was either not fully baked in this release, or was intended as a smaller part of the larger Eclipse SDK project). In the SDK's release distribution, the <code>splash/</code> folder provides the oldest splashes I can find, dated August 8<sup>th</sup>, 2001:<a class="cite" href="#3">3</a></p>
+			<p>We'll start with Eclipse 1.0, released November 7<sup>th</sup>, 2001 (date from <a href="https://archive.eclipse.org/eclipse/downloads/">Eclipse Project Archives</a>, Wikipedia disagrees and states the 29<sup>th</sup>). No Git history exists for this version, nor could my (rather shallow) research find any pre-release versions from before this. By this time, the Eclipse Platform project existed, but in a vaguely different scope and implementation than it does today. As I understand it, the Eclipse project was kicked off by IBM, who—prior to Eclipse 1.0's release—invested upwards of US$40 million (~US$72.7 million in 2025)<a class="cite" href="#1"></a> in R&amp;D alone.<a class="cite" href="#2"></a> In that month<a class="cite" href="#2"></a>, the Eclipse Foundation was created to officially hold the project, with IBM as a major contributor (to this very day!).</p>
+			<p>Regardless, the 1.0 build available in the Archives holds the Eclipse 1.0 SDK (I'm assuming the "Eclipse Platform" software's purpose/implementation was either not fully baked in this release, or was intended as a smaller part of the larger Eclipse SDK project). In the SDK's release distribution, the <code>splash/</code> folder provides the oldest splashes I can find, dated August 8<sup>th</sup>, 2001:<a class="cite" href="#3"></a></p>
 			<figure class="fleft" style="width:48%">
 				<img src="/media/blog/2025/07-08_eclipse-splash-history/1.0_splash_full.bmp" />
 				<figcaption><code>splash_full.bmp</code></figcaption>
@@ -38,20 +38,20 @@
 				<img src="/media/blog/2025/07-08_eclipse-splash-history/1.0_splash_basic.bmp" />
 				<figcaption><code>splash_basic.bmp</code>, a limited-palette version</figcaption>
 			</figure>
-			<p class="freset">Following 1.0, IBM established Eclipse as an open-source project led by the Eclipse Foundation. As far as I am aware, the code of the beta and 1.0 release candidates was not tracked by CVS (which is what it used for the first fre years)<a class="cite" href="#4">4</a>—or the CVS history wasn't migrated to the public CVS repository (which <i>has</i> been migrated to Git and is available on GitHub today).</p>
+			<p class="freset">Following 1.0, IBM established Eclipse as an open-source project led by the Eclipse Foundation. As far as I am aware, the code of the beta and 1.0 release candidates was not tracked by CVS (which is what it used for the first fre years)<a class="cite" href="#4"></a>—or the CVS history wasn't migrated to the public CVS repository (which <i>has</i> been migrated to Git and is available on GitHub today).</p>
 			<aside>
 				<h3>Aside on the name "Eclipse":</h3>
 				<p>Eclipse was IBM's creation, and at the time, Java development was most popularly done on Microsoft's Visual Studio (which used to support Java—it doesn't anymore).</p>
-				<p>There is the idea that Eclipse was named that because Java was created by <u>Sun</u> Microsystems (pre-2014 Oracle buyout, remember!). This is false, because actually IBM was focused solely on Microsoft's grip on the software development industry with VS. They saw this as an "ecosystem" that was growing unchecked. Here's a quote from <a href="https://www.eweek.com/development/eclipse-behind-the-name/">the article about the name</a> I like. This quote is attributed to Lee Nackman, CTO of Rational Software (under IBM), VP of IBM Design, Construction, and Testing, and "initiator" of Eclipse:<a class="cite" href="#10">10</a></p>
+				<p>There is the idea that Eclipse was named that because Java was created by <u>Sun</u> Microsystems (pre-2014 Oracle buyout, remember!). This is false, because actually IBM was focused solely on Microsoft's grip on the software development industry with VS. They saw this as an "ecosystem" that was growing unchecked. Here's a quote from <a href="https://www.eweek.com/development/eclipse-behind-the-name/">the article about the name</a> I like. This quote is attributed to Lee Nackman, CTO of Rational Software (under IBM), VP of IBM Design, Construction, and Testing, and "initiator" of Eclipse:<a class="cite" href="#10"></a></p>
 				<blockquote>Our target was Microsoft […]. Microsoft was clearly the market leader and was on a path to become the dominant tools platform. […] So around 1998 we felt […] we needed to bring developers to [IBM's Java] middleware business [which] depended on bringing developers [over to IBM].</blockquote>
 				<p>So yeah…Eclipse wasn't created to blot out the Sun. It was created to Eclipse Microsoft. I love that.</p>
-				<p>Sun actually had apprehensions about joining the Eclipse Foundation back in 2003, with its executives citing they could not feasibly support an organisation who "[encouraged] the demise of Sun."<a class="cite" href="#10">10</a></p>
+				<p>Sun actually had apprehensions about joining the Eclipse Foundation back in 2003, with its executives citing they could not feasibly support an organisation who "[encouraged] the demise of Sun."<a class="cite" href="#10"></a></p>
 			</aside>
 			<p>On May 11<sup>th</sup>, 2002, we get the commit "Migrate" (<a href="https://github.com/eclipse-platform/eclipse.platform/commit/9916e19e0d52ed9b10b35fb85789dabc74ea9cfe"><code>9916e19</code></a>), which is the oldest change in the Git history for the Eclipse Platform. The above bitmap images are included, unchanged, in this.</p>
 			<small>Interestingly, there's a file called <a href="https://github.com/eclipse-platform/eclipse.platform/blob/9916e19e0d52ed9b10b35fb85789dabc74ea9cfe/platform/org.eclipse.sdk/splash/readme.txt"><code>readme.txt</code></a> in the splash directory with a FIXME for reading "splash.png," dated May 3<sup>rd</sup>, 2002. I'm not sure if ".png" was a typo or not, but actual an actual PNG splash support wouldn't be included until September 4<sup>th</sup>, 2021—19 years later.</small>
 			<hr>
 			<h2>Tracked timeline</h2>
-			<h3><code>splash.bmp</code><a class="cite" href="#5">5</a></h3>
+			<h3><code>splash.bmp</code><a class="cite" href="#5"></a></h3>
 			<figure class="fleft" style="width:48%">
 				<img src="/media/blog/2025/07-08_eclipse-splash-history/2.0.bmp" />
 				<figcaption>2002-05-18: 2.0</figcaption>
@@ -140,7 +140,7 @@
 			<br class="freset">
 			<figure class="fleft" style="width:48%">
 				<img src="/media/blog/2025/07-08_eclipse-splash-history/3.2.bmp" />
-				<figcaption>2005-08-11: 3.2. I should mention that Eclipse 3.2 takes the release name <b>Callisto</b> (after a moon of Jupiter).<a class="cite" href="#6">6</a></figcaption>
+				<figcaption>2005-08-11: 3.2. I should mention that Eclipse 3.2 takes the release name <b>Callisto</b> (after a moon of Jupiter).<a class="cite" href="#6"></a></figcaption>
 			</figure>
 			<!-- Doing the same float trickery as above -->
 			<figure class="fright" style="width:23%">
@@ -159,7 +159,7 @@
 			</figure>
 			<p class="freset">I found a blog article on this exact commit <a href="https://waynebeaton.wordpress.com/2006/03/21/swts-steve-northover-embraces-netbeans/">here</a>. To quote it:</p>
 			<blockquote>Kim [Horne, the committer for the above commits] tells me that she added a little something special to today's Eclipse integration build. The splash screen features none other than [Eclipse] SWT's own Steve Northover posing with the nice models that NetBeans is sponsoring for the week (or the last couple of days anyway).</blockquote>
-			<p>Steve Northover, from my shallow research, was a lead for the <a href="https://eclipse.dev/eclipse/swt/">Eclipse Standard Widget Toolkit (SWT)</a> project within IBM during his tenure in the mid-2000s.<a class="cite" href="#7">7</a> On March 23<sup>rd</sup>, <a href="https://github.com/eclipse-platform/eclipse.platform/commit/f87739926942ec8a0d071c186151d538f1a1d234">the 3.2 splash as of 2006-02-22 was restored</a>.</p>
+			<p>Steve Northover, from my shallow research, was a lead for the <a href="https://eclipse.dev/eclipse/swt/">Eclipse Standard Widget Toolkit (SWT)</a> project within IBM during his tenure in the mid-2000s.<a class="cite" href="#7"></a> On March 23<sup>rd</sup>, <a href="https://github.com/eclipse-platform/eclipse.platform/commit/f87739926942ec8a0d071c186151d538f1a1d234">the 3.2 splash as of 2006-02-22 was restored</a>.</p>
 			<br>
 			<p>Anyhow, starting with the next version, 3.3, and continuing into the present day, Eclipse places the release name/alias in the splash, rather than the Platform or SDK version number. Version 3.2 did have a release name (see above), but it was not included in the splash AFAIK.</p>
 
@@ -238,7 +238,7 @@
 			</figure>
 			<figure class="fright" style="width:48%">
 				<img src="/media/blog/2025/07-08_eclipse-splash-history/3.6_sdk4.0-ea.bmp" />
-				<figcaption>2010-05-25: The copyright date is fixed and the rights text font changes. The e4 splash is changed to reflect the new "scope" of this early access release that Eclipse overall is at SDK v4.0, the fact that the Eclipse Platform is still v3.6 (Helios) (as far as I understand it).<a class="cite" href="#8">8</a></figcaption>
+				<figcaption>2010-05-25: The copyright date is fixed and the rights text font changes. The e4 splash is changed to reflect the new "scope" of this early access release that Eclipse overall is at SDK v4.0, the fact that the Eclipse Platform is still v3.6 (Helios) (as far as I understand it).<a class="cite" href="#8"></a></figcaption>
 			</figure>
 
 			<br class="freset">
@@ -426,7 +426,7 @@
 
 			<p class="fright" style="width:48%">This marks the end of <code>splash.bmp</code>. In <a href="https://github.com/eclipse-platform/eclipse.platform/commit/b4cf50115af4d89d83672c029c2985f45f2e3735"><code>b4cf501</code></a> (4.22 development build dated 2021-09-04 (see below)), <code>splash.bmp</code> was superseded by <code>splash.png</code>. Purposefully or not, this resolves the May 3<sup>rd</sup>, 2002 <i>FIXME</i> left in the original Eclipse Project CVS repository after 19 years!</p>
 
-			<h3 class="fleft freset"><code>splash.png</code><a class="cite" href="#9">9</a></h3>
+			<h3 class="fleft freset"><code>splash.png</code><a class="cite" href="#9"></a></h3>
 			
 			<figure class="fright" style="width:23%">
 				<img src="/media/blog/2025/07-08_eclipse-splash-history/4.23.png" />
