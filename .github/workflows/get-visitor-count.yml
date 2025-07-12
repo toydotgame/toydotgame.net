@@ -1,22 +1,18 @@
 name: get-visitor-count
 run-name: get-visitor-count run by ${{ github.actor }}
-on: push # TODO: Change to schedule
+on: workflow_dispatch # TODO: Change to schedule
 jobs:
   get-visitor-count:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "github.event_name = ${{ github.event_name }}"
-      - run: echo "runner.os = ${{ runner.os }}"
-      - run: echo "github.ref = ${{ github.ref }}"
-      - run: echo "github.repository = ${{ github.repository }}"
-      - name: git-checkout
+      - name: git checkout to get-visitor-count
         uses: actions/checkout@v4
         with:
           ref: get-visitor-count # Branch
-      - run: echo "Checked out default branch"
-      - run: echo "ls ${{ github.workspace }}:"
-      - name: ls
-        run: ls ${{ github.workspace }}
-      - run: echo "job.status = ${{ job.status }}"
-#      - name: HTTP Request Action
-#        uses: fjogeleit/http-request-action@v1.16.4
+	  - name: ls workspace
+        run: echo "ls ${{ github.workspace }}:"
+	  - name: Run test.sh
+	    run: bash test.sh
+      - name: Echo job status
+	    run: echo "job.status = ${{ job.status }}"
+
