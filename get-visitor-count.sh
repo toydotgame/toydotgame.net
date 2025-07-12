@@ -58,7 +58,7 @@ echo '{
 
 if [ "$?" != "0" ]; then
 	echo "Finding the visitor count failed! Exiting..." >&2
-	exit
+	exit 1
 fi
 
 PREVIOUS_VISITOR_COUNT=$(head -1 visitor-count)
@@ -71,3 +71,4 @@ echo -e "\tNow: "$TOTAL_VISITORS
 
 #echo $TOTAL_VISITORS > visitor-count
 rm -f .tmp
+
