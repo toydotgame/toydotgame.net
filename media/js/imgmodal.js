@@ -4,22 +4,20 @@
  * Code to add an image popup modal on click. 
  */
 
-document.getElementById("content").innerHTML += '<div id="modaldim" style="display:none;"></div>';
-let overlay = document.getElementById("modaldim");
-overlay.addEventListener("click", onClick);
+// Look, I could use document.createElement() slop, but innerHTML is short and
+// sweet and is totally safe to this use case:
+document.querySelector("#content").innerHTML
+	+= '<div id="modaldim" style="display:none;"><img id="modalimg"></div>';
+let modal = document.querySelector("#modaldim");
+let img = document.querySelector("#modalimg");
 
-let imgs = document.getElementById("content").getElementsByTagName("img");
-for(let i = 0; i < imgs.length; i++)
-	imgs[i].addEventListener("click", onClick);
-
-overlay.innerHTML = '<img id="modalimg">';
-let img = document.getElementById("modalimg");
+for(let element of document.querySelectorAll("#content img:not(#modalimg), #modaldim"))
+	element.addEventListener("click", onClick);
 
 function onClick(e) {
-	img.src = e.target.src;
-	if(overlay.style.display == "none") {
-		overlay.style.display = "block";
-		return;
-	}
-	overlay.style.display = "none";
+	// Don't change the modal image's src if e.target.src is null. This happens
+	// very rarely but does cause a HTTP 404 and is annoying so…
+	if(e.target.src != null) img.src = e.target.src;
+	if(modal.style.display == "none") modal.style.display = "block";
+	else modal.style.display = "none";
 }
