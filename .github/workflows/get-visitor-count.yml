@@ -1,8 +1,8 @@
 name: get-visitor-count
 run-name: get-visitor-count run by ${{ github.actor }}
-on: [push] # TODO: Change to schedule
+on: push # TODO: Change to schedule
 jobs:
-  Explore-GitHub-Actions:
+  get-visitor-count:
     runs-on: ubuntu-latest
     steps:
       - run: echo "github.event_name = ${{ github.event_name }}"
@@ -11,6 +11,8 @@ jobs:
       - run: echo "github.repository = ${{ github.repository }}"
       - name: git-checkout
         uses: actions/checkout@v4
+        with:
+          ref: get-visitor-count # Branch
       - run: echo "Checked out default branch"
       - run: echo "ls ${{ github.workspace }}:"
       - name: ls
