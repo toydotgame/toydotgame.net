@@ -80,7 +80,7 @@ export { badges };
 
 var footer = `
 <br>
-<a href="https://www.free-website-hit-counter.com/"><img src="https://www.free-website-hit-counter.com/c.php?d=6&id=160327&s=5" width="88"></a>
+<p>I don't know what number visitor you are!</p>
 <p>Website © 2025 toydotgame</p>
 `;
 
