@@ -40,6 +40,11 @@ let recentblogs = `
 </div>
 `;
 
+let visitorCounter = `
+<p id="visitorCounter">I don't know what number visitor you are!</p>
+<br>
+`;
+
 let badges = `
 <img src="/media/resources/badges/toydotgame.gif" width="88">
 <a href="https://one.one.one.one/"><img src="/media/resources/badges/1.1.1.1.gif" width="88"></a>
@@ -77,15 +82,63 @@ let badges = `
 <a href="https://donate.wikimedia.org/"><img src="/media/resources/badges/donate-wikipedia.gif" width="88"></a>
 `;
 
+// Double `<br>` because first one occurs on the same line as last badge:
 let footer = `
-<br>
-<p>I don't know what number visitor you are!</p>
+<br><br>
 <p>Website © 2025 toydotgame</p>
 `;
 
 try {
-	document.querySelector("#footer").innerHTML = "<hr>" + recentblogs + badges + footer;
+	document.querySelector("#footer").innerHTML = "<hr>"+recentblogs+visitorCounter+badges+footer;
 } catch {
-	document.querySelector("#blogfooter").innerHTML = "<hr>" + badges + footer;
+	// Extra `<br>` to have nicer padding because there's no recentblogs margins:
+	document.querySelector("#blogfooter").innerHTML = "<hr><br>"+visitorCounter+badges+footer;
 	document.querySelector("#blogfooter").id = "footer";
+}
+
+try {
+	const RESPONSE = await fetch("https://raw.githubusercontent.com/toydotgame/toydotgame.github.io/refs/heads/visitor-count/visitor-count"); // Throws AbortError, NotAllowedError, TypeError
+	if(!RESPONSE.ok) throw new Error( // HTTP error, so throw that too
+		"Got a "+RESPONSE.status+" error when trying to fetch visitor count!"
+	);
+
+	const VISITOR_COUNT = await RESPONSE.text(); // Throws DOMException, TypeError
+	document.querySelector("#visitorCounter").innerHTML
+		= "You are the <b>"+getLocalizedOrdinalSuffix(VISITOR_COUNT)+"</b> visitor!";
+} catch(e) {
+	console.error(e.message);
+}
+
+/**
+ * Converts an integer (stored as type string) to a comma-separated string (for
+ * orders of magnitude, i.e. 1,000, 1,000,000, etc), with an ordinal suffix
+ * (i.e. -<i>st</i>, -<i>nd</i>, -<i>rd</i>, -<i>th</i>) appended.<br>
+ * <br>
+ * Returns +1 of the value because the fetched number from the get-visitor-count
+ * Action is technically exclusive of this current visitor. (Not very accurate
+ * but hey the best we can assume is +1)
+ * @param {string} number Plain digits-only string to work on
+ * @returns {string} Number with ordinal suffix and commas
+ * @throws {TypeError} If the input number is not a number
+ */
+function getLocalizedOrdinalSuffix(number) {
+	if(!Number.isInteger(Number(number)))
+		throw new TypeError("Number \""+number+"\" is not a number!");
+
+	const X = Number(number)+1, X_ORDINAL = X.toLocaleString();
+	const LAST_DIGIT = X%10, LAST_TWO_DIGITS = X%100;
+
+	// 11, 12, and 13th are exceptions whose ordinal suffix is "th":
+	if(LAST_TWO_DIGITS >= 11 && LAST_TWO_DIGITS <= 13) return X_ORDINAL+"th";
+
+	switch(LAST_DIGIT) {
+		case 1:
+			return X_ORDINAL+"st";
+		case 2:
+			return X_ORDINAL+"nd";
+		case 3:
+			return X_ORDINAL+"rd";
+		default:
+			return X_ORDINAL+"th";
+	}
 }
