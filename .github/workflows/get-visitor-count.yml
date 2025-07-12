@@ -15,7 +15,6 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add -A
-          git commit -m "Updated visitor count (workflow run by ${{ github.actor }}"
+          git commit -m "[${{ job.status }}] Updated visitor count (workflow run by ${{ github.actor }}"
           git push
-      - name: job.status = ${{ job.status }}
 
