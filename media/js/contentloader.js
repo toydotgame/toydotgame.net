@@ -27,7 +27,7 @@ for(let element of document.querySelectorAll(".cite")) {
 
 import {} from "/media/js/imgmodal.js";
 
-var recentblogs = `
+let recentblogs = `
 <div id="recentblogs">
 <h1>Recent Blog Posts</h1>
 <ul>
@@ -40,7 +40,7 @@ var recentblogs = `
 </div>
 `;
 
-var badges = `
+let badges = `
 <img src="/media/resources/badges/toydotgame.gif" width="88">
 <a href="https://one.one.one.one/"><img src="/media/resources/badges/1.1.1.1.gif" width="88"></a>
 <img src="/media/resources/badges/8pride.gif" width="88">
@@ -78,7 +78,7 @@ var badges = `
 `;
 export { badges };
 
-var footer = `
+let footer = `
 <br>
 <p>I don't know what number visitor you are!</p>
 <p>Website © 2025 toydotgame</p>
