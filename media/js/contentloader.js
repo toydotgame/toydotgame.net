@@ -5,7 +5,7 @@
  * etc all here and have it dynamically update across all pages.
  */
 
-document.getElementById("nav").innerHTML = `
+document.querySelector("#nav").innerHTML = `
 <div id="navpfp"></div><h1>toydotgame</h1>
 <a href="/home">home</a>
 |
@@ -20,11 +20,11 @@ document.getElementById("nav").innerHTML = `
 `;
 
 for(let element of document.querySelectorAll(".cite")) {
-	let refNumber = element.getAttribute("href");            // element.href yields mangled result
-	refNumber = refNumber.substring(1);                      // Trim off "#"
+	let refNumber = element.getAttribute("href").substring(1); // element.href yields mangled result; trim off "#"
 	element.style.setProperty("--txt", '"['+refNumber+']"'); // CSS cascade effectively overwrites content
 }
 
+// Run imgmodal code:
 import {} from "/media/js/imgmodal.js";
 
 let recentblogs = `
@@ -76,7 +76,6 @@ let badges = `
 <img src="/media/resources/badges/transnow2.gif" width="88">
 <a href="https://donate.wikimedia.org/"><img src="/media/resources/badges/donate-wikipedia.gif" width="88"></a>
 `;
-export { badges };
 
 let footer = `
 <br>
@@ -85,8 +84,8 @@ let footer = `
 `;
 
 try {
-	document.getElementById("footer").innerHTML = "<hr>" + recentblogs + badges + footer;
+	document.querySelector("#footer").innerHTML = "<hr>" + recentblogs + badges + footer;
 } catch {
-	document.getElementById("blogfooter").innerHTML = "<hr>" + badges + footer;
-	document.getElementById("blogfooter").id = "footer";
+	document.querySelector("#blogfooter").innerHTML = "<hr>" + badges + footer;
+	document.querySelector("#blogfooter").id = "footer";
 }
