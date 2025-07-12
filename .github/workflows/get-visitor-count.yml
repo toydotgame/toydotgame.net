@@ -1,0 +1,20 @@
+name: Get Visitor Count
+run-name: get-visitor-count run by ${{ github.actor }}
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "github.event_name = ${{ github.event_name }}"
+      - run: echo "runner.os = ${{ runner.os }}"
+      - run: echo "github.ref = ${{ github.ref }}"
+      - run: echo "github.repository = ${{ github.repository }}"
+      - name: git-checkout
+        uses: actions/checkout@v4
+      - run: echo "Checked out default branch"
+      - run: echo "ls ${{ github.workspace }}:"
+      - name: ls
+        run: ls ${{ github.workspace }}
+      - run: echo "job.status = ${{ job.status }}"
+#      - name: HTTP Request Action
+#        uses: fjogeleit/http-request-action@v1.16.4
