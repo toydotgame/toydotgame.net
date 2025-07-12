@@ -13,5 +13,7 @@ jobs:
         run: echo "ls ${{ github.workspace }}:"
       - name: Run test.sh
         run: bash test.sh
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
       - name: Echo job status
         run: echo "job.status = ${{ job.status }}"
