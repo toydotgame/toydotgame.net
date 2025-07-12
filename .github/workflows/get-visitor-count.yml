@@ -5,13 +5,17 @@ jobs:
   get-visitor-count:
     runs-on: ubuntu-latest
     steps:
-      - name: git checkout
-        uses: actions/checkout@v4
-      - name: Run fetch script
-        run: bash get-visitor-count.sh
+      - uses: actions/checkout@v4
+      - run: bash get-visitor-count.sh
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           ZONE_TAG: ${{ vars.ZONE_TAG }}
-      - name: Echo job status
-        run: echo "job.status = ${{ job.status }}"
+      - name: Commit changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m "Updated visitor count (workflow run by ${{ github.actor }}"
+          git push
+      - name: job.status = ${{ job.status }}
 
