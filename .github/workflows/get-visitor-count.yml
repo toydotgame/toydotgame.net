@@ -1,6 +1,6 @@
 name: get-visitor-count
 run-name: get-visitor-count run by ${{ github.actor }}
-on: push # TODO: Change to schedule
+on: workflow_dispatch # TODO: Change to schedule
 jobs:
   get-visitor-count:
     runs-on: ubuntu-latest
