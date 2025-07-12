@@ -10,8 +10,8 @@ jobs:
       - name: Run fetch script
         run: bash get-visitor-count.sh
         env:
-		  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-		  ZONE_TAG: ${{ vars.ZONE_TAG }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ZONE_TAG: ${{ vars.ZONE_TAG }}
       - name: Echo job status
         run: echo "job.status = ${{ job.status }}"
 
