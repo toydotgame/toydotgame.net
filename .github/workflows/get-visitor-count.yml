@@ -1,0 +1,19 @@
+name: get-visitor-count
+run-name: get-visitor-count run by ${{ github.actor }}
+on: workflow_dispatch # TODO: Change to schedule
+jobs:
+  get-visitor-count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout to get-visitor-count
+        uses: actions/checkout@v4
+        with:
+          ref: get-visitor-count # Branch
+      - name: ls workspace
+        run: echo "ls ${{ github.workspace }}:"
+      - name: Run test.sh
+        run: bash test.sh
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+      - name: Echo job status
+        run: echo "job.status = ${{ job.status }}"
