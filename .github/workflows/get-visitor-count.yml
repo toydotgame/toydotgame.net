@@ -7,9 +7,11 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v4
-      - name: Run test.sh
-        run: bash test.sh
+      - name: Run fetch script
+        run: bash get-visitor-count.sh
         env:
-          TEST_SECRET: ${{ vars.ACTIONS_RUNNER_DEBUG }}
+		  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+		  ZONE_TAG: ${{ vars.ZONE_TAG }}
       - name: Echo job status
         run: echo "job.status = ${{ job.status }}"
+
