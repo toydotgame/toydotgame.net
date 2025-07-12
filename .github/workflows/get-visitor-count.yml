@@ -5,15 +5,11 @@ jobs:
   get-visitor-count:
     runs-on: ubuntu-latest
     steps:
-      - name: git checkout to get-visitor-count
+      - name: git checkout
         uses: actions/checkout@v4
-        with:
-          ref: get-visitor-count # Branch
-      - name: ls workspace
-        run: echo "ls ${{ github.workspace }}:"
       - name: Run test.sh
         run: bash test.sh
         env:
-          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          TEST_SECRET: ${{ vars.ACTIONS_RUNNER_DEBUG }}
       - name: Echo job status
         run: echo "job.status = ${{ job.status }}"
