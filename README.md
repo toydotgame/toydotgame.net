@@ -28,7 +28,7 @@ Set up the following values, under repository _Settings_ → _Security_ → _Sec
 Preferably (because this workflow runs daily), create an orphan branch with no history to store your work on:
 ```bash
 git switch --orphan visitor-count
-# Copy `get-visitor-count.sh` to your working directory
+# Copy the files `.github/workflows/get-visitor-count.yml` and `get-visitor-count.sh` to your working directory, preserving structure
 git add -A
 git commit -m "Initial commit"
 ```
