@@ -1,0 +1,23 @@
+name: get-visitor-count
+run-name: get-visitor-count run by ${{ github.actor }}
+on:
+  schedule:
+    - cron: "10 0 * * *" # Just after midnight every day
+  workflow_dispatch:
+jobs:
+  get-visitor-count:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash get-visitor-count.sh
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ZONE_TAG: ${{ vars.ZONE_TAG }}
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "[${{ job.status }}] Updated visitor count (run by ${{ github.actor }})"
+          git push
+
