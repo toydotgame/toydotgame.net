@@ -69,6 +69,6 @@ echo -e "\tWas: "$PREVIOUS_VISITOR_COUNT
 echo -e "\tNew visitors: "$NEXT_VISITOR_COUNT
 echo -e "\tNow: "$TOTAL_VISITORS
 
-#echo $TOTAL_VISITORS > visitor-count
+echo $TOTAL_VISITORS > visitor-count
 rm -f .tmp
 
