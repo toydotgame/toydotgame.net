@@ -1,6 +1,9 @@
 name: get-visitor-count
 run-name: get-visitor-count run by ${{ github.actor }}
-on: workflow_dispatch # TODO: Change to schedule
+on:
+  schedule:
+    - cron: "0 0 * * *" # Midnight every day
+  workflow_dispatch:
 jobs:
   get-visitor-count:
     runs-on: ubuntu-latest
