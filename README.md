@@ -46,5 +46,5 @@ Then you can replace `push` back to `workflow_dispatch`, commit, and push again.
 Your workflow should be set up and the schedule (every day at midnight) should work! To run it manually, use the GitHub CLI:
 ```bash
 gh workflow list # Optional, but lets you see the name of the workflow
-gh workflow run <name> --ref visitor-count # Run on the `visitor-count` branch instead of default
+gh workflow run <name>
 ```
