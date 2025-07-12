@@ -9,10 +9,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: get-visitor-count # Branch
-	  - name: ls workspace
+      - name: ls workspace
         run: echo "ls ${{ github.workspace }}:"
-	  - name: Run test.sh
-	    run: bash test.sh
+      - name: Run test.sh
+        run: bash test.sh
       - name: Echo job status
-	    run: echo "job.status = ${{ job.status }}"
-
+        run: echo "job.status = ${{ job.status }}"
