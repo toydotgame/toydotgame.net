@@ -228,7 +228,7 @@ pre, code {
 	border: 1px solid color-mix(in srgb, var(--sec), transparent 85%);
 		border-radius: 10px;
 	overflow-x: auto; /* Enables horiz scroll */
-	color: var(--sec);
+	color: color-mix(in srgb, var(--pri), var(--sec));
 	background-color: var(--bg2);
 	word-wrap: break-word;
 	font-family: "Fira Mono", "Twemoji", monospace;
