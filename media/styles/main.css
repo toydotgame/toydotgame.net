@@ -390,7 +390,7 @@ sub {
 	/* SAFARI DOES NOT SUPPORT THE content PROPERTY UNTIL 18.4!!! SUCKS TO
 	 * SUCK!!! The attr(id) is just for my blog-writing purposes, so ideally
 	 * the end article should have sequential numbering anyway. However, in
-	 * Safari, that's the _only_ option. Oh well.
+	 * Safari, that's the _only_ option. Oh well. Links won't break at least!
 	 */
 	content: attr(id, "???") ". "; /* Specify fallback */
 } #reflist li {
