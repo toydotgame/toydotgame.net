@@ -254,7 +254,7 @@ a > code {
 }
 
 blockquote, aside {
-	display: table; /* Displays like `block`, but width only as wide as elements */
+	display: inline-block; /* Display only as wide as elements */
 	margin: 0 0 14px 0; /* Inherit `#content p` margins */
 	padding: 7px 10px;
 		padding-right: 1.5em;
@@ -302,12 +302,12 @@ aside > :first-child {
 }
 
 table { /* Vaguely hacky */
-	display: block;
+	display: inline-block; /* Dynamic width, like `display:table`, but `block` enough to allow setting an overflow */
 	overflow-x: auto;
 }
 
 table tbody {
-	display: table;
+	/*display: table;*/
 	width: 100%;
 }
 
