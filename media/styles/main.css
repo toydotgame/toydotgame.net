@@ -381,13 +381,17 @@ sub {
 
 #reflist {
 	padding-left: 0 !important; /* Overridden by `#content ol` */
-	list-style: none inside none;
-	counter-increment: item;
+	list-style-position: inside;
 	column-count: 2;
 	clear: both; /* Clearfix */
 }
 
 #reflist li::marker {
+	/* SAFARI DOES NOT SUPPORT THE content PROPERTY UNTIL 18.4!!! SUCKS TO
+	 * SUCK!!! The attr(id) is just for my blog-writing purposes, so ideally
+	 * the end article should have sequential numbering anyway. However, in
+	 * Safari, that's the _only_ option. Oh well.
+	 */
 	content: attr(id, "???") ". "; /* Specify fallback */
 } #reflist li {
 	padding: unset;
