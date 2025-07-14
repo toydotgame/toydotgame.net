@@ -225,9 +225,10 @@ pre, code {
 	width: 100%;
 	margin-bottom: 10px; /* border-box doesn't work on these elements for some reason ∴ manual padding */
 	padding: 5px;
-	border: 1px solid var(--sec);
+	border: 1px solid color-mix(in srgb, var(--sec), transparent 85%);
 		border-radius: 10px;
 	overflow-x: auto; /* Enables horiz scroll */
+	color: var(--sec);
 	background-color: var(--bg2);
 	word-wrap: break-word;
 	font-family: "Fira Mono", "Twemoji", monospace;
@@ -246,7 +247,6 @@ pre {
 code {
 	padding: 0 5px;
 	border-radius: 5px;
-	color: var(--sec);
 }
 
 a > code {
