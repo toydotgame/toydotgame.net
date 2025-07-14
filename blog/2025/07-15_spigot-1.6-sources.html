@@ -11,11 +11,11 @@
 		<meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/media/styles/main.css">
-		<title>Bringing open-source software back from the dead, or how I fought time for a couple JAR files - toydotgame.net</title>
+		<title>Bringing open-source software back from the dead, or how I fought Time for a couple JAR files - toydotgame.net</title>
 		<meta property="og:type" content="article">
 		<meta property="og:site_name" content="toydotgame.net">
 		<meta property="og:title" content="Bringing open-source software back from the dead, or how I fought time for a couple JAR files">
-		<meta property="og:description" content="You may have read my article from a year ago, specifically the section on Wolvereness' DMCA of the CraftBukkit and Spigot codebases (or you'd know this from wherever else—it's not a niche bit of Minecraft-server-administration knowledge by a long shot). The end result of this is that early 1.7 and prior Spigot releases are effectively all lost media.">
+		<meta property="og:description" content="You may have read my article from a year ago, specifically the section on Wolvereness' DMCA of the CraftBukkit and Spigot codebases (or you'd know this from wherever else—it's not a niche bit of old Minecraft sysadmin knowledge by a long shot). The end result of this is that early 1.7 and prior Spigot releases are effectively all lost media.">
 		<meta property="og:image" content="/media/resources/banner.png">
 		<meta name="viewport" content="width=device-width">
 		<script src="/media/js/contentloader.js" type="module"></script>
@@ -24,11 +24,11 @@
 		<div id="nav"></div>
 		<div id="content">
 			<blockquote style="width:100%; font-size:24px; font-weight:bold; font-style:normal; color:#f00; text-align:center">THIS IS A DRAFT</blockquote>
-			<h1>Bringing open-source software back from the dead, or how I fought time for a couple JAR files</h1>
-			<h2 id="subtitle">Written: <b>2025-07-14</b> &centerdot; Last Updated: <b>Never</b></h2>
-			<p>You may have read my article from a year ago, specifically the <a href="/blog/2024/01-01_spigot-dating-sucks.html#post-script">section on Wolvereness' DMCA of the CraftBukkit and Spigot codebases</a> (or you'd know this from wherever else—it's not a niche bit of Minecraft-server-administration knowledge by a long shot). The end result of this is that early 1.7 and prior Spigot releases are effectively all lost media. If you'd like to run a server with an old Spigot server JAR from that time, let alone develop using the Spigot API JAR, you'll need to rely solely on now-11-year-old links and the popularity of your specific Minecraft version to get by.</p>
+			<h1>Bringing open-source software back from the dead, or how I fought Time for a couple JAR files</h1>
+			<h2 id="subtitle">Written: <b>2025-07-15</b> &centerdot; Last Updated: <b>Never</b></h2>
+			<p>You may have read my article from a year ago, specifically the <a href="/blog/2024/01-01_spigot-dating-sucks.html#post-script">section on Wolvereness' DMCA of the CraftBukkit and Spigot codebases</a> (or you'd know this from wherever else—it's not a niche bit of old Minecraft sysadmin knowledge by a long shot). The end result of this is that early 1.7 and prior Spigot releases are effectively all lost media. If you'd like to run a server with an old Spigot server JAR from that time, let alone develop using the Spigot API JAR, you'll need to rely solely on now-11-year-old links and the popularity of your specific Minecraft version to get by.</p>
 			<p>For me, that wasn't a problem. I ran a Spigot 1.6.4 server and wrote <a href="https://www.spigotmc.org/resources/thisway.87115/">a plugin for it</a> too, so I was able to find a server <i>and</i> API JAR despite the DMCA. This is called pure luck because of 1.6.4's immense popularity (at least until 1.7.10, 1.8.9, and 1.12.2 shattered that).</p>
-			<aside>
+			<aside style="width:100%">
 				<h4>The legality of this&ZeroWidthSpace;/DMCA TL;DR</h4>
 				<small>#Not&ZeroWidthSpace;Legal&ZeroWidthSpace;Advice&ZeroWidthSpace;Im&ZeroWidthSpace;Just&ZeroWidthSpace;Some&ZeroWidthSpace;Loser&ZeroWidthSpace;Who&ZeroWidthSpace;Plays&ZeroWidthSpace;Minecraft</small>
 				<p>I believe the DMCA (which is what I will henceforth refer to it as) boiled down to this:</p>
@@ -39,24 +39,33 @@
 					<li>Given the Bukkit and Spigot repositories therefore contains bits of Mojang-licensed proprietary code, this means Bukkit and Spigot are distributing Mojang's code. This also means their own additions (licensed and copyright-owned under the LGPL by contributors) is being unlawfully included in the Mojang-copyrighted code</li>
 				</ul>
 				<p>This means that this code, including Wolvereness' own contributions (LGPL licensed and owned by him) had their copyright violated under these distributions.</p>
-				<p>THIS MEANS THAT SpigotMC <i>cannot</i> distribute the compiled binaries.</p>
+				<p>THIS MEANS THAT SpigotMC <i>cannot</i> distribute the compiled binaries, as it breaches Wolvereness' copyrights, given he wrote and released his code under the LGPL license, yet it's being distributed under Mojang's EULA and copyright.</p>
 			</aside>
-			<p>This lack of available binaries makes stuff hard. Additionally, the Spigot project used GitHub at this time, AFAIK. GitHub is a problem due to the fact that <a href="https://github.com/github/dmca/blob/master/2014/2014-09-05-CraftBukkit.md">the original DMCA request</a> was placed on that platform and nuked the original repositories of Spigot code. Ergo, it is unsupported to build old binaries for private use</p>
-			<blockquote style="width:100%; font-size:24px; font-weight:bold; font-style:normal; color:#f00; text-align:center">
+			<p>This lack of available binaries makes stuff hard. Additionally, the Spigot project used GitHub at this time, AFAIK. GitHub is a problem due to the fact that <a href="https://github.com/github/dmca/blob/master/2014/2014-09-05-CraftBukkit.md">the original DMCA request</a> was placed on that platform and nuked the original repositories of Spigot code.</p>
+			<p>As a result of this, SpigotMC does not support nor have facilities in place to distribute these DMCA'd server versions—making them <i>really, really</i> damn hard to find.</p>
+			<blockquote class="fleft" style="width:48%; font-size:24px; font-weight:bold; font-style:normal; color:#f00; text-align:center">
 				PLEASE DO NOT DISTRIBUTE THE BINARIES YOU CREATE AS A RESULT OF FOLLOWING THE INSTRUCTIONS YOU FIND BELOW
 				<p style="font-size:16px; font-weight:normal"><b>Doing so is a direct violation of the DMCA.</b> These binaries include code built on and including patched Minecraft classes. From the moment you run <code>./applyPatches.sh</code>, you will have a working directory that is <u>not</u> fit for distribution thenceforth!</p>
 			</blockquote>
-			<aside>
+			<aside class="fright" style="width:48%">
 				<h4>Copyright notice regarding where we're getting this from</h4>
 				<p>We will download code from the following locations:</p>
 				<ul>
-					<li><b>SpigotMC Stash:<a class="cite" href="#1"></a><a class="cite" href="#2"></a></b> This holds the current Spigot code. It does <b>not</b> contain any Mojang code that would be subject to nor trigger the DMCA</li>
+					<li><b>SpigotMC Stash:<a class="cite" href="#1"></a><a class="cite" href="#2"></a><a class="cite" href="#9"></a><a class="cite" href="#10"></a></b> This holds the current Spigot code. It does <b>not</b> contain any Mojang code that would trigger the DMCA</li>
 					<li><b>GitHub:<a class="cite" href="#3"></a><sup><a href="https://github.com/Bukkit/Bukkit.git
 ">[Bukkit GitHub repo]</a></sup></b> These sources are for a standalone library Wolvereness made (a dependency of Spigot's API, IIRC), and the Bukkit API (which contains no Minecraft code)</li>
-					<li><b><code>repo.md-5.net</code>:<a class="cite" href="#4"></a></b> This contains only Minecraft code, and no Bukkit contributor code, despite being labeled as an <code>org.bukkit</code> package. No Bukkit API exists in it, and so I can only assume it is devoid of LGPL and community-owned code. Therefore, it does not violate the DMCA.</li>
+					<li><b><code>repo.md-5.net</code>:<a class="cite" href="#4"></a></b> This contains only Minecraft code, and no Bukkit contributor code, despite being labeled as an <code>org.bukkit</code> package. No Bukkit API exists in it, and so I can only assume it is devoid of LGPL and community-owned code. Therefore, it does not violate the DMCA</li>
 				</ul>
 			</aside>
-			<p>Now lets get us some 1.6 stuff! We're gonna be fighting lots of ancient code and workflows, so be prepared. You will require <code>go>=1.23</code>, any version of Maven newer than 2013 or so, (obviously) some JDK above 6 or 8 (I don't know; I used OpenJDK 8), and Git. You'll need to do this on a POSIX-compliant shell (e.g. Bash, Zsh, Fish, the macOS terminal), you <i>can</i> use Windows with Git BASH or WSL or whatever, but <b>not</b> Command Prompt or PowerShell</p>
+			<p>
+				Now lets get us some 1.6 stuff! We're gonna be fighting lots of ancient code and workflows, so be prepared. You will require:
+				<ul>
+					<li>Go ≥ 1.23</li>
+					<li>Maven ≥ 3 <small>I'm assuming. Just stick to latest and you'll be fine</small></li>
+					<li>JDK 8 <small>Maybe ≥ 6 will work, given Minecraft at the time targets that, but I used OpenJDK 8 and was fine</small></li>
+					<li>POSIX shell (e.g. Bash, Zsh, Fish, the macOS terminal) <small>You <i>can</i> use Windows with Git BASH or WSL or whatever, but <b>not</b> Command Prompt or PowerShell</small></li>
+				</ul>
+			</p>
 			<h2>Tutorial</h2>
 			<ol>
 				<h3>Part 1: Getting stuff</h3>
@@ -68,14 +77,14 @@ git clone https://hub.spigotmc.org/stash/scm/spigot/spigot.git && cd spigot/
 					Wherever you cloned and have this <code>spigot/</code> directory, I will henceforth just call it <code>spigot/</code>.
 				</li>
 				<li>
-					Then, we need to checkout the last 1.6 version:<a class="cite" href="1"></a>
+					Then, we need to checkout the last 1.6 version:<a class="cite" href="#1"></a>
 <pre>
 git checkout 71d3b3b5ad6ffe5d74a98f563d9a36ee073ed7ed
 </pre>
 				</li>
 				<li>
 					This repository uses <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">Git submodules</a>. However, it depends on Bukkit and CraftBukkit. Bukkit lives/lived on GitHub, and is still there (because it's not DMCA-infringing, see above); however, CraftBukkit <i>was</i> zapped. Therefore, we need to use the modern CraftBukkit repository instead of the old, DMCA-infringing one.<br>
-					Modify your <code>.gitmodules</code> in the root of your <code>spigot/</code> repository directory and replace the following line:
+					Modify <code>.gitmodules</code> in the root of your <code>spigot/</code> repository directory and replace the following line:
 <pre>
 [submodule "CraftBukkit"]
 	path = CraftBukkit
@@ -141,7 +150,7 @@ cd ../; rm -rf tmp/
 </pre>
 				</li>
 				<li>
-					<h4>Minecraft Server</h4>
+					<h4>Minecraft server</h4>
 					Go back to your <code>spigot/</code> directory, or some temporary directory. It doesn't really matter where we do this because we can just <code>rm</code> the two files we make at the end. I'll define <code>$TEMP_LOCATION</code> as the URL of the package we're working with for brevity:
 <pre>
 export TEMP_LOCATION="https://repo.md-5.net/repository/public/org/bukkit/minecraft-server/1.6.4/minecraft-server-1.6.4"
@@ -171,6 +180,7 @@ mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:tree
 						<li>
 							<h5>maven-shade-plugin</h5>
 							<ol type="i">
+								<aside class="fright" style="width:48%">You could also just run the <code>mvn</code> command for <code>2.0:shade</code>, and <i>not</i> bodge the POM—but I haven't tested it.</aside>
 								<li>
 									First, bodge the POM for Spigot-Server. Change the following line in <code>Spigot-Server/pom.xml</code>:
 <pre>
@@ -198,13 +208,13 @@ mvn clean install
 </pre>
 								</li>
 								<li>
-									<h4>Sources:<a class="cite" href="#8"></a></h4>
+									<h4>Sources:</h4>
 <pre>
 mvn source:jar
 </pre>
 								</li>
 								<li>
-									<h4>Javadocs:</h4>
+									<h4>Javadocs:<a class="cite" href="#8"></a></h4>
 									<p>We gotta add a flag for <code>maven-javadoc-plugin</code> to still build the JAR even if we reach an error (which we get a lot of since the Spigot codebase has tons of Javadoc syntax errors!):</p>
 <pre>
 mvn javadoc:jar -Dmaven.javadoc.failOnError=false
@@ -215,13 +225,13 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 					</ol>
 				</li>
 			</ol>
-			<p>Please remember to undo the Maven HTTP bodge (<code>~/.m2/settings.xml</code>) from earlier if you're ever going to work with Maven!</p>
+			<p>Please remember to undo the Maven HTTP bodge (<code>~/.m2/settings.xml</code>) from earlier if you're ever going to work with Maven again!</p>
 			<br>
 			<h2>Here's what we get:</h2>
 			<h3>Spigot server</h3>
 			<p>Located in <code>spigot/Spigot-Server/target/</code>.</p>
 			<table>
-				<tr><th>JARfile</th><th>Description</th></tr>
+				<tr><th style="min-width:30%">JARfile</th><th>Description</th></tr>
 
 				<tr>
 					<td class="tnum">original-spigot-1.6.4-R2.1-SNAPSHOT.jar</td>
@@ -257,11 +267,11 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 			<h3>Spigot API</h3>
 			<p>Located in <code>spigot/Spigot-API/target/</code>.</p>
 			<table>
-				<tr><th>JARfile</th><th>Description</th></tr>
+				<tr><th style="min-width:30%">JARfile</th><th>Description</th></tr>
 				
 				<tr>
 					<td class="tnum">original-spigot-api-1.6.4-R2.1-SNAPSHOT.jar</td>
-					<td>Bukkit and Spigot classes only, no libraries. Probably wouldn't compile well if at all if you were to use this as a dependency.</td>
+					<td>Bukkit and Spigot classes only, no libraries. Probably wouldn't compile well if at all if you were to use this as a dependency. You'd need to provide your own copies of the libraries used <i>at least</i>.</td>
 				</tr>
 				<tr>
 					<td class="tnum">spigot-api-1.6.4-R2.1-SNAPSHOT.jar</td>
@@ -271,7 +281,7 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 			<br>
 			<p>The following exist only if you generated them in the <a href="#part3">build step</a>:</p>
 			<table>
-				<tr><th>JARfile</th><th>Description</th></tr>
+				<tr><th style="min-width:30%">JARfile</th><th>Description</th></tr>
 				
 				<tr>
 					<td class="tnum">spigot-api-1.6.4-R2.1-SNAPSHOT-sources.jar</td>
@@ -292,7 +302,7 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 					<li>
 						<code>0030</code>, signed off by Aikar, made some time before 1.6.4 Spigot entirely. This code persisted until March 26<sup>th</sup>, 2014, when the original strike of this bug occurred. <b>This is the version available in your local copy of <code>spigot/</code>.</b><br>
 						<br>
-						This version iterates through the player list using <code>currentTick % numberOfPlayersOnline</code>. <code>currentTick</code> is determined by type-casting from system time (<code>long</code>) down to and (<code>int</code>), thus enabling an overflow error where <code>currentTick</code> can become negative
+						This version iterates through the player list using <code>currentTick % numberOfPlayersOnline</code>. <code>currentTick</code> is determined by type-casting from system time (<code>long</code>) down to an <code>int</code>, thus enabling an overflow error where <code>currentTick</code> can become negative
 					</li>
 					<li>
 						<code>0024</code><a class="cite" href="#9"></a>, written by Thinkofdeath, was the first patch for this bug. All it does is replace the call of <code>currentTick</code> with <code>abs(currentTick)</code>, meaning negative values get forced positive. Nothing else is changed.<br>
@@ -305,9 +315,9 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 							<li>Instead of <code>index = abs(currentTick)%numberOfPlayersOnline</code>, we rename <code>index</code> to <code>currentPing</code>. <code>currentPing</code> is initalised to <code>0</code></li>
 							<li>For each player, when getting their ping, <code>currentPing</code> is set to <code>(currentPing+1)%numberOfPlayersOnline</code>. Mathematically, <p style="display:inline; font-family:'Cambria Math', 'Times New Roman', serif;">x+1 mod y</p> yields a value that will <p style="display:inline; font-family:'Cambria Math', 'Times New Roman', serif;">∈[0, <code>numberOfPlayersOnline</code>-1]</p>—which, conveniently, if you have a list or array that is <code>numberOfPlayersOnline</code> long, means that <code>currentPing</code> will <i>always</i> be a valid index in that list or array.<br>
 							<br>
-							Conveniently again, I've abstracted the names of these variables. <code>numberOfPlayersOnline</code> is actually the <code>java.util.List#size()</code> value of the player list, and in fact this ping function only uses <code>currentPing</code> as an array index! Meaning it is <b>mathematically impossible</b> for an <code>ArrayIndexOutOfBoundsException</code> to occur! <small>That is, assuming no race conditions or non-Thread-safe code, but Minecraft is single-threaded and also shut up. ♥</small></li>
+							Conveniently again, I've abstracted the names of these variables. <code>numberOfPlayersOnline</code> is actually the <code>#size()</code> value of the player <code>List</code>, and in fact this ping function only uses <code>currentPing</code> as an array index! Meaning it is <b>mathematically impossible</b> for an <code>ArrayIndexOutOfBoundsException</code> to occur! <small>That is, assuming no race conditions or non-Thread-safe code, but Minecraft is single-threaded and also shut up ♥</small></li>
 						</ol>
-						So Aikar has removed all calls to <code>currentTick</code>, and additionally has wrapped the entire function in a (completely redundant) <code>try</code>-<code>catch()</code> for sillies/safety/just in case™. Awesome!<br>
+						So Aikar has removed all calls to <code>currentTick</code>, and additionally has wrapped the entire function in a (redundant) <code>try</code>-<code>catch()</code> for sillies/safety/just in case™. Awesome!<br>
 						<br>
 						<b>If you're going to include a patch for this bug, I highly recommend this patch file!</b>
 					</li>
@@ -315,6 +325,20 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 			</aside>
 
 			<p>That's it! Thanks for reading!</p>
+
+			<hr>
+
+			<aside>
+				<h2>A quick terminology</h2>
+				<table>
+					<tr><th style="min-width:25%">Term</th><th>Definition</th></tr>
+					<tr><td>Bukkit</td><td>The modding API for Minecraft servers.</td></tr>
+					<tr><td>CraftBukkit</td><td>A Minecraft server that implements the Bukkit API library, allowing Bukkit plugins to run on the Minecraft server.</td></tr>
+					<tr><td>Spigot</td><td>A Minecraft server that implements Bukkit, Spigot API, and some performance improvements.</td></tr>
+					<tr><td>Spigot API</td><td>An extension of Bukkit with some performance improvements, bug fixes, and a small set of extra features.</td></tr>
+					<tr><td>SpigotMC</td><td>The organisation that maintains and distributes Spigot and CraftBukkit.</td></tr>
+				</table>
+			</aside>
 
 			<ol id="reflist">
 				<li id="1"><a href="https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot/commits/71d3b3b5ad6ffe5d74a98f563d9a36ee073ed7ed#CraftBukkit-Patches%2F0018-Orebfuscator.patch">"Update orebfuscator on block update."</a>. md_5. This is the last commit for Spigot 1.6.4 before 1.7 development started, dated 2013-11-27.</li>
