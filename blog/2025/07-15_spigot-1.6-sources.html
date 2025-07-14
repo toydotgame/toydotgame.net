@@ -181,7 +181,7 @@ mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:tree
 							<ol type="i">
 								<aside class="fright" style="width:48%">You could also just run the <code>mvn</code> command for <code>2.0:shade</code>, and <i>not</i> bodge the POM—but I haven't tested it.</aside>
 								<li>
-									First, bodge the POM for Spigot-Server. Change the following line in <code>Spigot-Server/pom.xml</code>:
+									First, bodge the POM for Spigot-Server. Change the following line in <code>Spigot-Server/&ZeroWidthSpace;pom.xml</code>:
 <pre>
 		&lt;artifactId&gt;maven-shade-plugin&lt;/artifactId&gt;
 -			&lt;version&gt;2.0&lt;/version&gt;
@@ -230,7 +230,7 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 			<h3>Spigot server</h3>
 			<p>Located in <code>spigot/Spigot-Server/target/</code>.</p>
 			<table>
-				<tr><th style="min-width:30%">JARfile</th><th>Description</th></tr>
+				<tr><th style="min-width:30%; width:30%">JARfile</th><th>Description</th></tr>
 
 				<tr>
 					<td class="tnum">original-spigot-1.6.4-R2.1-SNAPSHOT.jar</td>
@@ -266,7 +266,7 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 			<h3>Spigot API</h3>
 			<p>Located in <code>spigot/Spigot-API/target/</code>.</p>
 			<table>
-				<tr><th style="min-width:30%">JARfile</th><th>Description</th></tr>
+				<tr><th style="min-width:30%; width:30%">JARfile</th><th>Description</th></tr>
 				
 				<tr>
 					<td class="tnum">original-spigot-api-1.6.4-R2.1-SNAPSHOT.jar</td>
@@ -280,7 +280,7 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 			<br>
 			<p>The following exist only if you generated them in the <a href="#part3">build step</a>:</p>
 			<table>
-				<tr><th style="min-width:30%">JARfile</th><th>Description</th></tr>
+				<tr><th style="min-width:30%; width:30%">JARfile</th><th>Description</th></tr>
 				
 				<tr>
 					<td class="tnum">spigot-api-1.6.4-R2.1-SNAPSHOT-sources.jar</td>
@@ -330,12 +330,12 @@ mvn javadoc:jar -Dmaven.javadoc.failOnError=false
 			<aside>
 				<h2>A quick terminology</h2>
 				<table>
-					<tr><th style="min-width:25%">Term</th><th>Definition</th></tr>
+					<tr><th style="min-width:25%; width:25%">Term</th><th>Definition</th></tr>
 					<tr><td>Bukkit</td><td>The modding API for Minecraft servers.</td></tr>
-					<tr><td>CraftBukkit</td><td>A Minecraft server that implements the Bukkit API library, allowing Bukkit plugins to run on the Minecraft server.</td></tr>
+					<tr><td>Craft&ZeroWidthSpace;Bukkit</td><td>A Minecraft server that implements the Bukkit API library, allowing Bukkit plugins to run on the Minecraft server.</td></tr>
 					<tr><td>Spigot</td><td>A Minecraft server that implements Bukkit, Spigot API, and some performance improvements.</td></tr>
 					<tr><td>Spigot API</td><td>An extension of Bukkit with some performance improvements, bug fixes, and a small set of extra features.</td></tr>
-					<tr><td>SpigotMC</td><td>The organisation that maintains and distributes Spigot and CraftBukkit.</td></tr>
+					<tr><td>Spigot&ZeroWidthSpace;MC</td><td>The organisation that maintains and distributes Spigot and CraftBukkit.</td></tr>
 				</table>
 			</aside>
 
