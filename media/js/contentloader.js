@@ -31,7 +31,7 @@ let recentblogs = `
 <div id="recentblogs">
 <h1>Recent Blog Posts</h1>
 <ul>
-	<li><a href="/blog/2025/07-15_spigot-1.6-sources"><b>2025-07-15:</b> Bringing open-source software back from the dead, or how I fought Time for a couple JAR files</a></li>
+	<li><a href="/blog/2025/07-15_spigot-1.6-sources"><b>2025-07-15:</b> Bringing Open-Source Software Back From the Dead, or how I Fought Time for a Couple JAR Files</a></li>
 	<li><a href="/blog/2025/07-08_eclipse-splash-history"><b>2025-07-08:</b> History of the Eclipse IDE Splash Screen</a></li>
 	<li><a href="/blog/2025/01-18_how-to-downgrade-from-ios-9-to-6"><b>2025-01-18:</b> How to Downgrade from iOS 9 to iOS 6</a></li>
 	<li><a href="/blog/2024/07-23_mbs"><b>2024-07-23:</b> The Tale of Minecraft's Baddest Server</a></li>
