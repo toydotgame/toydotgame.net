@@ -1,5 +1,5 @@
 name: get-visitor-count
-run-name: get-visitor-count run by ${{ github.actor }}
+run-name: get-visitor-count run on ${{ github.event_name }} by ${{ github.actor }}
 on:
   schedule:
     - cron: "10 0 * * *" # Just after midnight every day
