@@ -307,7 +307,7 @@ table { /* Vaguely hacky */
 }
 
 table tbody {
-	/*display: table;*/
+	display: table;
 	width: 100%;
 }
 
