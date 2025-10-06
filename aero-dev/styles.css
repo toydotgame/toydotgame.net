@@ -1,0 +1,33 @@
+/*
+ * AUTHOR: toydotgame
+ * CREATED: 2025-10-06
+ * v6 site redesign stylesheet.
+ */
+
+*, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	word-break: break-word;
+}
+
+#nav {
+	background-color: #f00;
+}
+
+#content {
+	background-color: #0f0;
+}
+
+#footer {
+	background-color: #00f;
+}
+
+blockquote {
+	background-color: #ff0;
+}
+
+pre {
+	background-color: #0ff;
+}
