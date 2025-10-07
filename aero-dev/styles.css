@@ -4,30 +4,61 @@
  * v6 site redesign stylesheet.
  */
 
-*, *:before, *:after {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: sans-serif;
-	word-break: break-word;
+:root {
+	--acc:	#b29abb;
+	--lnk:	#5865f2;
+
+	--aero:
+		#8d52a3c0 /* Border color */
+		linear-gradient(44deg, /* sic */ /* Glass effect; 2× brightness from Win7 */
+			#fff0		0%,
+			#ffffff28	5%,
+			#fff0		7.2%,
+			#ffffff1e	10.5%,
+			#fff0		11.6%	16%,
+			#ffffff28	17.6%,
+			#ffffff22	22.2%,
+			#fff0		24%		37%,
+			#ffffff28	44.7%	48%,
+			#fff0		53.7%,
+			#ffffff28	55.2%	55.7%,
+			#fff0		59.7%,
+			#ffffff28	61.4%	64.4%,
+			#ffffff22	67.5%,
+			#fff0		70%		78.5%,
+			#ffffff1e	80.8%,
+			#fff0		82.5%,
+			#ffffff1e	85.3%	86.3%,
+			#fff0		94.6%
+		) 0 0 / 100vw 100vh fixed; /* Absolute to viewport */
 }
 
-#nav {
-	background-color: #f00;
+*, ::before, ::after {
+	margin:			0;
+	padding:		0;
+	box-sizing:		border-box;
+	font-family:	"Frutiger", "Segoe", "Segoe UI", "Myriad", sans-serif;
+	word-break:		break-word;
 }
 
-#content {
-	background-color: #0f0;
+body {
+	background-image:	url("/media/resources/card/background.jpg");
+	/*background-color:	#000;*/
+	background-size:	cover;
 }
 
-#footer {
-	background-color: #00f;
+body > div {
+	margin:			1em;
+	padding:		1em;
+	border-radius:	4px;
+
+	background:			var(--aero);
+	backdrop-filter:	blur(8px);
 }
 
-blockquote {
-	background-color: #ff0;
-}
+#navpfp	{background-color: #f0f;}
 
-pre {
-	background-color: #0ff;
-}
+#subtitle	{background-color: #0ff;}
+#reflist	{background-color: #ff0;}
+
+#recentblogs	{background-color: #f80;}
