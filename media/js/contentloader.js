@@ -86,8 +86,24 @@ let badges = `
 // Double `<br>` because first one occurs on the same line as last badge:
 let footer = `
 <br><br>
-<p>Website © 2025 toydotgame</p>
-`;
+<style>
+#copyalign span:not(#copyleft) {
+	display: inline-block;
+	width: calc(50% - 13px);
+	overflow: visible;
+	text-align: left;
+} #copyalign span:first-of-type:not(#copyleft) {
+	text-align: right;
+} #copyleft {
+	display: inline-block;
+	transform: rotateY(180deg);
+}
+</style>
+<div id="copyalign">
+	<p><span>Website content</span> © <span>2017–2025 toydotgame</span></p>
+	<p><span>Design</span> <span id="copyleft">©</span> <span>2023–2025 toydotgame and <a href="https://toydotgame.net/blog/2023/12-16_v5">inspiration</a></span></p>
+</div>
+`; // TODO: Inline styles here suck and should be better addressed in the v6 redesign
 
 try {
 	document.querySelector("#footer").innerHTML = "<hr>"+recentblogs+visitorCounter+badges+footer;
