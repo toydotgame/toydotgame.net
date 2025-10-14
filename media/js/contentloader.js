@@ -47,6 +47,7 @@ let visitorCounter = `
 
 let badges = `
 <img src="/media/resources/badges/toydotgame.gif" width="88">
+<a href="https://frutigeraeroarchive.org/"><img src="/media/resources/badges/frutigeraeroarchive.gif" width="88"></a>
 <a href="https://one.one.one.one/"><img src="/media/resources/badges/1.1.1.1.gif" width="88"></a>
 <img src="/media/resources/badges/8pride.gif" width="88">
 <a href="https://web.archive.org/web/19980509035420if_/http://www.apple.com/"><img src="/media/resources/badges/apple.gif" width="88"></a>
