@@ -46,7 +46,7 @@ echo '{
 	}
 }' | tr -d "\n\t" | curl -s \
 	https://api.cloudflare.com/client/v4/graphql \
-	-H "Authorization: Bearer "$CLOUDFLARE_API_TOKEN \
+	-H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	-H "Content-Type: application/json" \
 	-d @- \
 | jq ".data.viewer.zones.[].httpRequests1dGroups.[].uniq.uniques" \
@@ -56,7 +56,7 @@ echo '{
 # will contain the visitor count if it succeeds. stderr is not handled, so will
 # appear in the terminal. That's okay.
 
-if [ "$?" != "0" ]; then
+if [ $? != 0 ]; then
 	echo "Finding the visitor count failed! Exiting..." >&2
 	exit 1
 fi
@@ -65,10 +65,11 @@ PREVIOUS_VISITOR_COUNT=$(head -1 visitor-count)
 NEXT_VISITOR_COUNT=$(head -1 .tmp)
 TOTAL_VISITORS=$((PREVIOUS_VISITOR_COUNT+NEXT_VISITOR_COUNT)) # _Can_ handle null operands (assumes 0)
 echo "Total visitor count updated:"
-echo -e "\tWas: "$PREVIOUS_VISITOR_COUNT
-echo -e "\tNew visitors: "$NEXT_VISITOR_COUNT
-echo -e "\tNow: "$TOTAL_VISITORS
+echo -e "\tWas: $PREVIOUS_VISITOR_COUNT"
+echo -e "\tNew visitors: $NEXT_VISITOR_COUNT"
+echo -e "\tNow: $TOTAL_VISITORS"
 
+echo "$(date +'%Y-%m-%dT%H:%M:%S%:z'),$TOTAL_VISITORS" >> history.csv
 echo $TOTAL_VISITORS > visitor-count
 rm -f .tmp
 
