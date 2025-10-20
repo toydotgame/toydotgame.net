@@ -12,5 +12,9 @@ requires:
 * make
 
 And additionally the Gems:
-$	gem install jeyll bundler
+$	gem install jekyll bundler github-pages
+$	bundle install
+
+Then to run:
+$	bundle exec jekyll serve -qlP 8080
 

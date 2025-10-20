@@ -1,0 +1,15 @@
+# AUTHOR: toydotgame
+# CREATED: 2025-10-20
+# Simple .gitignore based on GitHub's and Jekyll's Gem for stuff I should
+# probably keep ignored for the v6 development cycle.
+
+# Jekyll causes these:
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Jekyll w/ Bundler also causes:
+.bundle/
+vendor/
+
