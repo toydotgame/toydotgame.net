@@ -3,6 +3,9 @@
 # Simple .gitignore based on GitHub's and Jekyll's Gem for stuff I should
 # probably keep ignored for the v6 development cycle.
 
+# Gemfile.lock can just be generated upon clone:
+Gemfile.lock
+
 # Jekyll causes these:
 _site/
 .sass-cache/
