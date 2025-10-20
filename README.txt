@@ -16,5 +16,5 @@ $	gem install jekyll bundler github-pages
 $	bundle install
 
 Then to run:
-$	bundle exec jekyll serve -qlP 8080
+$	bundle exec jekyll serve -BlqP 8080
 
