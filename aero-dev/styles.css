@@ -104,8 +104,8 @@ body > * { /* Sections */
 	position:		relative; /* So ::before and ::after can inherit */
 	background:		#f0f0f0;
 	border-radius:	2px;
-	box-shadow:		0 0 0 0.5px	#000, /* Box shadow outset, overlaps with Aero glass */
-					0 0 0 1px	#f0f0f0;
+	box-shadow:		0 0 0 1px	#000, /* Box shadow outset, overlaps with Aero glass */
+					0 0 0 2px	#f0f0f0;
 }
 
 #footer {
@@ -134,9 +134,9 @@ body > *::before { /* Decoration for sections */
 						var(--aero);
 	border-radius:		4px;
 	backdrop-filter:	blur(8px);
-	box-shadow:			0 0 0 0.5px	#000	inset,
-						0 0 0 1px	#f0f0f0	inset,
-						4px 4px 12px #000c; /* Actual Aero window shadow */
+	box-shadow:			0 0 0 1px	#000	inset,
+						0 0 0 2px	#f0f0f0	inset,
+						4px 4px 12px #000c; /* Aero window shadow */
 }
 
 /* Viewport too small to display text without colliding with close button: */
@@ -162,13 +162,14 @@ body > *::before { /* Decoration for sections */
 
 	body {
 		padding-top:	16px;
+		gap:			24px;
 	}
 }
 
 body > *::after { /* "Close button" decoration for sections */
 	content:			"x";
 	width:				48px;
-	height:				22px;
+	height:				20px;
 	position:			absolute;
 		top:	-30px;
 		right:	-1px;
@@ -176,12 +177,12 @@ body > *::after { /* "Close button" decoration for sections */
 	color:				#fff;
 		-webkit-text-stroke: 0.5px #535666c0;
 	font-size:			18px;
-	line-height:		1.05; /* Font dependent */
+	line-height:		0.95; /* TODO: Font dependent and sucks, you CAN add a background image base64 svg tho! */
 	text-align:			center;
 	font-weight:		900;
 	cursor:				not-allowed;
-	box-shadow:			0 0 0 0.5px	#000	inset,
-						0 0 0 1px	#f0f0f0	inset;
+	box-shadow:			0 0 0 1px	#000	inset,
+						0 0 0 2px	#f0f0f0	inset;
 	background-color:	#f00;
 	background-image:	linear-gradient(#eee5 0, #fff6 48%, #1111 52%, #ff85 100%),
 						radial-gradient(#db582c 0, #a34329 100%);
