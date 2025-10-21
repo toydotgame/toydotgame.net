@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+	AUTHOR: toydotgame
+	CREATED: 2025-10-21
+	Generic page template for toydotgame.net v6.
+-->
+<html>
+	<head>
+		<meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/aero-dev/styles.css">
+		<title>{{ page.title }} - toydotgame.net</title>
+		<meta property="og:type" content="article">
+		<meta property="og:site_name" content="toydotgame.net">
+		<meta property="og:title" content="{{ page.title }}">
+		<meta property="og:description" content="TEMPLATE_DESC">
+		<meta property="og:image" content="/media/resources/banner.png">
+		<meta name="viewport" content="width=device-width">
+		<script src="/media/js/contentloader.js" type="module"></script>
+	</head>
+	<body>
+		{% include nav.html %}
+		<article>{{ content }}</article>
+		{% include footer.html %}
+	</body>
+</html>

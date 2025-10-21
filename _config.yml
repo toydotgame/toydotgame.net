@@ -16,9 +16,9 @@ kramdown:                     #
   syntax_highlighter: rouge   #
 ###############################
 
-title:       toydotgame.net
-description: toydotgame's personal website.
-url:         https://toydotgame.net
+#title:       toydotgame.net
+#description: toydotgame's personal website.
+#url:         https://toydotgame.net
 
 # GLOBAL
 timezone: Etc/GMT-10 # Flipped sign because POSIX
