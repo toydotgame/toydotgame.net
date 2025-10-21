@@ -21,9 +21,9 @@ description: toydotgame's personal website.
 url: "https://toydotgame.net/"
 
 # Build settings:
-theme: minima
-plugins:
-  - jekyll-feed
+#theme: minima
+#plugins:
+#  - jekyll-feed
 
 # Expand upon/reiterate Jekyll's default exclude list:
 exclude:

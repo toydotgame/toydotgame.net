@@ -8,7 +8,7 @@
 
 source "https://rubygems.org"
 gem "github-pages", group: :jekyll_plugins # i.e. requires :jekyll_plugins group
-gem "minima", "~> 2.5" # Theme
+#gem "minima", "~> 2.5" # Theme
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
