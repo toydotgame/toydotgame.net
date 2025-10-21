@@ -138,14 +138,14 @@ body > *::before { /* Decoration for sections */
 		z-index:	-1;
 	
 	/* Title text: */
-	padding:			5px 64px 0 34px; /* Nominally 4px top but Frutiger.tff
+	padding:			5px 64px 0 32px; /* Nominally 4px top but Frutiger.tff
 						                    is iffy and needs an extra pixel */
 	text-shadow:		0 0 6px #fff;
 	overflow:			hidden;
 	white-space:		nowrap;
 	text-overflow:		ellipsis;
 	
-	background:			url("/favicon.ico") 8px 4px / 22px no-repeat, /* Place favicon using space we made */
+	background:			var(--aero-icon, url("/favicon.ico")) 8px 5px / 20px no-repeat,
 						var(--aero);
 	border-radius:		6px;
 	backdrop-filter:	blur(8px);

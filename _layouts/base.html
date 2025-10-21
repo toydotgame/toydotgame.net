@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		{% include nav.html %}
-		<article data-aero-title="{{ page.title }}">{{ content }}</article>
+		<article data-aero-title="{{ page.title }}" style="--aero-icon:url('{{ page.aero-icon | default: "/v6-dev/ico/info.png" }}')">{{ content }}</article>
 		{% include footer.html %}
 	</body>
 </html>
