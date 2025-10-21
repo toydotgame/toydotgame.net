@@ -1,0 +1,12 @@
+# AUTHOR: toydotgame
+# CREATED: 2025-10-21
+# jekyll-serve.sh calls this file specifically after _config.yml, whereas the
+# production/GH pages build doesn't use that script and therefore doesn't use
+# this config.
+
+# BUILD
+show_drafts: true
+
+# SERVE
+port: 8080
+

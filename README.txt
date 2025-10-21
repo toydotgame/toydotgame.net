@@ -16,11 +16,14 @@ $	gem install jekyll bundler github-pages
 $	bundle install
 
 You can use `jekyll-serve.sh` to run a dev server:
-$	./jekyll-serve.sh [args-not-in-_config.yml]
+$	./jekyll-serve.sh
+This will also apply _config-dev.yml over the top of the production _config.yml.
+
 This will automatically rebuild when you save files. I've elected not to use
 LiveReload/etc by default, to best accomodate my muscle memory when I developed
 with Apache. By default, `jekyll-serve.sh` pipes stderr to /dev/null; if you
 want stderr spam, go do `bundle exec jekyll serve ...` instead.
+
 The -B, --detach switch allows the server to run in the background, but it
 can cause trouble on my sketchy Windows Bash setup that I do use sometimes,
 therefore, you'll have to pass `-B` to `jekyll-serve.sh` yourself if you really

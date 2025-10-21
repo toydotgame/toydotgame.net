@@ -1,32 +1,35 @@
 # AUTHOR: toydotgame
 # CREATED: 2025-10-20
-# Jekyll site settings based off the original auto-generated boilerplate. Also
-# do note the GitHub Pages non-negotiable default values for some keys:
-# 	https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#configuring-jekyll-in-your-github-pages-site
-# ```
-lsi:					false
-safe:					true
-source:					.
-incremental:			false
-highlighter:			rouge
-gist:
-  noscript:				false
-kramdown:
-  math_engine:			mathjax
-  syntax_highlighter:	rouge
-# ```
+# Jekyll site settings based off the original auto-generated boilerplate. Note
+# that Jekyll's YAML parser CANNOT PARSE TABS even for key values—use spaces!
+# GitHub Pages sets the below, which we cannot change:
+###############################
+lsi:                  false   #
+safe:                 true    #
+source:               .       #
+incremental:          false   #
+highlighter:          rouge   #
+gist:                         #
+  noscript:           false   #
+kramdown:                     #
+  math_engine:        mathjax #
+  syntax_highlighter: rouge   #
+###############################
 
-title: toydotgame.net
+title:       toydotgame.net
 description: toydotgame's personal website.
-url: "https://toydotgame.net/"
+url:         https://toydotgame.net
 
-# Build settings:
+# GLOBAL
+timezone: Etc/GMT-10 # Flipped sign because POSIX
+
+# BUILD
+strict_front_matter: true
 #theme: minima
 #plugins:
 #  - jekyll-feed
 
 # SERVER
-port:	8080
 
 # Expand upon/reiterate Jekyll's default exclude list:
 exclude:
