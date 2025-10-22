@@ -24,12 +24,17 @@ kramdown:                     #
 timezone: Etc/GMT-10 # Flipped sign because POSIX
 
 # BUILD
-strict_front_matter: true
 #theme: minima
 #plugins:
 #  - jekyll-feed
 
-# SERVER
+# SERVE
+
+# DATA
+collections:
+  posts:
+    output: true
+    permalink: /blog/:path
 
 # Expand upon/reiterate Jekyll's default exclude list:
 exclude:

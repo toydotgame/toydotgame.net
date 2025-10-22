@@ -1,0 +1,6 @@
+* _site ignore list
+* Blog article template layout
+* Custom article header image that overwrites og:image if present
+* Ubuntu font proper again
+* All the redesign stuff too lol
+* Migrate articles over (eek!)
