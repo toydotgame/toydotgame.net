@@ -1,17 +1,20 @@
-<!--
+{% comment %}
 	AUTHOR: toydotgame
 	CREATED: 2025-10-21
-	v6 navbar.
--->
+	v6 navbar. Be careful with newlines in inline elements like <a>, Liquid
+	doesn't play nice with them visually.
+{% endcomment %}
+
 <nav data-aero-title="Navigation" style="--aero-icon:url('/v6-dev/ico/globe.png')">
-<div id="navpfp"></div><h1>toydotgame</h1>
-<a href="/home">home</a>
-|
-<a href="/blog/">blog</a>
-|
-<a href="/projects/">projects</a>
-|
-<a href="/utils">utils</a>
-|
-<a href="/">card</a>
+	<div id="navpfp"></div><h1>toydotgame</h1>
+	{% assign urlFrags = page.url | url_decode | split: "." %}
+	{% if urlFrags[-1] == "html" %}
+		{% assign decodedUrl = urlFrags | slice:0,urlFrags.size-1 | join:"" %}
+	{% else %}
+		{% assign decodedUrl = urlFrags | join:"" %}
+	{% endif %}
+	
+	{% for i in site.data.nav %}
+		<a {% if decodedUrl == i.path %}style="text-shadow:0 0 8px #ccc"{% else %}href="{{ i.path }}"{% endif %}>{{ i.name }}</a>{% unless forloop.last %} | {% endunless %}
+	{% endfor %}
 </nav>

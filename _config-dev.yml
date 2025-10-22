@@ -5,6 +5,7 @@
 # this config.
 
 # BUILD
+incremental: true
 show_drafts: true
 
 # SERVE

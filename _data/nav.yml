@@ -1,0 +1,18 @@
+# AUTHOR:  toydotgame
+# CREATED: 2025-10-22
+# List of navbar link items to dynamically include in the navbar markup.
+
+- name: home
+  path: /home
+- name: blog
+  path: /blog/
+- name: projects
+  path: /projects/
+- name: utils
+  path: /utils
+- name: card
+  path: /
+- name: v6
+  path: /v6-dev/
+- name: v62
+  path: /v6-dev/index copy
