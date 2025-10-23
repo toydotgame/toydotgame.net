@@ -24,6 +24,18 @@ kramdown:                     #
 timezone: Etc/GMT-10 # Flipped sign because POSIX
 
 # BUILD
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month-:day_:title
+defaults:
+  -
+    scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "blog"
+future: true # Just in case
 #theme: minima
 #plugins:
 #  - jekyll-feed
@@ -31,10 +43,6 @@ timezone: Etc/GMT-10 # Flipped sign because POSIX
 # SERVE
 
 # DATA
-collections:
-  posts:
-    output: true
-    permalink: /blog/:path
 
 # Expand upon/reiterate Jekyll's default exclude list:
 exclude:
@@ -45,4 +53,3 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor/
-
