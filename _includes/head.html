@@ -1,0 +1,43 @@
+{% comment %}
+	AUTHOR: toydotgame
+	CREATED: 2025-10-26
+	<head> tag and its children for use in the `base` and `blog` layouts.
+{% endcomment %}
+
+<head>
+	<meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/media/styles/styles.css">
+	<title>{{ page.title }} - toydotgame.net</title>
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="toydotgame.net">
+	<meta property="og:title" content="{{ page.title }}">
+	<meta property="og:description" content="TEMPLATE_DESC">
+	<meta property="og:image" content="/media/resources/banner.png">
+	<meta name="viewport" content="width=device-width">
+	<script src="/media/js/contentloader.js" type="module"></script>
+	{% if page.mathjax %}
+		<script>
+		MathJax = {
+			options: {
+				enableExplorer: false,
+				enableMenu: false,
+				menuOptions: {
+					settings: {
+						enrich: false,
+						speech: false,
+						braille: false
+					}
+				}
+			},
+			tex: {
+				inlineMath: {"[+]": [["$","$"], ["$`", "`$"]]}
+			},
+			svg: {
+				fontCache: "global"
+			}
+		};
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" defer></script>
+	{% endif %}
+</head>

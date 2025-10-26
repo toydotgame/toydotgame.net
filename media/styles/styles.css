@@ -1,0 +1,265 @@
+/*
+ * AUTHOR: toydotgame
+ * CREATED: 2025-10-06
+ * v6 site redesign stylesheet. Contains snippets etc from the v5 main.css
+ * (created 2023-12-16).
+ * THE CASCADE ORDER is used as follows:
+ * 1. Generally global base styles
+ * 2. Content/specific styles
+ * 3. Header/footer/other styles to override content-specific styles for similar
+ *    elements
+ */
+
+/*
+ * GLOBAL STYLES
+ */
+
+@font-face {
+	font-family: "Cookie";
+	src: url("/media/resources/fonts/Cookie-reg.ttf");
+	font-display: swap;
+} @font-face {
+	font-family: "DM Serif Display";
+	src: url("/media/resources/fonts/DM-Serif-ita.ttf");
+	font-display: swap;
+} @font-face {
+	font-family: "Fira Mono";
+	src: url("/media/resources/fonts/Fira-Mono-reg.ttf");
+	font-display: swap;
+} @font-face {
+	font-family: "Ubuntu";
+	src: url("/media/resources/fonts/UbuntuSans-var.ttf");
+	font-weight: 480;
+	font-display: swap;
+} @font-face { /* Hack to implement more noticeable bold font */
+	font-family: "Ubuntu";
+	src: url("/media/resources/fonts/UbuntuSans-var.ttf");
+	font-weight: 800;
+	font-display: swap;
+} @font-face {
+	font-family: "Twemoji";
+	src: url("/media/resources/fonts/Twemoji.ttf");
+	font-display: swap;
+}
+
+:root {
+	--accent:		#b29abb;
+	--secondary:	#c8c8c8;
+	--link:			#5865f2;
+	--text:			#fff;
+	--bg1:			#1c1c1c;
+	--bg2:			#2a2a2f;
+
+	--aero: linear-gradient(
+			#ccc2	0,
+			#cccc	calc(25% + 30px),
+			#ccc0	calc(26% + 30px)
+		),
+		hsl(from var(--accent) h calc(s + 67) calc(l - 30) / 40%) /* Glass colour */
+		linear-gradient(44deg, /* sic */
+			#fff0		0%,
+			#ffffff28	5%,
+			#fff0		7.2%,
+			#ffffff1e	10.5%,
+			#fff0		11.6%	16%,
+			#ffffff28	17.6%,
+			#ffffff22	22.2%,
+			#fff0		24%		37%,
+			#ffffff28	44.7%	48%,
+			#fff0		53.7%,
+			#ffffff28	55.2%	55.7%,
+			#fff0		59.7%,
+			#ffffff28	61.4%	64.4%,
+			#ffffff22	67.5%,
+			#fff0		70%		78.5%,
+			#ffffff1e	80.8%,
+			#fff0		82.5%,
+			#ffffff1e	85.3%	86.3%,
+			#fff0		94.6%
+		) 0 0 / 100svw 100svh fixed; /* Absolute to viewport */
+}
+
+*, ::before, ::after {
+	margin:			0;
+	padding:		0;
+	box-sizing:		border-box;
+}
+
+body {
+	/*
+	 * ABOUT SPACING:
+	 * - Window borders and content padding are 8px wide
+	 * - Spacing between windows are 8 px wide
+	 * - Window titles are 22px high (text), therefore 30px incl. the top border
+	 * Therefore:
+	 * - Page padding is 16px (border+spacing)
+	 * - Flex gap is 46px (border+title (incl. top border)+spacing)
+	 * 	- Page padding top is 48px (title (incl. top border)+spacing)
+	 * 
+	 * This applies to the positioning of the flex items (container is `body`)
+	 * and is based on the values in their ::before and ::after pseudo-elements.
+	 */
+	min-height:			100svh; /* Baseline 2023; fix for Safari UI */
+	display:			flex;
+		flex-direction:		column;
+		justify-content:	flex-start;
+		align-items:		center;
+		gap:				46px;
+	padding:			16px;
+		padding-top:	38px;
+
+	color:			var(--text);
+	background:		url("/media/resources/card/background.jpg") center bottom / cover fixed,
+	           		linear-gradient(var(--bg2), var(--bg1));
+	font-family:	"Ubuntu", "Twemoji", sans-serif;
+	word-break:		break-word;
+}
+
+/*
+ * AERO SECTIONS
+ */
+
+body > * {
+	width:			100%;
+		max-width:	800px;
+	padding:		8px;
+	position:		relative; /* So ::before and ::after can inherit */
+	background:		linear-gradient(var(--bg2), var(--bg1)) fixed;
+	border-radius:	0.5px;
+	box-shadow:		0 0 0 1px #000, /* Box shadow outset, overlaps with Aero glass */
+					0 0 0 2px #f0f0f0;
+}
+
+body > *::before { /* Decoration for sections */
+	content:	attr(data-aero-title);
+	width:		calc(100% + 16px);
+		max-width:	calc(100vw - 16px);
+	height:		calc(100% + 38px);
+	position:	absolute;
+		top:		-30px;
+		left:		-8px;
+		z-index:	-1;
+	
+	/* Title text: */
+	padding:			5px 64px 0 32px; /* Nominally 4px top but Frutiger.tff
+						                    is iffy and needs an extra pixel */
+	text-shadow:		0 0 6px #fff;
+	overflow:			hidden;
+	color:				#000;
+	white-space:		nowrap;
+	text-overflow:		ellipsis;
+	
+	background:			var(--aero-icon, url("/favicon.ico")) 8px 5px / 20px no-repeat,
+						var(--aero);
+	border-radius:		6px;
+	backdrop-filter:	blur(8px);
+	box-shadow:			0 0 0 1px	#000	inset,
+						0 0 0 2px	#f0f0f0	inset,
+						4px 4px 12px #000c; /* Aero window shadow */
+}
+
+nav::before {
+	width:		calc(100% + 4px);
+	left:		-2px;
+	text-align:	left;
+}
+
+body > *::after { /* "Close button" decoration for sections */
+	content:			"x";
+	width:				44px;
+	height:				16px;
+	position:			absolute;
+		top:	-28px;
+		right:	0;
+	border-radius:		0 0 2px 2px;
+	color:				#fff;
+		-webkit-text-stroke: 0.5px #535666c0;
+	font-size:			18px;
+	line-height:		0.7; /* TODO: Font dependent and sucks, you CAN add a background image base64 svg tho! */
+	text-align:			center;
+	font-weight:		900;
+	cursor:				not-allowed;
+	box-shadow:			0 0 0 1px #f0f0f0,
+						0 0 0 2px #000;
+	background-image:	linear-gradient(#eee5 0, #fff6 48%, #1111 52%, #ff85 100%),
+						radial-gradient(#db582c 0, #a34329 100%);
+	opacity:			65%;
+}
+
+nav::after {
+	right:	6px;
+}
+
+/* Viewport too small to display text without colliding with close button: */
+@media only screen and (max-width: 158px) {
+	body > *::before {
+		padding:	5px 8px 0 8px;
+		background:	var(--aero); /* Remove icon */
+	}
+
+	body > *::after {
+		display:	none;
+	}
+}
+
+/* Viewport too small to comfortably fit any section title text: */
+@media only screen and (max-width: 78px) {
+	body > *::before {
+		content:	"";
+		height:		calc(100% + 16px);
+		top:		-8px;
+		padding:	0;
+	}
+
+	body {
+		padding-top:	16px;
+		gap:			24px;
+	}
+}
+
+/*
+ * SECTIONS
+ */
+
+/* NAV */
+nav {
+	width:			calc(100% + 12px);
+		max-width:	812px;
+	padding:		8px 14px;
+	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%), rgba(from var(--bg1) r g b / 50%)) fixed;
+	border-radius:	0;
+	box-shadow:		0 -1px #f0f0f0,
+					0 -2px #000,
+					0 1px #000,
+					0 2px #f0f0f0;
+	
+	text-align:		center;
+	text-shadow:	0 0 8px #0008;
+}
+
+nav h1 {
+	font-size:		48px;
+	font-family:	"Cookie", cursive;
+}
+
+/* CONTENT */
+h1, h2, h3 {
+	color:	var(--accent);
+}
+
+h4, h5, h6, .subtitle {
+	color:	var(--secondary);
+}
+
+.subtitle {
+	font-size:	smaller;
+}
+
+p, small, .subtitle {
+	margin-bottom:	14px; /* Paragraph break size */
+}
+
+/* FOOTER */
+footer {
+	margin-top:	auto; /* Sticky to bottom if body height < 100 vh */
+}

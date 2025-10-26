@@ -12,7 +12,3 @@
   path: /utils
 - name: card
   path: /
-- name: v6
-  path: /v6-dev/
-- name: v62
-  path: /v6-dev/index copy

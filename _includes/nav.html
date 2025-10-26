@@ -5,7 +5,7 @@
 	doesn't play nice with them visually.
 {% endcomment %}
 
-<nav data-aero-title="Navigation" style="--aero-icon:url('/v6-dev/ico/globe.png')">
+<nav data-aero-title="Navigation" style="--aero-icon:url('/media/resources/aerico/globe.png')">
 	<div id="navpfp"></div><h1>toydotgame</h1>
 	{% assign urlFrags = page.url | url_decode | split: "." %}
 	{% if urlFrags[-1] == "html" %}
@@ -17,4 +17,10 @@
 	{% for i in site.data.nav %}
 		<a {% if decodedUrl == i.path %}style="text-shadow:0 0 8px #ccc"{% else %}href="{{ i.path }}"{% endif %}>{{ i.name }}</a>{% unless forloop.last %} | {% endunless %}
 	{% endfor %}
+
+	{% if jekyll.environment != "production" %}
+		{% comment %}Useful dev. links{% endcomment %}
+		<br>
+		<a href="/v6-dev/formatting">FORMATTING</a>
+	{% endif %}
 </nav>

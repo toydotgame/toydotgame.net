@@ -3,18 +3,18 @@
 # Jekyll site settings based off the original auto-generated boilerplate. Note
 # that Jekyll's YAML parser CANNOT PARSE TABS even for key values—use spaces!
 # GitHub Pages sets the below, which we cannot change:
-###############################
-lsi:                  false   #
-safe:                 true    #
-source:               .       #
-incremental:          false   #
-highlighter:          rouge   #
-gist:                         #
-  noscript:           false   #
-kramdown:                     #
-  math_engine:        mathjax #
-  syntax_highlighter: rouge   #
-###############################
+#################################
+# lsi:                  false   #
+# safe:                 true    #
+# source:               .       #
+# incremental:          false   #
+# highlighter:          rouge   #
+# gist:                         #
+#   noscript:           false   #
+# kramdown:                     #
+#   math_engine:        mathjax #
+#   syntax_highlighter: rouge   #
+#################################
 
 #title:       toydotgame.net
 #description: toydotgame's personal website.
@@ -31,10 +31,15 @@ collections:
 defaults:
   -
     scope:
-      path: "_posts"
-      type: "posts"
+      path: ""
     values:
-      layout: "blog"
+      layout: base
+  -
+    scope:
+      path: _posts
+      type: posts
+    values:
+      aero-icon: /media/resources/aerico/book.png
 future: true # Just in case
 #theme: minima
 #plugins:

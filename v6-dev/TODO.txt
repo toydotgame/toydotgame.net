@@ -4,3 +4,5 @@
 * Ubuntu font proper again
 * All the redesign stuff too lol
 * Migrate articles over (eek!)
+* MathJax button
+* GFM emoji stuff?

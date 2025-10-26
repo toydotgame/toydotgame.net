@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<!--
+{% comment %}
 	AUTHOR: toydotgame
 	CREATED: 2025-10-21
-	Generic page template for toydotgame.net v6.
--->
+	Generic page and blog post template for toydotgame.net v6.
+{% endcomment %}
 <html>
-	<head>
-		<meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="/v6-dev/styles.css">
-		<title>{{ page.title }} - toydotgame.net</title>
-		<meta property="og:type" content="article">
-		<meta property="og:site_name" content="toydotgame.net">
-		<meta property="og:title" content="{{ page.title }}">
-		<meta property="og:description" content="TEMPLATE_DESC">
-		<meta property="og:image" content="/media/resources/banner.png">
-		<meta name="viewport" content="width=device-width">
-		<script src="/media/js/contentloader.js" type="module"></script>
-	</head>
+	{% include head.html %}
 	<body>
 		{% include nav.html %}
 		<article
-			data-aero-title="{{ page.title }}"
-			style="--aero-icon:url('/v6-dev/ico/info.png')">{{ content }}</article>
+			data-aero-title="{% if page.collection == "posts" %}Blog: {% endif %}{{ page.title }}"
+			style="--aero-icon:url({{ page.aero-icon | default: "/media/resources/aerico/info.png" }})">
+			<h1>{{ page.title }}</h1>
+			<p class="subtitle">
+				{% if page.date %}Written: <b>{{ page.date }}</b>{% endif %}
+				{% if page.date and page.updated %} · {% endif %}
+				{% if page.updated %}Last updated: <b>{{ page.updated }}</b>{% endif %}
+			</p>
+			{{ content }}
+		</article>
 		{% include footer.html %}
 	</body>
 </html>
