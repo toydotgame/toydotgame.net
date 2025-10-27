@@ -275,7 +275,7 @@ nav h1 {
 	font-family:	"Silkscreen", monospace;
 	font-weight:	normal;
 	letter-spacing:	-0.15em;
-	text-shadow:	0 0 8px #0008;
+	filter:			drop-shadow(2px 2px 4px #0008);
 }
 
 nav h1 img {
@@ -283,7 +283,6 @@ nav h1 img {
 	margin-right:		0.25em;
 	vertical-align: 	top; /* Since we match the image and text's heights */
 	border-radius:		4px;
-	box-shadow:			1px 1px 8px #0008;
 	image-rendering:	pixelated;
 }
 
@@ -380,7 +379,7 @@ article h1, h2 {
 	line-height:	calc(1em + 5px);
 	margin-bottom:	5px;
 	border-bottom:	1px solid var(--accent);
-	text-shadow:	0 0 8px #000; /* Kinda looks mid when overlapping the border
+	text-shadow:	0 0 4px #000c; /* Kinda looks mid when overlapping the border
 					                 -bottom, so this is the best we got :/ */
 }
 
