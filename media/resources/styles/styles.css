@@ -15,31 +15,59 @@
  */
 
 @font-face {
-	font-family: "Cookie";
-	src: url("/media/resources/fonts/Cookie-reg.ttf");
-	font-display: swap;
+	font-family:	"Ubuntu";
+	src:			local("Ubuntu Sans"),
+					url("/media/resources/fonts/Ubuntu Sans Variable.ttf");
+	font-display:	swap;
+	/* `font-style`s `normal` _and_ `italic` are included */
+	font-weight:	100 800;
 } @font-face {
-	font-family: "DM Serif Display";
-	src: url("/media/resources/fonts/DM-Serif-ita.ttf");
-	font-display: swap;
+	/*
+	 * DejaVu Sans Mono is an incredibly static font, it has no italic face, and
+	 * its oblique and bold faces are static transformations. We can get away
+	 * with letting the browser create the oblique face on-the-fly, but IMO it
+	 * looks better to use the static bold face file instead of making it up.
+	 */
+	font-family:	"DejaVu Sans Mono";
+	src:			local("DejaVu Sans Mono"), local("DejaVu Sans Mono Book"),
+					url("/media/resources/fonts/DejaVu Sans Mono Regular.ttf");
+	font-display:	swap;
+	font-weight:	normal;
 } @font-face {
-	font-family: "Fira Mono";
-	src: url("/media/resources/fonts/Fira-Mono-reg.ttf");
-	font-display: swap;
+	font-family:	"DejaVu Sans Mono";
+	src:			local("DejaVu Sans Mono"), local("DejaVu Sans Mono Book"),
+					url("/media/resources/fonts/DejaVu Sans Mono Bold.ttf");
+	font-display:	swap;
+	font-weight:	bold;
 } @font-face {
-	font-family: "Ubuntu";
-	src: url("/media/resources/fonts/UbuntuSans-var.ttf");
-	font-weight: 480;
-	font-display: swap;
-} @font-face { /* Hack to implement more noticeable bold font */
-	font-family: "Ubuntu";
-	src: url("/media/resources/fonts/UbuntuSans-var.ttf");
-	font-weight: 800;
-	font-display: swap;
+	font-family:	"EB Garamond";
+	src:			local("EB Garamond"),
+					url("/media/resources/fonts/EB Garamond Variable.ttf"),
+					local("Garamond");
+	font-display:	swap;
+	font-style:		normal;
+	font-weight:	400 800;
 } @font-face {
-	font-family: "Twemoji";
-	src: url("/media/resources/fonts/Twemoji.ttf");
-	font-display: swap;
+	font-family:	"EB Garamond";
+	src:			local("EB Garamond"),
+					url("/media/resources/fonts/EB Garamond Variable Italic.ttf"),
+					local("Garamond");
+	font-display:	swap;
+	font-style:		italic;
+	font-weight:	400 800;
+} @font-face {
+	font-family:	"Silkscreen";
+	src:			local("Silkscreen"),
+					url("/media/resources/fonts/Silkscreen Regular.ttf");
+	font-display:	swap;
+	/*
+	 * NOTE FOR THE FUTURE: If you ever wanna use the bold face, add the TTF for
+	 * it. DO NOT let the browser do it because EW.
+	 */
+} @font-face {
+	font-family:	"Twemoji";
+	src:			url("/media/resources/fonts/Twemoji.ttf");
+	font-display:	swap;
 }
 
 :root {
@@ -49,6 +77,8 @@
 	--text:			#fff;
 	--bg1:			#1c1c1c;
 	--bg2:			#2a2a2f;
+
+	--heading-size-multiplier: 1.25;
 
 	--aero: linear-gradient(
 			#ccc2	0,
@@ -112,6 +142,7 @@ body {
 	background:			url("/media/resources/card/background.jpg") center bottom / cover fixed,
 	           			linear-gradient(var(--bg2), var(--bg1));
 	font-family:		"Ubuntu", "Twemoji", sans-serif;
+		font-weight:	475;
 	word-break:			break-word;
 }
 
@@ -239,14 +270,16 @@ nav {
 
 nav h1 {
 	min-height:		50px;
-	line-height:	50px;
-	font-size:		48px;
-	font-family:	"Cookie", cursive;
+	/* Leave line-height unspecified such that img inline can inherit auto 1lh */
+	font-size:		min(48px, 10cqw); /* 10cqw is arbitrary as hell */
+	font-family:	"Silkscreen", monospace;
+	font-weight:	normal;
+	letter-spacing:	-0.15em;
 	text-shadow:	0 0 8px #0008;
 }
 
 nav h1 img {
-	height:				50px;
+	height:				1lh;
 	margin-right:		0.25em;
 	vertical-align: 	top; /* Since we match the image and text's heights */
 	border-radius:		4px;
@@ -325,8 +358,30 @@ nav h1 img {
 }
 
 /* CONTENT */
-h1, h2, h3 {
-	color:	var(--accent);
+h1, h2, h3, h4, h5, h6 {
+	clear:			both;
+	color:			var(--accent);
+	font-family:	"EB Garamond", serif;
+}
+
+h1 { font-size: calc(var(--heading-size-multiplier)*2em); }
+h2 { font-size: calc(var(--heading-size-multiplier)*1.5em); }
+h3 { font-size: calc(var(--heading-size-multiplier)*1.17em); }
+h4 { font-size: calc(var(--heading-size-multiplier)*1em); }
+h5 { font-size: calc(var(--heading-size-multiplier)*0.83em); }
+h6 { font-size: calc(var(--heading-size-multiplier)*0.67em); }
+
+article h1 {
+	font-style:	italic;
+}
+
+article h1, h2 {
+	/* Make line height exclude descent (1em) then add 3px gap between text and underline: */
+	line-height:	calc(1em + 5px);
+	margin-bottom:	5px;
+	border-bottom:	1px solid var(--accent);
+	text-shadow:	0 0 8px #000; /* Kinda looks mid when overlapping the border
+					                 -bottom, so this is the best we got :/ */
 }
 
 h4, h5, h6, .subtitle {
@@ -337,8 +392,19 @@ h4, h5, h6, .subtitle {
 	font-size:	smaller;
 }
 
-p, small, .subtitle {
-	margin-bottom:	14px; /* Paragraph break size */
+p:not(:last-child) { /* Jekyll turns most freestanding lines (even without text) into paragraphs
+                        (thankfully!) */
+	margin-bottom:	14px;
+}
+
+b:not(.subtitle b), strong {
+	color:			var(--accent);
+	font-weight:	800;
+}
+
+code, pre { /* Jekyll's <pre>s contain <code> tags for the text, but better to
+               be safe in case we ever want to manually type one in markup */
+	font-family:	"DejaVu Sans Mono", monospace;
 }
 
 /* FOOTER */

@@ -36,7 +36,13 @@ You can also specify a short line break (instead of a paragraph break) using the
 <!-- And, of course, because Markdown is just HTML for dummiez, comments are
      like this! :3 -->
 <hr>
-A horizontal rule appears like that! ↑
+A horizontal rule appears like that! ↑ Emojis should render directly from the
+source: 🕴. Syntax like :+1: won't work because uhhhh making that do unicode and
+not images is annoying.
+
+<small>This is small text freestanding on its own line! Typically, in CSS, this
+is an issue since HTML's `<small>` is an inline element (in contrast to `<p>`),
+but Jekyll _should_ fix it to be within a paragraph!</small>
 
 There's a reference here![^1] Hopefully there's a reference list at the bottom
 to explain it! References can also have any name.[^any-name]
@@ -85,6 +91,13 @@ a. Ordered list with different list marker
 b. Ordered list
 e. Ordered list with _e_ instead of _c_
 
+* [ ] Unchecked list item
+* [x] Checked list item
+- [ ] Checkbox item with a different bullet
+
+1. [ ] Ordered list checkbox
+2. [x] Checked ordered list checkbox
+
 As you can see, for ordered lists, they don't really respect the markers. This
 is kinda cool for unordered lists, making the very open-ended, but for our own
 purposes, we'll have to default to HTML for customising stuff more, e.g:
@@ -122,6 +135,25 @@ IALs](https://kramdown.gettalong.org/syntax.html#inline-attribute-lists))
 
 > This quote is short and shouldn't be full-width!
 
+> Blockquotes can use IALs to have a **title**, but you probably wouldn't use
+> that as much as you'd use **callouts**:
+{:title="Optional title"}
+
+> Kramdown doesn't quite do Markdown callouts, but we _can_ use
+> [**Block IALs**](https://kramdown.gettalong.org/syntax.html#block-ials)!
+>
+> This callout is of the class `callout-error`.
+{:.callout-error title="Optional callout title"}
+
+> `.callout-info` — Note it has no title.
+{:.callout-info}
+
+> `.callout-success`
+{:.callout-success}
+
+> `.callout-warning`
+{:.callout-warning}
+
 <aside class="fleft" style="width:75%">
 	Text inside aside but not in paragraph tag!
 	<blockquote>Nested blockquote! Notice how the parent quote is used as a container instead!</blockquote>
@@ -148,6 +180,14 @@ header's text, [as I did for Heading 3 above](#this-one)!
 | 1            | 2              | 3             | 4               |
 | Normal inline text formatting | can still be used! | However, most block stuff _won't_ | so in that case use a full explicit HTML table… |
 
+Also, a table that's small shouldn't fill the whole page's width unless the
+viewport is THAT small:
+| A | B |
+| - | - |
+| C | D |
+
+Remember that, if you want more advanced table stuff, you'll need to go back to
+HTML for that.
 
 ## *Wait, so how do line breaks work with Markdown 'n' all?*
 Ah! Joy! So there's a few ways to put newlines in your Markdown that appear in

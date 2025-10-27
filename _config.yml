@@ -41,9 +41,8 @@ defaults:
     values:
       aero-icon: /media/resources/aerico/book.png
 future: true # Just in case
-#theme: minima
 #plugins:
-#  - jekyll-feed
+#  - jemoji # Not using for now because image-based emoji sucks
 
 # SERVE
 
