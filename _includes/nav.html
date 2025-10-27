@@ -6,21 +6,24 @@
 {% endcomment %}
 
 <nav data-aero-title="Navigation" style="--aero-icon:url('/media/resources/aerico/globe.png')">
-	<div id="navpfp"></div><h1>toydotgame</h1>
-	{% assign urlFrags = page.url | url_decode | split: "." %}
-	{% if urlFrags[-1] == "html" %}
-		{% assign decodedUrl = urlFrags | slice:0,urlFrags.size-1 | join:"" %}
-	{% else %}
-		{% assign decodedUrl = urlFrags | join:"" %}
-	{% endif %}
-	
-	{% for i in site.data.nav %}
-		<a {% if decodedUrl == i.path %}style="text-shadow:0 0 8px #ccc"{% else %}href="{{ i.path }}"{% endif %}>{{ i.name }}</a>{% unless forloop.last %} | {% endunless %}
-	{% endfor %}
+	<h1><img src="/media/resources/profile.png">toy&#x200B;dot&#x200B;game</h1>
 
-	{% if jekyll.environment != "production" %}
-		{% comment %}Useful dev. links{% endcomment %}
-		<br>
-		<a href="/v6-dev/formatting">FORMATTING</a>
-	{% endif %}
+	<div id="navtabs">
+		{% assign urlFrags = page.url | url_decode | split: "." %}
+		{% if urlFrags[-1] == "html" %}
+			{% assign decodedUrl = urlFrags | slice:0,urlFrags.size-1 | join:"" %}
+		{% else %}
+			{% assign decodedUrl = urlFrags | join:"" %}
+		{% endif %}
+		
+		{% assign navItems = site.data.nav.production %}
+		{% if jekyll.environment != "production" %}
+			{% comment %}Useful dev. links{% endcomment %}
+			{% assign navItems = navItems | concat: site.data.nav.development %}
+		{% endif %}
+		
+		{% for i in navItems %}
+			<a {% if decodedUrl == i.path %}class="active"{% else %}href="{{ i.path }}"{% endif %}>{{ i.name }}</a>
+		{% endfor %}
+	</div>
 </nav>

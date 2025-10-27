@@ -50,6 +50,7 @@ This line has a citation that has already had its definition above![^1]
 
 ## Images
 Images can be done in basic markdown syntax:
+
 ![Image alt text](https://placecats.com/408/287)
 
 However, for setting sizes, floats, or captions, you'll need to fall back to our

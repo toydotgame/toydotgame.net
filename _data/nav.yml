@@ -2,13 +2,17 @@
 # CREATED: 2025-10-22
 # List of navbar link items to dynamically include in the navbar markup.
 
-- name: home
-  path: /home
-- name: blog
-  path: /blog/
-- name: projects
-  path: /projects/
-- name: utils
-  path: /utils
-- name: card
-  path: /
+production:
+  - name: home
+    path: /home
+  - name: blog
+    path: /blog/
+  - name: projects
+    path: /projects/
+  - name: utils
+    path: /utils
+  - name: card
+    path: /
+development:
+  - name: FORMATTING
+    path: /v6-dev/formatting

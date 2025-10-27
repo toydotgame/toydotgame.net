@@ -108,11 +108,11 @@ body {
 	padding:			16px;
 		padding-top:	38px;
 
-	color:			var(--text);
-	background:		url("/media/resources/card/background.jpg") center bottom / cover fixed,
-	           		linear-gradient(var(--bg2), var(--bg1));
-	font-family:	"Ubuntu", "Twemoji", sans-serif;
-	word-break:		break-word;
+	color:				var(--text);
+	background:			url("/media/resources/card/background.jpg") center bottom / cover fixed,
+	           			linear-gradient(var(--bg2), var(--bg1));
+	font-family:		"Ubuntu", "Twemoji", sans-serif;
+	word-break:			break-word;
 }
 
 /*
@@ -126,8 +126,8 @@ body > * {
 	position:		relative; /* So ::before and ::after can inherit */
 	background:		linear-gradient(var(--bg2), var(--bg1)) fixed;
 	border-radius:	0.5px;
-	box-shadow:		0 0 0 1px #000, /* Box shadow outset, overlaps with Aero glass */
-					0 0 0 2px #f0f0f0;
+	box-shadow:		0 0 0 1px #0008, /* Box shadow outset, overlaps with Aero glass */
+					0 0 0 2px #f0f0f080;
 }
 
 body > *::before { /* Decoration for sections */
@@ -175,9 +175,9 @@ body > *::after { /* "Close button" decoration for sections */
 	color:				#fff;
 		-webkit-text-stroke: 0.5px #535666c0;
 	font-size:			18px;
-	line-height:		0.7; /* TODO: Font dependent and sucks, you CAN add a background image base64 svg tho! */
+	line-height:		0.8;
 	text-align:			center;
-	font-weight:		900;
+	font-weight:		bolder;
 	cursor:				not-allowed;
 	box-shadow:			0 0 0 1px #f0f0f0,
 						0 0 0 2px #000;
@@ -228,18 +228,100 @@ nav {
 	padding:		8px 14px;
 	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%), rgba(from var(--bg1) r g b / 50%)) fixed;
 	border-radius:	0;
-	box-shadow:		0 -1px #f0f0f0,
-					0 -2px #000,
-					0 1px #000,
-					0 2px #f0f0f0;
+	box-shadow:		0 -1px	#f0f0f080,
+					0 -2px	#0008,
+					0 1px	#0008,
+					0 2px	#f0f0f080;
 	
 	text-align:		center;
-	text-shadow:	0 0 8px #0008;
+	user-select:	none;
 }
 
 nav h1 {
+	min-height:		50px;
+	line-height:	50px;
 	font-size:		48px;
 	font-family:	"Cookie", cursive;
+	text-shadow:	0 0 8px #0008;
+}
+
+nav h1 img {
+	height:				50px;
+	margin-right:		0.25em;
+	vertical-align: 	top; /* Since we match the image and text's heights */
+	border-radius:		4px;
+	box-shadow:			1px 1px 8px #0008;
+	image-rendering:	pixelated;
+}
+
+@media only screen and (max-width: 304px) {
+	nav h1 img {
+		display:	none;
+	}
+}
+
+#navtabs {
+	display:		flex;
+		flex-wrap:	wrap;
+	/* Margin below means width is 100% of what we "expect:" */
+	margin:			8px -8px -8px -8px;
+	padding-top:	2px;
+	overflow:		hidden;
+}
+
+#navtabs a {
+	--border:	hsl(from var(--accent) h 5% 56%);
+	--tab-aero:	linear-gradient(
+					#f2f2f220 0,
+					#ebebeb20 33.3%,
+					#dddddd20 33.3%,
+					#cfcfcf20 100%
+				);
+
+	margin-bottom:		-1px;
+	/* 4px hor. padding + 1/2px around for inset "borders:" */
+	padding:			3px 6px 2px 6px;
+	flex:				min-content;
+	overflow:			hidden;
+	color:				var(--text);
+	background:			var(--bg2) var(--tab-aero);
+	box-shadow:		0 0	0 1px	var(--border)	inset,
+						0 2px	var(--bg2)		inset,
+						2px 0	var(--bg2)		inset,
+						-2px 0	var(--bg2)		inset;
+	white-space:		nowrap;
+	text-align:			left; /* Revert `nav` style */
+	text-decoration:	none;
+}
+
+#navtabs a:not(.active):hover {
+	color:			hsl(from var(--link) h calc(0.5*s) calc(l + 10));
+	background:		var(--bg2)
+					linear-gradient(
+						hsl(from var(--accent) h 83% 95% / 25%) 0,
+						hsl(from var(--accent) h 85% 92% / 25%) 33.3%,
+						hsl(from var(--accent) h 94% 87% / 25%) 33.3%,
+						hsl(from var(--accent) h 80% 81% / 25%) 100%
+					);
+	box-shadow:		0 -1px	var(--border) inset,
+					0 1px	hsl(from var(--accent) h 49% 46%) inset,
+					1px 0	hsl(from var(--accent) h 49% 46%) inset,
+					-1px 0	hsl(from var(--accent) h 49% 46%) inset,
+					0 2px	hsl(from var(--accent) h 76% 17%) inset,
+					2px 0	hsl(from var(--accent) h 76% 17%) inset,
+					-2px 0	hsl(from var(--accent) h 76% 17%) inset;
+	text-shadow:	0 0 2px rgb(from var(--accent) r g b / 25%);
+}
+
+#navtabs .active {
+	/* Make 2px taller and let that extra height overlap with above rows: */
+	margin-top:		-2px;
+	padding-top:	5px;
+	color:			var(--secondary);
+	background:		var(--bg1) var(--tab-aero);
+	box-shadow:		0 1px	var(--border) inset,
+					1px 0	var(--border) inset,
+					-1px 0	var(--border) inset;
 }
 
 /* CONTENT */
