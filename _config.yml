@@ -41,13 +41,18 @@ defaults:
     values:
       aero-icon: /media/resources/aerico/book.png
 future: true # Just in case
+kramdown:
+  auto_ids:          false
+  footnote_backlink: ^
 #plugins:
 #  - jemoji # Not using for now because image-based emoji sucks
 
 # SERVE
+webrick:
+  headers:
+      X-Clacks-Overhead: GNU Terry Pratchett
 
 # DATA
-
 # Expand upon/reiterate Jekyll's default exclude list:
 exclude:
   - .bundle/

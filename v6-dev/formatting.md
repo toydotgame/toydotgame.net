@@ -28,9 +28,11 @@ a different so-called "Aero window" icon than the standard `base` layout.
 
 Speaking of which, text can be formatted as _italic_, **bold**, ***bold
 italic***, <u>underlined</u>, ~~struck through~~, <small>small</small>,
-`monospaced`, or various combinations of the above. Markdown and HTML styles can
-even be **<u>combined</u>**, so long as all of the Markdown presentation is
-**outside**, and the HTML tags stay on the **inside**.<br>
+`monospaced`, <sup>supertext</sup>, <sub>subtext</sub>,
+<abbr title="Abbreviation text!">abbreviations</abbr>, or various combinations
+of the above. Markdown and HTML styles can even be **<u>combined</u>**, so long
+as all of the Markdown presentation is **outside**, and the HTML tags stay on
+the **inside**.<br>
 You can also specify a short line break (instead of a paragraph break) using the
 `<br>` tag, like this line has had done to it!
 <!-- And, of course, because Markdown is just HTML for dummiez, comments are
@@ -45,9 +47,13 @@ is an issue since HTML's `<small>` is an inline element (in contrast to `<p>`),
 but Jekyll _should_ fix it to be within a paragraph!</small>
 
 There's a reference here![^1] Hopefully there's a reference list at the bottom
-to explain it! References can also have any name.[^any-name]
+to explain it! References can also have any name.[^any-name] ← That one is
+called `any-name`, but you might have noticed in the display it's just
+automatically numbered for us! Awesome!
 
 [^1]: Definition for ref #1. I'm actually defined up where the in-line citation is, but I ended up here at the bottom of the page! An important thing to note is that literal newlines WILL break me (and thus you can't maintain the 80 cols manual wrapping in the markup alas)
+
+[^any-name]: `any-name`
 
 [Link to Google.com](https://google.com/)
 [Link to a destination you hopefully can't visit](https://)
@@ -170,9 +176,9 @@ don't)
 #### Heading 4
 ##### Heading 5
 ###### Heading 6
-Note that Kramdown produces slug `id` attributes for every heading you make. But
-if you want to manually specify an ID, you can append `` {#the-id-text}`` to the
-header's text, [as I did for Heading 3 above](#this-one)!
+I've disabled automatic ID generation for Markdown headings, but if you want to
+manually specify an ID, you can append `` {#the-id-text}`` to the header's text,
+[as I did for Heading 3 above](#this-one)!
 
 
 | Left aligned | Centre aligned | Right aligned | Default aligned |
@@ -235,3 +241,5 @@ this applies to the other MathJax "display" equation delimiters), there
 <u>must</u> be empty lines around the LaTeX block, such that Kramdown parses the
 equation block as its own block-level paragraph. **Otherwise, it will display
 inline.**
+
+<img class="fright" src="http://placecats.com/200/287" width="38%" />

@@ -311,11 +311,11 @@ nav h1 img {
 				);
 
 	margin-bottom:		-1px;
-	/* 4px hor. padding + 1/2px around for inset "borders:" */
+	/* 4px hor./1px ver. padding + 1/2px around for inset "borders:" */
 	padding:			3px 6px 2px 6px;
 	flex:				min-content;
 	overflow:			hidden;
-	color:				var(--text);
+	color:				var(--accent);
 	background:			var(--bg2) var(--tab-aero);
 	box-shadow:		0 0	0 1px	var(--border)	inset,
 						0 2px	var(--bg2)		inset,
@@ -327,7 +327,7 @@ nav h1 img {
 }
 
 #navtabs a:not(.active):hover {
-	color:			hsl(from var(--link) h calc(0.5*s) calc(l + 10));
+	color:			hsl(from var(--link) h calc(0.75*s) calc(l + 10));
 	background:		var(--bg2)
 					linear-gradient(
 						hsl(from var(--accent) h 83% 95% / 25%) 0,
@@ -349,7 +349,7 @@ nav h1 img {
 	/* Make 2px taller and let that extra height overlap with above rows: */
 	margin-top:		-2px;
 	padding-top:	5px;
-	color:			var(--secondary);
+	color:			var(--text);
 	background:		var(--bg1) var(--tab-aero);
 	box-shadow:		0 1px	var(--border) inset,
 					1px 0	var(--border) inset,
@@ -358,9 +358,12 @@ nav h1 img {
 
 /* CONTENT */
 h1, h2, h3, h4, h5, h6 {
+	margin-top:		14px; /* Same gap as the `p` spacing, where this collapses
+					         anyway. But for a non-`p` predecessor, make sure
+					         that we have a gap */
 	clear:			both;
 	color:			var(--accent);
-	font-family:	"EB Garamond", serif;
+	font-family:	"EB Garamond", "Twemoji", serif;
 }
 
 h1 { font-size: calc(var(--heading-size-multiplier)*2em); }
@@ -391,19 +394,110 @@ h4, h5, h6, .subtitle {
 	font-size:	smaller;
 }
 
-p:not(:last-child) { /* Jekyll turns most freestanding lines (even without text) into paragraphs
-                        (thankfully!) */
+/*
+ * Paragraph spacing: Jekyll (thankfully) turns almost everything into `<p>`s.
+ * The margin-top of .footnotes::before doesn't collapse right, hence we
+ * explicitly state not to add a paragraph space before it:
+ */
+p:not(:last-child):not(:has(+ hr, + .footnotes)) {
 	margin-bottom:	14px;
 }
 
-b:not(.subtitle b), strong {
+b:not(.subtitle b):not(a b), strong:not(a strong) {
 	color:			var(--accent);
 	font-weight:	800;
 }
 
+a {
+	color:	var(--link);
+}
+
+u, s, del {
+	text-decoration-color:	var(--accent);
+}
+
+sup, sub {
+	font-size:	0.75em;
+}
+
+abbr {
+	text-decoration:	dotted underline var(--accent);
+	cursor:				help;
+}
+
+small {
+	color:	var(--secondary);
+}
+
+code {
+	padding:			0 4px;
+	color:				var(--text);
+	background-color:	var(--bg1);
+	border:				1px solid rgb(from var(--secondary) r g b / 40%);
+		border-radius:	4px;
+}
+
+small code {
+	color:	var(--secondary);
+}
+
+/* Fix sup/sub from affecting this line's height: */
+sup {
+	vertical-align:	top;
+} sub {
+	vertical-align:	bottom;
+}
+
+.footnote::before {
+	content:	"[";
+} .footnote, .reversefootnote {
+	text-decoration:	none;
+} .footnote::after {
+	content:	"]";
+}
+
+/* CONTENT: Block elements */
+li::marker {
+	color:	var(--accent);
+}
+
+hr {
+	height:	3px;
+	margin:	12px 0;
+	border:	1px solid var(--accent);
+}
+
 code, pre { /* Jekyll's <pre>s contain <code> tags for the text, but better to
                be safe in case we ever want to manually type one in markup */
-	font-family:	"DejaVu Sans Mono", monospace;
+	font-family:	"DejaVu Sans Mono", "Twemoji", monospace;
+}
+
+.footnotes::before {
+	content: "Reference list";
+	display: block;
+	column-span: all; /* Heading full width of reflist */
+	
+	/* Copy all the styles that apply to normal `h2`s: */
+	color:			var(--accent);
+	font-family:	"EB Garamond", "Twemoji", serif;
+	font-size:		calc(var(--heading-size-multiplier)*1.5em);
+	font-weight:	bold; /* And also this initial value */
+	line-height:	calc(1em + 5px);
+	margin:			14px 0 5px 0;
+	border-bottom:	1px solid var(--accent);
+	text-shadow:	0 0 4px #000c;
+}
+
+.footnotes {
+	clear:			both;
+	column-count:	2;
+}
+
+.footnotes li {
+	margin-left:	1.5em; /* Looks fine for 1–99 refs */
+	padding-bottom:	7px;
+	font-size:		small;
+	break-inside:	avoid; /* Don't chop items across columns */
 }
 
 /* FOOTER */
