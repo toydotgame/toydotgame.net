@@ -20,6 +20,37 @@ aero-icon: /media/resources/aerico/book.png # Passed to the CSS; defaults to
                                             # book.png for _posts
 ---
 
+## Inline styles
+_Italic 1_ *Italic 2* <i>Italic 3</i><br>
+**Bold 1** __Bold 2__ <b>Bold 3</b><br>
+~~Strikethrough 1~~ <s>Strikethrough 2</s><br>
+`Monospace 1` ``Monospace 2`` <code>Monospace 3</code><br>
+<u>Underline</u><br>
+[Link]() [External link](){:.external}
+[External link w/ `.noexternal`](){:.noexternal}<br>
+<abbr>Abbreviation</abbr><br>
+<small>Small</small><br>
+<sup>Superscript</sup> <sub>Subscript</sub> Reference[^1]<br>
+
+### `Monospace` combinations
+_`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code &gt; i</i></code>
+
+**`strong > code`** <code><strong>code &gt; strong</strong></code>
+<b>`b > code`</b> <code><b>code &gt; b</b></code>
+
+~~`del > code`~~ <code><del>code &gt; del</del></code>
+<!-- Jekyll standalone <s> tags aren't <p>-wrapped for whatever reason: -->
+<span><s><code>s &gt; code</code></s></span> <code><s>code &gt; s</s></code>
+
+<u><code>u &gt; code</code></u> <code><u>code &gt; u</u></code>
+
+<abbr><code>abbr &gt; code</code></abbr> <code><abbr>code &gt; abbr</abbr></code>
+
+<small><code>small &gt; code</code></small> <code><small>code &gt; small</small></code> <small>(larger line-height intended for latter example)</small>
+
+
+<hr>
+
 This is the markdown contents for this file. The navigation and footer elements
 are defined as in their respective `_includes/` documents. By default, all pages
 use the `base` layout—except for pages in the `_posts/` directory, which use the
@@ -55,8 +86,15 @@ automatically numbered for us! Awesome!
 
 [^any-name]: `any-name`
 
+`Monospaced` text should interact nicely with **`bold`**,
+<code><u>underlined</u></code>, ~~`struck through`~~, _`italicised`_, and
+<abbr>`abbreviated`</abbr> text.
+
 [Link to Google.com](https://google.com/)
 [Link to a destination you hopefully can't visit](https://)
+
+[This link is external, but has the class `noexternal` and thus doesn't produce
+an icon at the end!](https://google.com/){:.noexternal}
 
 This line has a citation that has already had its definition above![^1]
 
@@ -80,6 +118,9 @@ Mauris lacinia, enim quis vulputate ultricies, nibh nibh pellentesque neque, fin
 image to some paragraph!** Also note that the padding on images and figures
 will constitute 2% of whatever percentage width you're specifying here in the
 markup.
+
+For whatever reason, if you want to **hide something**, wrap it in some kind of
+span (e.g. `*` italics), then append the span IAL `{:.hidden}`.
 
 ## More block-level stuff
 * Unordered list
@@ -188,6 +229,7 @@ manually specify an ID, you can append `` {#the-id-text}`` to the header's text,
 
 Also, a table that's small shouldn't fill the whole page's width unless the
 viewport is THAT small:
+
 | A | B |
 | - | - |
 | C | D |

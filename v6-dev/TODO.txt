@@ -5,5 +5,4 @@
 * All the redesign stuff too lol
 * Migrate articles over (eek!)
 * MathJax button
-* GFM emoji stuff?
-* CSS for link underline and how that interacts with monospace
+* Printer/reading mode display styles if thats awesome to implement
