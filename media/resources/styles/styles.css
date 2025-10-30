@@ -549,7 +549,15 @@ article img:not([width]) {
 figure {
 	/* Copy of `article img`'s behaviour: */
 	max-width:	100%;
-	padding:	8px; /* Similar display to `article img:not(figure img)` */
+	padding:	8px 16px; /* Similar display to `article img:not(figure img)` */
+}
+
+figure.fleft {
+	padding-left:	8px;
+}
+
+figure.fright {
+	padding-right:	8px;
 }
 
 /* Once the viewport gets itty bitty, we start disrespecting intended widths: */
@@ -593,8 +601,51 @@ table, mjx-container {
 	overflow-x:	auto;
 }
 
+ol, ul, dl {
+	display:		table; /* Plays nicer with floats (`inline-block`-like),
+					          whilst also forcing a `block`-like flow */
+	padding-left:	1em; /* Bodge but fine */
+}
+
 li::marker {
 	color:	var(--accent);
+}
+
+input.task-list-item-checkbox {
+	/* Instead of fighting to properly remove the ::marker, just cover it: */
+	position:		relative;
+		left:	-1em;
+	margin-right:	-0.5em; /* Adjust so text indent is right*/
+
+	appearance:		none; /* Remove browser styles */
+	width:			1em;
+	height:			1em;
+	vertical-align:	middle;
+	cursor:			not-allowed;
+
+	--tint:				var(--bg1);
+	background-color:	hsl(from var(--tint) h s 25%);
+	box-shadow:			0 0 0 1px	#e8e8e82b,
+						0 0 0 2px	#e8e8e859,
+						0 0 0 3px	#e8e8e842,
+						2px 2px 0.1em	#e8e8e867 inset,
+						-2px -2px 0.1em	#e8e8e815 inset,
+						0 0 0 3px hsl(from var(--tint) h s 25%);
+}
+
+input.task-list-item-checkbox[checked="checked"] {
+	--tint:	var(--accent);
+}
+
+input.task-list-item-checkbox[checked="checked"]::before {
+	content:	"";
+
+	display:			block;
+	width:				100%;
+	height:				100%;
+	background-color:	var(--text);
+	clip-path:			path("M2 7.75c1 0 .5 0 2 1.5 1 1 .5 1 2-1l4-6c1-2 2-1 2-1 1 1 0 2-.5 3L6 12.75s-1 1-2 0L1 9.5C1 7.75 2 7.75 2 7.75Z");
+	filter:				drop-shadow(1px 1px 2px #000);
 }
 
 hr {

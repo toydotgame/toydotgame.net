@@ -48,6 +48,23 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
 
 <small><code>small &gt; code</code></small> <code><small>code &gt; small</small></code> <small>(larger line-height intended for latter example)</small>
 
+## Block styles
+<img class="fleft" src="http://placecats.com/200/287" width="50%" />
+<img class="fright" src="http://placecats.com/200/287" width="50%" />
+
+* ul
+* ul
+  * sub
+
+1. ol
+2. ol
+   1. sub
+
+- [ ] unchecked li
+  - [x] sub
+  - foo
+- [x] checked li
+
 <hr>
 
 This is the markdown contents for this file. The navigation and footer elements
