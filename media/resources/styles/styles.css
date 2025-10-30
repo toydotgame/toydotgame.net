@@ -71,7 +71,7 @@
 }
 
 :root {
-	--accent:		#b29abb;
+	--accent:		#ac94b5;
 	--secondary:	#c8c8c8;
 	--link:			#5865f2;
 	--text:			#fff;
@@ -316,11 +316,12 @@ nav h1 img {
 
 #navtabs a {
 	--border:	hsl(from var(--accent) h 5% 56%);
+	--tab-tint:	#fff;
 	--tab-aero:	linear-gradient(
-					#f2f2f220 0,
-					#ebebeb20 33.3%,
-					#dddddd20 33.3%,
-					#cfcfcf20 100%
+					rgb(from var(--tab-tint) r g b / 18.8%) 0,
+					rgb(from var(--tab-tint) r g b / 13.3%) 34.8%,
+					rgb(from var(--tab-tint) r g b / 07.8%) 39.1%,
+					rgb(from var(--tab-tint) r g b / 05.0%) 100%
 				);
 
 	margin-bottom:		-1px;
@@ -340,18 +341,12 @@ nav h1 img {
 }
 
 #navtabs a:not(.active):hover {
-	color:			hsl(from var(--link) h calc(0.75*s) calc(l + 10));
-	background:		var(--bg2)
-					linear-gradient(
-						hsl(from var(--accent) h 83% 95% / 25%) 0,
-						hsl(from var(--accent) h 85% 92% / 25%) 33.3%,
-						hsl(from var(--accent) h 94% 87% / 25%) 33.3%,
-						hsl(from var(--accent) h 80% 81% / 25%) 100%
-					);
+	color:			hsl(from var(--link) h calc(0.75*s) calc(l + 5));
+	background:		hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
 	box-shadow:		0 -1px	var(--border) inset,
-					0 1px	hsl(from var(--accent) h 49% 46%) inset,
-					1px 0	hsl(from var(--accent) h 49% 46%) inset,
-					-1px 0	hsl(from var(--accent) h 49% 46%) inset,
+					0 1px	hsl(from var(--accent) h s 46%) inset,
+					1px 0	hsl(from var(--accent) h s 46%) inset,
+					-1px 0	hsl(from var(--accent) h s 46%) inset,
 					0 2px	hsl(from var(--accent) h 76% 17%) inset,
 					2px 0	hsl(from var(--accent) h 76% 17%) inset,
 					-2px 0	hsl(from var(--accent) h 76% 17%) inset;
@@ -363,7 +358,7 @@ nav h1 img {
 	margin-top:		-2px;
 	padding-top:	5px;
 	color:			var(--text);
-	background:		var(--bg1) var(--tab-aero);
+	background:		var(--bg2);
 	box-shadow:		0 1px	var(--border) inset,
 					1px 0	var(--border) inset,
 					-1px 0	var(--border) inset;
@@ -524,9 +519,15 @@ article img {
 	 */
 	display:		block;
 	max-width:		100%;
-	border:			2px outset var(--accent);
 	border-radius:	8px;
+	outline:		2px outset var(--accent);
 	cursor:			zoom-in;
+}
+
+article img:not(figure img) {
+	padding:		8px;
+	border-radius:	16px;
+	outline-offset:	-8px;
 }
 
 article img:not([width]) {
@@ -534,8 +535,7 @@ article img:not([width]) {
 }
 
 .fleft {
-	float:			left;
-	margin-right:	8px;
+	float:	left;
 }
 
 .fcenter {
@@ -543,32 +543,19 @@ article img:not([width]) {
 }
 
 .fright {
-	float:			right;
-	margin-left:	8px;
-}
-
-pre {
-	max-height:			75svh; /* Any more lines and you get a vert. scrollbar */
-	padding:			8px;
-	overflow:			auto; /* Implies max-width: 100% */
-	background-color:	var(--bg1);
-	border:				2px outset var(--accent); /* Same as `article img` */
-		border-radius:	8px;
+	float:	right;
 }
 
 figure {
 	/* Copy of `article img`'s behaviour: */
 	max-width:	100%;
+	padding:	8px; /* Similar display to `article img:not(figure img)` */
 }
 
 /* Once the viewport gets itty bitty, we start disrespecting intended widths: */
 @media only screen and (max-width: 400px) {
 	figure, article img {
 		min-width:	50%;
-	}
-
-	.fleft, .fright {
-		min-width:		calc(50% - 8px); /* More accurate given floats' margins */
 	}
 
 	figcaption {
@@ -586,11 +573,20 @@ figure img {
 }
 
 figcaption {
-	margin:			8px 0;
+	margin-top:		8px;
 	text-align:		center;
 	font-size:		smaller;
 	color:			var(--secondary);
 	line-height:	1.125;
+}
+
+pre {
+	max-height:			75svh; /* Any more lines and you get a vert. scrollbar */
+	padding:			8px;
+	overflow:			auto; /* Implies max-width: 100% */
+	background-color:	var(--bg1);
+	border:				2px outset var(--accent); /* Same as `article img` */
+		border-radius:	8px;
 }
 
 table, mjx-container {

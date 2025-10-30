@@ -48,7 +48,6 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
 
 <small><code>small &gt; code</code></small> <code><small>code &gt; small</small></code> <small>(larger line-height intended for latter example)</small>
 
-
 <hr>
 
 This is the markdown contents for this file. The navigation and footer elements
