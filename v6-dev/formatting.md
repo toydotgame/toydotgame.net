@@ -26,7 +26,7 @@ _Italic 1_ *Italic 2* <i>Italic 3</i><br>
 ~~Strikethrough 1~~ <s>Strikethrough 2</s><br>
 `Monospace 1` ``Monospace 2`` <code>Monospace 3</code><br>
 <u>Underline</u><br>
-[Link]() [External link](){:.external}
+[Internal link]() [External link](){:.external}
 [External link w/ `.noexternal`](){:.noexternal}<br>
 <abbr>Abbreviation</abbr><br>
 <small>Small</small><br>
@@ -52,11 +52,27 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
 <img class="fleft" src="http://placecats.com/200/287" width="50%" />
 <img class="fright" src="http://placecats.com/200/287" width="50%" />
 
+<figure class="fright" style="width:35%">
+	<img src="http://placecats.com/200/287" />
+	<figcaption>This image is floated to one side with a custom width. You can float left, centre, or right. Or leave <code>width</code> empty for a full-width image!</figcaption>
+</figure>
+
 * ul
+  * ul 2
+    * ul 3
+      * ul 4
+        * ul 5
+          * ul 6
+            * ul 7+
 * ul
   * sub
 
 1. ol
+   1. ol 2
+      1. ol 3
+         1. ol 4
+            1. ol 5
+               1. ol 6+
 2. ol
    1. sub
 
@@ -64,6 +80,23 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
   - [x] sub
   - foo
 - [x] checked li
+
+```java
+public static void main(String[] args) {
+	int x = 1;
+	int[] y = [1, 2, 3];
+	String z = "literal";
+}
+
+public static void foo() {
+	return;
+}
+
+public static void foo() {
+	foo();
+	return;
+}
+```
 
 <hr>
 

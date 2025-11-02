@@ -1,0 +1,41 @@
+/*
+ * AUTHOR: toydotgame
+ * CREATED: 2025-10-31
+ * Rogue/Pygments styles. Token ID list from:
+ * https://github.com/rouge-ruby/rouge/wiki/List-of-tokens
+ * Eclipse Dark syntax colours taken from:
+ * https://github.com/lunacookies/eclipse/blob/master/themes/Eclipse%20Dark-color-theme.json
+ */
+
+.highlight {
+	background-color:	#2e2e2e;
+	color:				#dae8f7; /* Text - Any type of text data */
+
+	.k	{ color: #d3721e; }	/* Keyword - Any keyword */
+	.kc	{ color: #d3721e; }	/* Keyword.Constant - Keywords that are constants */
+	.kd	{ color: #d3721e; }	/* Keyword.Declaration - Keywords used for variable declaration (e.g. var in javascript) */
+	.kt	{ color: #d3721e; }	/* Keyword.Type - Keywords wich refer to a type id (such as int in C) */
+	.n	{ color: #89afed; }	/* Name - Variable/function names */
+	.na	{ color: #a2abb5;		/* Name.Attribute - Attributes (in HTML for instance) */
+		  font-style: italic; }
+	.nc	{ color: #4a99c3; }	/* Name.Class - For class declaration */
+	.no	{ color: #81dcff;		/* Name.Constant - For constants */
+		  font-weight: bold;
+		  font-style: italic; }
+	.nd	{ color: #d3721e; }	/* Name.Decorator - For decorators in languages such as Python or Java */
+	.ni	{ color: #d3721e; }	/* Name.Entity - Token for entitites such as &nbsp; in HTML */
+	.nf	{ color: #a1e645;		/* Name.Function - Function names */
+		  font-style: italic; }
+	.py	{ color: #77e0f2; }	/* Name.Property - Token for properties */
+	.nl	{ color: #11ad32;		/* Name.Label - For label names */
+		  font-style: italic; }
+	.nv	{ color: #e8eb9c; }	/* Name.Variable - Token for variables */
+	.vc	{ color: #81dcff;		/* Name.Variable.Class - Token for class variables (e.g. @@var in Ruby) */
+		  font-weight: bold;
+		  font-style: italic; }
+	.s	{ color: #61c3aa; }	/* Literal.String - String literals */
+	.m, .mi	{ color: #4a99c3; }	/* Literal.Number - Any number literal (if not further defined) */
+	.o	{ color: #dae8f7; }	/* Operator - Operators (commonly +, -, /, *) */
+	.gh	{ color: #61c3aa; }	/* Generic.Heading - Token value as a headline */
+	.go	{ color: #e8eb9c; }	/* Generic.Output - Marked as a program output */
+}

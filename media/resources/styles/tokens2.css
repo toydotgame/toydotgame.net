@@ -1,0 +1,72 @@
+.	{ color: ; } /* Text - Any type of text data */
+.w 	{ color: ; } /* Text.Whitespace - Specially highlighted whitespace */
+.err 	{ color: ; } /* Error - Lexer errors */
+.x 	{ color: ; } /* Other - Token for data not matched by a parser (e.g. HTML markup in PHP code) */
+.k 	{ color: ; } /* Keyword - Any keyword */
+.kc 	{ color: ; } /* Keyword.Constant - Keywords that are constants */
+.kd 	{ color: ; } /* Keyword.Declaration - Keywords used for variable declaration (e.g. var in javascript) */
+.kn 	{ color: ; } /* Keyword.Namespace - Keywords used for namespace declarations */
+.kp 	{ color: ; } /* Keyword.Pseudo - Keywords that aren't really keywords */
+.kr 	{ color: ; } /* Keyword.Reserved - Keywords which are reserved (such as end in Ruby) */
+.kt 	{ color: ; } /* Keyword.Type - Keywords wich refer to a type id (such as int in C) */
+.n 	{ color: ; } /* Name - Variable/function names */
+.na 	{ color: ; } /* Name.Attribute - Attributes (in HTML for instance) */
+.nb 	{ color: ; } /* Name.Builtin - Builtin names which are available in the global namespace */
+.bp 	{ color: ; } /* Name.Builtin.Pseudo - Builtin names that are implicit (such as self in Ruby) */
+.nc 	{ color: ; } /* Name.Class - For class declaration */
+.no 	{ color: ; } /* Name.Constant - For constants */
+.nd 	{ color: ; } /* Name.Decorator - For decorators in languages such as Python or Java */
+.ni 	{ color: ; } /* Name.Entity - Token for entitites such as &nbsp; in HTML */
+.ne 	{ color: ; } /* Name.Exception - Exceptions and errors (e.g. ArgumentError in Ruby) */
+.nf 	{ color: ; } /* Name.Function - Function names */
+.py 	{ color: ; } /* Name.Property - Token for properties */
+.nl 	{ color: ; } /* Name.Label - For label names */
+.nn 	{ color: ; } /* Name.Namespace - Token for namespaces */
+.nx 	{ color: ; } /* Name.Other - For other names */
+.nt 	{ color: ; } /* Name.Tag - Tag mainly for markup such as XML or HTML */
+.nv 	{ color: ; } /* Name.Variable - Token for variables */
+.vc 	{ color: ; } /* Name.Variable.Class - Token for class variables (e.g. @@var in Ruby) */
+.vg 	{ color: ; } /* Name.Variable.Global - For global variables (such as $LOAD_PATH in Ruby) */
+.vi 	{ color: ; } /* Name.Variable.Instance - Token for instance variables (such as @var in Ruby) */
+.l 	{ color: ; } /* Literal - Any literal (if not further defined) */
+.ld 	{ color: ; } /* Literal.Date - Date literals */
+.s 	{ color: ; } /* Literal.String - String literals */
+.sb 	{ color: ; } /* Literal.String.Backtick - String enclosed in backticks */
+.sc 	{ color: ; } /* Literal.String.Char - Token type for single characters */
+.sd 	{ color: ; } /* Literal.String.Doc - Documentation strings (such as in Python) */
+.s2 	{ color: ; } /* Literal.String.Double - Double quoted strings */
+.se 	{ color: ; } /* Literal.String.Escape - Escaped sequences in strings */
+.sh 	{ color: ; } /* Literal.String.Heredoc - For "heredoc" strings (e.g. in Ruby) */
+.si 	{ color: ; } /* Literal.String.Interpol - For interpoled part in strings (e.g. in Ruby) */
+.sx 	{ color: ; } /* Literal.String.Other - Token type for any other strings (for example %q{foo} string constructs in Ruby) */
+.sr 	{ color: ; } /* Literal.String.Regex - Regular expressions literals */
+.s1 	{ color: ; } /* Literal.String.Single - Single quoted strings */
+.ss 	{ color: ; } /* Literal.String.Symbol - Symbols (such as :foo in Ruby) */
+.m 	{ color: ; } /* Literal.Number - Any number literal (if not further defined) */
+.mf 	{ color: ; } /* Literal.Number.Float - Float numbers */
+.mh 	{ color: ; } /* Literal.Number.Hex - Hexadecimal numbers */
+.mi 	{ color: ; } /* Literal.Number.Integer - Integer literals */
+.il 	{ color: ; } /* Literal.Number.Integer.Long - Long interger literals */
+.mo 	{ color: ; } /* Literal.Number.Oct - Octal literals */
+.mx 	{ color: ; } /* Literal.Number.Hex - Hexadecimal literals */
+.mb 	{ color: ; } /* Literal.Number.Bin - Binary literals */
+.o 	{ color: ; } /* Operator - Operators (commonly +, -, /, *) */
+.ow 	{ color: ; } /* Operator.Word - Word operators (e.g. and) */
+.p 	{ color: ; } /* Punctuation - Punctuation which is not an operator */
+.c 	{ color: ; } /* Comment - Single ligne comments */
+.cm 	{ color: ; } /* Comment.Multiline - Mutliline comments */
+.cp 	{ color: ; } /* Comment.Preproc - Preprocessor comments such as <% %> in ERb */
+.c1 	{ color: ; } /* Comment.Single - Comments that end at the end of the line */
+.cs 	{ color: ; } /* Comment.Special - Special data in comments such as @license in Javadoc */
+.g 	{ color: ; } /* Generic - Unstyled token */
+.gd 	{ color: ; } /* Generic.Deleted - Token value as deleted */
+.ge 	{ color: ; } /* Generic.Emph - Token value as emphasized */
+.gr 	{ color: ; } /* Generic.Error - Token value as an error message */
+.gh 	{ color: ; } /* Generic.Heading - Token value as a headline */
+.gi 	{ color: ; } /* Generic.Inserted - Token value as inserted */
+.go 	{ color: ; } /* Generic.Output - Marked as a program output */
+.gp 	{ color: ; } /* Generic.Prompt - Marked as a command prompt */
+.gs 	{ color: ; } /* Generic.Strong - Mark the token value as bold (for rst lexer) */
+.gu 	{ color: ; } /* Generic.Subheading - Marked as a subheadline */
+.gt 	{ color: ; } /* Generic.Traceback - Mark the token as a part of an error traceback */
+.gl 	{ color: ; } /* Generic.Lineno - Line numbers */
