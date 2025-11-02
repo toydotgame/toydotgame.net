@@ -204,7 +204,7 @@ body > *::before { /* Decoration for sections */
 						4px 4px 12px #000c; /* Aero window shadow */
 }
 
-nav::before {
+header::before {
 	width:		calc(100% + 4px);
 	left:		-2px;
 	text-align:	left;
@@ -232,7 +232,7 @@ body > *::after { /* "Close button" decoration for sections */
 	opacity:			65%;
 }
 
-nav::after {
+header::after {
 	right:	6px;
 }
 
@@ -268,11 +268,12 @@ nav::after {
  */
 
 /* NAV */
-nav {
+header {
 	width:			calc(100% + 12px);
 		max-width:	812px;
 	padding:		8px 14px;
-	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%), rgba(from var(--bg1) r g b / 50%)) fixed;
+	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%),
+					rgba(from var(--bg1) r g b / 50%)) fixed;
 	border-radius:	0;
 	box-shadow:		0 -1px	#f0f0f080,
 					0 -2px	#0008,
@@ -283,7 +284,7 @@ nav {
 	user-select:	none;
 }
 
-nav h1 {
+header h1 {
 	min-height:		50px;
 	/* Leave line-height unspecified such that img inline can inherit auto 1lh */
 	font-size:		min(48px, 10cqw); /* 10cqw is arbitrary as hell */
@@ -293,7 +294,7 @@ nav h1 {
 	filter:			drop-shadow(2px 2px 4px #0008);
 }
 
-nav h1 img {
+header h1 img {
 	height:				1lh;
 	margin-right:		0.25em;
 	vertical-align: 	top; /* Since we match the image and text's heights */
@@ -302,12 +303,12 @@ nav h1 img {
 }
 
 @media only screen and (max-width: 304px) {
-	nav h1 img {
+	header h1 img {
 		display:	none;
 	}
 }
 
-#navtabs {
+nav {
 	display:		flex;
 		flex-wrap:	wrap;
 	/* Margin below means width is 100% of what we "expect:" */
@@ -316,7 +317,7 @@ nav h1 img {
 	overflow:		hidden;
 }
 
-#navtabs a {
+nav a {
 	--border:	hsl(from var(--accent) h 5% 56%);
 	--tab-tint:	#fff;
 	--tab-aero:	linear-gradient(
@@ -338,11 +339,11 @@ nav h1 img {
 						2px 0	var(--bg2)		inset,
 						-2px 0	var(--bg2)		inset;
 	white-space:		nowrap;
-	text-align:			left; /* Revert `nav` style */
+	text-align:			left; /* Revert `header` style */
 	text-decoration:	none;
 }
 
-#navtabs a:not(.active):hover {
+nav a:not(.active):hover {
 	color:			hsl(from var(--link) h calc(0.75*s) calc(l + 5));
 	background:		hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
 	box-shadow:		0 -1px	var(--border) inset,
@@ -355,7 +356,7 @@ nav h1 img {
 	text-shadow:	0 0 2px rgb(from var(--accent) r g b / 25%);
 }
 
-#navtabs .active {
+nav .active {
 	/* Make 2px taller and let that extra height overlap with above rows: */
 	margin-top:		-2px;
 	padding-top:	5px;
@@ -387,7 +388,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family:	"EB Garamond", "Twemoji", serif;
 }
 
-article h1:first-child, nav h1 {
+article h1:first-child, header h1 {
 	margin-top:	unset;
 }
 
@@ -395,7 +396,7 @@ article h1 {
 	font-style:	italic;
 }
 
-article h1, h2 {
+article h1, article h2 {
 	/* Make line height exclude descent (1em) then add 3px gap between text and underline: */
 	line-height:	calc(1em + 5px);
 	margin-bottom:	5px;
@@ -413,17 +414,19 @@ h4, h5, h6, .subtitle {
 }
 
 /*
- * Paragraph spacing: Jekyll (thankfully) turns almost everything into `<p>`s.
- * A notable exception is `pre`.
- * The margin-top of .footnotes::before doesn't collapse right, hence we
- * explicitly state not to add a paragraph space before it:
+ * Paragraph spacing: Jekyll (thankfully) wraps things like images etc in <p>
+ * tags. Exceptions include: <pre>, <ol>, <ul>, <dl>; I chose not to add spacing
+ * to lists because they often may be written as a part of a paragraph rather
+ * than their own block. <figure>s get a margin top to align with any <p>s
+ * wrapping around it (and their margin-top).
  */
-article p, pre {
-	margin-bottom:	0.5lh; /* Not using rlh because I want normal p spacing to
+article p, pre, figure, table {
+	margin-top:	0.5lh; /* Not using rlh because I want normal p spacing to
 					          scale with text */
 }
-article > :last-child, article :has(+ hr, + .footnotes) {
-	margin-bottom:	unset;
+/* Use :is() for a small specificity boost: */
+:is(article h1, h2) + :where(article p, pre), .footnotes p {
+	margin-top:	unset;
 }
 
 b:not(.subtitle b):not(a b), strong:not(a strong) {
@@ -459,6 +462,13 @@ sup, sub {
 	font-size:	0.65em;
 }
 
+/* Fix sup/sub from affecting this line's height: */
+sup {
+	vertical-align:	top;
+} sub {
+	vertical-align:	bottom;
+}
+
 u, s, del, abbr {
 	text-decoration-thickness:	1.5px; /* Seems to be the default, but not for everything */
 	text-decoration-color:		var(--accent);
@@ -484,9 +494,9 @@ code, pre { /* Jekyll's <pre>s contain <code> tags for the text, but better to
 }
 
 code:not(pre code) { /* Thanks Jekyll for putting <code> in <pre>s when not needed */
-	padding:				0 4px;
+	padding:	0 4px;
 	background-color:	var(--bg1);
-	border:					1px solid rgb(from var(--secondary) r g b / 40%);
+	border:		1px solid rgb(from var(--secondary) r g b / 40%);
 		border-radius:	4px;
 }
 
@@ -494,13 +504,6 @@ code:not(pre code), u:has(code), abbr:has(code) {
 	text-underline-offset:	3.5px; /* Add 4px padding from `code` style - 1.5px
 							          text-decoration-thickness + 1px browser
 							          idk */
-}
-
-/* Fix sup/sub from affecting this line's height: */
-sup {
-	vertical-align:	top;
-} sub {
-	vertical-align:	bottom;
 }
 
 .footnote::before {
@@ -528,7 +531,7 @@ article img {
 
 article img:not(figure img) {
 	padding:		8px;
-	border-radius:	16px;
+	border-radius:	16px; /* _Looks_ like 8px given border-radius is applied to padding */
 	outline-offset:	-8px;
 }
 
@@ -590,23 +593,84 @@ figcaption {
 	line-height:	1.125;
 }
 
-pre {
-	max-height:			75svh; /* Any more lines and you get a vert. scrollbar */
+.highlight, pre {
+	clear:	both;
+}
+
+pre { /* syntax.css' specificity will override the properties here if applicable */
+	max-height:			75vh; /* Any more lines and you get a vert. scrollbar */
 	padding:			8px;
 	overflow:			auto; /* Implies max-width: 100% */
-	background-color:	var(--bg1);
+	background:			linear-gradient(#0000 50%, #0001 50%)
+							8px 8px / 1px 2lh local; /* 1px width is arbitrary */
+		background-color:	var(--bg1);
 	border:				2px outset var(--accent); /* Same as `article img` */
 		border-radius:	8px;
+	tab-size:			4;
 }
 
 table, mjx-container {
 	overflow-x:	auto;
 }
 
+/*table { /* Vaguely hacky */
+/*	display: inline-block; /* Dynamic width, like `display: table`, but `block` enough to allow setting an overflow */
+/*	line-height: initial;
+}
+
+table thead, table tbody {
+	display: table;
+	width: 100%;
+}
+*/
+
+table {
+	display:	inline-block; /* Allow `overflow: auto` whilst ensuring columns
+				                 span to fill the table's full width */
+	max-width:	100%;
+	word-break:	normal; /* Prevent above-defined default that allows breaking
+				           words. We have the horizontal real estate */
+}
+
+table + table {
+	margin-top:	0.25lh; /* -0.25lh (relative to normal) that magically appears */
+}
+
+table, th, td {
+	border:		1px solid var(--accent);
+}
+
+th, td {
+	padding:	0.1em 0.4em;
+}
+
+th {
+	text-align:			center;
+	background-color:	rgb(from var(--accent) r g b / 40%);
+}
+
+th[colspan] {
+	font-size:		calc(var(--heading-size-multiplier)*1.17em); /* h3 size */
+	font-family:	"EB Garamond", "Twemoji", serif;
+}
+
+tr:nth-child(even):not(:has(th)) {
+	background-color:	rgb(from var(--accent) r g b / 10%);
+}
+
+.tnum {
+	text-align: right;
+	font-family: "DejaVu Sans Mono", "Twemoji", monospace;
+}
+
 ol, ul, dl {
 	display:		table; /* Plays nicer with floats (`inline-block`-like),
 					          whilst also forcing a `block`-like flow */
 	padding-left:	1em; /* Bodge but fine */
+}
+
+.task-list {
+	list-style-type:	none;
 }
 
 li::marker {
@@ -620,6 +684,7 @@ input.task-list-item-checkbox {
 	margin-right:	-0.5em; /* Adjust so text indent is right*/
 
 	appearance:		none; /* Remove browser styles */
+		border-radius:	0; /* Of course Safari doesn't respect it though */
 	width:			12px; /* SVG in ::before will need updating if size changes */
 	height:			12px;
 	vertical-align:	middle;
@@ -637,7 +702,8 @@ input.task-list-item-checkbox {
 
 /* Make non-`task-list-item` `li`s' text align with checkbox'ed siblings: */
 li.task-list-item:not(:has(> .task-list-item-checkbox)) {
-	padding-left:	0.35em;
+	padding-left:		0.35em;
+	list-style-type:	"⁃";
 }
 
 input.task-list-item-checkbox[checked="checked"] {
@@ -655,16 +721,29 @@ input.task-list-item-checkbox[checked="checked"]::before {
 	filter:				drop-shadow(1px 1px 2px #000);
 }
 
-ol ol				{ list-style-type: lower-alpha; }
-ol ol ol			{ list-style-type: lower-roman; }
-ol ol ol ol			{ list-style-type: upper-alpha; }
-ol ol ol ol ol		{ list-style-type: upper-roman; }
-ol ol ol ol ol ol	{ list-style-type: decimal; } /* Unset for any more */
-
-ul ul ul ul				{ list-style-type: "⁃  "; }
-ul ul ul ul ul			{ list-style-type: "□  "; }
-ul ul ul ul ul ul		{ list-style-type: "‣  "; }
-ul ul ul ul ul ul ul	{ list-style-type: disc; } /* Unset for any more */
+/*
+ * List levels: We specify using `>` because I want this cycle to reset if you
+ * embedded an <ol> in an <ul>, and vice versa.
+ */
+ol > li > ol						{ list-style-type: lower-alpha; }
+ol > li > ol > li > ol				{ list-style-type: lower-roman; }
+ol > li > ol > li > ol
+	> li > ol						{ list-style-type: upper-alpha; }
+ol > li > ol > li > ol
+	> li > ol > li > ol				{ list-style-type: upper-roman; }
+ol > li > ol > li > ol
+	> li > ol > li > ol > li > ol	{ list-style-type: decimal; } /* Unset for any more */
+/* Browsers do the first 3 levels of <ul>s: */
+ul > li > ul > li > ul
+	> li > ul			{ list-style-type: "⁃  "; }
+ul > li > ul > li > ul
+	> li > ul > li > ul	{ list-style-type: "□  "; }
+ul > li > ul > li > ul
+	> li > ul > li > ul
+	> li > ul			{ list-style-type: "‣  "; }
+ul > li > ul > li > ul
+	> li > ul > li > ul
+	> li > ul > li > ul	{ list-style-type: disc; } /* Unset for any more */
 
 hr {
 	clear:	both;

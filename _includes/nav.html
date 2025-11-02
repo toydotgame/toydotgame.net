@@ -5,10 +5,10 @@
 	doesn't play nice with them visually.
 {% endcomment %}
 
-<nav data-aero-title="Navigation" style="--aero-icon:url('/media/resources/aerico/globe.png')">
+<header data-aero-title="Navigation" style="--aero-icon:url('/media/resources/aerico/globe.png')">
 	<h1><img src="/media/resources/profile.png">toy&#x200B;dot&#x200B;game</h1>
 
-	<div id="navtabs">
+	<nav>
 		{% assign urlFrags = page.url | url_decode | split: "." %}
 		{% if urlFrags[-1] == "html" %}
 			{% assign decodedUrl = urlFrags | slice:0,urlFrags.size-1 | join:"" %}
@@ -25,5 +25,5 @@
 		{% for i in navItems %}
 			<a {% if decodedUrl == i.path %}class="active"{% else %}href="{{ i.path }}"{% endif %}>{{ i.name }}</a>
 		{% endfor %}
-	</div>
-</nav>
+	</nav>
+</header>

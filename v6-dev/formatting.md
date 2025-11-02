@@ -64,8 +64,6 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
         * ul 5
           * ul 6
             * ul 7+
-* ul
-  * sub
 
 1. ol
    1. ol 2
@@ -73,30 +71,74 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
          1. ol 4
             1. ol 5
                1. ol 6+
-2. ol
-   1. sub
 
 - [ ] unchecked li
   - [x] sub
-  - foo
+  - ul
 - [x] checked li
 
 ```java
-public static void main(String[] args) {
-	int x = 1;
-	int[] y = [1, 2, 3];
-	String z = "literal";
-}
+package com.example.foo.bar;
+import java.Math;
 
-public static void foo() {
-	return;
-}
+public class Main {
+	public static void main(String[] args) {
+		int x = 1;
+		int[] y = [1, 2, 3];
+		String z = "literal";
+	}
 
-public static void foo() {
-	foo();
-	return;
+	public static void foo() {
+		// _Hopefully_ this comment line is _so long_ that it will cause a horizontal overflow on at least _most_ displays idk. You better scroll.
+		return;
+	}
+
+	public static void foo() {
+		foo();
+		return;
+	}
+
+	public int bar(String x) {
+		return this.qux();
+	}
+	// Freestanding single-line comment
+	/*
+	 * Multi-line comment
+	 */
+	public int qux() {
+		return 2;
+	}
 }
 ```
+
+## h2
+* <p>foo</p>
+* bar
+
+| A | B |
+| - | - |
+| C | D |
+
+| E | F |
+| - | - |
+| G | H |
+
+| Markdown | Table |
+| -------- | ----- |
+| Uses a `thead` section | And can't be configured at all |
+| 12 | 74 |
+
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+| - | - | - | - | - | - | - | - | - | -- |
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+
+<table>
+		<tr><th colspan="3">Table Title</th></tr>
+		<tr><th>Heading 1</th><th>Heading 2</th><th>Numerical Column 3</th></tr>
+		<tr><td>This cell has a ludicrous amount of text in it obviously enough to trigger a word wrap or something surely it would've happened by now please come on.</td><td>Data 2</td><td class="tnum">3</td></tr>
+		<tr><td>If there are too many columns, a horizontal scrollbar will be added automatically.</td><td>Data 5</td><td class="tnum">6.123</td></tr>
+		<tr><td>On mobile, all tables display as 100% of the content's width. <small>(It also supports the <code>&lt;pre&gt;</code> tag!)</small></td><td>Data 8</td><td class="tnum">9</td></tr>
+</table>
 
 <hr>
 
