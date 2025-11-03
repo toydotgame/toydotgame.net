@@ -5,7 +5,7 @@
 # this config.
 
 # BUILD
-incremental:         true
+#incremental:         true
 show_drafts:         true
 strict_front_matter: true
 unpublished:         true
