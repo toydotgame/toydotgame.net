@@ -1,2 +1,3 @@
 * _site ignore list
 * Migrate articles over (eek!)
+* main page/carrd update and redesign :3

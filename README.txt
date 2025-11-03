@@ -28,4 +28,3 @@ The -B, --detach switch allows the server to run in the background, but it
 can cause trouble on my sketchy Windows Bash setup that I do use sometimes,
 therefore, you'll have to pass `-B` to `jekyll-serve.sh` yourself if you really
 want it.
-
