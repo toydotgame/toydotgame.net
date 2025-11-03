@@ -2,51 +2,55 @@
 # CREATED: 2025-11-04
 # List of badge images, some with optional links, for the site's footer.
 
-- img: /media/resources/badges/toydotgame.gif
-- img: /media/resources/badges/1.1.1.1.gif
+- img: toydotgame
+- img: baseline23
+- img: mathjax
+  lnk: https://www.mathjax.org/
+- img: frutigeraeroarchive
+  lnk: https://frutigeraeroarchive.org/
+- img: 1.1.1.1
   lnk: https://one.one.one.one/
-- img: /media/resources/badges/8pride.gif
-- img: /media/resources/badges/apple.gif
+- img: 8pride
+- img: apple
   lnk: https://web.archive.org/web/19980509035420if_/http://www.apple.com/
-- img: /media/resources/badges/bi.gif
-- img: /media/resources/badges/escargot.gif
+- img: bi
+- img: escargot
   lnk: https://escargot.chat/
-- img: /media/resources/badges/genderfluid.gif
-- img: /media/resources/badges/mslive.gif
-- img: /media/resources/badges/nyaabanner.gif
-- img: /media/resources/badges/trans.gif
-- img: /media/resources/badges/virtualdiva.gif
-- img: /media/resources/badges/wikipedia.gif
+- img: genderfluid
+- img: mslive
+- img: nyaabanner
+- img: trans
+- img: virtualdiva
+- img: wikipedia
   lnk: https://en.wikipedia.org/
-- img: /media/resources/badges/7z.gif
+- img: 7z
   lnk: https://www.7-zip.org/
-- img: /media/resources/badges/win7.gif
-- img: /media/resources/badges/invalidator.gif
-- img: /media/resources/badges/vcss-blue.gif
-- img: /media/resources/badges/thardwardy.gif
+- img: win7
+- img: invalidator
+- img: thardwardy
   lnk: https://thardwardy.com/
-- img: /media/resources/badges/2019.gif
-- img: /media/resources/badges/88x31.gif
+- img: 2019
+- img: 88x31
   lnk: https://cyber.dabamos.de/88x31/
-- img: /media/resources/badges/abrowser.gif
-- img: /media/resources/badges/anythingbut.gif
-- img: /media/resources/badges/archlinux.gif
+- img: abrowser
+- img: anythingbut
+- img: archlinux
   lnk: https://archlinux.org/
-- img: /media/resources/badges/cssdif.gif
-- img: /media/resources/badges/dell.gif
+- img: cssdif
+- img: dell
   lnk: https://www.dell.com/
-- img: /media/resources/badges/firefox3.gif
+- img: firefox3
   lnk: https://www.mozilla.org/en-US/firefox/new/
-- img: /media/resources/badges/gregg.gif
-- img: /media/resources/badges/internetarchive.gif
+- img: gregg
+- img: internetarchive
   lnk: https://archive.org/donate
-- img: /media/resources/badges/miku.gif
-- img: /media/resources/badges/minecraft.gif
+- img: miku
+- img: minecraft
   lnk: https://minecraft.net/
-- img: /media/resources/badges/minibanner.gif
-- img: /media/resources/badges/right2repair.gif
-- img: /media/resources/badges/roly-saynotoweb3.gif
+- img: finnland
+- img: right2repair
+- img: roly-saynotoweb3
   lnk: https://yesterweb.org/no-to-web3/
-- img: /media/resources/badges/transnow2.gif
-- img: /media/resources/badges/donate-wikipedia.gif
+- img: transnow2
+- img: donate-wikipedia
   lnk: https://donate.wikimedia.org/

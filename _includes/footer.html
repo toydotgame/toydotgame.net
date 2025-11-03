@@ -18,7 +18,7 @@
 	<p id="visitor-counter">I don't know what number visitor you are!</p>
 	{% for i in site.data.badges %}
 		{% if i.lnk %}<a href="{{ i.lnk }}" tabindex="-1">{% endif %}
-		<img src="{{ i.img }}" />
+		<img src="/media/resources/badges/{{ i.img }}.gif" />
 		{% if i.lnk %}</a>{% endif %}
 	{% endfor %}
 	<br>

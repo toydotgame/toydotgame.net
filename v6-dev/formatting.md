@@ -11,7 +11,7 @@ title: "{{ title }}"
 date:      1970-01-01 # Won't render if unspecified; _posts already has this
                       # info automatically and thus doesn't need to be specified
 updated:   2000-01-01 # Won't render if unspecified
-mathjax:   true       # Won't download by default; specify `true` to load JS
+mathjax:   false       # Won't download by default; specify `true` to load JS
 published: false      # Only built by the dev config. Typically, draft pages
                       # are put in _drafts/ and only rendered by the dev
                       # launch script, but some pages (like this) are special
