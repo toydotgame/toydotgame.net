@@ -15,4 +15,4 @@ production:
     path: /
 development:
   - name: formatting
-    path: /v6-dev/formatting
+    path: /formatting

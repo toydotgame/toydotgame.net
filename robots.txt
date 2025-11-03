@@ -2,5 +2,4 @@ User-agent: *
 Disallow: /media/
 Allow: /media/resources/blog/
 Disallow: /404
-Disallow: /template
 Disallow: /sasha
