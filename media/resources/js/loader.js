@@ -38,7 +38,7 @@ try {
 	);
 
 	const VISITOR_COUNT = await RESPONSE.text(); // Throws DOMException, TypeError
-	document.querySelector("#visitorCounter").innerHTML
+	document.querySelector("#visitor-counter").innerHTML
 		= "You are the <b>"+getLocalizedOrdinalSuffix(VISITOR_COUNT)+"</b> visitor!";
 } catch(e) {
 	console.warn("Error when loading visitor counter: "+e.message);

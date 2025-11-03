@@ -9,11 +9,11 @@
 	<body>
 		{% include nav.html %}
 		<article
-			data-aero-title="{% if page.collection == "posts" %}Blog: {% endif %}{{ page.title }}"
+			data-aero-title="{% if page.collection == "posts" %}Blog: {% endif %}{{ page.title | default: page.url }}"
 			style="--aero-icon:url({{ page.aero-icon | default: "/media/resources/aerico/info.png" }})">
 			{% if page.banner %}<div class="banner">
 				<img src="{{ page.banner }}" /><div class="banner-title">{% endif %}
-			<h1>{{ page.title }}</h1>
+			{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
 			<p class="subtitle">
 				{% if page.date %}Written: <b>{{ page.date }}</b>{% endif %}
 				{% if page.date and page.updated %} · {% endif %}

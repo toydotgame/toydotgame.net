@@ -14,5 +14,5 @@ production:
   - name: card
     path: /
 development:
-  - name: FORMATTING
+  - name: formatting
     path: /v6-dev/formatting

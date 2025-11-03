@@ -354,16 +354,17 @@ nav a {
 }
 
 nav a:not(.active):where(:hover, :focus) {
-	color:			hsl(from var(--link) h calc(0.75*s) calc(l + 5));
-	background:		hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
-	box-shadow:		0 -1px	var(--border) inset,
-					0 1px	hsl(from var(--accent) h s 46%) inset,
-					1px 0	hsl(from var(--accent) h s 46%) inset,
-					-1px 0	hsl(from var(--accent) h s 46%) inset,
-					0 2px	hsl(from var(--accent) h 76% 17%) inset,
-					2px 0	hsl(from var(--accent) h 76% 17%) inset,
-					-2px 0	hsl(from var(--accent) h 76% 17%) inset;
-	text-shadow:	0 0 2px rgb(from var(--accent) r g b / 25%);
+	color:				hsl(from var(--link) h calc(0.75*s) calc(l + 5));
+	background:			hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
+	box-shadow:			0 -1px	var(--border) inset,
+						0 1px	hsl(from var(--accent) h s 46%) inset,
+						1px 0	hsl(from var(--accent) h s 46%) inset,
+						-1px 0	hsl(from var(--accent) h s 46%) inset,
+						0 2px	hsl(from var(--accent) h 76% 17%) inset,
+						2px 0	hsl(from var(--accent) h 76% 17%) inset,
+						-2px 0	hsl(from var(--accent) h 76% 17%) inset;
+	text-shadow:		0 0 2px rgb(from var(--accent) r g b / 25%);
+	text-decoration:	none; /* Avoid later general `a` style below */
 }
 
 nav .active {
@@ -405,7 +406,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top:	unset;
 }
 
-article h1:first-child, header h1 {
+article h1:first-child, header h1, footer h2 {
 	margin-top:	unset;
 }
 
@@ -453,6 +454,7 @@ a {
 
 a:hover, a:focus {
 	text-decoration:	underline;
+	text-shadow:		1px 1px 2px;
 }
 
 a.external::after {
@@ -899,6 +901,29 @@ aside {
 /* FOOTER */
 footer {
 	margin-top:	auto; /* Sticky to bottom if body height < 100 vh */
+	text-align:	center;
+}
+
+footer h2, footer::before {
+	text-align:	left;
+}
+
+footer p {
+	margin-bottom:	0.5lh;
+}
+
+footer img {
+	width:	88px;
+}
+
+footer small {
+	display:				block;
+	font-family:			"DejaVu Sans Mono", "Twemoji", monospace;
+	white-space-collapse:	preserve-spaces; /* "We have <pre> at home" */
+}
+
+.copyleft {
+	transform:	rotate(180deg);
 }
 
 /* IMAGE MODAL */
