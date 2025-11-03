@@ -8,6 +8,8 @@
  * once the entire page is downloaded.
  */
 
+// IMAGE MODAL
+
 for(let element of document.querySelectorAll("article img:not(.banner img), #modaldim"))
 	element.addEventListener("click", onImageClick);
 let modal = document.querySelector("#modaldim");
@@ -27,9 +29,13 @@ function onImageClick(e) {
 	else modal.className = "hidden";						// Hide
 }
 
+// EXTERNAL LINK MARKING
+
 for(let i of document.querySelectorAll("article a"))
 	if(i.hostname != window.location.hostname)
 		i.classList.add("external"); // Won't duplicate if already there
+
+// VISITOR COUNTER
 
 try {
 	const RESPONSE = await fetch("https://raw.githubusercontent.com/toydotgame/toydotgame.net/refs/heads/visitor-count/visitor-count"); // Throws AbortError, NotAllowedError, TypeError
