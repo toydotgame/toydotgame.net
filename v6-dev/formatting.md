@@ -21,6 +21,7 @@ aero-icon: /media/resources/aerico/book.png # Passed to the CSS; defaults to
 ---
 
 ## Inline styles
+Paragraph<br>
 _Italic 1_ *Italic 2* <i>Italic 3</i><br>
 **Bold 1** __Bold 2__ <b>Bold 3</b><br>
 ~~Strikethrough 1~~ <s>Strikethrough 2</s><br>
@@ -48,7 +49,25 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
 
 <small><code>small &gt; code</code></small> <code><small>code &gt; small</small></code> <small>(larger line-height intended for latter example)</small>
 
+<hr>
+
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
+### Heading with `id` {#heading-foo}
+[Link to that heading](#heading-foo)
+
 ## Block styles
+### Images & figures
+Markdown image:
+![Image alt text](https://placecats.com/408/287)
+
+HTML images:
+
 <img class="fleft" src="http://placecats.com/200/287" width="50%" />
 <img class="fright" src="http://placecats.com/200/287" width="50%" />
 
@@ -57,7 +76,10 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
 	<figcaption>This image is floated to one side with a custom width. You can float left, centre, or right. Or leave <code>width</code> empty for a full-width image!</figcaption>
 </figure>
 
-* ul
+### Lists
+{:.noclear}
+
+* <p>ul li p</p>
   * ul 2
     * ul 3
       * ul 4
@@ -77,14 +99,22 @@ _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code
   - ul
 - [x] checked li
 
+<dl>
+	<dt>Description term</dt>
+	<dd>Description definition</dd>
+</dl>
+
+### Code
 ```java
 package com.example.foo.bar;
 import java.Math;
 
+// Java code blocks use the Eclipse dark theme
 public class Main {
 	public static void main(String[] args) {
 		int x = 1;
 		int[] y = [1, 2, 3];
+		foo(); // c1
 		String z = "literal";
 	}
 
@@ -93,17 +123,12 @@ public class Main {
 		return;
 	}
 
-	public static void foo() {
-		foo();
-		return;
-	}
-
 	public int bar(String x) {
 		return this.qux();
 	}
-	// Freestanding single-line comment
+
 	/*
-	 * Multi-line comment
+	 * cm
 	 */
 	public int qux() {
 		return 2;
@@ -111,9 +136,27 @@ public class Main {
 }
 ```
 
-## h2
-* <p>foo</p>
-* bar
+```js
+// One Dark for non-Java
+async function foo(x, y) {
+	console.log("bar");
+	return x + y;
+}
+```
+
+Inline syntax highlight using span IAL:
+`<p data-foo="bar" title="baz">qux</p>`{:.highlight.language-html}
+
+Java span: `int x = 12; // Foo`{:.highlight.language-java}
+
+### Tables
+#### Markdown
+
+| Left aligned | Centre aligned | Right aligned | Default aligned |
+| :----------- | :------------: | ------------: | --------------- |
+| 1            | 2              | 3             | 4               |
+
+Small tables are inline:
 
 | A | B |
 | - | - |
@@ -123,167 +166,56 @@ public class Main {
 | - | - |
 | G | H |
 
-| Markdown | Table |
-| -------- | ----- |
-| Uses a `thead` section | And can't be configured at all |
-| 12 | 74 |
+Long table (may overflow w/ scroll):
 
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 | - | - | - | - | - | - | - | - | - | -- |
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 
+#### HTML
 <table>
-		<tr><th colspan="3">Table Title</th></tr>
-		<tr><th>Heading 1</th><th>Heading 2</th><th>Numerical Column 3</th></tr>
-		<tr><td>This cell has a ludicrous amount of text in it obviously enough to trigger a word wrap or something surely it would've happened by now please come on.</td><td>Data 2</td><td class="tnum">3</td></tr>
-		<tr><td>If there are too many columns, a horizontal scrollbar will be added automatically.</td><td>Data 5</td><td class="tnum">6.123</td></tr>
-		<tr><td>On mobile, all tables display as 100% of the content's width. <small>(It also supports the <code>&lt;pre&gt;</code> tag!)</small></td><td>Data 8</td><td class="tnum">9</td></tr>
+	<tr><th colspan="3">Table Title</th></tr>
+	<tr><th>Heading 1</th><th>Heading 2</th><th>Numerical Column 3</th></tr>
+	<tr><td>This cell has a ludicrous amount of text in it obviously enough to
+	trigger a word wrap or something surely it would've happened by now please
+	come on.</td><td>Data 2</td><td class="tnum">3</td></tr>
+	<tr><td>If there are too many columns, a horizontal scrollbar will be added
+	automatically.</td><td>Data 5</td><td class="tnum">6.123</td></tr>
+	<tr><td>On mobile, all tables display as 100% of the content's width.
+	<small>(It also supports the <code>&lt;pre&gt;</code> tag!)</small></td>
+	<td>Data 8</td><td class="tnum">9</td></tr>
 </table>
 
-<hr>
+### Block quotes, callouts, & asides
+#### Block quotes
+Paragraph before
 
-This is the markdown contents for this file. The navigation and footer elements
-are defined as in their respective `_includes/` documents. By default, all pages
-use the `base` layout—except for pages in the `_posts/` directory, which use the
-`blog` layout; the only difference between these two being that `blog` specifies
-a different so-called "Aero window" icon than the standard `base` layout.
+> ## Block quote Heading 2
+> Paragraph
+> <small>Small text</small>
+> $\LaTeX$
+> > Sub quote
 
-Speaking of which, text can be formatted as _italic_, **bold**, ***bold
-italic***, <u>underlined</u>, ~~struck through~~, <small>small</small>,
-`monospaced`, <sup>supertext</sup>, <sub>subtext</sub>,
-<abbr title="Abbreviation text!">abbreviations</abbr>, or various combinations
-of the above. Markdown and HTML styles can even be **<u>combined</u>**, so long
-as all of the Markdown presentation is **outside**, and the HTML tags stay on
-the **inside**.<br>
-You can also specify a short line break (instead of a paragraph break) using the
-`<br>` tag, like this line has had done to it!
-<!-- And, of course, because Markdown is just HTML for dummiez, comments are
-     like this! :3 -->
-<hr>
-A horizontal rule appears like that! ↑ Emojis should render directly from the
-source: 🕴. Syntax like :+1: won't work because uhhhh making that do unicode and
-not images is annoying.
-
-<small>This is small text freestanding on its own line! Typically, in CSS, this
-is an issue since HTML's `<small>` is an inline element (in contrast to `<p>`),
-but Jekyll _should_ fix it to be within a paragraph!</small>
-
-There's a reference here![^1] Hopefully there's a reference list at the bottom
-to explain it! References can also have any name.[^any-name] ← That one is
-called `any-name`, but you might have noticed in the display it's just
-automatically numbered for us! Awesome!
-
-[^1]: Definition for ref #1. I'm actually defined up where the in-line citation is, but I ended up here at the bottom of the page! An important thing to note is that literal newlines WILL break me (and thus you can't maintain the 80 cols manual wrapping in the markup alas)
-
-[^any-name]: `any-name`
-
-`Monospaced` text should interact nicely with **`bold`**,
-<code><u>underlined</u></code>, ~~`struck through`~~, _`italicised`_, and
-<abbr>`abbreviated`</abbr> text.
-
-[Link to Google.com](https://google.com/)
-[Link to a destination you hopefully can't visit](https://)
-
-[This link is external, but has the class `noexternal` and thus doesn't produce
-an icon at the end!](https://google.com/){:.noexternal}
-
-This line has a citation that has already had its definition above![^1]
-
-## Images
-Images can be done in basic markdown syntax:
-
-![Image alt text](https://placecats.com/408/287)
-
-However, for setting sizes, floats, or captions, you'll need to fall back to our
-old HTML markup:
-<figure class="fleft" style="width:35%">
-	<img src="http://placecats.com/200/287" />
-	<figcaption>This image is floated to one side with a custom width. You can float left, centre, or right. Or leave <code>width</code> empty for a full-width image!</figcaption>
-</figure>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et eros vel mi scelerisque eleifend quis id urna. Vestibulum suscipit egestas tortor elementum mattis. Vivamus a ex et elit congue condimentum. Nulla facilisi. In venenatis porttitor velit a rhoncus. Curabitur dictum luctus nulla, et rhoncus tellus luctus id. Vivamus ullamcorper et elit semper pellentesque. Mauris a nunc et nisl iaculis ullamcorper. Morbi tempus odio hendrerit nibh feugiat pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis eu malesuada libero, in gravida velit. Aenean sit amet justo eros. Vestibulum eu posuere diam.
-
-<img class="fright" src="http://placecats.com/200/287" width="38%" />
-Mauris lacinia, enim quis vulputate ultricies, nibh nibh pellentesque neque, finibus ultricies elit quam quis orci. Duis egestas vestibulum elit at mattis. Nullam lacinia quam quam, non lobortis enim bibendum in. Nam a scelerisque sapien, eget tempus enim. Vivamus in facilisis nunc, fringilla euismod diam. Praesent blandit eget odio eu aliquet. Vestibulum euismod convallis lorem, a euismod lacus sagittis vitae.
-
-**Remember to put your paragraph breaks in properly when you're anchoring an
-image to some paragraph!** Also note that the padding on images and figures
-will constitute 2% of whatever percentage width you're specifying here in the
-markup.
-
-For whatever reason, if you want to **hide something**, wrap it in some kind of
-span (e.g. `*` italics), then append the span IAL `{:.hidden}`.
-
-## More block-level stuff
-* Unordered list
-* Unordered list
-- List item with a different bullet type
-+ Despite the different bullets, they all constitute the same `<ul>` block
-
-1. Ordered list
-   1. Sub item 1
-   2. Sub item 2
-2. Ordered list
-4. List item with # 4 instead of 3
-
-a. Ordered list with different list marker
-b. Ordered list
-e. Ordered list with _e_ instead of _c_
-
-* [ ] Unchecked list item
-* [x] Checked list item
-- [ ] Checkbox item with a different bullet
-
-1. [ ] Ordered list checkbox
-2. [x] Checked ordered list checkbox
-
-As you can see, for ordered lists, they don't really respect the markers. This
-is kinda cool for unordered lists, making the very open-ended, but for our own
-purposes, we'll have to default to HTML for customising stuff more, e.g:
-```html
-<ol type="a">
-	<li>Foo</li>
-	<li>Bar</li>
-	<li>Baz</li>
-</ol>
-```
-
-_See also: [`list-style-type` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type)._
-
-```
-Regular <pre> thingo...
-This line has a lot of words in it because I want to show you how the overflow will give you a horizontal scroll bar if you so need it (as opposed to a break, which is what the normal body text would do)
-```
-
-```sh
-export FOO=bar
-echo $(curl -sL ifconfig.co) >&2
-# This should have Shell syntax highlighting
-	# This indent should also look right
-```
-
-Another cool thing is that you can add a syntax highlighting langage to inline
-code blocks!: `export BAR="foo"`{:.language-sh} (using [span
-IALs](https://kramdown.gettalong.org/syntax.html#inline-attribute-lists))
-
-> ## Blockquotes!
-> This is a block quote using the markdown syntax. It _should_ in theory support
-> everything you can normally do (Markdown, HTML, or whatever) in the regular
-> text. $\LaTeX\text{ should work here too.}$
-> #### Heading 4 in here!
-
-> This quote is short and shouldn't be full-width!
-
-> Blockquotes can use IALs to have a **title**, but you probably wouldn't use
-> that as much as you'd use **callouts**:
-{:title="Optional title"}
-
-> Kramdown doesn't quite do Markdown callouts, but we _can_ use
-> [**Block IALs**](https://kramdown.gettalong.org/syntax.html#block-ials)!
+> ## Block quote heading again
+> Block quotes *ideally* act as general containers. Kramdown will be very
+> forgiving with their parsing and 99% of the time it'll literally just be a
+> container that internally parses and displays exactly as the root-level
+> article text.
 >
-> This callout is of the class `callout-error`.
-{:.callout-error title="Optional callout title"}
+> Also, I've yapped enough that you've surely seen the word-wrapping by now.
+> > See what happens with a sub-block quote!
+>
+> If there is (specifically) a `<h2>`{:.highlight.language-html} as the first
+> child of this block, it'll be displayed in a special way. This way, we can use
+> more Markdown fun even in the title. This also works with callouts (see
+> below).
 
-> `.callout-info` — Note it has no title.
+#### Callouts
+> ## (Optional) callout title text
+> `.callout-error` with title text
+{:.callout-error}
+
+> `.callout-info`
 {:.callout-info}
 
 > `.callout-success`
@@ -292,41 +224,144 @@ IALs](https://kramdown.gettalong.org/syntax.html#inline-attribute-lists))
 > `.callout-warning`
 {:.callout-warning}
 
+#### Asides
+<aside>Plain aside</aside>
+
+<aside>Plain aside with enough text within it to cause a word wrapping and more
+importantly the element's <code>display: table</code> nature to showcase how
+these blocks with small content (as above) fit their size, whilst ones like this
+(with many lines) will hit 100% width and start wrapping.</aside>
+
 <aside class="fleft" style="width:75%">
-	Text inside aside but not in paragraph tag!
-	<blockquote>Nested blockquote! Notice how the parent quote is used as a container instead!</blockquote>
-	This aside has a custom `width`, which block quotes should support too! (If
-	you write them in HTML and not MD, that is) Unlike quotes, asides can be
-	floated as you wish!
+	<h2>Heading within <code>&lt;aside&gt;</code></h2>
+	Left-floated aside with 75% width
+	<blockquote>Nested blockquote (HTML)</blockquote>
 </aside>
 
-# Heading 1
-This is generally reserved for title styles but hey you _can_ use it… (Please
-don't)
-## Heading 2
-### Heading 3 {#this-one}
-#### Heading 4
-##### Heading 5
-###### Heading 6
-I've disabled automatic ID generation for Markdown headings, but if you want to
-manually specify an ID, you can append `` {#the-id-text}`` to the header's text,
-[as I did for Heading 3 above](#this-one)!
+<hr>
 
+# Documentation
+This is the style testing and general toydotgame.net v6 redesign documentation
+page. It is intended for style testing and documentation for article-writing.
+This document supersedes the old template.html from v5; however, if you're
+looking for a **template** file—that no longer exists! Because I use Jekyll now,
+articles have effectively no boilerplate. All you *really* need is to make a
+Markdown file in the `_posts/` directory (with Jekyll's file name syntax) and
+optionally (but ideally please do) add some YAML front matter:
+```yaml
+title: Foo # Generally (but not strictly) mandatory
+# Optionally:
+date:      1970-01-01 # Published on
+updated:   2000-01-01 # Last edited on
+mathjax:   true       # Download MathJax when loading the page?
+published: true       # Build in production?
+aero-icon: # Path to image for icon in the article "window" title
+```
+Then just start typing away!
 
-| Left aligned | Centre aligned | Right aligned | Default aligned |
-| :----------- | :------------: | ------------: | --------------- |
-| 1            | 2              | 3             | 4               |
-| Normal inline text formatting | can still be used! | However, most block stuff _won't_ | so in that case use a full explicit HTML table… |
+However, *some* things can't be done by Kramdown, listed here:
+<dl>
+	<dt>Description lists (like this one)</dt>
+		<dd>Use the plain HTML tags</dd>
+	<dt>Tables with the <code>.tnum</code> class, <code>colspan</code>, etc</dt>
+		<dd>Use the HTML as plainly as you can manage. Kramdown uses
+		<code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code> semantics. v6
+		styles are designed to be compatible with non-semantic single-group
+		tables <i>and</i> Kramdown's ones</dd>
+	<dt>Markdown within HTML tags</dt>
+		<dd>Generally, just use the HTML. Again, v6 styles support both my and
+		Kramdown's semantics for span text formatting etc. If you desperately
+		need it, however, you can look into the
+		<a href="https://kramdown.gettalong.org/parser/kramdown.html"><code>parse_block_html</code></a>
+		option, and specify it inline <b>before</b> the element you're using it
+		on. It's not on by default for a reason, however</dd>
+	<dt>Custom list markers</dt>
+		<dd>Specify the list in HTML, <i>or</i> use a block IAL to set the
+		<code>type</code> attribute of the list container.<br>
+		<span style="font-style:normal">See also:
+		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type"><code>list-style-type</code>
+		on MDN</a></span></dd>
+	<dt>Callouts</dt>
+		<dd>Callouts are made from block quotes, so write them up as you would
+		a normal Markdown quote, but add a block IAL after with the class
+		<code>.callout-&lt;type&gt;</code> and an optional <code>title</code>
+		attribute. Where <code>&lt;type&gt;</code> is one of:
+		<ul>
+			<li><code>error</code></li>
+			<li><code>info</code></li>
+			<li><code>success</code></li>
+			<li><code>warning</code></li>
+		</ul></dd>
+	<dt>Quote and callout titles</dt>
+		<dd>As mentioned above, use the <code>&lt;title&gt;</code> attribute.
+		Titles are optional, though</dd>
+	<dt>Asides</dt>
+		<dd>Instead of using Kramdown semantics, just use an
+		<code>&lt;aside&gt;</code> tag in the same way you would a figure or
+		image. They support custom widths and floats using the syntax figures do
+		</dd>
+	<dt>Custom ordered list indices</dt>
+		<dd>Set
+		<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#value">the
+		<code>value</code> attribute</a> of a HTML-defined <code>ol li</code>.
+		Subsequent items will continue from that number too. <b>Note that this
+		is HTML5 only!</b></dd>
+</dl>
 
-Also, a table that's small shouldn't fill the whole page's width unless the
-viewport is THAT small:
+## Further notes
+* Lists display as part of paragraphs no matter what (i.e. they have no
+  paragraph spacing). If you desire a space, best to add a break tag then
+  * This includes `<dl>`{:.highlight.language-html}s
+* The default syntax highlighting theme is Atom One Dark, however **Java** code
+  will use the Eclipse dark scheme instead
+* Technically, the serif, `<h3>`{:.highlight.language-html}-like text in table
+  headings will apply to *all* `<th>`{:.highlight.language-html} tags that span
+  *any number* of columns, not just those that span the entire table
+* When using $\LaTeX$ inline, be wary that it's going to generate an entire
+  inline block of equation typesetting, and thus *won't* wrap
+* Markdown and HTML styles can be **<u>combined</u>**, so long as all of the
+  Markdown presentation is **outside**, and the HTML tags stay on the
+  **inside** (as mentioned above)
+* A footnote can have any ID (e.g. `[^foo]`{:.highlight.language-markdown}), but
+  will display its link and number in the presentation as a numerical counter.
+  This handily enables naming citations without having to remember a number, and
+  also the automatic ordering of citations in the reference list!
+	* The footnote definition can be *anywhere*, and it will be displayed in the
+	  reference list rather than where it was defined
+	* Footnotes can contain block-level (instead of span-level) definitions
+	  (e.g. multiple paragraphs, line breaks in markup) if you start the
+	  definition on a new line:
+	  ```
+	  [^foo]:
+	  	Paragraph here!
 
-| A | B |
-| - | - |
-| C | D |
+	  	New markdown paragraph here!
+	  ```
+* Markdown list parsing doesn't respect markers! Resetting the list counter for
+  ordered lists is mentioned above. For unordered lists, this is kinda fine, it
+  just means that we can use *any* of `+`, `-`, `*`, etc for our bullets all in
+  the same list
+* Unlike many block and inline things, **tables** need a *preceding* paragraph
+  break too, even after something like a heading, which usually was smart enough
+  to start a new block without needing a full break
 
-Remember that, if you want more advanced table stuff, you'll need to go back to
-HTML for that.
+## Useful features
+* Use the `.hidden`{:.highlight.language-css} class (i.e. in an IAL) to set
+  `display: none`{:.highlight.language-css} for that element
+* By default, headings, code blocks, and horizontal rules have
+  `clear: both`{:.highlight.language-css} set. If you want one of these to *not*
+  clear surrounding floats when displayed, use the
+  `.noclear`{:.highlight.language-css} class
+* For links, they will be marked in JS with the
+  `.external`{:.highlight.language-css} class if their destination domain is not
+  the same as this page's. This appends a little external link SVG to the end of
+  the link's text. **To circumvent this** and hide said graphic, use the
+  `.noexternal`{:.highlight.language-css} class in a span IAL
+
+## Reference information
+* [Kramdown IAL syntax](https://kramdown.gettalong.org/syntax.html#inline-attribute-lists)
+* [List of Rouge's supported languages](https://rouge-ruby.github.io/docs/file.Languages.html)
+  (e.g. for `.language-<id>`{:.highlight.language-css} IAL class(es))
 
 ## *Wait, so how do line breaks work with Markdown 'n' all?*
 Ah! Joy! So there's a few ways to put newlines in your Markdown that appear in
@@ -375,4 +410,74 @@ this applies to the other MathJax "display" equation delimiters), there
 equation block as its own block-level paragraph. **Otherwise, it will display
 inline.**
 
-<img class="fright" src="http://placecats.com/200/287" width="38%" />
+## Styles and feature implementation TODO
+* Custom article header image that overwrites og:image if present
+
+### Features
+- [x] Basic span styles (e.g. B, I, U, S, code)
+  - [x] Span interactions (e.g. underlines within code spans, code within links)
+  - [x] Super-, subscript, citation display
+    - Improved over v5: CSS-rigorous display within line box *without* expanding
+      its height
+- [x] Images
+  - [x] Figures
+    - [x] Captions
+  - [x] Padding stuff
+  - Improved over v5: Setting the `width` of a figure or image now yields
+    *exactly* that width, rather than a constant 2% extra added on top of what
+    you specify
+- [x] Lists: ol, ul, dl
+  - [x] Improved over v5: Automatic list marker types for each level, and
+        `<dl>`{:.highlight.language-html} styles now too
+- [x] `<small>`{:.highlight.language-html} interactions
+- [x] Syntax highlighting: Atom One Dark
+  - [x] Eclipse Dark specifically for Java blocks
+  - [x] Inline syntax highlighting
+  - [x] v5 block code line background port/update
+- [x] Reference list (port of old static/CSS-kinda-dynamic) to the new Kramdown
+      one
+- [x] More dynamic heading type
+- [x] Improved Heading spacing and display
+- [x] v5 table styles port + Kramdown compat
+  - Improved from v5: Less horrid word breaking and better responsiveness
+- [x] Block quotes
+- [x] Callouts: Various types and with/without header interactions
+- [x] Asides
+- [x] External link marker (JS)
+- [x] User selection colours
+- [ ] Article header image: Overwrites `og:image` head meta and CSS for the page
+      can adapt for articles both with and without header images
+- [ ] Final run-through of v5 main.css to see if anything's been missed
+
+### Bugs
+<small>Nothing to do!</small>
+
+### Implemented but not CSS-rigorous
+These are effectively **low-priority**; but, for a *perfect* stylesheet:
+- [ ] `li::marker`{:.highlight.language-css}s have a variable and uncontrollable
+      width, which can't be easily set because
+      `::marker`{:.highlight.language-css}s support very few CSS properties.
+      Additionally, this is made worse by the fact that browsers all use fonts
+      and display styles that vary considerably. My
+      `0.35em`{:highlight.language-css} and
+      `list-style-type`{:highlight.language-css} fixes help make it consistent,
+      but they are **not CSS-rigorous** fixes
+- [ ] `.highlight`{:.highlight.language-css} tags (inline *or* block code) has
+      `clear: both`{:.highlight.language-css} set, but for inline tags this
+      may present an issue as I **don't** want them to clear. It doesn't *seem*
+      like theres a case where inline code *isn't*
+      `display: inline`{:.highlight.language-css}, but I'm yet to **prove it's
+      CSS-rigorous**
+
+### Feature ideas/*look into*
+These are even *less* priority, but would be nice to look into:
+- [ ] **`> [!note]`{:.highlight.language-markdown}** callout syntax instead of
+      static `<aside>`{:.highlight.language-html} HTML
+- [ ] `==highlight==`{:.highlight.language-markdown} Markdown syntax and
+      associated CSS
+- [ ] Reading mode/HTML4 semantics/basic CSS/printer display for printing,
+      saving as a PDF, viewing on ancient browsers(!!!), etc
+        - Probably quite easy given all of the CSS and HTML5 is part of
+          base.html and thus an alt layout can be made
+
+last p

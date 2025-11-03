@@ -157,8 +157,18 @@ body {
 	word-break:			break-word;
 }
 
-.hidden {
-	display:	none;
+::selection {
+	color:				var(--bg2);
+	background-color:	var(--accent);
+}
+
+:focus {
+	position:	relative;
+		z-index:	10;
+	outline:	2px solid hsl(from var(--accent) h calc(2*s) l);
+	/* Specify !important otherwise conflicts with nav styles */
+	box-shadow:	0 0 0 3px var(--secondary),
+				4px 4px 10px var(--accent) !important;
 }
 
 /*
@@ -343,7 +353,7 @@ nav a {
 	text-decoration:	none;
 }
 
-nav a:not(.active):hover {
+nav a:not(.active):where(:hover, :focus) {
 	color:			hsl(from var(--link) h calc(0.75*s) calc(l + 5));
 	background:		hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
 	box-shadow:		0 -1px	var(--border) inset,
@@ -380,12 +390,19 @@ h5 { font-size: calc(var(--heading-size-multiplier)*0.83em); }
 h6 { font-size: calc(var(--heading-size-multiplier)*0.67em); }
 
 h1, h2, h3, h4, h5, h6 {
-	margin-top:		0.5rlh; /* Same gap as the `p` spacing, where this collapses
-					         anyway. But for a non-`p` predecessor, make sure
-					         that we have a gap */
+	margin-top:		0.5lh; /* This may collapse with `p`'s margin-bottom */
 	clear:			both;
 	color:			var(--accent);
 	font-family:	"EB Garamond", "Twemoji", serif;
+}
+
+/* Consecutive headings (excl. `h1` titles) of lesser levels shouldn't have gaps: */
+h1 + :is(h2, h3, h4, h5, h6),
+:is(h1, h2) + :is(h3, h4, h5, h6),
+:is(h1, h2, h3) + :is(h4, h5, h6),
+:is(h1, h2, h3, h4) + :is(h5, h6),
+:is(h1, h2, h3, h4, h5) + h6 {
+	margin-top:	unset;
 }
 
 article h1:first-child, header h1 {
@@ -417,16 +434,11 @@ h4, h5, h6, .subtitle {
  * Paragraph spacing: Jekyll (thankfully) wraps things like images etc in <p>
  * tags. Exceptions include: <pre>, <ol>, <ul>, <dl>; I chose not to add spacing
  * to lists because they often may be written as a part of a paragraph rather
- * than their own block. <figure>s get a margin top to align with any <p>s
- * wrapping around it (and their margin-top).
+ * than their own block.
  */
-article p, pre, figure, table {
-	margin-top:	0.5lh; /* Not using rlh because I want normal p spacing to
+article :is(p, blockquote, aside):not(li p):not(:last-child) {
+	margin-bottom:	0.5lh; /* Not using rlh because I want normal p spacing to
 					          scale with text */
-}
-/* Use :is() for a small specificity boost: */
-:is(article h1, h2) + :where(article p, pre), .footnotes p {
-	margin-top:	unset;
 }
 
 b:not(.subtitle b):not(a b), strong:not(a strong) {
@@ -439,7 +451,7 @@ a {
 	text-decoration:	none;
 }
 
-a:hover {
+a:hover, a:focus {
 	text-decoration:	underline;
 }
 
@@ -567,7 +579,7 @@ figure.fright {
 
 /* Once the viewport gets itty bitty, we start disrespecting intended widths: */
 @media only screen and (max-width: 400px) {
-	figure, article img {
+	figure, article img, aside[style] {
 		min-width:	50%;
 	}
 
@@ -599,6 +611,7 @@ figcaption {
 
 pre { /* syntax.css' specificity will override the properties here if applicable */
 	max-height:			75vh; /* Any more lines and you get a vert. scrollbar */
+	margin-bottom:		0.5lh;
 	padding:			8px;
 	overflow:			auto; /* Implies max-width: 100% */
 	background:			linear-gradient(#0000 50%, #0001 50%)
@@ -613,27 +626,12 @@ table, mjx-container {
 	overflow-x:	auto;
 }
 
-/*table { /* Vaguely hacky */
-/*	display: inline-block; /* Dynamic width, like `display: table`, but `block` enough to allow setting an overflow */
-/*	line-height: initial;
-}
-
-table thead, table tbody {
-	display: table;
-	width: 100%;
-}
-*/
-
 table {
 	display:	inline-block; /* Allow `overflow: auto` whilst ensuring columns
 				                 span to fill the table's full width */
 	max-width:	100%;
 	word-break:	normal; /* Prevent above-defined default that allows breaking
 				           words. We have the horizontal real estate */
-}
-
-table + table {
-	margin-top:	0.25lh; /* -0.25lh (relative to normal) that magically appears */
 }
 
 table, th, td {
@@ -663,10 +661,20 @@ tr:nth-child(even):not(:has(th)) {
 	font-family: "DejaVu Sans Mono", "Twemoji", monospace;
 }
 
-ol, ul, dl {
+ol, ul {
 	display:		table; /* Plays nicer with floats (`inline-block`-like),
 					          whilst also forcing a `block`-like flow */
 	padding-left:	1em; /* Bodge but fine */
+}
+
+dt {
+	color:			var(--accent);
+	font-weight:	bold;
+}
+
+dd {
+	margin-left:	4ch;
+	font-style:		italic;
 }
 
 .task-list {
@@ -685,8 +693,8 @@ input.task-list-item-checkbox {
 
 	appearance:		none; /* Remove browser styles */
 		border-radius:	0; /* Of course Safari doesn't respect it though */
-	width:			12px; /* SVG in ::before will need updating if size changes */
-	height:			12px;
+	width:			10px; /* SVG in ::before will need updating if size changes */
+	height:			10px;
 	vertical-align:	middle;
 	cursor:			not-allowed;
 
@@ -700,9 +708,16 @@ input.task-list-item-checkbox {
 						0 0 0 3px hsl(from var(--tint) h s 25%);
 }
 
-/* Make non-`task-list-item` `li`s' text align with checkbox'ed siblings: */
-li.task-list-item:not(:has(> .task-list-item-checkbox)) {
-	padding-left:		0.35em;
+/* Add ~0.35em such that `task-list-item`s second+ lines align with the first: */
+.task-list li {
+	padding-left:	0.35em;
+	text-indent:	-0.35em; /* First line should be undone/outset for the checkbox */
+}
+
+/* Also, items without a checkbox at all also need their _first_ lines fixed: */
+li.task-list-item:not(:has(> .task-list-item-checkbox)),
+.task-list-item ul:not(.task-list) {
+	text-indent:		0;
 	list-style-type:	"⁃";
 }
 
@@ -716,8 +731,8 @@ input.task-list-item-checkbox[checked="checked"]::before {
 	display:			block;
 	width:				100%;
 	height:				100%;
-	background-color:	var(--secondary);
-	clip-path:			path("M2.1 6.2c.8 0 .4 0 1.6 1.2.8.8.4.8 1.6-.8l3.2-4.8c.8-1.6 1.6-.8 1.6-.8.8.8 0 1.6-.4 2.4L5.3 10.2s-.8.8-1.6 0L1.3 7.6C1.3 6.2 2.1 6.2 2.1 6.2Z");
+	background-color:	var(--text);
+	clip-path:			path("M1.9 5.2C2.5 5.2 2.2 5.2 3.2 6.2 3.8 6.8 3.65 6.8 4.5 5.6L7 1.6C7.6.4 8.3 1 8.3 1 8.9 1.6 8.3 2.3 8 2.9L4.4 8.4S3.8 9 3.1 8.4L1.2 6.3C1.2 5.2 1.8 5.2 1.8 5.2Z");
 	filter:				drop-shadow(1px 1px 2px #000);
 }
 
@@ -750,6 +765,74 @@ hr {
 	height:	3px;
 	margin:	12px 0;
 	border:	1px solid var(--accent);
+}
+
+blockquote, aside {
+	--blockquote-header-em:	calc(var(--heading-size-multiplier)*1em);
+
+	display:			table; /* `inline-block`-like auto-sizing whilst
+						          doing a pseudo-`clear: both` */
+	position:			relative; /* So .callout-*::before can inherit */
+	padding:			8px;
+	background-color:	rgb(from var(--accent) r g b / 15%);
+	border-radius:		2px 8px 8px 2px;
+	border-left:		4px solid var(--accent);
+}
+
+:is(blockquote, aside) > :first-child {
+	margin-top:	unset;
+}
+
+blockquote > h2:first-child {
+	all:	unset; /* Maintains Twemoji thankfully */
+
+	color:			var(--accent);
+	font-size:		var(--blockquote-header-em);
+	font-weight:	bold;
+}
+
+blockquote:where(.callout-error, .callout-info, .callout-success, .callout-warning) {
+	padding-left:	32px;
+}
+
+blockquote:where(.callout-error, .callout-info, .callout-success, .callout-warning)
+	> :first-child::before {
+	content:				"";
+	width:					24px;
+	/* If we leave `top: 0` and height as 100% (1lh), then we get an effective
+	 * `vertical-align: middle`. This also adapts to different :first-child font
+	 * sizes: */
+	height:					1lh;
+	position:				absolute;
+		left:	8px;
+	background-position:	0;
+	background-size:		100%;
+	background-repeat:		no-repeat;
+}
+
+blockquote.callout-error	{ --accent: #ad3e38; }
+blockquote.callout-info		{ --accent: #3a58b7; }
+blockquote.callout-success	{ --accent: #2e8728; }
+blockquote.callout-warning	{ --accent: #e2c02c; }
+
+blockquote.callout-error > :first-child::before	{
+	background-image:	url("/media/resources/aerico/error.png");
+} blockquote.callout-info > :first-child::before {
+	width:				20px;
+	left:				10px;
+	background-image:	url("/media/resources/aerico/info.png");
+} blockquote.callout-success > :first-child::before {
+	background-image:	url("/media/resources/aerico/success.png");
+} blockquote.callout-warning > :first-child::before {
+	width:				22px;
+	left:				9px;
+	background-image:	url("/media/resources/aerico/warning.png");
+}
+
+aside {
+	background-color:	rgb(from var(--accent) r g b / 25%);
+	border:				4px dashed var(--accent);
+		border-radius:	8px;
 }
 
 .footnotes::before {
@@ -818,4 +901,16 @@ body:has(#modaldim:not(.hidden)) {
 	filter:				drop-shadow(8px 8px 8px var(--bg1));
 	user-select:		none;
 		-webkit-user-select:	none; /* Safari */
+}
+
+/*
+ * GLOBAL UTILITY CLASSES
+ */
+
+.hidden {
+	display:	none;
+}
+
+.noclear {
+	clear:	initial;
 }

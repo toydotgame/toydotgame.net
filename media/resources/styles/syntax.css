@@ -7,7 +7,7 @@
  * `.language-java` blocks).
  */
 
-.highlight:not(.language-java .highlight) {
+.highlight:not(.language-java .highlight):not(.language-java) {
 	background-color:	#282c34;
 	color:				#abb2bf;
 
@@ -103,7 +103,7 @@
  * https://github.com/lunacookies/eclipse/blob/master/themes/Eclipse%20Dark-color-theme.json
  */
 
-.language-java .highlight {
+.language-java .highlight, .highlight.language-java {
 	background-color:	#2e2e2e;
 	color:				#dae8f7; /* Text - Any type of text data */
 
