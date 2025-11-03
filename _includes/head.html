@@ -12,7 +12,7 @@
 	<meta property="og:site_name" content="toydotgame.net">
 	<meta property="og:title" content="{{ page.title }}">
 	<meta property="og:description" content="TEMPLATE_DESC">
-	<meta property="og:image" content="/media/resources/banner.png">
+	<meta property="og:image" content="{{ page.banner | default: "/media/resources/banner.png" }}">
 	<meta name="viewport" content="width=device-width">
 	<script src="/media/resources/js/loader.js" type="module"></script>
 	{% if page.mathjax %}

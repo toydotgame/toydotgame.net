@@ -8,7 +8,7 @@
  * once the entire page is downloaded.
  */
 
-for(let element of document.querySelectorAll("article img, #modaldim"))
+for(let element of document.querySelectorAll("article img:not(.banner img), #modaldim"))
 	element.addEventListener("click", onImageClick);
 let modal = document.querySelector("#modaldim");
 let modalimg = document.querySelector("#modaldim img");

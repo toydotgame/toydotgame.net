@@ -18,6 +18,7 @@ published: false      # Only built by the dev config. Typically, draft pages
 aero-icon: /media/resources/aerico/book.png # Passed to the CSS; defaults to
                                             # info.png for all pages, and
                                             # book.png for _posts
+banner:    http://placecats.com/200/50 # Won't render if unspecified
 ---
 
 ## Inline styles
@@ -32,6 +33,11 @@ _Italic 1_ *Italic 2* <i>Italic 3</i><br>
 <abbr>Abbreviation</abbr><br>
 <small>Small</small><br>
 <sup>Superscript</sup> <sub>Subscript</sub> Reference[^1]<br>
+
+[^1]:
+	Reference 1 definition
+
+	Paragraph 2
 
 ### `Monospace` combinations
 _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code &gt; i</i></code>
@@ -256,6 +262,7 @@ updated:   2000-01-01 # Last edited on
 mathjax:   true       # Download MathJax when loading the page?
 published: true       # Build in production?
 aero-icon: # Path to image for icon in the article "window" title
+banner:    # Path to image for page title background/embed image
 ```
 Then just start typing away!
 
@@ -445,7 +452,7 @@ inline.**
 - [x] Asides
 - [x] External link marker (JS)
 - [x] User selection colours
-- [ ] Article header image: Overwrites `og:image` head meta and CSS for the page
+- [x] Article header image: Overwrites `og:image` head meta and CSS for the page
       can adapt for articles both with and without header images
 - [ ] Final run-through of v5 main.css to see if anything's been missed
 
@@ -479,5 +486,3 @@ These are even *less* priority, but would be nice to look into:
       saving as a PDF, viewing on ancient browsers(!!!), etc
         - Probably quite easy given all of the CSS and HTML5 is part of
           base.html and thus an alt layout can be made
-
-last p

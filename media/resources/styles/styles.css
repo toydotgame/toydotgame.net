@@ -397,11 +397,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Consecutive headings (excl. `h1` titles) of lesser levels shouldn't have gaps: */
-h1 + :is(h2, h3, h4, h5, h6),
-:is(h1, h2) + :is(h3, h4, h5, h6),
-:is(h1, h2, h3) + :is(h4, h5, h6),
-:is(h1, h2, h3, h4) + :is(h5, h6),
-:is(h1, h2, h3, h4, h5) + h6 {
+:is(.banner, h1, .subtitle) + :is(h2, h3, h4, h5, h6),
+:is(.banner, h1, .subtitle, h2) + :is(h3, h4, h5, h6),
+:is(.banner, h1, .subtitle, h2, h3) + :is(h4, h5, h6),
+:is(.banner, h1, .subtitle, h2, h3, h4) + :is(h5, h6),
+:is(.banner, h1, .subtitle, h2, h3, h4, h5) + h6 {
 	margin-top:	unset;
 }
 
@@ -436,12 +436,12 @@ h4, h5, h6, .subtitle {
  * to lists because they often may be written as a part of a paragraph rather
  * than their own block.
  */
-article :is(p, blockquote, aside):not(li p):not(:last-child) {
+article :is(p, blockquote, aside):not(li p):not(:last-child):not(.subtitle) {
 	margin-bottom:	0.5lh; /* Not using rlh because I want normal p spacing to
 					          scale with text */
 }
 
-b:not(.subtitle b):not(a b), strong:not(a strong) {
+b:not(a b), strong:not(a strong) {
 	color:			var(--accent);
 	font-weight:	800;
 }
@@ -549,6 +549,39 @@ article img:not(figure img) {
 
 article img:not([width]) {
 	min-width:	min(200px, 100%); /* Prevent min-width overriding max-width */
+}
+
+.banner {
+	position:	relative; /* h1 anchor */
+}
+
+.banner img {
+	all:	unset;
+
+	width:			100%;
+	max-height:		40vh;
+	border-radius:	16px 16px 0 0;
+	object-fit:		cover;
+	mask-image:		linear-gradient(
+						#000 40%,
+						rgb(from #000 r g b / 25%) 60%,
+						#0000
+					);
+	user-select:	none;
+	pointer-events: none;
+}
+
+.banner-title {
+	width:		100%;
+	max-height:	100%; /* If for whatever reason you want a 6 page long title, you can */
+	position:	absolute;
+		bottom:	0;
+	padding:	8px;
+	overflow-y:	auto;
+}
+
+.banner-title * {
+	text-shadow:		1px 1px 8px #000;
 }
 
 .fleft {
