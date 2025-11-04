@@ -475,6 +475,11 @@ These are effectively **low-priority**; but, for a *perfect* stylesheet:
       like theres a case where inline code *isn't*
       `display: inline`{:.highlight.language-css}, but I'm yet to **prove it's
       CSS-rigorous**
+- [ ] `ol, ul`{:.highlight.language-css} used to be
+      `display: table`{:.highlight.language-css}, but it isn't anymore because
+      of responsiveness issues. Allegedly, block-like display causes issues with
+      floats that I can't recreate. Is it CSS-rigorously safe to assume that
+      block display is okay? Because it seems so
 
 ### Feature ideas/*look into*
 These are even *less* priority, but would be nice to look into:

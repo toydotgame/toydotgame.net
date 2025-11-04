@@ -697,8 +697,6 @@ tr:nth-child(even):not(:has(th)) {
 }
 
 ol, ul {
-	display:		table; /* Plays nicer with floats (`inline-block`-like),
-					          whilst also forcing a `block`-like flow */
 	padding-left:	1em; /* Bodge but fine */
 }
 
@@ -904,7 +902,7 @@ footer {
 	text-align:	center;
 }
 
-footer h2, footer::before {
+footer h2, footer::before, footer li {
 	text-align:	left;
 }
 
