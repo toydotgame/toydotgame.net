@@ -162,9 +162,9 @@ body {
 	background-color:	var(--accent);
 }
 
-:focus {
+:focus-visible {
 	position:	relative;
-		z-index:	10;
+		z-index:	1;
 	outline:	2px solid hsl(from var(--accent) h calc(2*s) l);
 	/* Specify !important otherwise conflicts with nav styles */
 	box-shadow:	0 0 0 3px var(--secondary),
@@ -372,7 +372,7 @@ nav a {
 	text-decoration:	none;
 }
 
-nav a:not(.active):where(:hover, :focus) {
+nav a:not(.active):where(:hover, :focus-visible) {
 	color:				hsl(from var(--link) h calc(0.75*s) calc(l + 5));
 	background:			hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
 	box-shadow:			0 -1px	var(--border) inset,
@@ -471,7 +471,7 @@ a {
 	text-decoration:	none;
 }
 
-a:hover, a:focus {
+a:hover, a:focus-visible {
 	text-decoration:	underline;
 	text-shadow:		1px 1px 2px;
 }

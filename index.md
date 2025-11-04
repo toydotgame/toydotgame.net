@@ -25,44 +25,78 @@ extent :3.
 
 ## Links
 <style>
+	.links {
+		display:	grid;
+			grid-template-columns:	1fr 1fr;
+			gap:					8px;
+		overflow-x:	ckip; /* This sucks */
+	}
+
+	/* Button styles are adapted from v5's "card" page, which are in turn
+	 * adapted from https://btxx.org/posts/aui/ */
+
+	.links a {
+		all:	unset;
+			cursor:	pointer; /* Unset browser styles apparently lmao? */
+
+		position:		relative; /* SVG anchor */
+		padding:		8px;
+			padding-left:	calc(24px + 1lh); /* Account for icon */
+		color:			#000; /* Lazy match SVG */
+		background:		hsl(from var(--accent) h s 82%);
+		border:			2px solid var(--accent);
+			border-radius:	999px;
+		font-size:		1.5em;
+		vertical-align:	middle;
+		box-shadow:		0 13px 25px	var(--accent) inset,
+						0 3px 5px	#0003,
+						0 10px 13px	#0002;
+		transition:		all 0.05s ease-in-out;
+	}
+
+	.links a::before {
+		content:		"";
+		width:			92%;
+		height:			60%;
+		position:		absolute;
+			top:		0;
+			left:		4%;
+			z-index:	1;
+		background:		linear-gradient(#fffb, #fff0);
+		border-radius:	999px;
+	}
+
+	.links a:hover {
+		color:			hsl(0 0 90%); /* Lazy match SVG filter below */
+		background:		hsl(from var(--link) h calc(s/1.25) l);
+		box-shadow:		0 13px 25px	hsl(from var(--link) h calc(s/2) l) inset,
+						0 3px 5px	#0003,
+						0 10px 13px	#0002;
+		text-shadow:	1px 1px 2px #000;
+		transform:		scale(1.02);
+	}
+
 	.links img {
 		all:	unset;
 			min-width:	unset !important; /* Conflict with main styles specificity */
-		
-		width:	1lh;
+
+		width:			1lh;
+		position:		absolute;
+			top:	8px;
+			left:	16px;
+		vertical-align:	middle;
 	}
 
-	.links a::after {
-		display:	none;
+	.links a:hover img {
+		filter:	invert(100%) brightness(90%) drop-shadow(1px 1px 2px #000);
 	}
 </style>
 
-<ul class="links">
-	<li>
-		<img src="/media/resources/card/icons/twitter.svg" />
-		<a href="https://twitter.com/toydotgame">Twitter</a>
-	</li>
-	<li>
-		<img src="/media/resources/card/icons/github.svg" />
-		<a href="https://github.com/toydotgame">GitHub</a>
-	</li>
-	<li>
-		<img src="/media/resources/card/icons/youtube.svg" />
-		<a href="https://youtube.com/@toydotgame">YouTube</a>
-	</li>
-	<li>
-		<img src="/media/resources/card/icons/gmail.svg" />
-		<a href="mailto:toydotgame@gmail.com">E-Mail Me!</a>
-	</li>
-	<li>
-		<img src="/media/resources/card/icons/instagram.svg" />
-		<a href="https://instagram.com/toydotgame">Instagram</a>
-	</li>
-	<li>
-		<img src="/media/resources/card/icons/steam.svg" />
-		<a href="https://steamcommunity.com/id/toydotgame/">Steam</a>
-	</li>
-</ul>
+<div class="links">
+	{% for account in site.data.social-links.active %}
+		<a class="noexternal" href="{{ account.link }}"><img class="nomodal" src="/media/resources/card-icons/{{ account.logo }}.svg" /> {{ account.site }}</a>
+	{% endfor %}
+</div>
 
 <details>
 	<summary style="cursor:pointer; text-align:center;"><small>(click)</small><h3>Inactive Accounts</h3></summary>

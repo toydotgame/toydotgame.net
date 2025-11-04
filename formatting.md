@@ -501,6 +501,10 @@ These are effectively **low-priority**; but, for a *perfect* stylesheet:
       of responsiveness issues. Allegedly, block-like display causes issues with
       floats that I can't recreate. Is it CSS-rigorously safe to assume that
       block display is okay? Because it seems so
+- [ ] The `@media`{:.highlight.language-css} queries (especially for the aero
+      stuff) use a ton of **magic numbers** that should be accurately documented
+      and/or derived in code for proper dynamic support rather than just "*Oh,
+	  well it works for now…*"
 
 ### Feature ideas/*look into*
 These are even *less* priority, but would be nice to look into:

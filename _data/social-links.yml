@@ -1,0 +1,25 @@
+# AUTHOR: toydotgame
+# CREATED: 2025-11-04
+# Links to my online accounts to be displayed on the homepage.
+
+active:
+  - site: Twitter
+    logo: twitter
+    link: https://twitter.com/toydotgame
+  - site: GitHub
+    logo: github
+    link: https://github.com/toydotgame
+  - site: YouTube
+    logo: youtube
+    link: https://youtube.com/@toydotgame
+  - site: E-Mail Me!
+    logo: gmail
+    link: mailto:toydotgame@gmail.com
+  - site: Instagram
+    logo: instagram
+    link: https://instagram.com/toydotgame
+  - site: Steam
+    logo: steam
+    link: https://steamcommunity.com/id/toydotgame/
+
+inactive:
