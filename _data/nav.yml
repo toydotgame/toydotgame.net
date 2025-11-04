@@ -4,15 +4,13 @@
 
 production:
   - name: home
-    path: /home
+    path: /
   - name: blog
     path: /blog/
   - name: projects
     path: /projects/
   - name: utils
     path: /utils
-  - name: card
-    path: /
 development:
   - name: formatting
     path: /formatting

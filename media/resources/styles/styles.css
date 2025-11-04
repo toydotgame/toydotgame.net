@@ -197,8 +197,8 @@ body > *::before { /* Decoration for sections */
 		z-index:	-1;
 	
 	/* Title text: */
-	padding:			5px 64px 0 32px; /* Nominally 4px top but Frutiger.tff
-						                    is iffy and needs an extra pixel */
+	padding:			5px 64px 0 32px; /* Nominally should be 4px but looks
+						                    bad on all but article::before */
 	text-shadow:		0 0 6px #fff;
 	overflow:			hidden;
 	color:				#000;
@@ -218,6 +218,10 @@ header::before {
 	width:		calc(100% + 4px);
 	left:		-2px;
 	text-align:	left;
+}
+
+article::before {
+	padding-top:	4px; /* At least make it right here */
 }
 
 body > *::after { /* "Close button" decoration for sections */
@@ -323,7 +327,7 @@ header h1 img:hover {
 }
 
 header h1 img.animating {
-	animation:	0.15s ease-in pfp-spin forwards;
+	animation:	0.15s ease-in-out pfp-spin;
 	cursor:		grabbing;
 }
 
@@ -1011,6 +1015,7 @@ body:has(#modaldim:not(.hidden)) {
 	filter:				drop-shadow(8px 8px 8px var(--bg1));
 	user-select:		none;
 		-webkit-user-select:	none; /* Safari */
+	image-rendering:	pixelated;
 }
 
 /*
@@ -1023,4 +1028,8 @@ body:has(#modaldim:not(.hidden)) {
 
 .noclear {
 	clear:	initial;
+}
+
+article img.nomodal {
+	cursor:	unset;
 }

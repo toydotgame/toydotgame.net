@@ -256,14 +256,16 @@ articles have effectively no boilerplate. All you *really* need is to make a
 Markdown file in the `_posts/` directory (with Jekyll's file name syntax) and
 optionally (but ideally please do) add some YAML front matter:
 ```yaml
-title: Foo # Generally (but not strictly) mandatory
+title: Foo # Generally (but not strictly) mandatory; default from filename
 # Optionally:
-date:      1970-01-01 # Published on
-updated:   2000-01-01 # Last edited on
-mathjax:   true       # Download MathJax when loading the page?
-published: true       # Build in production?
-aero-icon: # Path to image for icon in the article "window" title
-banner:    # Path to image for page title background/embed image
+date:      1970-01-01 # Published on; default null (or filename date for _posts)
+updated:   2000-01-01 # Last edited on; default null
+mathjax:   true       # Download MathJax when loading the page?; default false
+published: true       # Build in production?; default true
+aero-icon: # Path to image for icon in the article "window" title; default
+           # book.png (_posts) or info.png (otherwise)
+banner:    # Path to image for page title background/embed image; default
+           # banner.png
 ```
 Then just start typing away!
 
@@ -381,6 +383,8 @@ However, *some* things can't be done by Kramdown, listed here:
   the same as this page's. This appends a little external link SVG to the end of
   the link's text. **To circumvent this** and hide said graphic, use the
   `.noexternal`{:.highlight.language-css} class in a span IAL
+* The `.nomodal`{.highlight.language-css} class prevents the image zoom/viewer
+  modal from working on an image
 
 ## Reference information
 * [Kramdown IAL syntax](https://kramdown.gettalong.org/syntax.html#inline-attribute-lists)

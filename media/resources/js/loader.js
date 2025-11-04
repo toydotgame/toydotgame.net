@@ -10,7 +10,7 @@
 
 // IMAGE MODAL
 
-for(let element of document.querySelectorAll("article img:not(.banner img), #modaldim"))
+for(let element of document.querySelectorAll("article img:not(.nomodal), #modaldim"))
 	element.addEventListener("click", onImageClick);
 let modal = document.querySelector("#modaldim");
 let modalimg = document.querySelector("#modaldim img");
