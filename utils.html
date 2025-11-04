@@ -8,7 +8,6 @@
 
 <html>
 	<head>
-		<script src="/media/js/math.js" type="text/javascript"></script>
 		<meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="/media/styles/main.css">
@@ -124,14 +123,6 @@
 						case "genmaths":
 							output = eval(input);
 							break;
-						case "mathjs":
-							input = input.split("\n");
-							for(i = 0; i < input.length; i++) {
-								try {
-									output += eval("math.evaluate('" + input[i] + "')") + "\n";
-								} catch(e) {}
-							}
-							break;
 						case "unix":
 							output = Date() + " (Unix time " + Math.floor(Date.now() / 1000) + ")";
 							break;
@@ -236,7 +227,6 @@
 						<optgroup label="Generic Functions">
 							<option value="url">URL Decoder</option>
 							<option value="genmaths">JS eval()</option>
-							<option value="mathjs">math.js evaluate()</option>
 							<option value="unixen">Formatted → Unix Time</option>
 							<option value="unixde">Unix Time → Formatted</option>
 							<option value="unix">Current Unix Time</option>
@@ -279,7 +269,6 @@
 					document.getElementById("input").focus();
 				}, 250);
 			</script>
-			<small>You can view math.js' syntax documentation <a href="https://mathjs.org/docs/expressions/syntax.html">here</a>. math.js provides a more natural syntax over the forced nature of JavaScript's <code>eval()</code>.</small><br>
 			<small>Formatted time input/output is in your timezone unless specified.</small><br>
 			<small>The URL de-telemetry-er simply removes all query strings. Additionally, it converts twitter/x.com URLs to fxtwitter.com, to make embedding easier; youtu.be is also converted to a regular <code>/watch?v=</code> link.</small>
 			<h2>Useful Unicode Characters</h2>
