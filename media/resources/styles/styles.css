@@ -946,7 +946,8 @@ footer small {
 }
 
 .copyleft {
-	transform:	rotate(180deg);
+	display:	inline-block;
+	transform:	rotateY(180deg);
 }
 
 /* IMAGE MODAL */
