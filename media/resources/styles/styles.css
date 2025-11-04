@@ -912,6 +912,14 @@ footer p {
 	margin-bottom:	0.5lh;
 }
 
+footer a:has(.badge):hover {
+	text-decoration:	none;
+}
+
+footer a:has(.badge):hover img {
+	box-shadow:	1px 1px 2px var(--link);
+}
+
 footer .badge {
 	width:				88px;
 	image-rendering:	pixelated;
