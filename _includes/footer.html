@@ -16,10 +16,14 @@
 		<hr>
 	{% endunless %}
 	<p id="visitor-counter">I don't know what number visitor you are!</p>
-	{% for i in site.data.badges %}
-		{% if i.lnk %}<a href="{{ i.lnk }}" tabindex="-1">{% endif %}
-		<img src="/media/resources/badges/{{ i.img }}.gif" />
-		{% if i.lnk %}</a>{% endif %}
+	{% for group in site.data.badges %}
+		{% for badge in group[1] %}
+			{% if badge.lnk %}<a href="{{ badge.lnk }}" tabindex="-1">{% endif %}
+			<img class="badge {{ group[0] }}"
+				src="/media/resources/badges/{{ badge.img }}.gif" />
+			{% if badge.lnk %}</a>{% endif %}
+		{% endfor %}
+		{% unless forloop.last %}<br><br>{% endunless %}
 	{% endfor %}
 	<br>
 	{% comment %} Hacks to align on © easier {% endcomment %}

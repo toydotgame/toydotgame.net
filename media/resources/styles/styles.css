@@ -912,8 +912,12 @@ footer p {
 	margin-bottom:	0.5lh;
 }
 
-footer img {
+footer .badge {
 	width:	88px;
+}
+
+footer .badge:not(.badge.awesome_sauce) {
+	width:	66px;
 }
 
 footer small {

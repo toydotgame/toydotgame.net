@@ -1,56 +1,62 @@
 # AUTHOR: toydotgame
 # CREATED: 2025-11-04
-# List of badge images, some with optional links, for the site's footer.
+# List of badge images, some with optional links, for the site's footer. Things
+# are added here with the newest additions at the top. The very oldest/original
+# batch of badges at the bottom of each group will be alphabetical purely
+# because of a Bash script I used that day.
 
-- img: toydotgame
-- img: baseline23
-- img: mathjax
-  lnk: https://www.mathjax.org/
-- img: frutigeraeroarchive
-  lnk: https://frutigeraeroarchive.org/
-- img: 1.1.1.1
-  lnk: https://one.one.one.one/
-- img: 8pride
-- img: apple
-  lnk: https://web.archive.org/web/19980509035420if_/http://www.apple.com/
-- img: bi
-- img: escargot
-  lnk: https://escargot.chat/
-- img: genderfluid
-- img: mslive
-- img: nyaabanner
-- img: trans
-- img: virtualdiva
-- img: wikipedia
-  lnk: https://en.wikipedia.org/
-- img: 7z
-  lnk: https://www.7-zip.org/
-- img: win7
-- img: invalidator
-- img: thardwardy
-  lnk: https://thardwardy.com/
-- img: 2019
-- img: 88x31
-  lnk: https://cyber.dabamos.de/88x31/
-- img: abrowser
-- img: anythingbut
-- img: archlinux
-  lnk: https://archlinux.org/
-- img: cssdif
-- img: dell
-  lnk: https://www.dell.com/
-- img: firefox3
-  lnk: https://www.mozilla.org/en-US/firefox/new/
-- img: gregg
-- img: internetarchive
-  lnk: https://archive.org/donate
-- img: miku
-- img: minecraft
-  lnk: https://minecraft.net/
-- img: finnland
-- img: right2repair
-- img: roly-saynotoweb3
-  lnk: https://yesterweb.org/no-to-web3/
-- img: transnow2
-- img: donate-wikipedia
-  lnk: https://donate.wikimedia.org/
+awesome_sauce: # People and REALLY important stuff
+  - img: toydotgame
+  - img: thardwardy
+    lnk: https://thardwardy.com/
+cool:          # Things I care about
+  - img: frutigeraeroarchive
+    lnk: https://frutigeraeroarchive.org/
+  - img: 8pride
+  - img: bi
+  - img: escargot
+    lnk: https://escargot.chat/
+  - img: genderfluid
+  - img: nyaabanner
+  - img: trans
+  - img: virtualdiva
+  - img: invalidator
+  - img: 2019
+  - img: 88x31
+    lnk: https://cyber.dabamos.de/88x31/
+  - img: abrowser
+  - img: anythingbut
+  - img: archlinux
+    lnk: https://archlinux.org/
+  - img: cssdif
+  - img: gregg
+  - img: miku
+  - img: finnland
+  - img: right2repair
+  - img: roly-saynotoweb3
+    lnk: https://yesterweb.org/no-to-web3/
+  - img: transnow2
+random:        # Brand stuff and other garbage
+  - img: baseline23
+  - img: mathjax
+    lnk: https://www.mathjax.org/
+  - img: 1.1.1.1
+    lnk: https://one.one.one.one/
+  - img: apple
+    lnk: https://web.archive.org/web/19980509035420if_/http://www.apple.com/
+  - img: mslive
+  - img: wikipedia
+    lnk: https://en.wikipedia.org/
+  - img: 7z
+    lnk: https://www.7-zip.org/
+  - img: win7
+  - img: dell
+    lnk: https://www.dell.com/
+  - img: firefox3
+    lnk: https://www.mozilla.org/en-US/firefox/new/
+  - img: internetarchive
+    lnk: https://archive.org/donate
+  - img: minecraft
+    lnk: https://minecraft.net/
+  - img: donate-wikipedia
+    lnk: https://donate.wikimedia.org/
