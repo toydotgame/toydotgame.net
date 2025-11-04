@@ -22,7 +22,8 @@ banner:    http://placecats.com/200/50 # Won't render if unspecified
 ---
 
 ## Inline styles
-Paragraph<br>
+Para&shy;graph<br>
+Pneumonoultramicroscopicsilicovolcanoconiosis&shy;pneumonoultramicroscopicsilicovolcanoconiosispneumonoultramicroscopicsilicovolcanoconiosis<br>
 _Italic 1_ *Italic 2* <i>Italic 3</i><br>
 **Bold 1** __Bold 2__ <b>Bold 3</b><br>
 ~~Strikethrough 1~~ <s>Strikethrough 2</s><br>
@@ -351,6 +352,22 @@ However, *some* things can't be done by Kramdown, listed here:
 * Unlike many block and inline things, **tables** need a *preceding* paragraph
   break too, even after something like a heading, which usually was smart enough
   to start a new block without needing a full break
+* Overflow is \[by default\] managed with
+  `overflow-wrap: break-word`{:.highlight.language-css}. This means:
+	* Words wrap at normal wrapping locations (e.g. spaces and punctuation)
+	* If a word is too long and will overflow the end of this line, a wrap is
+	  added at the **last available soft wrap location** (e.g. the space before
+	  this word)
+	* If *still* this word is too long for even a full line of its own, the word
+	  will be broken <u>without any fancy decoration to mark it!</u>
+	* **If you want to add a not-there-by-default soft wrap opportunity**, add
+	  either a:
+		* **`&zwsp;`{:.highlight.language-html}** for a word breaking
+		  opportunity that'll break the word at that point without adding any
+		  punctuation/marks
+		* **`&shy;`{:.highlight.language-html}** for a word breaking opportunity
+		  that'll break the word *and* add a hyphen at the end of the line where
+		  the break occurs
 
 ## Useful features
 * Use the `.hidden`{:.highlight.language-css} class (i.e. in an IAL) to set

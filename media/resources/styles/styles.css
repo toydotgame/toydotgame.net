@@ -154,7 +154,7 @@ body {
 	           			linear-gradient(var(--bg2), var(--bg1));
 	font-family:		"Ubuntu", "Twemoji", sans-serif;
 		font-weight:	475;
-	word-break:			break-word;
+	overflow-wrap:		break-word;
 }
 
 ::selection {
