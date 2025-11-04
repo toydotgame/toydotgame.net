@@ -908,6 +908,16 @@ footer h2, footer::before {
 	text-align:	left;
 }
 
+footer li a {
+	font-family:	"EB Garamond", "Twemoji", serif;
+	font-size:		large;
+}
+
+footer li a b {
+	font-family:	"DejaVu Sans Mono", "Twemoji", serif;
+	font-size:		small;
+}
+
 footer p {
 	margin-bottom:	0.5lh;
 }
