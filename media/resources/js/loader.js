@@ -83,3 +83,13 @@ function getLocalizedOrdinalSuffix(number) {
 			return X_ORDINAL+"th";
 	}
 }
+
+// NAV PFP SPIN ANIMATION (Let it complete)
+
+const NAV_PFP = document.querySelector("header h1 img");
+NAV_PFP.addEventListener("click", () => {
+	NAV_PFP.classList.add("animating");
+});
+NAV_PFP.addEventListener("animationend", () => {
+	NAV_PFP.classList.remove("animating");
+});

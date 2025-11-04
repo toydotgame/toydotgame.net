@@ -6,28 +6,30 @@
 
 <footer data-aero-title="Moar!!!" style="--aero-icon:url('/media/resources/aerico/msn.png')">
 	{% unless page.url == "/blog/" %}
-		<h2>Recent blog posts</h2>
-		<ul>
-			{% for i in site.posts limit:5 %}
-				<li><a href="{{ i.url }}"><b>{{ i.date | date: "%Y-%m-%d" }}:</b>
-				{{ i.title }}</a></li>
-			{% endfor %}
-		</ul>
+		<div id="recent-blogs">
+			<h2>Recent blog posts</h2>
+			<ul>
+				{% for i in site.posts limit:5 %}
+					<li><a href="{{ i.url }}"><b>{{ i.date | date: "%Y-%m-%d" }}:</b>
+					{{ i.title }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
 		<hr>
 	{% endunless %}
 	<p id="visitor-counter">I don't know what number visitor you are!</p>
-	{% for group in site.data.badges %}
-		{% for badge in group[1] %}
-			{% if badge.lnk %}<a href="{{ badge.lnk }}" tabindex="-1">{% endif %}
-			<img class="badge {{ group[0] }}"
-				src="/media/resources/badges/{{ badge.img }}.gif" />
-			{% if badge.lnk %}</a>{% endif %}
+	<div id="badges">
+		{% for group in site.data.badges %}
+			{% for badge in group[1] %}
+				{% if badge.lnk %}<a href="{{ badge.lnk }}" tabindex="-1">{% endif %}
+				<img class="badge {{ group[0] }}"
+					src="/media/resources/badges/{{ badge.img }}.gif" />
+				{% if badge.lnk %}</a>{% endif %}
+			{% endfor %}
+			{% unless forloop.last %}<br><br>{% endunless %}
 		{% endfor %}
-		{% unless forloop.last %}<br><br>{% endunless %}
-	{% endfor %}
-	<br>
+	</div>
 	{% comment %} Hacks to align on © easier {% endcomment %}
 	<small>Website content © 2017–2025 toydotgame</small>
-	<small>Website design <span class="copyleft">©</span>
-	2025 toydotgame<span style="user-select:none">&nbsp;&nbsp;&nbsp;&nbsp;</span></small>
+	<small>Website design <span class="copyleft">©</span> 2025 toydotgame<span style="user-select:none">&nbsp;&nbsp;&nbsp;&nbsp;</span></small>
 </footer>
