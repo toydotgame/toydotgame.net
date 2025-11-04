@@ -410,11 +410,11 @@ article h1:first-child, header h1, footer h2 {
 	margin-top:	unset;
 }
 
-article h1 {
+article h1, footer h2 {
 	font-style:	italic;
 }
 
-article h1, article h2 {
+article h1, article h2, footer h2 {
 	/* Make line height exclude descent (1em) then add 3px gap between text and underline: */
 	line-height:	calc(1em + 5px);
 	margin-bottom:	5px;
