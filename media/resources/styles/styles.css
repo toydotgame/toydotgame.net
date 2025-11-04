@@ -913,7 +913,8 @@ footer p {
 }
 
 footer .badge {
-	width:	88px;
+	width:				88px;
+	image-rendering:	pixelated;
 }
 
 footer .badge:not(.badge.awesome_sauce) {
