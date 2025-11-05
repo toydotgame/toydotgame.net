@@ -162,6 +162,16 @@ body {
 	background-color:	var(--accent);
 }
 
+:is(h1, h2, h3, b)::selection {
+	color:			var(--text);
+	text-shadow:	none;
+}
+
+a[href]::selection {
+	color:			unset; /* Normal unselected colour */
+	text-shadow:	0.5px 0.5px 2px #0008;
+}
+
 :focus-visible {
 	position:	relative;
 		z-index:	1;
@@ -461,17 +471,17 @@ article :is(p, blockquote, aside):not(li p):not(:last-child):not(.subtitle) {
 					          scale with text */
 }
 
-b:not(a b), strong:not(a strong) {
+b:not(a[href] b), strong:not(a[href] strong) {
 	color:			var(--accent);
 	font-weight:	800;
 }
 
-a {
+a[href] {
 	color:				var(--link);
 	text-decoration:	none;
 }
 
-a:hover, a:focus-visible {
+a[href]:is(:hover, :focus-visible) {
 	text-decoration:	underline;
 	text-shadow:		1px 1px 2px;
 }

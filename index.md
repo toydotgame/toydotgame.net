@@ -29,7 +29,7 @@ extent :3.
 		display:	grid;
 			grid-template-columns:	1fr 1fr;
 			gap:					8px;
-		overflow-x:	ckip; /* This sucks */
+		overflow-x:	auto; /* This sucks */
 	}
 
 	/* Button styles are adapted from v5's "card" page, which are in turn

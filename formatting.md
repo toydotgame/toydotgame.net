@@ -505,6 +505,7 @@ These are effectively **low-priority**; but, for a *perfect* stylesheet:
       stuff) use a ton of **magic numbers** that should be accurately documented
       and/or derived in code for proper dynamic support rather than just "*Oh,
 	  well it works for now…*"
+- [ ] `a`{:.highlight.language-css} styles are kinda weird (re. nav)
 
 ### Feature ideas/*look into*
 These are even *less* priority, but would be nice to look into:
