@@ -1,5 +1,6 @@
 ---
 title: Welcome!
+updated: 2025-02-10
 ---
 
 Hi! I'm
@@ -16,7 +17,7 @@ own personal web services, and a Home Assistant configuration too.
 What you're looking at now is the **_sixth_** iteration of my personal website,
 with the first being from 2017. This is also my first serious attempt at using a
 static site generator (Jekyll). <small>(Although technically my second attempt
-overall)</small>
+at it overall)</small>
 
 Other than that, I maintain a few of my own [projects](/projects) as
 <abbr title="Free and Open Source Software">FOSS</abbr> for the world, I
@@ -26,10 +27,10 @@ extent :3.
 ## Links
 <style>
 	.links {
-		display:	grid;
-			grid-template-columns:	1fr 1fr;
-			gap:					8px;
-		overflow-x:	auto; /* This sucks */
+		display:	flex;
+			flex-wrap:	wrap;
+			gap:		8px;
+		justify-content:	center;
 	}
 
 	/* Button styles are adapted from v5's "card" page, which are in turn
@@ -39,6 +40,13 @@ extent :3.
 		all:	unset;
 			cursor:	pointer; /* Unset browser styles apparently lmao? */
 
+		/* Min width of 200px for items. max-width of `article` is set such that
+		 * (conveniently) this only gives 1 or 2 cols: */
+		flex:		0.5 1 200px; /* Hello I am a full-stack web developer from
+					                Slop Factory® and this is my masterpiece */
+		max-width:	calc(100% - 32px - 1lh); /* 100% minus hor. padding below */
+		overflow:	hidden;
+
 		position:		relative; /* SVG anchor */
 		padding:		8px;
 			padding-left:	calc(24px + 1lh); /* Account for icon */
@@ -47,7 +55,7 @@ extent :3.
 		border:			2px solid var(--accent);
 			border-radius:	999px;
 		font-size:		1.5em;
-		vertical-align:	middle;
+		white-space:	nowrap;
 		box-shadow:		0 13px 25px	var(--accent) inset,
 						0 3px 5px	#0003,
 						0 10px 13px	#0002;
@@ -66,14 +74,15 @@ extent :3.
 		border-radius:	999px;
 	}
 
-	.links a:hover {
-		color:			hsl(0 0 90%); /* Lazy match SVG filter below */
-		background:		hsl(from var(--link) h calc(s/1.25) l);
-		box-shadow:		0 13px 25px	hsl(from var(--link) h calc(s/2) l) inset,
-						0 3px 5px	#0003,
-						0 10px 13px	#0002;
-		text-shadow:	1px 1px 2px #000;
-		transform:		scale(1.02);
+	.links a:is(:hover, :focus-visible) {
+		color:				hsl(0 0 90%); /* Lazy match SVG filter below */
+		background:			hsl(from var(--link) h calc(s/1.25) l);
+		box-shadow:			0 13px 25px	hsl(from var(--link) h calc(s/2) l) inset,
+							0 3px 5px	#0003,
+							0 10px 13px	#0002;
+		text-decoration:	none !important;
+		text-shadow:		1px 1px 2px #000 !important;
+		transform:			scale(1.02);
 	}
 
 	.links img {
@@ -87,7 +96,7 @@ extent :3.
 		vertical-align:	middle;
 	}
 
-	.links a:hover img {
+	.links a:is(:hover, :focus-visible) img {
 		filter:	invert(100%) brightness(90%) drop-shadow(1px 1px 2px #000);
 	}
 </style>
@@ -98,26 +107,40 @@ extent :3.
 	{% endfor %}
 </div>
 
+<style>
+	summary::marker {
+		content:	"";
+	}
+
+	summary::-webkit-details-marker { /* Safari. Embarrassing */
+		display:	none;
+	}
+
+	summary * {
+		margin:	0 !important;
+	}
+
+	details[open] summary small, summary:is(:focus-visible, :hover) small {
+		visibility:	hidden;
+	}
+
+	summary h3 {
+		margin-top:	-0.25lh !important;
+	}
+
+	summary h3:hover {
+		text-decoration:	dashed underline;
+	}
+</style>
+
 <details>
-	<summary style="cursor:pointer; text-align:center;"><small>(click)</small><h3>Inactive Accounts</h3></summary>
-	<a class="button" rel="me" href="https://tech.lgbt/@toydotgame"><img class="svg" src="/media/resources/card/icons/mastodon.svg">Mastodon</a>
-	<a class="button" href="https://bsky.app/profile/toydotgame.bsky.social"><img class="svg" src="/media/resources/card/icons/bluesky.svg">Bluesky</a>
-	<a class="button" href="https://www.pinterest.com/toydotgame/"><img class="svg" src="/media/resources/card/icons/pinterest.svg">Pinterest</a>
-	<a class="button" href="https://bandcamp.com/toydotgame"><img class="svg" src="/media/resources/card/icons/bandcamp.svg">Bandcamp</a>
-	<a class="button" href="https://en.pronouns.page/@toydotgame"><img class="svg" src="/media/resources/card/icons/zaimki.svg">pronouns.page</a>
-	<a class="button" href="https://threads.net/@toydotgame"><img class="svg" src="/media/resources/card/icons/threads.svg">Threads</a>
-	<a class="button" href="https://reddit.com/u/toydotgame"><img class="svg" src="/media/resources/card/icons/reddit.svg">Reddit</a>
-	<a class="button" href="https://toydotgame.tumblr.com/"><img class="svg" src="/media/resources/card/icons/tumblr.svg">Tumblr</a>
-	<a class="button" href="https://twitch.tv/toydotgame"><img class="svg" src="/media/resources/card/icons/twitch.svg">Twitch</a>
-	<a class="button" href="https://www.minecraftforum.net/members/toydotgame"><img class="svg" src="/media/resources/card/icons/minecraft.svg">Minecraft Forum</a>
-	<a class="button" href="https://www.planetminecraft.com/member/toydotgame/"><img class="svg" src="/media/resources/card/icons/mcsrv.svg">Planet Minecraft</a>
-	<a class="button" href="https://xboxgamertag.com/search/toydotgame"><img class="svg" src="/media/resources/card/icons/xbox.svg">Xbox Live</a>
-	<a class="button" href="https://www.sevenforums.com/members/toydotgam.html"><img class="svg" src="/media/resources/card/icons/7f.svg">SevenForums</a>
-	<a class="button" href="https://www.tenforums.com/members/toydotgam.html"><img class="svg" src="/media/resources/card/icons/10f.svg">TenForums</a>
-	<a class="button" href="https://addons.mozilla.org/en-US/firefox/user/17086453/"><img class="svg" src="/media/resources/card/icons/amo.svg">AMO</a>
-	<a class="button" href="https://www.dndbeyond.com/members/Toydotgam"><img class="svg" src="/media/resources/card/icons/dnd.svg">D&D Beyond</a>
-	<a class="button" href="https://bbs.archlinux.org/profile.php?id=146622"><img class="svg" src="/media/resources/card/icons/archlinux.svg">Arch Forums</a>
-	<a class="button" href="https://en.wikipedia.org/wiki/User:Toydotgame"><img class="svg" src="/media/resources/card/icons/wikipedia.svg">Wikipedia</a>
-	<a class="button" href="https://www.spigotmc.org/members/toydotgam.1096646/"><img class="svg" src="/media/resources/card/icons/mcsrv.svg">SpigotMC</a>
-	<a class="button" href="https://scratch.mit.edu/users/Toydotgam/"><img class="svg" src="/media/resources/card/icons/scratch.svg">Scratch</a>
+	<summary style="cursor:pointer; text-align:center;"><small>(click)</small><h3>Inactive-ish accounts</h3></summary>
+	<div class="links">
+		{% for account in site.data.social-links.inactive %}
+			<a class="noexternal" href="{{ account.link }}"><img class="nomodal" src="/media/resources/card-icons/{{ account.logo }}.svg" /> {{ account.site }}</a>
+		{% endfor %}
+	</div>
 </details>
+
+<!-- Mastodon verification because I'm too lazy to implement this dynamically: -->
+<a class="hidden" href="https://tech.lgbt/@toydotgame" rel="me"></a>

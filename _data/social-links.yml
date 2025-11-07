@@ -3,23 +3,79 @@
 # Links to my online accounts to be displayed on the homepage.
 
 active:
+  - site: E-mail me!
+    logo: gmail
+    link: mailto:toydotgame@gmail.com
+  - site: YouTube
+    logo: youtube
+    link: https://youtube.com/@toydotgame
   - site: Twitter
     logo: twitter
     link: https://twitter.com/toydotgame
   - site: GitHub
     logo: github
     link: https://github.com/toydotgame
-  - site: YouTube
-    logo: youtube
-    link: https://youtube.com/@toydotgame
-  - site: E-Mail Me!
-    logo: gmail
-    link: mailto:toydotgame@gmail.com
-  - site: Instagram
-    logo: instagram
-    link: https://instagram.com/toydotgame
+  - site: Wikipedia
+    logo: wikipedia
+    link: https://en.wikipedia.org/wiki/User:Toydotgame
+inactive:
+  - site: Threads
+    logo: threads
+    link: https://threads.net/@toydotgame
+  - site: Reddit
+    logo: reddit
+    link: https://reddit.com/u/toydotgame
   - site: Steam
     logo: steam
     link: https://steamcommunity.com/id/toydotgame/
-
-inactive:
+  - site: AMO
+    logo: amo
+    link: https://addons.mozilla.org/en-US/firefox/user/17086453/
+  - site: Tumblr
+    logo: tumblr
+    link: https://toydotgame.tumblr.com/
+  - site: Mastodon
+    logo: mastodon
+    link: https://tech.lgbt/@toydotgame
+  - site: Twitch
+    logo: twitch
+    link: https://twitch.tv/toydotgame
+  - site: SpigotMC
+    logo: mcsrv
+    link: https://www.spigotmc.org/members/toydotgam.1096646/
+  - site: Bluesky
+    logo: bluesky
+    link: https://bsky.app/profile/toydotgame.bsky.social
+  - site: Minecraft Forum
+    logo: minecraft
+    link: https://www.minecraftforum.net/members/toydotgame
+  - site: Bandcamp
+    logo: bandcamp
+    link: https://bandcamp.com/toydotgame
+  - site: D&D Beyond
+    logo: dnd
+    link: https://www.dndbeyond.com/members/Toydotgam
+  - site: SevenForums
+    logo: 7f
+    link: https://www.sevenforums.com/members/toydotgam.html
+  - site: Arch Forums
+    logo: archlinux
+    link: https://bbs.archlinux.org/profile.php?id=146622
+  - site: TenForums
+    logo: 10f
+    link: https://www.tenforums.com/members/toydotgam.html
+  - site: Xbox Live
+    logo: xbox
+    link: https://xboxgamertag.com/search/toydotgame
+  - site: Planet Minecraft
+    logo: mcsrv
+    link: https://www.planetminecraft.com/member/toydotgame/
+  - site: Pinterest
+    logo: pinterest
+    link: https://www.pinterest.com/toydotgame/
+  - site: Scratch
+    logo: scratch
+    link: https://scratch.mit.edu/users/Toydotgam/
+  - site: pronouns.page
+    logo: zaimki
+    link: https://en.pronouns.page/@toydotgame
