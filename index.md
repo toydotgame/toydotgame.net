@@ -1,6 +1,6 @@
 ---
 title: Welcome!
-updated: 2025-02-10
+updated: 2025-11-08
 ---
 
 Hi! I'm
@@ -56,6 +56,7 @@ extent :3.
 			border-radius:	999px;
 		font-size:		1.5em;
 		white-space:	nowrap;
+		user-select:	none;
 		box-shadow:		0 13px 25px	var(--accent) inset,
 						0 3px 5px	#0003,
 						0 10px 13px	#0002;
@@ -64,7 +65,7 @@ extent :3.
 
 	.links a::before {
 		content:		"";
-		width:			92%;
+		width:			calc(100% - min(128px, 8%));
 		height:			60%;
 		position:		absolute;
 			top:		0;

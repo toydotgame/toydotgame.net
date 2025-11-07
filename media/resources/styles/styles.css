@@ -80,7 +80,8 @@
 	--bg1:			#1c1c1c;
 	--bg2:			#2a2a2f;
 
-	--heading-size-multiplier: 1.25;
+	--heading-size-multiplier:	1.25;
+	--bg-img:					url("/media/resources/banner.png");
 
 	/* --aero-shine is of type `background-image` */
 	--aero-shine: linear-gradient(61deg, /* sic */
@@ -150,11 +151,33 @@ body {
 		padding-top:	38px;
 
 	color:				var(--text);
-	background:			url("/media/resources/card/background.jpg") center bottom / cover fixed,
-	           			linear-gradient(var(--bg2), var(--bg1)) fixed;
+	background:			var(--bg-img) center bottom / cover fixed,
+	           			var(--bg1) linear-gradient(var(--bg2), var(--bg1)) fixed;
 	font-family:		"Ubuntu", "Twemoji", sans-serif;
 		font-weight:	475;
 	overflow-wrap:		break-word;
+}
+
+/* Mobile Safari disables fixed backgrounds because apparently them being
+ * computationally crap in 2010 hasn't been fixed by Apple in 15+ years.
+ * Brilliant. I'll fix the damn background to the viewport MYSELF then: */
+@supports (-webkit-touch-callout: none) {
+	body {
+		/* Only the fallback here: */
+		background:	var(--bg1) linear-gradient(var(--bg2), var(--bg1)) fixed;
+	}
+
+	/* https://jsfiddle.net/saeokn81/ */
+	body::before {
+		content:	"";
+
+		position:	fixed;
+			width:		100lvw;
+			height:		100lvh;
+			top:		0;
+			z-index:	-1; /* Don't mess with Aero! */
+		background:	var(--bg-img) center bottom / cover;
+	}
 }
 
 ::selection {
@@ -946,6 +969,7 @@ footer {
 footer li a {
 	font-family:	"EB Garamond", "Twemoji", serif;
 	font-size:		large;
+	font-weight:	600;
 }
 
 footer li a b {
@@ -986,6 +1010,12 @@ footer small {
 	font-family:			"DejaVu Sans Mono", "Twemoji", monospace;
 }
 
+footer .footer-double-small {
+	max-width:	400px;
+	margin:		0 auto 0.5lh auto;
+	font-size:	0.5em;
+}
+
 .copyleft {
 	display:	inline-block;
 	transform:	rotateY(180deg);
@@ -1009,11 +1039,6 @@ footer small {
 	box-shadow:		unset;
 }
 
-/* Unset Aero section styles: */
-#modaldim::before, #modaldim::after {
-	display:	none;
-}
-
 body:has(#modaldim:not(.hidden)) {
 	overflow:	hidden;
 }
@@ -1026,6 +1051,15 @@ body:has(#modaldim:not(.hidden)) {
 	user-select:		none;
 		-webkit-user-select:	none; /* Safari */
 	image-rendering:	pixelated;
+}
+
+/* Unset Aero section styles: */
+:is(#modaldim, #oneko)::before, :is(#modaldim, #oneko)::after {
+	display:	none;
+}
+
+#oneko {
+	all:	unset;
 }
 
 /*
