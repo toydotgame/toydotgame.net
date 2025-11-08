@@ -15,7 +15,7 @@
 				<img class="nomodal" src="{{ page.banner }}" /><div class="banner-title">{% endif %}
 			{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
 			<p class="subtitle">
-				{% if page.date %}Written: <b>{{ page.date }}</b>{% endif %}
+				{% if page.date %}Written: <b>{{ page.date | date:"%Y-%m-%d" }}</b>{% endif %}
 				{% if page.date and page.updated %} · {% endif %}
 				{% if page.updated %}Last updated: <b>{{ page.updated }}</b>{% endif %}
 			</p>

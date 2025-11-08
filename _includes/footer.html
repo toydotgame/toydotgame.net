@@ -7,10 +7,12 @@
 <footer data-aero-title="Moar!!!" style="--aero-icon:url('/media/resources/aerico/msn.png')">
 	<small>Made with <span style="color:var(--accent)">♥</span> by
 	toydotgame</small>
-	{% unless page.url == "/blog/" %}
+	{% if page.url == "/blog/" %}
+		<br style="display:block; margin-bottom:0.5lh">
+	{% else %}
 		<div id="recent-blogs">
 			<h2>Recent blog posts</h2>
-			<ul>
+			<ul class="blog-article-list">
 				{% for i in site.posts limit:5 %}
 					<li><a href="{{ i.url }}"><b>{{ i.date | date: "%Y-%m-%d" }}:</b>
 					{{ i.title }}</a></li>
@@ -18,7 +20,7 @@
 			</ul>
 		</div>
 		<hr>
-	{% endunless %}
+	{% endif %}
 	<p id="visitor-counter">I don't know what number visitor you are!</p>
 	<div id="badges">
 		{% for group in site.data.badges %}

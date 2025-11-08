@@ -967,15 +967,15 @@ footer {
 	margin:		0 auto;
 }
 
-footer li a {
+.blog-article-list li a {
 	font-family:	"EB Garamond", "Twemoji", serif;
 	font-size:		large;
 	font-weight:	600;
 }
 
-footer li a b {
+.blog-article-list li a b {
 	font-family:	"DejaVu Sans Mono", "Twemoji", serif;
-	font-size:		small;
+	font-size:		smaller;
 }
 
 footer p, #badges {
