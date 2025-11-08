@@ -2,3 +2,7 @@
 * Migrate articles over (eek!)
 * atom and/or rss feeds :3
 * cool ass links page for stuff to show off (not even necessarily my stuff)
+* meta tag embed data support for a bunch more stuff/more reliable (e.g. twt or
+  whatevs)
+* og:description meta tag where should that data come from in the article huh.
+  pretty sure jekyll docs have info on this
