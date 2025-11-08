@@ -81,7 +81,8 @@
 	--bg2:			#2a2a2f;
 
 	--heading-size-multiplier:	1.25;
-	--bg-img:					url("/media/resources/banner.png");
+	/* Fallback value, usually overridden by JS: */
+	--bg-img:					url("/media/resources/bg/clouds-crazy.jpg");
 
 	/* --aero-shine is of type `background-image` */
 	--aero-shine: linear-gradient(61deg, /* sic */

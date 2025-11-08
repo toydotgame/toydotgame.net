@@ -6,16 +6,27 @@
 
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/media/resources/styles/styles.css">
 	<title>{{ page.title }} - toydotgame.net</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="/media/resources/styles/styles.css">
+	{% comment %}
+		The above style tag will block rendering until it is downloaded, but
+		will not block further parsing of the below tags. The below script will
+		induce a parser-block where it'll wait for the CSS to download before
+		it can evaluate and the tags below _it_ can be parsed.
+		Additionally, the `blocking="rendering"` attribute will prevent CSS
+		rendering from occurring until evaluation is complete as well.
+	{% endcomment %}
+	<script blocking="rendering" src="/media/resources/js/random-bg.js"></script>
+
 	<meta property="og:type" content="article">
 	<meta property="og:site_name" content="toydotgame.net">
 	<meta property="og:title" content="{{ page.title }}">
 	<meta property="og:description" content="TEMPLATE_DESC">
 	<meta property="og:image" content="{{ page.banner | default: "/media/resources/banner.png" }}">
-	<meta name="viewport" content="width=device-width">
-	<script src="/media/resources/js/loader.js" type="module"></script>
-	<script src="/media/resources/js/oneko.js" data-cat="/media/resources/oneko.gif" defer></script>
+	
+	<script type="module" src="/media/resources/js/loader.js"></script>
+	<script defer src="/media/resources/js/oneko.js" data-cat="/media/resources/oneko.gif"></script>
 	{% if page.mathjax %}
 		<script>
 		MathJax = {
@@ -38,6 +49,6 @@
 			}
 		};
 		</script>
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" defer></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
 	{% endif %}
 </head>
