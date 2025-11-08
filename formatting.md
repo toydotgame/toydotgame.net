@@ -33,12 +33,18 @@ _Italic 1_ *Italic 2* <i>Italic 3</i><br>
 [External link w/ `.noexternal`](){:.noexternal}<br>
 <abbr>Abbreviation</abbr><br>
 <small>Small</small><br>
-<sup>Superscript</sup> <sub>Subscript</sub> Reference[^1]<br>
+<sup>Superscript</sup> <sub>Subscript</sub> Reference[^1][^2]<br>
 
 [^1]:
 	Reference 1 definition
 
 	Paragraph 2
+
+[^2]:
+	Format is as:
+
+	["Page title" § *Optional section*](), yyyy-mm-dd. Company, or Author First Name
+	Middle+Last Initial(s). Optional notes clause.
 
 ### `Monospace` combinations
 _`em > code`_ <code><em>code &gt; em</em></code> <i>`i > code`</i> <code><i>code &gt; i</i></code>

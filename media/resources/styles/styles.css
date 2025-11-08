@@ -668,7 +668,7 @@ figure.fright {
 /* Once the viewport gets itty bitty, we start disrespecting intended widths: */
 @media only screen and (max-width: 400px) {
 	figure, article img, aside[style] {
-		min-width:	50%;
+		min-width:	25%;
 	}
 
 	figcaption {
