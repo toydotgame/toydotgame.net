@@ -5,13 +5,14 @@ updated: 2025-11-08
 
 Hi! I'm
 toydotgame<sup><a class="noexternal" href="https://en.pronouns.page/@toydotgame">(she/they)</a></sup>!
-I'm a software developer (currently 1<sup>st</sup> Year
-<abbr title="Bachelor of Science"><b>BSc</b></abbr> in Info. Tech.) who
+I'm a software developer (currently 1<sup>st</sup> Year BSc in Info. Tech.) who
 specialises in Java, with some additional experience in personal web development
 projects in your typical HTML5/CSS3/JS/PHP/etc configurations. Since 2020, I've
 run the [ICCMC](https://iccmc.toydotgame.net/) Minecraft server for myself and
 my friends. I enjoy homelabbing, and thus have played a lot with that server, my
 own personal web services, and a Home Assistant configuration too.
+
+*[BSc]: Bachelor of Science
 
 <img class="fright nomodal" width="64px" src="/media/resources/profile.png" style="image-rendering:pixelated" />
 What you're looking at now is the **_sixth_** iteration of my personal website,
@@ -19,10 +20,11 @@ with the first being from 2017. This is also my first serious attempt at using a
 static site generator (Jekyll). <small>(Although technically my second attempt
 at it overall)</small>
 
-Other than that, I maintain a few of my own [projects](/projects) as
-<abbr title="Free and Open Source Software">FOSS</abbr> for the world, I
-contribute infrequently to Wikipedia, and I'm also a technical Minecrafter to an
-extent :3.
+Other than that, I maintain a few of my own [projects](/projects) as FOSS for
+the world, I contribute infrequently to Wikipedia, and I'm also a technical
+Minecrafter to an extent :3.
+
+*[FOSS]: Free and Open Source Software
 
 ## Links
 <style>

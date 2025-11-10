@@ -31,9 +31,12 @@ _Italic 1_ *Italic 2* <i>Italic 3</i><br>
 <u>Underline</u><br>
 [Internal link]() [External link](){:.external}
 [External link w/ `.noexternal`](){:.noexternal}<br>
-<abbr>Abbreviation</abbr><br>
+<abbr>Abbreviation 1</abbr> Abbreviation 2<br>
 <small>Small</small><br>
 <sup>Superscript</sup> <sub>Subscript</sub> Reference[^1][^2]<br>
+<mark>Highlight</mark><br>
+
+*[Abbreviation 2]: Abbreviation 2 definition
 
 [^1]:
 	Reference 1 definition
@@ -86,7 +89,7 @@ HTML images:
 
 <figure class="fright" style="width:35%">
 	<img src="http://placecats.com/200/287" />
-	<figcaption>This image is floated to one side with a custom width. You can float left, centre, or right. Or leave <code>width</code> empty for a full-width image!</figcaption>
+	<figcaption>This image is floated to one side with a custom width. You can float left, centre, or right. Or leave <code>width</code> empty for some automatic sizing.</figcaption>
 </figure>
 
 ### Lists
@@ -181,9 +184,16 @@ Small tables are inline:
 
 Long table (may overflow w/ scroll):
 
+<style>
+	.long-table :is(th, td) {
+		min-width:	128px;
+	}
+</style>
+
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 | - | - | - | - | - | - | - | - | - | -- |
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+{:.long-table}
 
 #### HTML
 <table>
@@ -276,53 +286,64 @@ banner:    # Path to image for page title background/embed image; default
 Then just start typing away!
 
 However, *some* things can't be done by Kramdown, listed here:
-<dl>
-	<dt>Description lists (like this one)</dt>
-		<dd>Use the plain HTML tags</dd>
-	<dt>Tables with the <code>.tnum</code> class, <code>colspan</code>, etc</dt>
-		<dd>Use the HTML as plainly as you can manage. Kramdown uses
-		<code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code> semantics. v6
-		styles are designed to be compatible with non-semantic single-group
-		tables <i>and</i> Kramdown's ones</dd>
-	<dt>Markdown within HTML tags</dt>
-		<dd>Generally, just use the HTML. Again, v6 styles support both my and
-		Kramdown's semantics for span text formatting etc. If you desperately
-		need it, however, you can look into the
-		<a href="https://kramdown.gettalong.org/parser/kramdown.html"><code>parse_block_html</code></a>
-		option, and specify it inline <b>before</b> the element you're using it
-		on. It's not on by default for a reason, however</dd>
-	<dt>Custom list markers</dt>
-		<dd>Specify the list in HTML, <i>or</i> use a block IAL to set the
-		<code>type</code> attribute of the list container.<br>
-		<span style="font-style:normal">See also:
-		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type"><code>list-style-type</code>
-		on MDN</a></span></dd>
-	<dt>Callouts</dt>
-		<dd>Callouts are made from block quotes, so write them up as you would
-		a normal Markdown quote, but add a block IAL after with the class
-		<code>.callout-&lt;type&gt;</code> and an optional <code>title</code>
-		attribute. Where <code>&lt;type&gt;</code> is one of:
-		<ul>
-			<li><code>error</code></li>
-			<li><code>info</code></li>
-			<li><code>success</code></li>
-			<li><code>warning</code></li>
-		</ul></dd>
-	<dt>Quote and callout titles</dt>
-		<dd>As mentioned above, use the <code>&lt;title&gt;</code> attribute.
-		Titles are optional, though</dd>
-	<dt>Asides</dt>
-		<dd>Instead of using Kramdown semantics, just use an
-		<code>&lt;aside&gt;</code> tag in the same way you would a figure or
-		image. They support custom widths and floats using the syntax figures do
-		</dd>
-	<dt>Custom ordered list indices</dt>
-		<dd>Set
-		<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#value">the
-		<code>value</code> attribute</a> of a HTML-defined <code>ol li</code>.
-		Subsequent items will continue from that number too. <b>Note that this
-		is HTML5 only!</b></dd>
-</dl>
+
+Tables with the `.tnum` class, `colspan`, etc
+: Use the HTML as plainly as you can manage. Kramdown uses `<thead>` and `<tbody>` semantics. v6 styles are designed to be compatible with non-semantic single-group tables _and_ Kramdown's ones
+
+Markdown within HTML tags
+: You can use the attribute `markdown="1"`{:.highlight.language-html} on the
+  span/block tag that immediately contains the Markdown syntax. Alternatively,
+  you can set a per-file toggle (from the line the option is specified onwards)
+  using the
+  [`parse_<span|block>_html="true"`](https://kramdown.gettalong.org/parser/kramdown.html)
+  `{::options <option>=<value> /}` inline Kramdown syntax if you want. This
+  _can_ also be set in `_config.yml`, but <u>isn't for a reason</u>.<br>
+  Alternatively, just use HTML. Sometimes it's just easier
+
+Custom list markers
+: Use a `<<ol|ul> type="<list-style-type>">` element in your Markdown, *or*
+  append the block IAL
+  `{:type="<list-style-type>"}`{:.highlight.language-markdown} after your
+  Markdown list.<br>
+  *See also: [`list-style-type`{:.highlight.language-css}
+  values on
+  MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type)*
+
+Custom ordered list indices
+: Use a HTML ordered list and set the [`value`{:.highlight.language-html}
+  attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/li#value)
+  of the list item tag.<br>
+  **In HTML5,** subsequent list items will count from that number, saving you
+  needing to re-specify `value`{:.highlight.language-html} for every item
+
+Callouts
+: Callouts can be made using a normal block quote's
+  `>`{:.highlight.language-markdown} syntax, with a block IAL afterwards
+  containing the callout's CSS class, which will be
+  `.callout-<type>`{:.highlight.language-css}, where `<type>` is one of:
+  * `error`
+  * `info`
+  * `success`
+  * `warning`
+
+Quote and callout titles
+: As mentioned below, you can just put in a heading as you would normally.
+  Ideally, use a `<h2>`{:.highlight.language-html} level, as it has special
+  design considerations for this exact purpose
+
+Asides
+: Unfortunately, use HTML. Use the `<aside>`{:.highlight.language-html} tag.
+  `<aside>`{:.highlight.language-html}s can have their presentation customised
+  using the exact same methods as you would to float and scale a
+  `<figure>`{:.highlight.language-html}
+
+Superscript `~`{:.highlight.language-markdown}, subscript
+`^`{:.highlight.language-markdown}, and highlight
+`==`{:.highlight.language-markdown} or `::`{:.highlight.language-markdown}
+Markdown syntax
+: Kramdown doesn't do that. Use `<sup>`{:.highlight.language-html},
+  `<sub>`{:.highlight.language-html}, and `<mark>`{:.highlight.language-html}
+  respectively
 
 ## Further notes
 * Lists display as part of paragraphs no matter what (i.e. they have no
@@ -376,6 +397,15 @@ However, *some* things can't be done by Kramdown, listed here:
 		* **`&shy;`{:.highlight.language-html}** for a word breaking opportunity
 		  that'll break the word *and* add a hyphen at the end of the line where
 		  the break occurs
+* Kramdown supports automatic abbreviation markup, in the form of
+  `*[abbreviation-name]:
+  abbreviation definition`{:.highlight.language-markdown}. Any time
+  "abbreviation-name" is seen in the text (you don't need to mark it!), it'll
+  attach the definition you made!
+* The first `<h2>`{:.highlight.language-html} in a blockquote (callout or not)
+  will be styled in sans-serif specially as a title for that block. For
+  callouts, their styling is flexible and the little icon will display
+  well-aligned for whatever you may put there
 
 ## Useful features
 * Use the `.hidden`{:.highlight.language-css} class (i.e. in an IAL) to set
@@ -389,7 +419,7 @@ However, *some* things can't be done by Kramdown, listed here:
   the same as this page's. This appends a little external link SVG to the end of
   the link's text. **To circumvent this** and hide said graphic, use the
   `.noexternal`{:.highlight.language-css} class in a span IAL
-* The `.nomodal`{.highlight.language-css} class prevents the image zoom/viewer
+* The `.nomodal`{:.highlight.language-css} class prevents the image zoom/viewer
   modal from working on an image
 
 ## Reference information

@@ -486,13 +486,14 @@ h4, h5, h6, .subtitle {
 
 /*
  * Paragraph spacing: Jekyll (thankfully) wraps things like images etc in <p>
- * tags. Exceptions include: <pre>, <ol>, <ul>, <dl>; I chose not to add spacing
- * to lists because they often may be written as a part of a paragraph rather
- * than their own block.
+ * tags. Exceptions include: <pre>, <ol>, <ul>, and <dl>.
  */
-article :is(p, blockquote, aside):not(li p):not(:last-child):not(.subtitle) {
-	margin-bottom:	0.5lh; /* Not using rlh because I want normal p spacing to
-					          scale with text */
+article :is(p, blockquote, aside, pre, ol, ul, dl) {
+	margin-bottom:	0.5lh; /* Not using rlh because I want p spacing to scale
+					          with text */
+}
+article :is(:last-child, li p, p:has(+ ol, + ul)):not(.highlight pre) {
+	margin-bottom:	unset;
 }
 
 b:not(a b), strong:not(a strong) {
@@ -649,6 +650,10 @@ article img:not([width]) {
 
 .fright {
 	float:	right;
+}
+
+.freset {
+	clear:	both;
 }
 
 figure {
@@ -877,6 +882,10 @@ blockquote, aside {
 	margin-top:	unset;
 }
 
+blockquote {
+	color:	var(--secondary);
+}
+
 blockquote > h2:first-child {
 	all:	unset; /* Maintains Twemoji thankfully */
 
@@ -887,6 +896,7 @@ blockquote > h2:first-child {
 
 blockquote:where(.callout-error, .callout-info, .callout-success, .callout-warning) {
 	padding-left:	32px;
+	color:			var(--text); /* Unset */
 }
 
 blockquote:where(.callout-error, .callout-info, .callout-success, .callout-warning)
@@ -930,7 +940,7 @@ aside {
 }
 
 .footnotes::before {
-	content: "Reference list";
+	content: "Notes/references";
 	display: block;
 	column-span: all; /* Heading full width of reflist */
 	
@@ -950,11 +960,25 @@ aside {
 	column-count:	2;
 }
 
+@media only screen and (max-width: 400px) {
+	.footnotes {
+		column-count:	1;
+	}
+}
+
+.footnotes ol {
+	padding-left:	0; /* Unset global `ol, ul` style */
+}
+
 .footnotes li {
 	margin-left:	1.5em; /* Looks fine for 1–99 refs */
 	padding-bottom:	8px;
 	font-size:		small;
 	break-inside:	avoid; /* Don't chop items across columns */
+}
+
+.footnotes li:only-child {
+	column-span:	all;
 }
 
 /* FOOTER */

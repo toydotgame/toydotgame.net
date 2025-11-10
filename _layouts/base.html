@@ -8,8 +8,9 @@
 	{% include head.html %}
 	<body>
 		{% include nav.html %}
+		{% assign humanizedSlug = page.slug | split: "-" | join: " " | capitalize %}
 		<article
-			data-aero-title="{% if page.collection == "posts" %}Blog: {% endif %}{{ page.title | default: page.url }}"
+			data-aero-title="{% if page.collection == "posts" %}Blog: {% endif %}{{ humanizedSlug | default: page.url | escape }}"
 			style="--aero-icon:url({{ page.aero-icon | default: "/media/resources/aerico/info.png" }})">
 			{% if page.banner %}<div class="banner">
 				<img class="nomodal" src="{{ page.banner }}" /><div class="banner-title">{% endif %}
