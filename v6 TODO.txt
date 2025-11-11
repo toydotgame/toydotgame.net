@@ -1,8 +1,2 @@
-* atom and/or rss feeds :3
-* cool ass links page for stuff to show off (not even necessarily my stuff)
-* meta tag embed data support for a bunch more stuff/more reliable (e.g. twt or
-  whatevs)
-* og:description meta tag where should that data come from in the article huh.
-  pretty sure jekyll docs have info on this
 * make sure _drafts is set up and appears in blog index in production env
 * next and prev blog article post buttons in the footer

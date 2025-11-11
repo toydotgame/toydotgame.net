@@ -22,6 +22,10 @@
 		<hr>
 	{% endif %}
 	<p id="visitor-counter">I don't know what number visitor you are!</p>
+	<small style="margin-bottom:0.5lh">
+		<a href="{{ site.feed.path }}" target="_blank">Atom feed</a>
+		| <a href="/sitemap.xml">Sitemap</a>
+	</small>
 	<div id="badges">
 		{% for group in site.data.badges %}
 			{% for badge in group[1] %}

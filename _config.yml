@@ -28,6 +28,11 @@ twitter:
   card:      summary
 logo:        /media/resources/profile.png
 locale:      en_AU # Overrides site.lang in _some_ situations
+feed:        # My custom implementation:
+  length:    10
+  icon:      /media/resources/profile.png # Should be 1:1
+  logo:      /media/resources/banner.png  # Should be 2:1
+  path:      /feed.atom
 
 # GLOBAL
 timezone: Etc/GMT-10 # Flipped sign because POSIX
@@ -41,13 +46,18 @@ collections:
     output: true
     permalink: /projects/:path
 defaults:
-  - # Must specify the `path: ""` entry @ index 0 (see _layouts/base.html)
+  - # Must specify the `path: ""` entry @ index 0 (see _layouts/base.html and feed.atom)
     scope:
       path: ""
     values:
       image:  /media/resources/banner.png
       layout: base
       seo_description_max_words: 50 # Default 100
+  - # See also: 404, 418, and sasha front matter; sitemap excludes:
+    scope:
+      path: media/*
+    values:
+      sitemap: false
   -
     scope:
       path: _posts
@@ -66,13 +76,14 @@ exclude:
   - vendor/
   - jekyll-serve.sh
   - README.txt
-  - formatting.md
 future: true # Just in case
 kramdown:
   auto_ids:          false
   footnote_backlink: ^
 plugins:
+#  - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 #  - jemoji # Not using for now because image-based emoji sucks
 
 # SERVE

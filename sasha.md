@@ -1,5 +1,6 @@
 ---
 title: SASHA NATION
+sitemap: false
 ---
 
 <div style="margin:0 auto; max-width:550px">

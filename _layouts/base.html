@@ -30,6 +30,11 @@
 					<b>{{ page.updated }}</b>{% endif %}
 			</p>{% endif %}
 			{% if page.image %}</div></div>{% endif %}
+			{% if page.collection == "posts" or page.url == "/blog/"
+				or page.url == "/formatting.html" %}
+				<a class="feed-button" href="{{ site.feed.path }}"
+					target="_blank" title="Subscribe via Atom!"></a>
+			{% endif %}
 			{{ content }}
 		</article>
 		{% include footer.html %}

@@ -7,11 +7,14 @@
 # $ bundle update github-pages
 
 source "https://rubygems.org"
-gem "github-pages", group: :jekyll_plugins # i.e. requires :jekyll_plugins group
+gem "github-pages", group: :jekyll_plugins # Requires the group(?)
 
 group :jekyll_plugins do
-  # The `github-pages` gem supplies most dependencies, for example jemoji
+  # The `github-pages` gem supplies the below (as of writing) (incl. on
+  # deployment @ GitHub). This is specified here for clarity as to what I use:
+  #gem 'jekyll-feed'
   gem 'jekyll-seo-tag'
+  gem 'jekyll-sitemap'
 end
 
 # Default Jekyll Windows compat slop:

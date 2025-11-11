@@ -452,11 +452,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Consecutive headings (excl. `h1` titles) of lesser levels shouldn't have gaps: */
-:is(.banner, h1, .subtitle) + :is(h2, h3, h4, h5, h6),
-:is(.banner, h1, .subtitle, h2) + :is(h3, h4, h5, h6),
-:is(.banner, h1, .subtitle, h2, h3) + :is(h4, h5, h6),
-:is(.banner, h1, .subtitle, h2, h3, h4) + :is(h5, h6),
-:is(.banner, h1, .subtitle, h2, h3, h4, h5) + h6 {
+:is(.banner, h1, .subtitle, .feed-button) + :is(h2, h3, h4, h5, h6),
+:is(.banner, h1, .subtitle, .feed-button, h2) + :is(h3, h4, h5, h6),
+:is(.banner, h1, .subtitle, .feed-button, h2, h3) + :is(h4, h5, h6),
+:is(.banner, h1, .subtitle, .feed-button, h2, h3, h4) + :is(h5, h6),
+:is(.banner, h1, .subtitle, .feed-button, h2, h3, h4, h5) + h6 {
 	margin-top:	unset;
 }
 
@@ -584,6 +584,21 @@ code:not(pre code), u:has(code), abbr:has(code) {
 }
 
 /* CONTENT: Block elements */
+article .feed-button {
+	position:	absolute;
+		top:	8px;
+		right:	8px;
+	width:		20px;
+	height:		20px;
+	background:	url("/media/resources/rss.png") 0 / 100%;
+}
+
+.banner + .feed-button {
+	top:	16px;
+	right:	16px;
+	filter:	drop-shadow(0 2px 6px #000c);
+}
+
 article img {
 	/*
 	 * Images display weirdly (using a `font-size`d gap around them) because

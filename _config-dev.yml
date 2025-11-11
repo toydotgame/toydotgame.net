@@ -5,15 +5,13 @@
 # this config.
 
 # BUILD
-include:
-  - formatting.md # Override production _config.yml
 #incremental:         true
 show_drafts:         true
 strict_front_matter: true
 unpublished:         true
 
 # SERVE
-host:       0.0.0.0
+host:       localhost # For working Atom
+#host:       0.0.0.0   # For working LAN access from other devices
 livereload: true
 port:       8080
-

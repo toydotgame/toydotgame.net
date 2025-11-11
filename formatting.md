@@ -414,6 +414,11 @@ Markdown syntax
   to my corner of the internet!" for all pages, and specifically `_posts` will
   use the first paragraph instead. Regardless of the page collection or where
   the value comes from, they're all truncated to 50 words
+	* jekyll-seo-tag generates a `description`{:.highlight.language-yaml} for
+	  all pages, and Jekyll also generates an
+	  `excerpt`{:.highlight.language-yaml} for all **Posts**. jekyll-feed will
+	  use this auto-generated `excerpt`{:.highlight.language-yaml}, but we
+	  don't use it for anything else otherwise
 * Set front matter `slug`{:.highlight.language-yaml} to whatever you want (note
   that all hyphens become spaces and the first word is capitalised).
   > Remember that the `{% raw %}{{ page.slug
