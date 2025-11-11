@@ -1,6 +1,7 @@
 ---
 title: Projects
 updated: 2025-11-10
+aero-icon: /media/resources/aerico/welcome.png
 mathjax: true
 ---
 
@@ -10,7 +11,7 @@ private, single-use stuff I never really maintain, however. For the things I
 about and/or use frequently.
 
 <style>
-	img {
+	article img {
 		border-radius:	unset !important;
 		outline:		unset !important;
 	}

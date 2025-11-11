@@ -8,19 +8,28 @@
 	{% include head.html %}
 	<body>
 		{% include nav.html %}
-		{% assign humanizedSlug = page.slug | split: "-" | join: " " | capitalize %}
+		{% assign aeroTitle = page.title | default: page.url %}
+		{% if page.collection == "posts" %}
+			{% assign aeroTitle = page.slug
+				| split: "-" | join: " " | capitalize | prepend: "Blog: " %}
+		{% endif %}
 		<article
-			data-aero-title="{% if page.collection == "posts" %}Blog: {% endif %}{{ humanizedSlug | default: page.url | escape }}"
-			style="--aero-icon:url({{ page.aero-icon | default: "/media/resources/aerico/info.png" }})">
-			{% if page.banner %}<div class="banner">
-				<img class="nomodal" src="{{ page.banner }}" /><div class="banner-title">{% endif %}
-			{% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+			data-aero-title="{{ aeroTitle | escape }}"
+			style="--aero-icon:url({{ page.aero-icon
+				| default: "/media/resources/aerico/info.png" }})">
+			{% unless page.image == site.defaults[0].values.image %}<div
+				class="banner">
+				<img class="nomodal" src="{{ page.image }}">
+				<div class="banner-title">{% endunless %}
+			{% if page.title %}<h1>{{ page.title }}</h1>
 			<p class="subtitle">
-				{% if page.date %}Written: <b>{{ page.date | date:"%Y-%m-%d" }}</b>{% endif %}
+				{% if page.date %}Written: <b>{{ page.date
+					| date:"%Y-%m-%d" }}</b>{% endif %}
 				{% if page.date and page.updated %} · {% endif %}
-				{% if page.updated %}Last updated: <b>{{ page.updated }}</b>{% endif %}
-			</p>
-			{% if page.banner %}</div></div>{% endif %}
+				{% if page.updated %}Last updated:
+					<b>{{ page.updated }}</b>{% endif %}
+			</p>{% endif %}
+			{% if page.image %}</div></div>{% endif %}
 			{{ content }}
 		</article>
 		{% include footer.html %}

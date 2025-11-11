@@ -18,7 +18,7 @@ published: false      # Only built by the dev config. Typically, draft pages
 aero-icon: /media/resources/aerico/book.png # Passed to the CSS; defaults to
                                             # info.png for all pages, and
                                             # book.png for _posts
-banner:    http://placecats.com/200/50 # Won't render if unspecified
+image:     http://placecats.com/200/50 # Won't render if unspecified
 ---
 
 ## Inline styles
@@ -280,7 +280,7 @@ mathjax:   true       # Download MathJax when loading the page?; default false
 published: true       # Build in production?; default true
 aero-icon: # Path to image for icon in the article "window" title; default
            # book.png (_posts) or info.png (otherwise)
-banner:    # Path to image for page title background/embed image; default
+image:     # Path to image for page title background/embed image; default
            # banner.png
 ```
 Then just start typing away!
@@ -409,6 +409,19 @@ Markdown syntax
 * It's probably better practice to use `{% raw %}{% post_url yyyy-mm-dd-title
   %}{% endraw %}`{:.highlight.language-liquid} to inject an article's permalink
   **dynamically** rather than hardcoding them
+* Set the front matter key `description`{:.highlight.language-yaml} to a custom
+  description for that page (e.g. in embeds elsewhere). It defaults to "Welcome
+  to my corner of the internet!" for all pages, and specifically `_posts` will
+  use the first paragraph instead. Regardless of the page collection or where
+  the value comes from, they're all truncated to 50 words
+* Set front matter `slug`{:.highlight.language-yaml} to whatever you want (note
+  that all hyphens become spaces and the first word is capitalised).
+  > Remember that the `{% raw %}{{ page.slug
+  > }}{% endraw %}`{:.highlight.language-liquid} value may be important/used for
+  > something else!
+  {:.callout-warning}
+  Also note that for non-Posts, the slug value isn't used in the aero section
+  title
 
 ## Useful features
 * Use the `.hidden`{:.highlight.language-css} class (i.e. in an IAL) to set

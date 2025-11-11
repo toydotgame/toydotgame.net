@@ -9,7 +9,7 @@
 	toydotgame</small>
 	{% if page.url == "/blog/" %}
 		<br style="display:block; margin-bottom:0.5lh">
-	{% else %}
+	{% elsif page.collection == "posts" %}
 		<div id="recent-blogs">
 			<h2>Recent blog posts</h2>
 			<ul class="blog-article-list">
@@ -36,7 +36,8 @@
 	{% comment %} Hacks to align on © easier {% endcomment %}
 	<small>
 		Website content © 2017–2025 toydotgame<br>
-		Website design <span class="copyleft">©</span> 2025 toydotgame<span style="user-select:none">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		Website design <span class="copyleft">©</span> 2025
+		toydotgame<span style="user-select:none">&nbsp;&nbsp;&nbsp;&nbsp;</span>
 	</small>
 	<small class="footer-double-small">
 		v6 (this design) inspired by
@@ -48,10 +49,10 @@
 	</small>
 	<small>Neko implementation © 2022 adryd</small>
 	<small class="footer-double-small">Found at
-	<a href="https://github.com/adryd325/oneko.js">adryd325/oneko.js</a>.
-	Sightly modified by me. Clear your local browser storage for toydotgame.net
-	if an hour's just too long to wait to get her back</small>
-	<small>Old v5 design <span class="copyleft">©</span> 2023–2025 toydotgame</small>
+	<a href="https://github.com/adryd325/oneko.js">adryd325/oneko.js</a>,
+	sightly modified by me</small>
+	<small>Old v5 design <span class="copyleft">©</span> 2023–2025
+	toydotgame</small>
 	<small class="footer-double-small">
 		v5 designs are present in part in v6—they're inspired by
 		<a href="https://maia.crimew.gay/">maia</a>,

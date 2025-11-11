@@ -6,7 +6,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>{{ page.title }} - toydotgame.net</title>
+	<title>{{ page.title }} - {{ site.title }}</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="/media/resources/styles/styles.css">
 	{% comment %}
@@ -18,15 +18,10 @@
 		rendering from occurring until evaluation is complete as well.
 	{% endcomment %}
 	<script blocking="rendering" src="/media/resources/js/random-bg.js"></script>
-
-	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="toydotgame.net">
-	<meta property="og:title" content="{{ page.title }}">
-	<meta property="og:description" content="TEMPLATE_DESC">
-	<meta property="og:image" content="{{ page.banner | default: "/media/resources/banner.png" }}">
 	
 	<script type="module" src="/media/resources/js/loader.js"></script>
-	<script defer src="/media/resources/js/oneko.js" data-cat="/media/resources/oneko.gif"></script>
+	<script defer src="/media/resources/js/oneko.js"
+		data-cat="/media/resources/oneko.gif"></script>
 	{% if page.mathjax %}
 		<script>
 		MathJax = {
@@ -51,4 +46,6 @@
 		</script>
 		<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
 	{% endif %}
+
+	{% seo title=false %}
 </head>

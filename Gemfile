@@ -11,6 +11,7 @@ gem "github-pages", group: :jekyll_plugins # i.e. requires :jekyll_plugins group
 
 group :jekyll_plugins do
   # The `github-pages` gem supplies most dependencies, for example jemoji
+  gem 'jekyll-seo-tag'
 end
 
 # Default Jekyll Windows compat slop:

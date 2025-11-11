@@ -1,5 +1,3 @@
-* _site ignore list
-* Migrate articles over (eek!)
 * atom and/or rss feeds :3
 * cool ass links page for stuff to show off (not even necessarily my stuff)
 * meta tag embed data support for a bunch more stuff/more reliable (e.g. twt or

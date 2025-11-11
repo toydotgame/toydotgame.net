@@ -390,10 +390,11 @@ nav a {
 					rgb(from var(--tab-tint) r g b / 05.0%) 100%
 				);
 
+	min-width:			min-content;
 	margin-bottom:		-1px;
 	/* 4px hor./1px ver. padding + 1/2px around for inset "borders:" */
 	padding:			3px 6px 2px 6px;
-	flex:				min-content;
+	flex:				1; /* Equiv. to 1 1 0 */
 	overflow:			hidden;
 	color:				var(--accent);
 	background:			var(--bg2) var(--tab-aero);
@@ -994,7 +995,7 @@ footer {
 .blog-article-list li a {
 	font-family:	"EB Garamond", "Twemoji", serif;
 	font-size:		large;
-	font-weight:	600;
+	font-weight:	500;
 }
 
 .blog-article-list li a b {
