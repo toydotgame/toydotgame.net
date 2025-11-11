@@ -27,8 +27,10 @@ layout: null # Don't use the default page HTML markup, just spit out plain text
 	<logo>{{ site.feed.logo | absolute_url | xml_escape }}</logo>
 
 	{% assign posts = site.posts | sort: "date" | reverse %}
-	{% for post in posts
-		{% if site.feed.length >= 0 %}limit: site.feed.length{% endif %} %}
+	{% if site.feed.length >= 0 %}
+		{% assign posts = posts | limit: site.feed.length %}
+	{% endif %}
+	{% for post in posts %}
 		<entry>
 			{% assign postTitle = post.title | default: post.url | strip_html
 				| xml_escape %}
