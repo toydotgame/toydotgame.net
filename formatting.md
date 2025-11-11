@@ -563,6 +563,9 @@ These are effectively **low-priority**; but, for a *perfect* stylesheet:
       and/or derived in code for proper dynamic support rather than just "*Oh,
 	  well it works for now…*"
 - [ ] `a`{:.highlight.language-css} styles are kinda weird (re. nav)
+- [ ] Heading banners inherit their heights and stuff weirdly and backwards. I
+      think they should be made a little more permissive given what it's like
+      right now
 
 ### Feature ideas/*look into*
 These are even *less* priority, but would be nice to look into:

@@ -157,6 +157,7 @@ body {
 	font-family:		"Ubuntu", "Twemoji", sans-serif;
 		font-weight:	475;
 	overflow-wrap:		break-word;
+	word-break:			break-word;
 }
 
 /* Mobile Safari disables fixed backgrounds because apparently them being
