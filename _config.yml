@@ -32,7 +32,7 @@ feed:        # My custom implementation:
   length:    10
   icon:      /media/resources/profile.png # Should be 1:1
   logo:      /media/resources/banner.png  # Should be 2:1
-  path:      /feed.atom
+  path:      /feed.xml
 
 # GLOBAL
 timezone: Etc/GMT-10 # Flipped sign because POSIX
@@ -46,7 +46,7 @@ collections:
     output: true
     permalink: /projects/:path
 defaults:
-  - # Must specify the `path: ""` entry @ index 0 (see _layouts/base.html and feed.atom)
+  - # The below MUST be @ index 0 (see _layouts/base.html and feed.xml)
     scope:
       path: ""
     values:
