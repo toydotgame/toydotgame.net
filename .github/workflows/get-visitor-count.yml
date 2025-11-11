@@ -22,4 +22,3 @@ jobs:
           git add -A
           git commit -m "[${{ job.status }}] Updated visitor count"
           git push
-
