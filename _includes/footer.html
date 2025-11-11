@@ -5,8 +5,25 @@
 {% endcomment %}
 
 <footer data-aero-title="Moar!!!" style="--aero-icon:url('/media/resources/aerico/msn.png')">
-	<small>Made with <span style="color:var(--accent)">♥</span> by
-	toydotgame</small>
+	{% comment %} Implies `page.collection == "posts"`: {% endcomment %}
+	{% if page.previous or page.next %}
+		{% if page.previous %}
+			<small class="footer-page-turner fleft">
+				<b>← Previous</b><br>
+				<a href="{{ page.previous.url }}">{{ page.previous.title
+					| default: page.previous.slug}}</a>
+			</small>
+		{% endif %}
+		{% if page.next %}
+			<small class="footer-page-turner fright">
+				<b>Next →</b><br>
+				<a href="{{ page.next.url }}">{{ page.next.title
+					| default: page.next.slug}}</a>
+			</small>
+		{% endif %}
+	{% endif %}
+	<small class="freset">Made with <span style="color:var(--accent)">♥</span>
+	by toydotgame</small>
 	{% if page.url == "/blog/" %}
 		<br style="display:block; margin-bottom:0.5lh">
 	{% elsif page.collection == "posts" %}

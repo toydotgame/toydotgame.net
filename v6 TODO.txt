@@ -1,2 +1,0 @@
-* make sure _drafts is set up and appears in blog index in production env
-* next and prev blog article post buttons in the footer
