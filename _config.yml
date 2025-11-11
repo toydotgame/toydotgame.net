@@ -29,7 +29,7 @@ twitter:
 logo:        /media/resources/profile.png
 locale:      en_AU # Overrides site.lang in _some_ situations
 feed:        # My custom implementation:
-  length:    10
+  length:    -1
   icon:      /media/resources/profile.png # Should be 1:1
   logo:      /media/resources/banner.png  # Should be 2:1
   path:      /feed.xml
