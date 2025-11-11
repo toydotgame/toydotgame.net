@@ -156,8 +156,8 @@ body {
 	           			var(--bg1) linear-gradient(var(--bg2), var(--bg1)) fixed;
 	font-family:		"Ubuntu", "Twemoji", sans-serif;
 		font-weight:	475;
-	overflow-wrap:		break-word;
-	word-break:			break-word;
+	overflow-wrap:		anywhere;
+	word-break:			normal;
 }
 
 /* Mobile Safari disables fixed backgrounds because apparently them being
