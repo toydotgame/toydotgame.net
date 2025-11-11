@@ -406,6 +406,9 @@ Markdown syntax
   will be styled in sans-serif specially as a title for that block. For
   callouts, their styling is flexible and the little icon will display
   well-aligned for whatever you may put there
+* It's probably better practice to use `{% raw %}{% post_url yyyy-mm-dd-title
+  %}{% endraw %}`{:.highlight.language-liquid} to inject an article's permalink
+  **dynamically** rather than hardcoding them
 
 ## Useful features
 * Use the `.hidden`{:.highlight.language-css} class (i.e. in an IAL) to set
