@@ -3,6 +3,7 @@ title: Projects
 updated: 2025-11-10
 aero-icon: /media/resources/aerico/welcome.png
 mathjax: true
+permalink: /projects/ # Permalink for the same reason as the blog index
 ---
 
 I've made a lot of stuff over the years. The *vast majority* of it is generally

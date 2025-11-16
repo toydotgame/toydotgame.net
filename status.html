@@ -1,0 +1,16 @@
+---
+title: Status
+# Permalink for the same reasons as in blog.html. Also because the _status/*
+# path has the front matter default to use the `status` layout, whereas I want
+# this to use the default `base` layout:
+permalink: /status/
+aero-icon: /media/resources/aerico/book.png
+---
+
+<p>
+	There's a full listing of my status posts <a href="/status/all">here</a>.
+	Due to GitHub Pages' limits, I can't paginate them nicely. The latest 25 are
+	displayed below, and you can click that link to load 'em all instead.
+</p>
+
+{% include status-index.html limit=25 %}

@@ -256,7 +256,7 @@ header::before {
 }
 
 article::before {
-	padding-top:	4px; /* At least make it right here */
+	padding-top:	3px; /* Sucks here too but in a different way */
 }
 
 body > *::after { /* "Close button" decoration for sections */

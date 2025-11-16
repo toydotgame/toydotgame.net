@@ -5,13 +5,12 @@
 # this config.
 
 # BUILD
-#incremental:         true
+incremental:         true
 show_drafts:         true
 strict_front_matter: true
 unpublished:         true
 
 # SERVE
-host:       localhost # For working Atom
-#host:       0.0.0.0   # For working LAN access from other devices
+host:       0.0.0.0
 livereload: true
 port:       8080

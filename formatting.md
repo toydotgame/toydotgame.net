@@ -337,10 +337,7 @@ Asides
   using the exact same methods as you would to float and scale a
   `<figure>`{:.highlight.language-html}
 
-Superscript `~`{:.highlight.language-markdown}, subscript
-`^`{:.highlight.language-markdown}, and highlight
-`==`{:.highlight.language-markdown} or `::`{:.highlight.language-markdown}
-Markdown syntax
+Superscript `~`{:.highlight.language-markdown}, subscript `^`{:.highlight.language-markdown}, and highlight `==`{:.highlight.language-markdown} or `::`{:.highlight.language-markdown} Markdown syntax
 : Kramdown doesn't do that. Use `<sup>`{:.highlight.language-html},
   `<sub>`{:.highlight.language-html}, and `<mark>`{:.highlight.language-html}
   respectively

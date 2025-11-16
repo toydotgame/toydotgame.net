@@ -1,0 +1,24 @@
+---
+# AUTHOR: toydotgame
+# CREATED: 2025-11-12
+published: false
+---
+
+# In your front matter, place the following:
+date: "%Y-%m-%dT%H:%MZ"      # UTC
+# or
+date: "%Y-%m-%dT%H:%M+10:00" # UTC+10
+# this is the assumed format, thus you MUST include it correctly. e.g:
+date: "2000-01-01T16:32Z"
+date: "2025-10-17T08:39+10:00"
+
+# You can also attach a list of images:
+attachments: /path/to/foo.png
+# or
+attachments:
+  - /path/to/foo.png
+  - /path/to/bar.jpg
+  - /path/to/baz.webp
+  - /path/to/qux.png
+
+# No other front matter values will be expected.

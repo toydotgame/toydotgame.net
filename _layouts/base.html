@@ -5,7 +5,48 @@
 	Generic page and blog post template for toydotgame.net v6.
 {% endcomment %}
 <html lang="en">
-	{% include head.html %}
+	<head>
+		{% include head-meta-tags.html %}
+		<title>{{ page.title }} - {{ site.title }}</title>
+		<link rel="stylesheet" href="/media/resources/styles/styles.css">
+		{% comment %}
+			The above style tag will block rendering until it is downloaded, but
+			will not block further parsing of the below tags. The below script will
+			induce a parser-block where it'll wait for the CSS to download before
+			it can evaluate and the tags below _it_ can be parsed.
+			Additionally, the `blocking="rendering"` attribute will prevent CSS
+			rendering from occurring until evaluation is complete as well.
+		{% endcomment %}
+		<script blocking="rendering" src="/media/resources/js/random-bg.js"></script>
+		
+		<script type="module" src="/media/resources/js/loader.js"></script>
+		<script defer src="/media/resources/js/oneko.js"
+			data-cat="/media/resources/oneko.gif"></script>
+		{% if page.mathjax %}
+			<script>
+			MathJax = {
+				options: {
+					enableExplorer: false,
+					enableMenu: false,
+					menuOptions: {
+						settings: {
+							enrich: false,
+							speech: false,
+							braille: false
+						}
+					}
+				},
+				tex: {
+					inlineMath: {"[+]": [["$","$"], ["$`", "`$"]]}
+				},
+				svg: {
+					fontCache: "global"
+				}
+			};
+			</script>
+			<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+		{% endif %}
+	</head>
 	<body>
 		{% include nav.html %}
 		{% assign aeroTitle = page.title | default: page.url %}
@@ -17,18 +58,18 @@
 			data-aero-title="{{ aeroTitle | escape }}"
 			style="--aero-icon:url({{ page.aero-icon
 				| default: "/media/resources/aerico/info.png" }})">
-			{% unless page.image == site.defaults[0].values.image %}<div
+			{% unless page.image == site.banner %}<div
 				class="banner">
 				<img class="nomodal" src="{{ page.image }}">
 				<div class="banner-title">{% endunless %}
 			{% if page.title %}<h1>{{ page.title }}</h1>
-			<p class="subtitle">
+			{% if page.date or page.updated %}<p class="subtitle">
 				{% if page.date %}Written: <b>{{ page.date
 					| date:"%Y-%m-%d" }}</b>{% endif %}
 				{% if page.date and page.updated %} · {% endif %}
 				{% if page.updated %}Last updated:
 					<b>{{ page.updated }}</b>{% endif %}
-			</p>{% endif %}
+			</p>{% endif %}{% endif %}
 			{% if page.image %}</div></div>{% endif %}
 			{% if page.collection == "posts" or page.url == "/blog/"
 				or page.url == "/formatting.html" %}

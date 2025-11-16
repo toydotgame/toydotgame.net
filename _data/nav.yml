@@ -5,6 +5,8 @@
 production:
   - name: home
     path: /
+  - name: status
+    path: /status/
   - name: blog
     path: /blog/
   - name: cool stuff

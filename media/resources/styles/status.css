@@ -1,0 +1,183 @@
+/*
+ * AUTHOR: toydotgame
+ * CREATED: 2025-11-13
+ * Simple status page style for viewing a status directly.
+ */
+
+/* Copy/sync from styles.css: */
+@import url("/media/resources/styles/syntax.css");
+
+@font-face {
+	font-family:	"DejaVu Sans Mono";
+	src:			local("DejaVu Sans Mono Book"),
+					url("/media/resources/fonts/DejaVu Sans Mono Regular.ttf");
+	font-display:	swap;
+	font-weight:	normal;
+} @font-face {
+	font-family:	"DejaVu Sans Mono";
+	src:			local("DejaVu Sans Mono Bold"),
+					url("/media/resources/fonts/DejaVu Sans Mono Bold.ttf");
+	font-display:	swap;
+	font-weight:	bold;
+} @font-face {
+	font-family:	"Twemoji";
+	src:			url("/media/resources/fonts/Twemoji.ttf");
+	font-display:	swap;
+}
+
+:root {
+	--accent:		#ac94b5;
+	--secondary:	#c8c8c8;
+	--link:			#5865f2;
+	--text:			#fff;
+	--bg1:			#1c1c1c;
+}
+
+*, ::before, ::after {
+	margin:				0;
+	padding:			0;
+	box-sizing:			border-box;
+	scrollbar-width:	thin;
+}
+
+.hidden {
+	display:	none;
+}
+
+/* status.css henceforth: */
+body {
+	padding:			1ch 0;
+	color:				var(--text);
+	background-color:	var(--bg1);
+	font-family: 		"DejaVu Sans Mono", "Twemoji", monospace;
+}
+
+:focus-visible {
+	position:	relative;
+		z-index:	1;
+	outline:	2px solid hsl(from var(--accent) h calc(2*s) l);
+	box-shadow:	0 0 0 3px var(--secondary),
+				4px 4px 10px var(--accent);
+}
+
+.feed-button {
+	position:	absolute;
+		top:	12px;
+		right:	12px;
+	width:		24px;
+	height:		24px;
+	background:	url("/media/resources/rss.png") 0 / 100%;
+}
+
+a {
+	color:				var(--link);
+	text-decoration:	none;
+}
+
+a:is(:hover, :focus-visible) {
+	text-decoration:	underline;
+	text-shadow:		1px 1px 2px;
+}
+
+article {
+	width:			82ch;
+		max-width:	100%;
+	margin:			0 auto;
+	padding:		0 1ch;
+	overflow-wrap:	anywhere;
+	word-break:		normal;
+	container-type:	inline-size; /* For #attachments */
+}
+
+article h1 {
+	margin-bottom:		0.5lh;
+	padding-right:		calc(48px - (100vw - 100%)/2); /* Clearing space for feed button */
+	color:				var(--accent);
+	text-decoration:	underline 2px;
+		text-underline-offset:	3px;
+	font-weight:		bold;
+}
+
+/* Reminder to myself to attach images rather than insert inline: */
+article img:not(#attachments img) {
+	display:	none;
+}
+
+#attachments {
+	--gap:			8px;
+	--max-width:	600px;
+	--item-size:	min(
+						calc(50cqw - var(--gap)/2),				/* Normally */
+						calc((var(--max-width) - var(--gap))/2)	/* Enforce --max-width for items */
+					);
+
+	display:		grid;
+		grid-template-columns:	repeat(2, var(--item-size));
+		grid-auto-rows:			var(--item-size);
+		gap:					var(--gap);
+	width:			100cqw;
+		max-width:	var(--max-width);
+	margin:			1lh auto 0 auto;
+	overflow:		hidden; /* For border-radius to show */
+	border-radius:	16px;
+}
+
+#attachments:has(:only-child) {
+	--max-width:	400px;
+	--item-size:	min(100cqw, 400px);
+
+	grid-template-columns:	var(--item-size);
+}
+
+@container (width <= 408px) {
+	#attachments {
+		--item-size:	100cqw;
+		
+		grid-template-columns:	var(--item-size);
+	}
+}
+
+#attachments img {
+	width:			100%;
+	height:			100%;
+	object-fit:		cover;
+	border-radius:	2px;
+	cursor:			zoom-in;
+}
+
+#attachments img:not(:only-child):nth-child(odd):last-child {
+	grid-column-end:	span 2;
+}
+
+footer {
+	margin-top:	2lh;
+	color:		var(--secondary);
+	text-align:	center;
+	font-style:	italic;
+}
+
+/* IMAGE MODAL: Tweaked from styles.css too */
+#modaldim {
+	position:			fixed;
+		top:	0;
+	width:				100%;
+	height:				100%;
+	padding:			7.5% min(calc((100% - 400px)/2), 10%);
+	background:			#0006;
+	backdrop-filter:	blur(8px);
+	cursor:				zoom-out;
+}
+
+body:has(#modaldim:not(.hidden)) {
+	overflow:	hidden;
+}
+
+#modaldim img {	
+	width:				100%;
+	height:				100%;
+	object-fit:			contain;
+	filter:				drop-shadow(8px 8px 8px var(--bg1));
+	user-select:		none;
+		-webkit-user-select:	none; /* Safari */
+	image-rendering:	pixelated;
+}
