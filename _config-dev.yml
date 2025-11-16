@@ -9,6 +9,8 @@
 show_drafts:         true
 strict_front_matter: true
 unpublished:         true
+#compress_html:
+#  profile:           true
 
 # SERVE
 host:       0.0.0.0

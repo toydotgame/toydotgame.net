@@ -54,6 +54,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path
+compress_html:
+  clippings: all
+  comments:  all
 defaults:
   -
     scope:
