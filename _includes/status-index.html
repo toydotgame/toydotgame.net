@@ -61,18 +61,18 @@
 	}
 </style>
 
-{% assign status = site.status | reverse %}
-{% if include.limit >= 0 %}
-	{% assign status = status | limit:include.limit %}
-{% endif %}
-{% for i in status %}{% unless i.date %}{% continue %}{% endunless %}
+{%- assign status = site.status | reverse -%}
+{%- if include.limit >= 0 -%}
+	{%- assign status = status | limit:include.limit -%}
+{%- endif -%}
+{%- for i in status -%}{%- unless i.date -%}{%- continue -%}{%- endunless -%}
 	<h3>#{{ i.slug }} - {{ i.date | date:"%Y-%m-%d @ %l:%m %P" }}
 	<small>(<a href="{{ i.url }}">Permalink</a>)</small></h3>
 	{{ i.content }}
-	{% if i.attachments %}<div class="attachments">
-		{% for attachment in i.attachments %}
+	{%- if i.attachments -%}<div class="attachments">
+		{%- for attachment in i.attachments -%}
 			<img src="{{ attachment }}"
 				alt="Attached image number {{ forloop.index }}">
-		{% endfor %}
-	</div>{% endif %}
-{% endfor %}
+		{%- endfor -%}
+	</div>{%- endif -%}
+{%- endfor -%}

@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{% include feed.xml collection=site.status title="status" alt="/status/" %}
+{%- include feed.xml collection=site.status title="status" alt="/status/" -%}

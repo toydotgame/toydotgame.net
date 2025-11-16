@@ -14,20 +14,20 @@ I like writing things. Stupid things that no one <i>reasonably</i> should care
 about, yet I write anyway. For the five people who are the target audience of
 each article, I love you.
 
-{% comment %}
+{%- comment -%}
 	Adapted from https://stackoverflow.com/a/20777475:
-{% endcomment %}
+{%- endcomment -%}
 
-{% for post in site.posts %}
-	{% assign postYear = post.date | date: "%Y" %}
-	{% if postYear != lastPostYear %}
-		{% unless forloop.first %}</ul>{% endunless %}
+{%- for post in site.posts -%}
+	{%- assign postYear = post.date | date: "%Y" -%}
+	{%- if postYear != lastPostYear -%}
+		{%- unless forloop.first -%}</ul>{%- endunless -%}
 
 		<h2>{{ postYear }}</h2>
 		<ul class="blog-article-list">
 		
-		{% assign lastPostYear = postYear %}
-	{% endif %}
+		{%- assign lastPostYear = postYear -%}
+	{%- endif -%}
 
 	<li>
 		<a href="{{ post.url }}">
@@ -35,5 +35,5 @@ each article, I love you.
 		</a>
 	</li>
 
-	{% if forloop.last %}</ul>{% endif %}
-{% endfor %}
+	{%- if forloop.last -%}</ul>{%- endif -%}
+{%- endfor -%}

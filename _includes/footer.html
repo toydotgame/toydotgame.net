@@ -1,60 +1,60 @@
-{% comment %}
+{%- comment -%}
 	AUTHOR: toydotgame
 	CREATED: 2025-10-21
 	v6 footer.
-{% endcomment %}
+{%- endcomment -%}
 
 <footer data-aero-title="Moar!!!" style="--aero-icon:url('/media/resources/aerico/msn.png')">
-	{% comment %} Implies `page.collection == "posts"`: {% endcomment %}
-	{% if page.previous or page.next %}
-		{% if page.previous %}
+	{%- comment -%} Implies `page.collection == "posts"`: {%- endcomment -%}
+	{%- if page.previous or page.next -%}
+		{%- if page.previous -%}
 			<small class="footer-page-turner fleft">
 				<b>← Previous</b><br>
 				<a href="{{ page.previous.url }}">{{ page.previous.title
 					| default: page.previous.slug}}</a>
 			</small>
-		{% endif %}
-		{% if page.next %}
+		{%- endif -%}
+		{%- if page.next -%}
 			<small class="footer-page-turner fright">
 				<b>Next →</b><br>
 				<a href="{{ page.next.url }}">{{ page.next.title
 					| default: page.next.slug}}</a>
 			</small>
-		{% endif %}
-	{% endif %}
+		{%- endif -%}
+	{%- endif -%}
 	<small class="freset">Made with <span style="color:var(--accent)">♥</span>
 	by toydotgame</small>
-	{% if page.url == "/blog/" %}
+	{%- if page.url == "/blog/" -%}
 		<br style="display:block; margin-bottom:0.5lh">
-	{% elsif page.collection == "posts" %}
+	{%- elsif page.collection == "posts" -%}
 		<div id="recent-blogs">
 			<h2>Recent blog posts</h2>
 			<ul class="blog-article-list">
-				{% for i in site.posts limit:5 %}
+				{%- for i in site.posts limit:5 -%}
 					<li><a href="{{ i.url }}"><b>{{ i.date | date: "%Y-%m-%d" }}:</b>
 					{{ i.title }}</a></li>
-				{% endfor %}
+				{%- endfor -%}
 			</ul>
 		</div>
 		<hr>
-	{% endif %}
+	{%- endif -%}
 	<p id="visitor-counter">I don't know what number visitor you are!</p>
 	<small style="margin-bottom:0.5lh">
 		<a href="{{ site.feed.path }}" target="_blank">Atom feed</a>
 		| <a href="/sitemap.xml">Sitemap</a>
 	</small>
 	<div id="badges">
-		{% for group in site.data.badges %}
-			{% for badge in group[1] %}
-				{% if badge.lnk %}<a href="{{ badge.lnk }}" tabindex="-1">{% endif %}
+		{%- for group in site.data.badges -%}
+			{%- for badge in group[1] -%}
+				{%- if badge.lnk -%}<a href="{{ badge.lnk }}" tabindex="-1">{%- endif -%}
 				<img class="badge {{ group[0] }}"
 					src="/media/resources/badges/{{ badge.img }}.gif" />
-				{% if badge.lnk %}</a>{% endif %}
-			{% endfor %}
-			{% unless forloop.last %}<br><br>{% endunless %}
-		{% endfor %}
+				{%- if badge.lnk -%}</a>{%- endif -%}
+			{%- endfor -%}
+			{%- unless forloop.last -%}<br><br>{%- endunless -%}
+		{%- endfor -%}
 	</div>
-	{% comment %} Hacks to align on © easier {% endcomment %}
+	{%- comment -%} Hacks to align on © easier {%- endcomment -%}
 	<small>
 		Website content © 2017–2025 toydotgame<br>
 		Website design <span class="copyleft">©</span> 2025

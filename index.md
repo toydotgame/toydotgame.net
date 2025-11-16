@@ -105,9 +105,9 @@ Minecrafter to an extent :3.
 </style>
 
 <div class="links">
-	{% for account in site.data.social-links.active %}
+	{%- for account in site.data.social-links.active -%}
 		<a class="noexternal" href="{{ account.link }}"><img class="nomodal" src="/media/resources/card-icons/{{ account.logo }}.svg" /> {{ account.site }}</a>
-	{% endfor %}
+	{%- endfor -%}
 </div>
 
 <style>
@@ -139,9 +139,9 @@ Minecrafter to an extent :3.
 <details>
 	<summary style="cursor:pointer; text-align:center;"><small>(click)</small><h3>Inactive-ish accounts</h3></summary>
 	<div class="links">
-		{% for account in site.data.social-links.inactive %}
+		{%- for account in site.data.social-links.inactive -%}
 			<a class="noexternal" href="{{ account.link }}"><img class="nomodal" src="/media/resources/card-icons/{{ account.logo }}.svg" /> {{ account.site }}</a>
-		{% endfor %}
+		{%- endfor -%}
 	</div>
 </details>
 

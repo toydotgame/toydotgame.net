@@ -1,4 +1,4 @@
 ---
 layout: null # Don't use the default page HTML markup, just spit out plain text
 ---
-{% include feed.xml collection=site.posts title="blog" alt="/" %}
+{%- include feed.xml collection=site.posts title="blog" alt="/" -%}

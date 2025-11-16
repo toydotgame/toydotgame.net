@@ -1,29 +1,29 @@
-{% comment %}
+{%- comment -%}
 	AUTHOR: toydotgame
 	CREATED: 2025-10-21
 	v6 navbar. Be careful with newlines in inline elements like <a>, Liquid
 	doesn't play nice with them visually.
-{% endcomment %}
+{%- endcomment -%}
 
 <header data-aero-title="Navigation" style="--aero-icon:url('/media/resources/aerico/globe.png')">
 	<h1><img src="/media/resources/profile.png" draggable="false">toy&#x200B;dot&#x200B;game</h1>
 
 	<nav>
-		{% assign urlFrags = page.url | url_decode | split: "." %}
-		{% if urlFrags[-1] == "html" %}
-			{% assign decodedUrl = urlFrags | slice:0,urlFrags.size-1 | join:"" %}
-		{% else %}
-			{% assign decodedUrl = urlFrags | join:"" %}
-		{% endif %}
+		{%- assign urlFrags = page.url | url_decode | split: "." -%}
+		{%- if urlFrags[-1] == "html" -%}
+			{%- assign decodedUrl = urlFrags | slice:0,urlFrags.size-1 | join:"" -%}
+		{%- else -%}
+			{%- assign decodedUrl = urlFrags | join:"" -%}
+		{%- endif -%}
 		
-		{% assign navItems = site.data.nav.production %}
-		{% if jekyll.environment != "production" %}
-			{% comment %}Useful dev. links{% endcomment %}
-			{% assign navItems = navItems | concat: site.data.nav.development %}
-		{% endif %}
+		{%- assign navItems = site.data.nav.production -%}
+		{%- if jekyll.environment != "production" -%}
+			{%- comment -%}Useful dev. links{%- endcomment -%}
+			{%- assign navItems = navItems | concat: site.data.nav.development -%}
+		{%- endif -%}
 		
-		{% for i in navItems %}
-			<a {% if decodedUrl == i.path %}class="active"{% else %}href="{{ i.path }}"{% endif %}>{{ i.name }}</a>
-		{% endfor %}
+		{%- for i in navItems -%}
+			<a {%- if decodedUrl == i.path -%}class="active"{%- else -%}href="{{ i.path }}"{%- endif -%}>{{ i.name }}</a>
+		{%- endfor -%}
 	</nav>
 </header>

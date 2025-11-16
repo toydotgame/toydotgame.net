@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-{% comment %}
+{%- comment -%}
 	AUTHOR: toydotgame
 	CREATED: 2025-10-21
 	Generic page and blog post template for toydotgame.net v6.
-{% endcomment %}
+{%- endcomment -%}
 <html lang="en">
 	<head>
-		{% include head-meta-tags.html %}
-		{% comment %} `page.title` defaults to :slug thankfully: {% endcomment %}
+		{%- include head-meta-tags.html -%}
+		{%- comment -%} `page.title` defaults to :slug thankfully: {%- endcomment -%}
 		<title>Status #{{ page.title }} - {{ site.title }}</title>
 		<link rel="stylesheet" href="/media/resources/styles/status.css">
 		<script type="module" src="/media/resources/js/modal.js"></script>
@@ -19,12 +19,12 @@
 		<article>
 			<h1>Status on {{ page.date | date: "%A, %e %B %Y at %l:%M %P" }}</h1>
 			{{ content }}
-			{% if page.attachments %}<div id="attachments">
-				{% for attachment in page.attachments %}
+			{%- if page.attachments -%}<div id="attachments">
+				{%- for attachment in page.attachments -%}
 					<img src="{{ attachment }}"
 						alt="Attached image number {{ forloop.index }}">
-				{% endfor %}
-			</div>{% endif %}
+				{%- endfor -%}
+			</div>{%- endif -%}
 		</article>
 		<footer>
 			<p>Status #{{ page.slug }} posted on
