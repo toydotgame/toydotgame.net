@@ -24,8 +24,6 @@ cool:          # Things I care about
   - img: virtualdiva
   - img: invalidator
   - img: 2019
-  - img: 88x31
-    lnk: https://cyber.dabamos.de/88x31/
   - img: abrowser
   - img: anythingbut
   - img: archlinux
@@ -39,6 +37,8 @@ cool:          # Things I care about
     lnk: https://yesterweb.org/no-to-web3/
   - img: transnow2
 random:        # Brand stuff and other garbage
+  - img: vanillajs
+    lnk: http://vanilla-js.com/
   - img: valid-atom
   - img: baseline23
   - img: mathjax
@@ -52,6 +52,8 @@ random:        # Brand stuff and other garbage
     lnk: https://en.wikipedia.org/
   - img: 7z
     lnk: https://www.7-zip.org/
+  - img: 88x31
+    lnk: https://cyber.dabamos.de/88x31/
   - img: win7
   - img: dell
     lnk: https://www.dell.com/
