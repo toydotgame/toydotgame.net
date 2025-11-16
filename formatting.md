@@ -403,8 +403,8 @@ Superscript `~`{:.highlight.language-markdown}, subscript `^`{:.highlight.langua
   will be styled in sans-serif specially as a title for that block. For
   callouts, their styling is flexible and the little icon will display
   well-aligned for whatever you may put there
-* It's probably better practice to use `{%- raw -%}{%- post_url yyyy-mm-dd-title
-  -%}{%- endraw -%}`{:.highlight.language-liquid} to inject an article's permalink
+* It's probably better practice to use `{% raw %}{% post_url yyyy-mm-dd-title
+  %}{% endraw %}`{:.highlight.language-liquid} to inject an article's permalink
   **dynamically** rather than hardcoding them
 * Set the front matter key `description`{:.highlight.language-yaml} to a custom
   description for that page (e.g. in embeds elsewhere). It defaults to "Welcome
@@ -418,9 +418,9 @@ Superscript `~`{:.highlight.language-markdown}, subscript `^`{:.highlight.langua
 	  don't use it for anything else otherwise
 * Set front matter `slug`{:.highlight.language-yaml} to whatever you want (note
   that all hyphens become spaces and the first word is capitalised).
-  > Remember that the `{%- raw -%}{{ page.slug
-  > }}{%- endraw -%}`{:.highlight.language-liquid} value may be important/used for
-  > something else!
+  > Remember that the
+  > `{% raw %}{{ page.slug }}{% endraw %}`{:.highlight.language-liquid} value
+  > may be important/used for something else!
   {:.callout-warning}
   Also note that for non-Posts, the slug value isn't used in the aero section
   title
