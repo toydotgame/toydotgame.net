@@ -60,7 +60,7 @@ defaults:
       path: ""
     values:
       image:  *banner
-      layout: base
+      layout: default
       seo_description_max_words: *excerpt_max_words # Default 100
   - # See also: 404, 418, and sasha front matter; sitemap excludes:
     scope:

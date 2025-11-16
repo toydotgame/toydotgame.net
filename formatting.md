@@ -573,4 +573,4 @@ These are even *less* priority, but would be nice to look into:
 - [ ] Reading mode/HTML4 semantics/basic CSS/printer display for printing,
       saving as a PDF, viewing on ancient browsers(!!!), etc
         - Probably quite easy given all of the CSS and HTML5 is part of
-          base.html and thus an alt layout can be made
+          default.html and thus an alt layout can be made
