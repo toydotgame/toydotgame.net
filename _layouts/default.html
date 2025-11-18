@@ -82,7 +82,7 @@ layout: compress
 			{%- if page.date or page.updated -%}<p class="subtitle">
 				{%- if page.date -%}Written: <b>{{ page.date
 					| date:"%Y-%m-%d" }}</b>{%- endif -%}
-				{%- if page.date and page.updated -%} · {%- endif -%}
+				{%- if page.date and page.updated %} · {% endif -%}
 				{%- if page.updated -%}Last updated:
 					<b>{{ page.updated }}</b>{%- endif -%}
 			</p>{%- endif -%}{%- endif -%}
