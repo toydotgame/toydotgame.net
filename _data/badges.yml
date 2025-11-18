@@ -36,7 +36,9 @@ cool:          # Things I care about
   - img: roly-saynotoweb3
     lnk: https://yesterweb.org/no-to-web3/
   - img: transnow2
-random:        # Brand stuff and other garbage
+random:        # Brand stuff etc
+  - img: png
+    lnk: http://www.libpng.org/pub/png/
   - img: vanillajs
     lnk: http://vanilla-js.com/
   - img: valid-atom

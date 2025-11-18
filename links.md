@@ -22,6 +22,12 @@ internet and *not* an algorithm! Swag!
 ## Other websites
 * [The Frutiger Aero Archive](https://frutigeraeroarchive.org/)
   ([RSS](https://frutigeraeroarchive.org/rss/updates.xml))
+* [PNG (Portable Network Graphics) Home Site](http://www.libpng.org/pub/png/) —
+  a resource hub for that newfangled[^oldfangled] *PNG* image format for them
+  there interwebs. The site reeks of mid-'90s design, because that's what it is.
+  It's gorgeous.
+
+[^oldfangled]: If you're in 1995.
 
 ## Fun
 * [www.&#x200B;the&#x200B;most&#x200B;amazing&#x200B;website&#x200B;on&#x200B;the&#x200B;internet&#x200B;.com](http://www.themostamazingwebsiteontheinternet.com/)
