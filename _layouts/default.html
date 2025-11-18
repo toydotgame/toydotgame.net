@@ -74,30 +74,45 @@ layout: compress
 		<article data-aero-title="{{ aeroTitle | escape }}" role="main"
 			style="--aero-icon:url('{{ page.aero-icon
 				| default:"/media/resources/aerico/info.png" }}')">
-			{%- unless page.image == site.banner -%}<div
-				class="banner">
-				<img class="nomodal" src="{{ page.image }}">
-				<div class="banner-title">{%- endunless -%}
-			{%- if page.title -%}<h1>{{ page.title }}</h1>
-			{%- if page.date or page.updated -%}<p class="subtitle">
-				{%- if page.date -%}Written: <b>{{ page.date
-					| date:"%Y-%m-%d" }}</b>{%- endif -%}
-				{%- if page.date and page.updated %} · {% endif -%}
-				{%- if page.updated -%}Last updated:
-					<b>{{ page.updated }}</b>{%- endif -%}
-			</p>{%- endif -%}{%- endif -%}
-			{%- if page.image -%}</div></div>{%- endif -%}
+			
+			{%- unless page.image == site.banner -%}
+				<div id="article-banner">
+					<img class="nomodal" src="{{ page.image | default:site.banner }}">
+					<div id="article-banner-title">
+			{%- endunless -%}
+
+			{%- if page.title -%}
+				<h1>{{ page.title }}</h1>
+				{%- if page.date or page.updated -%}
+					<p id="subtitle">
+						{%- if page.date -%}
+							Written: <b>{{ page.date | date:"%Y-%m-%d" }}</b>
+						{%- endif -%}
+						{%- if page.date and page.updated %} · {% endif -%}
+						{%- if page.updated -%}
+							Last updated: <b>{{ page.updated }}</b>
+						{%- endif -%}
+					</p>
+				{%- endif -%}
+			{%- endif -%}
+
+			{%- unless page.image == site.banner -%}
+					</div>
+				</div>
+			{%- endunless -%}
+
 			{%- if page.collection == "posts" or page.url == "/blog/"
 				or page.url == "/formatting.html" -%}
-				<a class="feed-button" href="{{ site.feed.path }}" target="_blank"
+				<a id="feed-button" href="{{ site.feed.path }}" target="_blank"
 					title="Subscribe via Atom!"
 					aria-label="Blog post Atom feed subscribe button"></a>
 			{%- endif -%}
+
 			{{ content }}
 		</article>
 		{%- include footer.html -%}
 		<div id="modaldim" class="hidden" role="dialog">
-			<img src="">
+			<img id="modalimg" src="">
 		</div>
 	</body>
 </html>

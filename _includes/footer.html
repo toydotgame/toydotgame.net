@@ -9,26 +9,24 @@
 	{%- comment -%} Implies `page.collection == "posts"`: {%- endcomment -%}
 	{%- if page.previous or page.next -%}
 		{%- if page.previous -%}
-			<small class="footer-page-turner fleft">
+			<p class="footer-page-turner fleft">
 				<b>← Previous</b><br>
 				<a href="{{ page.previous.url }}">{{ page.previous.title
 					| default: page.previous.slug}}</a>
-			</small>
+			</p>
 		{%- endif -%}
 		{%- if page.next -%}
-			<small class="footer-page-turner fright">
+			<p class="footer-page-turner fright">
 				<b>Next →</b><br>
 				<a href="{{ page.next.url }}">{{ page.next.title
 					| default: page.next.slug}}</a>
-			</small>
+			</p>
 		{%- endif -%}
 	{%- endif -%}
-	<small class="freset">Made with <span style="color:var(--accent)">♥</span>
-	by toydotgame</small>
+	<p class="freset">Made with <span style="color:var(--accent)">♥</span>
+	by toydotgame</p>
 
-	{%- if page.url == "/blog/" -%}
-		<br style="display:block; margin-bottom:0.5lh">
-	{%- elsif page.collection == "posts" -%}
+	{%- if page.collection == "posts" -%}
 		<div id="recent-blogs">
 			<h2>Recent blog posts</h2>
 			<ul class="blog-article-list">
@@ -41,11 +39,13 @@
 		<hr>
 	{%- endif -%}
 
-	<p id="visitor-counter">I don't know what number visitor you are!</p>
-	<small style="margin-bottom:0.5lh">
-		<a href="{{ site.feed.path }}" target="_blank">Atom feed</a>
+	<p>
+		<a href="{{ site.feed.path }}" target="_blank">Atom feed (blog)</a>
+		| <a href="{{ site.feed.status_path }}" target="_blank">Atom feed (status updates)</a>
 		| <a href="/sitemap.xml">Sitemap</a>
-	</small>
+	</p>
+	
+	<p id="visitor-counter">I don't know what number visitor you are!</p>
 
 	<div id="badges">
 		{%- for group in site.data.badges -%}
@@ -68,13 +68,13 @@
 	</div>
 
 	{%- comment -%} Hacks to align on © easier {%- endcomment -%}
-	<small>
+	<p>
 		Website content © 2017–2025 toydotgame<br>
 		Website design <span class="copyleft">©</span> 2025
 		toydotgame<span style="user-select:none">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	</small>
+	</p>
 
-	<small class="footer-double-small">
+	<small>
 		v6 (this design) inspired by
 		<a href="https://frutigeraeroarchive.org/">Frutiger Aero Archive</a>,
 		<a href="https://frutiger-aero.neocities.org/">Frutiger Aero</a> on
@@ -83,18 +83,18 @@
 		<a href="https://patchwork.nekoweb.org/">patchworkmirage</a>
 	</small>
 
-	<small>Neko implementation © 2022 adryd</small>
-	<small class="footer-double-small">Found at
+	<p>Neko implementation © 2022 adryd</p>
+	<small>Found at
 	<a href="https://github.com/adryd325/oneko.js">adryd325/oneko.js</a>,
 	sightly modified by me</small>
 
-	<small>HTML minifier © 2014–2024 Anatol Broder</small>
-	<small class="footer-double-small">See
+	<p>HTML minifier © 2014–2024 Anatol Broder</p>
+	<small>See
 	<a href="https://jch.penibelst.de/">jch.penibelst.de</a></small>
 
-	<small>Old v5 design <span class="copyleft">©</span> 2023–2025
-	toydotgame</small>
-	<small class="footer-double-small">
+	<p>Old v5 design <span class="copyleft">©</span> 2023–2025
+	toydotgame</p>
+	<small>
 		v5 designs are present in part in v6—they're inspired by
 		<a href="https://maia.crimew.gay/">maia</a>,
 		<a href="https://versary.town/">versary.town</a>, and

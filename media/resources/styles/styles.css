@@ -165,7 +165,7 @@ body {
  * Brilliant. I'll fix the damn background to the viewport MYSELF then: */
 @supports (-webkit-touch-callout: none) {
 	body {
-		/* Only the fallback here: */
+		/* Only use the fallback here: */
 		background:	var(--bg1) linear-gradient(var(--bg2), var(--bg1)) fixed;
 	}
 
@@ -210,7 +210,7 @@ a::selection {
  * AERO SECTIONS
  */
 
-body > * {
+header, article, footer {
 	width:			100%;
 		max-width:	800px;
 	padding:		8px;
@@ -221,7 +221,7 @@ body > * {
 					0 0 0 2px #f0f0f080;
 }
 
-body > *::before { /* Decoration for sections */
+:is(header, article, footer)::before { /* Decoration for sections */
 	content:	attr(data-aero-title);
 	width:		calc(100% + 16px);
 		max-width:	calc(100vw - 16px);
@@ -259,7 +259,7 @@ article::before {
 	padding-top:	3px; /* Sucks here too but in a different way */
 }
 
-body > *::after { /* "Close button" decoration for sections */
+:is(header, article, footer)::after { /* "Close button" decoration for sections */
 	content:			"x";
 	width:				44px;
 	height:				16px;
@@ -287,28 +287,28 @@ header::after {
 
 /* Viewport too small to display text without colliding with close button: */
 @media only screen and (max-width: 158px) {
-	body > *::before {
+	:is(header, article, footer)::before {
 		padding:	5px 8px 0 8px;
 		background:	var(--aero); /* Remove icon */
 	}
 
-	body > *::after {
+	:is(header, article, footer)::after {
 		display:	none;
 	}
 }
 
 /* Viewport too small to comfortably fit any section title text: */
 @media only screen and (max-width: 78px) {
-	body > *::before {
+	body {
+		padding-top:	16px;
+		gap:			24px;
+	}
+
+	:is(header, article, footer)::before {
 		content:	"";
 		height:		calc(100% + 16px);
 		top:		-8px;
 		padding:	0;
-	}
-
-	body {
-		padding-top:	16px;
-		gap:			24px;
 	}
 }
 
@@ -333,7 +333,7 @@ header {
 	user-select:	none;
 }
 
-header h1 {
+#header-title {
 	min-height:		50px;
 	/* Leave line-height unspecified such that img inline can inherit auto 1lh */
 	font-size:		min(48px, 10cqw); /* 10cqw is arbitrary as hell */
@@ -343,7 +343,7 @@ header h1 {
 	filter:			drop-shadow(2px 2px 4px #0008);
 }
 
-header h1 img {
+#header-pfp {
 	height:				1lh;
 	margin-right:		0.25em;
 	vertical-align: 	top; /* Since we match the image and text's heights */
@@ -352,7 +352,7 @@ header h1 img {
 	cursor:				grab;
 }
 
-header h1 img:hover {
+#header-pfp:hover {
 	transform:	scale(0.9);
 }
 
@@ -361,13 +361,13 @@ header h1 img:hover {
 	to		{ transform: scale(0.9) rotate(360deg); }
 }
 
-header h1 img.animating {
+.animating { /* #header-pfp */
 	animation:	0.15s ease-in-out pfp-spin;
 	cursor:		grabbing;
 }
 
 @media only screen and (max-width: 304px) {
-	header h1 img {
+	#header-pfp {
 		display:	none;
 	}
 }
@@ -381,7 +381,7 @@ nav {
 	overflow:		hidden;
 }
 
-nav a {
+nav > a {
 	--border:	hsl(from var(--accent) h 5% 56%);
 	--tab-tint:	#fff;
 	--tab-aero:	linear-gradient(
@@ -408,7 +408,12 @@ nav a {
 	text-decoration:	none;
 }
 
-nav a:not(.active):where(:hover, :focus-visible) {
+a:hover, a:focus-visible {
+	text-decoration:	underline;
+	text-shadow:		1px 1px 2px;
+}
+
+nav > :hover, nav > :focus-visible {
 	color:				hsl(from var(--link) h calc(0.75*s) calc(l + 5));
 	background:			hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
 	box-shadow:			0 -1px	var(--border) inset,
@@ -422,7 +427,7 @@ nav a:not(.active):where(:hover, :focus-visible) {
 	text-decoration:	none; /* Avoid later general `a` style below */
 }
 
-nav .active {
+#nav-active {
 	/* Make 2px taller and let that extra height overlap with above rows: */
 	margin-top:		-2px;
 	padding-top:	5px;
@@ -431,6 +436,11 @@ nav .active {
 	box-shadow:		0 1px	var(--border) inset,
 					1px 0	var(--border) inset,
 					-1px 0	var(--border) inset;
+}
+
+#nav-active, #nav-active:hover, #nav-active:focus-visible {
+	text-decoration:	none;
+	text-shadow:		unset;
 }
 
 /* CONTENT */
@@ -453,11 +463,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Consecutive headings (excl. `h1` titles) of lesser levels shouldn't have gaps: */
-:is(.banner, h1, .subtitle, .feed-button) + :is(h2, h3, h4, h5, h6),
-:is(.banner, h1, .subtitle, .feed-button, h2) + :is(h3, h4, h5, h6),
-:is(.banner, h1, .subtitle, .feed-button, h2, h3) + :is(h4, h5, h6),
-:is(.banner, h1, .subtitle, .feed-button, h2, h3, h4) + :is(h5, h6),
-:is(.banner, h1, .subtitle, .feed-button, h2, h3, h4, h5) + h6 {
+:is(#article-banner, h1, #subtitle, #feed-button) + :is(h2, h3, h4, h5, h6),
+:is(#article-banner, h1, #subtitle, #feed-button, h2) + :is(h3, h4, h5, h6),
+:is(#article-banner, h1, #subtitle, #feed-button, h2, h3) + :is(h4, h5, h6),
+:is(#article-banner, h1, #subtitle, #feed-button, h2, h3, h4) + :is(h5, h6),
+:is(#article-banner, h1, #subtitle, #feed-button, h2, h3, h4, h5) + h6 {
 	margin-top:	unset;
 }
 
@@ -478,11 +488,11 @@ article h1, article h2, footer h2 {
 					                 -bottom, so this is the best we got :/ */
 }
 
-h4, h5, h6, .subtitle {
+h4, h5, h6, #subtitle {
 	color:	var(--secondary);
 }
 
-.subtitle {
+#subtitle {
 	font-size:	smaller;
 }
 
@@ -494,26 +504,21 @@ article :is(p, blockquote, aside, pre, ol, ul, dl) {
 	margin-bottom:	0.5lh; /* Not using rlh because I want p spacing to scale
 					          with text */
 }
-article :is(:last-child, li p, p:has(+ ol, + ul)):not(.highlight pre) {
+article :is(:last-child, li > p, p:has(+ ol, + ul)):not(pre.highlight) {
 	margin-bottom:	unset;
 }
 
-b:not(a b), strong:not(a strong) {
+b, strong {
 	color:			var(--accent);
 	font-weight:	800;
 }
 
-a {
+a, a b, a strong {
 	color:				var(--link);
 	text-decoration:	none;
 }
 
-a:is(:hover, :focus-visible):not(nav .active) {
-	text-decoration:	underline;
-	text-shadow:		1px 1px 2px;
-}
-
-a.external::after {
+.external::after {
 	content:			"";
 	display:			inline-block;
 	width:				1em;
@@ -524,7 +529,7 @@ a.external::after {
 	vertical-align:		middle;
 }
 
-a.noexternal::after {
+.noexternal::after {
 	display:	none;
 }
 
@@ -550,7 +555,7 @@ abbr {
 	cursor:					help;
 }
 
-abbr:has(code), code abbr {
+abbr:has(> code), code abbr {
 	text-decoration-style:	dashed;
 }
 
@@ -563,14 +568,14 @@ code, pre { /* Jekyll's <pre>s contain <code> tags for the text, but better to
 	font-family:	"DejaVu Sans Mono", "Twemoji", monospace;
 }
 
-code:not(pre code) { /* Thanks Jekyll for putting <code> in <pre>s when not needed */
+code:not(pre > code) { /* Thanks Jekyll for putting <code> in <pre>s when not needed /s */
 	padding:	0 4px;
 	background-color:	var(--bg1);
 	border:		1px solid rgb(from var(--secondary) r g b / 40%);
 		border-radius:	4px;
 }
 
-code:not(pre code), u:has(code), abbr:has(code) {
+code:not(pre > code), u:has(> code), abbr:has(> code) {
 	text-underline-offset:	3.5px; /* Add 4px padding from `code` style - 1.5px
 							          text-decoration-thickness + 1px browser
 							          idk */
@@ -578,14 +583,14 @@ code:not(pre code), u:has(code), abbr:has(code) {
 
 .footnote::before {
 	content:	"[";
-} .footnote, .reversefootnote {
+} :is(.footnote, .reversefootnote):is(:hover, :focus-visible) {
 	text-decoration:	none;
 } .footnote::after {
 	content:	"]";
 }
 
 /* CONTENT: Block elements */
-article .feed-button {
+#feed-button {
 	position:	absolute;
 		top:	8px;
 		right:	8px;
@@ -594,41 +599,39 @@ article .feed-button {
 	background:	url("/media/resources/rss.png") 0 / 100%;
 }
 
-.banner + .feed-button {
+article:has(> #feed-button) h1:first-of-type {
+	padding-right:	24px;
+}
+
+#article-banner + #feed-button {
 	top:	16px;
 	right:	16px;
 	filter:	drop-shadow(0 2px 6px #000c);
 }
 
 article img {
-	/*
-	 * Images display weirdly (using a `font-size`d gap around them) because
+	/* Images display weirdly (using a `font-size`d gap around them) because
 	 * they're default `inline` elements. I'd rather have them be blocks and if
 	 * I want to display one inline, I will manually do so case-by-case.
-	 * This fixes gaps for `figure img`s etc.
-	 */
+	 * This fixes gaps for `figure img`s etc. */
 	display:		block;
 	max-width:		100%;
-	border-radius:	8px;
-	outline:		2px outset var(--accent);
-	cursor:			zoom-in;
-}
-
-article img:not(figure img) {
 	padding:		8px;
 	border-radius:	16px; /* _Looks_ like 8px given border-radius is applied to padding */
-	outline-offset:	-8px;
+	outline:		2px outset var(--accent);
+		outline-offset:	-8px;
+	cursor:			zoom-in;
 }
 
 article img:not([width]) {
 	min-width:	min(200px, 100%); /* Prevent min-width overriding max-width */
 }
 
-.banner {
+#article-banner {
 	position:	relative; /* h1 anchor */
 }
 
-.banner img {
+#article-banner > img {
 	all:	unset;
 
 	width:			100%;
@@ -644,7 +647,7 @@ article img:not([width]) {
 	pointer-events: none;
 }
 
-.banner-title {
+#article-banner-title {
 	width:		100%;
 	max-height:	100%; /* If for whatever reason you want a 6 page long title, you can */
 	position:	absolute;
@@ -653,7 +656,7 @@ article img:not([width]) {
 	overflow-y:	auto;
 }
 
-.banner-title * {
+#article-banner-title > h1, #article-banner-title > #subtitle {
 	text-shadow:		1px 1px 8px #000;
 }
 
@@ -699,12 +702,12 @@ figure.fright {
 	}
 }
 
-/*
- * As a consequence of allowing un-width-specified images to be the file's real
- * size, we need to make sure they _don't_ do this when in a figure.
- */
-figure img {
-	width:	100%;
+/* Unset `article img` styles and make figure images fit to their containers: */
+figure > img {
+	width:			100%;
+	padding:		unset;
+	border-radius:	8px;
+	outline-offset:	unset;
 }
 
 figcaption {
@@ -737,11 +740,12 @@ table, mjx-container {
 }
 
 table {
-	display:	inline-block; /* Allow `overflow: auto` whilst ensuring columns
-				                 span to fill the table's full width */
-	max-width:	100%;
-	word-break:	normal; /* Prevent above-defined default that allows breaking
-				           words. We have the horizontal real estate */
+	display:		inline-block; /* Allow `overflow: auto` whilst ensuring columns
+					                 span to fill the table's full width */
+	max-width:		100%;
+	margin-right:	8px; /* For inline laid-out ones */
+	word-break:		normal; /* Prevent above-defined default that allows breaking
+					           words. We have the horizontal real estate */
 }
 
 table, th, td {
@@ -762,15 +766,13 @@ th[colspan] {
 	font-family:	"EB Garamond", "Twemoji", serif;
 }
 
-/*
- * This selector will apply to every second row within a table's body. For my
+/* This selector will apply to every second row within a table's body. For my
  * old HTML-only tables (that lack <thead> semantics), this means that the first
  * row is (usually) coloured first. Given :nth-match() hasn't been talked about
  * since 2013, we just kinda have to accept that the <tr>s with _only_ <th>s in
  * them _will_ count towards the row count for this.
- * Use your HTML5, kids.
- */
-tbody tr:nth-of-type(even):has(td) td {
+ * Use your HTML5, kids. */
+tbody tr:nth-of-type(even) td {
 	background-color:	rgb(from var(--accent) r g b / 10%);
 }
 
@@ -797,11 +799,11 @@ dd {
 	list-style-type:	none;
 }
 
-li::marker {
+::marker {
 	color:	var(--accent);
 }
 
-input.task-list-item-checkbox {
+.task-list-item-checkbox {
 	/* Instead of fighting to properly remove the ::marker, just cover it: */
 	position:		relative;
 		left:	-1em;
@@ -831,17 +833,17 @@ input.task-list-item-checkbox {
 }
 
 /* Also, items without a checkbox at all also need their _first_ lines fixed: */
-li.task-list-item:not(:has(> .task-list-item-checkbox)),
+.task-list-item:not(:has(> .task-list-item-checkbox)),
 .task-list-item ul:not(.task-list) {
 	text-indent:		0;
 	list-style-type:	"⁃";
 }
 
-input.task-list-item-checkbox[checked="checked"] {
+.task-list-item-checkbox[checked="checked"] {
 	--tint:	var(--accent);
 }
 
-input.task-list-item-checkbox[checked="checked"]::before {
+.task-list-item-checkbox[checked="checked"]::before {
 	content:	"";
 
 	display:			block;
@@ -895,7 +897,7 @@ blockquote, aside {
 	border-left:		4px solid var(--accent);
 }
 
-:is(blockquote, aside) > :first-child {
+blockquote > :first-child, aside > :first-child {
 	margin-top:	unset;
 }
 
@@ -911,12 +913,12 @@ blockquote > h2:first-child {
 	font-weight:	bold;
 }
 
-blockquote:where(.callout-error, .callout-info, .callout-success, .callout-warning) {
+:is(.callout-error, .callout-info, .callout-success, .callout-warning) {
 	padding-left:	32px;
 	color:			var(--text); /* Unset */
 }
 
-blockquote:where(.callout-error, .callout-info, .callout-success, .callout-warning)
+:is(.callout-error, .callout-info, .callout-success, .callout-warning)
 	> :first-child::before {
 	content:				"";
 	width:					24px;
@@ -931,20 +933,20 @@ blockquote:where(.callout-error, .callout-info, .callout-success, .callout-warni
 	background-repeat:		no-repeat;
 }
 
-blockquote.callout-error	{ --accent: #ad3e38; }
-blockquote.callout-info		{ --accent: #3a58b7; }
-blockquote.callout-success	{ --accent: #2e8728; }
-blockquote.callout-warning	{ --accent: #e2c02c; }
+.callout-error		{ --accent: #ad3e38; }
+.callout-info		{ --accent: #3a58b7; }
+.callout-success	{ --accent: #2e8728; }
+.callout-warning	{ --accent: #e2c02c; }
 
-blockquote.callout-error > :first-child::before	{
+.callout-error > :first-child::before	{
 	background-image:	url("/media/resources/aerico/error.png");
-} blockquote.callout-info > :first-child::before {
+} .callout-info > :first-child::before {
 	width:				20px;
 	left:				10px;
 	background-image:	url("/media/resources/aerico/info.png");
-} blockquote.callout-success > :first-child::before {
+} .callout-success > :first-child::before {
 	background-image:	url("/media/resources/aerico/success.png");
-} blockquote.callout-warning > :first-child::before {
+} .callout-warning > :first-child::before {
 	width:				22px;
 	left:				9px;
 	background-image:	url("/media/resources/aerico/warning.png");
@@ -983,18 +985,18 @@ aside {
 	}
 }
 
-.footnotes ol {
+.footnotes > ol {
 	padding-left:	0; /* Unset global `ol, ul` style */
 }
 
-.footnotes li {
+.footnotes > ol > li {
 	margin-left:	1.5em; /* Looks fine for 1–99 refs */
 	padding-bottom:	8px;
 	font-size:		small;
 	break-inside:	avoid; /* Don't chop items across columns */
 }
 
-.footnotes li:only-child {
+.footnotes > ol > li:only-child {
 	column-span:	all;
 }
 
@@ -1003,25 +1005,33 @@ footer {
 	margin-top:	auto; /* Sticky to bottom if body height < 100 vh */
 }
 
+footer > p, footer > small {
+	color:			var(--secondary);
+	font-family:	"DejaVu Sans Mono", "Twemoji", monospace;
+	text-align:		center;
+}
+
+footer > small {
+	display:	block;
+	max-width:	400px;
+	margin:		0 auto 1lh auto;
+	font-size:	0.5em;
+}
+
 #recent-blogs {
 	max-width:	600px;
 	margin:		0 auto;
 }
 
-.blog-article-list li a {
+.blog-article-list > li > a {
 	font-family:	"EB Garamond", "Twemoji", serif;
 	font-size:		large;
 	font-weight:	500;
 }
 
-.blog-article-list li a b {
+.blog-article-list > li > a > b {
 	font-family:	"DejaVu Sans Mono", "Twemoji", serif;
 	font-size:		smaller;
-}
-
-footer p, #badges {
-	margin-bottom:	0.5lh;
-	text-align:		center;
 }
 
 .footer-page-turner {
@@ -1038,28 +1048,18 @@ footer p, #badges {
 }
 
 #badges {
-	font-size:	small;
+	margin:		1lh 0;
+	text-align:	center;
+	font-size:	0.5em;
 }
 
-footer a:has(.badge):hover img {
-	box-shadow:	1px 1px 2px var(--link);
+#badges > :hover {
+	filter:	drop-shadow(1px 1px 2px var(--link));
 }
 
-footer .badge {
+.badge {
 	max-width:			100%; /* Prevent overflow */
 	image-rendering:	pixelated;
-}
-
-footer small {
-	display:				block;
-	text-align:				center;
-	font-family:			"DejaVu Sans Mono", "Twemoji", monospace;
-}
-
-footer .footer-double-small {
-	max-width:	400px;
-	margin:		0 auto 0.5lh auto;
-	font-size:	0.5em;
 }
 
 .copyleft {
@@ -1085,11 +1085,11 @@ footer .footer-double-small {
 	box-shadow:		unset;
 }
 
-body:has(#modaldim:not(.hidden)) {
+body:has(> #modaldim:not(.hidden)) {
 	overflow:	hidden;
 }
 
-#modaldim img {	
+#modalimg {	
 	width:				100%;
 	height:				100%;
 	object-fit:			contain;
@@ -1120,6 +1120,6 @@ body:has(#modaldim:not(.hidden)) {
 	clear:	initial;
 }
 
-article img.nomodal {
+.nomodal {
 	cursor:	unset;
 }

@@ -11,7 +11,7 @@
 for(let element of document.querySelectorAll("article img:not(.nomodal), #modaldim"))
 	element.addEventListener("click", onImageClick);
 let modal = document.querySelector("#modaldim");
-let modalimg = document.querySelector("#modaldim img");
+let modalimg = document.querySelector("#modalimg");
 
 /**
  * Handles click events on content images or the image modal itself. Regardless

@@ -9,7 +9,7 @@
 
 document.documentElement.lang = "ja";
 
-let aeroSections = document.querySelectorAll("body > *");
+let aeroSections = document.querySelectorAll("header, article, footer");
 for(let section of aeroSections) {
 	try {
 		section.dataset.aeroTitle = section.dataset.aeroTitle
@@ -19,16 +19,16 @@ for(let section of aeroSections) {
 	} catch {}
 }
 
-let siteTitle = document.querySelector("header h1");
+let siteTitle = document.querySelector("#header-title");
 siteTitle.innerHTML = siteTitle.innerHTML
 	.replace("toy​dot​game", "トイ​ドット​ゲーム"); // Note ZWSP present in source and replacement
 
-let subtitle = document.querySelector(".subtitle");
+let subtitle = document.querySelector("#subtitle");
 subtitle.innerHTML = subtitle.innerHTML
 	.replace("Written: ", "書いた：")
 	.replace("Last updated: ", "更新した：");
 
-let subtitleDates = document.querySelectorAll(".subtitle b");
+let subtitleDates = document.querySelectorAll("#subtitle > b");
 for(let date of subtitleDates)
 	date.innerText = date.innerText
 		.replace(/-0*/, "年")

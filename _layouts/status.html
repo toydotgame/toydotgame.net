@@ -21,7 +21,7 @@ layout: compress
 		{%- include head-meta-tags.html -%}
 	</head>
 	<body>
-		<a class="feed-button" href="{{ site.feed.status_path }}" target="_blank"
+		<a id="feed-button" href="{{ site.feed.status_path }}" target="_blank"
 			title="Subscribe to status updates via Atom!"
 			aria-label="Status update Atom feed subscribe button"></a>
 		<article role="main">
@@ -39,7 +39,7 @@ layout: compress
 			<a href="{{ site.url }}">{{ site.title }}</a> @ {{ page.date }}</p>
 		</footer>
 		<div id="modaldim" class="hidden" role="dialog">
-			<img src="">
+			<img id="modalimg" src="">
 		</div>
 	</body>
 </html>
