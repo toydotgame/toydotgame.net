@@ -4,7 +4,8 @@
 	v6 footer.
 {%- endcomment -%}
 
-<footer data-aero-title="Moar!!!" style="--aero-icon:url('/media/resources/aerico/msn.png')">
+<footer data-aero-title="Moar!!!" role="contentinfo"
+	style="--aero-icon:url('/media/resources/aerico/msn.png')">
 	{%- comment -%} Implies `page.collection == "posts"`: {%- endcomment -%}
 	{%- if page.previous or page.next -%}
 		{%- if page.previous -%}

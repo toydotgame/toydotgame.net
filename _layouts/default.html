@@ -69,12 +69,11 @@ layout: compress
 		{%- assign aeroTitle = page.title | default: page.url -%}
 		{%- if page.collection == "posts" -%}
 			{%- assign aeroTitle = page.slug
-				| split: "-" | join: " " | capitalize | prepend: "Blog: " -%}
+				| split: "-" | join: " " | capitalize | prepend:"Blog: " -%}
 		{%- endif -%}
-		<article
-			data-aero-title="{{ aeroTitle | escape }}"
-			style="--aero-icon:url({{ page.aero-icon
-				| default: "/media/resources/aerico/info.png" }})">
+		<article data-aero-title="{{ aeroTitle | escape }}" role="main"
+			style="--aero-icon:url('{{ page.aero-icon
+				| default:"/media/resources/aerico/info.png" }}')">
 			{%- unless page.image == site.banner -%}<div
 				class="banner">
 				<img class="nomodal" src="{{ page.image }}">
@@ -96,7 +95,7 @@ layout: compress
 			{{ content }}
 		</article>
 		{%- include footer.html -%}
-		<div id="modaldim" class="hidden">
+		<div id="modaldim" class="hidden" role="dialog">
 			<img src="">
 		</div>
 	</body>

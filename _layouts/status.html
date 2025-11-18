@@ -24,7 +24,7 @@ layout: compress
 		<a class="feed-button" href="{{ site.feed.status_path }}"
 			target="_blank"
 			title="Subscribe to status updates via Atom!"></a>
-		<article>
+		<article role="main">
 			<h1>Status on {{ page.date | date: "%A, %e %B %Y at %l:%M %P" }}</h1>
 			{{ content }}
 			{%- if page.attachments -%}<div id="attachments">
@@ -34,11 +34,11 @@ layout: compress
 				{%- endfor -%}
 			</div>{%- endif -%}
 		</article>
-		<footer>
+		<footer role="contentinfo">
 			<p>Status #{{ page.slug }} posted on
 			<a href="{{ site.url }}">{{ site.title }}</a> @ {{ page.date }}</p>
 		</footer>
-		<div id="modaldim" class="hidden">
+		<div id="modaldim" class="hidden" role="dialog">
 			<img src="">
 		</div>
 	</body>
