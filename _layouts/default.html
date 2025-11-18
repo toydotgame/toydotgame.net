@@ -52,9 +52,9 @@ layout: compress
 		<title>{{ page.title }} - {{ site.title }}</title>
 
 		<script async src="/media/resources/js/random-bg.js"></script>
-		<script async src="/media/resources/js/modal.js"></script>
-		<script async src="/media/resources/js/loader.js"></script>
-		<script async src="/media/resources/js/oneko.js"
+		<script defer src="/media/resources/js/modal.js"></script>
+		<script type="module" src="/media/resources/js/loader.js"></script>
+		<script defer src="/media/resources/js/oneko.js"
 			data-cat="/media/resources/oneko.gif"></script>
 		
 		{%- if page.mathjax -%}
@@ -79,7 +79,7 @@ layout: compress
 					}
 				};
 			</script>
-			<script async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+			<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
 		{%- endif -%}
 
 		<link rel="prefetch" href="https://raw.githubusercontent.com/toydotgame/toydotgame.net/refs/heads/visitor-count/visitor-count">
