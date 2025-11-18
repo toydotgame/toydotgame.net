@@ -51,11 +51,11 @@
 		{%- for group in site.data.badges -%}
 			{% for badge in group[1] %}
 				{% if badge.lnk %}<a href="{{ badge.lnk }}" tabindex="-1"
-					aria-label="Badge button link for {{ badge.img }}">{% endif %}
+					aria-label="Badge button link for {{ badge.img }}">{%- endif -%}
 				<img class="badge {{ group[0] }}"
 					src="/media/resources/badges/{{ badge.img }}.gif"
 					alt="Footer badge">
-				{% if badge.lnk %}</a>{% endif %}
+				{%- if badge.lnk -%}</a>{% endif %}
 			{% endfor %}
 			{%- unless forloop.last -%}<br><br>{%- endunless -%}
 		{%- endfor -%}
