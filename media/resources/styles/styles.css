@@ -1046,13 +1046,8 @@ footer a:has(.badge):hover img {
 }
 
 footer .badge {
-	width:				88px;
-		max-width:	100%; /* Prevent overflow */
+	max-width:			100%; /* Prevent overflow */
 	image-rendering:	pixelated;
-}
-
-footer .badge:not(.badge.awesome_sauce) {
-	width:	66px;
 }
 
 footer small {

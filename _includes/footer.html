@@ -52,7 +52,13 @@
 			{% for badge in group[1] %}
 				{% if badge.lnk %}<a href="{{ badge.lnk }}" tabindex="-1"
 					aria-label="Badge button link for {{ badge.img }}">{%- endif -%}
-				<img class="badge {{ group[0] }}"
+				<img class="badge"
+					{% comment %}
+						Use HTML semantics to scale images as this prevents
+						layout shifts.
+					{% endcomment -%}
+					width="{% if group[0] == "awesome_sauce" %}88{% else %}66{% endif %}"
+					height="{% if group[0] == "awesome_sauce" %}31{% else %}23.25{% endif %}"
 					src="/media/resources/badges/{{ badge.img }}.gif"
 					alt="Footer badge">
 				{%- if badge.lnk -%}</a>{% endif %}
