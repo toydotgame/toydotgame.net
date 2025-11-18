@@ -9,8 +9,20 @@ layout: compress
 {%- endcomment -%}
 <html lang="en">
 	<head>
-		{%- include head-meta-tags.html -%}
+		<meta charset="UTF-8">
+		<link rel="preload" href="/media/resources/styles/styles.css" as="style">
+		<link rel="preload" href="/media/resources/js/random-bg.js" as="script">
+		<link rel="modulepreload" href="/media/resources/js/loader.js">
+		<link rel="modulepreload" href="/media/resources/js/modal.js">
+		<link rel="preload" href="/media/resources/js/oneko.js" as="script" fetchpriority="low">
+		<link rel="preload" href="/media/resources/oneko.gif" as="image" fetchpriority="low">
+		{%- if page.mathjax -%}
+			<link rel="preload" href="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+				as="script">
+		{%- endif -%}
+
 		<title>{{ page.title }} - {{ site.title }}</title>
+
 		<link rel="stylesheet" href="/media/resources/styles/styles.css">
 		{%- comment -%}
 			The above style tag will block rendering until it is downloaded, but
@@ -25,6 +37,7 @@ layout: compress
 		<script type="module" src="/media/resources/js/loader.js"></script>
 		<script defer src="/media/resources/js/oneko.js"
 			data-cat="/media/resources/oneko.gif"></script>
+		
 		{%- if page.mathjax -%}
 			<script>
 			MathJax = {
@@ -49,6 +62,7 @@ layout: compress
 			</script>
 			<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
 		{%- endif -%}
+		{%- include head-meta-tags.html -%}
 	</head>
 	<body>
 		{%- include nav.html -%}

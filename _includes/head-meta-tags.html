@@ -1,10 +1,11 @@
 {%- comment -%}
 	AUTHOR: toydotgame
 	CREATED: 2025-10-26
-	Children of <head> tag for use in the `default` and `status` layouts.
+	<head> meta tags that are generally not important for first-paint
+	times/useful to actual readers. These are loaded last and are for web
+	scrapers, etc.
 {%- endcomment -%}
 
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="alternate" type="application/atom+xml" title="{{ site.title }}"
 	href="{{ site.feed.path }}">

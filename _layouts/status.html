@@ -9,11 +9,16 @@ layout: compress
 {%- endcomment -%}
 <html lang="en">
 	<head>
-		{%- include head-meta-tags.html -%}
+		<meta charset="UTF-8">
+		<link rel="preload" href="/media/resources/styles/status.css" as="style">
+		<link rel="modulepreload" href="/media/resources/js/modal.js">
+		
 		{%- comment -%} `page.title` defaults to :slug thankfully: {%- endcomment -%}
 		<title>Status #{{ page.title }} - {{ site.title }}</title>
+
 		<link rel="stylesheet" href="/media/resources/styles/status.css">
 		<script type="module" src="/media/resources/js/modal.js"></script>
+		{%- include head-meta-tags.html -%}
 	</head>
 	<body>
 		<a class="feed-button" href="{{ site.feed.status_path }}"
