@@ -21,8 +21,12 @@
 title:              toydotgame.net
 tagline:            toydotgame's personal website.
 description:        Welcome to my corner of the internet!
-web_url:            &url https://toydotgame.net # Make a custom one because
-                                                # `url` is overridden in dev.
+# site.url is overridden in non-production envs. to
+# `http://{{ site.host }}:{{ site.port }}`. This breaks the Atom feeds, among
+# other things. Said feeds are equipped to use `web_url` here (custom mapping)
+# and work a little better, but beware in dev. that jekyll-sitemap and
+# jekyll-seo-tag will still be printing http://0.0.0.0/ blindly. :(
+web_url:            &url https://toydotgame.net
 url:                *url
 domain:             toydotgame.net
 author:             toydotgame
