@@ -25,6 +25,7 @@
 	{%- endif -%}
 	<small class="freset">Made with <span style="color:var(--accent)">♥</span>
 	by toydotgame</small>
+
 	{%- if page.url == "/blog/" -%}
 		<br style="display:block; margin-bottom:0.5lh">
 	{%- elsif page.collection == "posts" -%}
@@ -39,11 +40,13 @@
 		</div>
 		<hr>
 	{%- endif -%}
+	
 	<p id="visitor-counter">I don't know what number visitor you are!</p>
 	<small style="margin-bottom:0.5lh">
 		<a href="{{ site.feed.path }}" target="_blank">Atom feed</a>
 		| <a href="/sitemap.xml">Sitemap</a>
 	</small>
+
 	<div id="badges">
 		{%- for group in site.data.badges -%}
 			{%- for badge in group[1] -%}
@@ -57,12 +60,14 @@
 			{%- unless forloop.last -%}<br><br>{%- endunless -%}
 		{%- endfor -%}
 	</div>
+
 	{%- comment -%} Hacks to align on © easier {%- endcomment -%}
 	<small>
 		Website content © 2017–2025 toydotgame<br>
 		Website design <span class="copyleft">©</span> 2025
 		toydotgame<span style="user-select:none">&nbsp;&nbsp;&nbsp;&nbsp;</span>
 	</small>
+
 	<small class="footer-double-small">
 		v6 (this design) inspired by
 		<a href="https://frutigeraeroarchive.org/">Frutiger Aero Archive</a>,
@@ -71,10 +76,16 @@
 		<a href="https://lakestheguy.neocities.org/">Lakes the Guy</a>, and
 		<a href="https://patchwork.nekoweb.org/">patchworkmirage</a>
 	</small>
+
 	<small>Neko implementation © 2022 adryd</small>
 	<small class="footer-double-small">Found at
 	<a href="https://github.com/adryd325/oneko.js">adryd325/oneko.js</a>,
 	sightly modified by me</small>
+
+	<small>HTML minifier © 2014–2024 Anatol Broder</small>
+	<small class="footer-double-small">See
+	<a href="https://jch.penibelst.de/">jch.penibelst.de</a></small>
+
 	<small>Old v5 design <span class="copyleft">©</span> 2023–2025
 	toydotgame</small>
 	<small class="footer-double-small">
