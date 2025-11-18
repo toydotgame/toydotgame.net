@@ -23,7 +23,8 @@
 		{%- endif -%}
 		
 		{%- for i in navItems -%}
-			<a {%- if decodedUrl == i.path -%}class="active"{%- else -%}href="{{ i.path }}"{%- endif -%}>{{ i.name }}</a>
+			<a {% if decodedUrl == i.path -%}class="active"{%- else -%}
+				href="{{ i.path }}"{%- endif -%}>{{ i.name }}</a>
 		{%- endfor -%}
 	</nav>
 </header>
