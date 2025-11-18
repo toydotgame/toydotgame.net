@@ -13,6 +13,8 @@ unpublished:         true
 #  profile:           true
 
 # SERVE
-host:       0.0.0.0
+host:       0.0.0.0 # Note that Atom feeds now handle this correctly, however
+                    # jekyll-sitemap will still use http://0.0.0.0/... in its
+                    # dev env. output :(
 livereload: true
 port:       8080

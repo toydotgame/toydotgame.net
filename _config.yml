@@ -45,15 +45,15 @@ timezone: Etc/GMT-10 # Flipped sign because POSIX
 
 # BUILD
 collections:
-  status:
-    output: true
-    permalink: /status/:slug
   posts:
     output: true
     permalink: /blog/:year/:month-:day_:title
   projects:
     output: true
     permalink: /projects/:path
+  status:
+    output: true
+    permalink: /status/:slug
 compress_html:
   clippings: all
   comments:  all
@@ -61,13 +61,14 @@ defaults:
   -
     scope:
       path: ""
+      type: pages
     values:
       image:  *banner
       layout: default
       seo_description_max_words: *excerpt_max_words # Default 100
   - # See also: 404, 418, and sasha front matter; sitemap excludes:
     scope:
-      path: media/*
+      path: media
     values:
       sitemap: false
   -

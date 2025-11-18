@@ -4,3 +4,5 @@ Allow: /media/blog/
 Disallow: /404
 Disallow: /418
 Disallow: /sasha
+
+Sitemap: https://toydotgame.net/sitemap.xml
