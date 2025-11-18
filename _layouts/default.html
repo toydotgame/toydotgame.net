@@ -89,8 +89,9 @@ layout: compress
 			{%- if page.image -%}</div></div>{%- endif -%}
 			{%- if page.collection == "posts" or page.url == "/blog/"
 				or page.url == "/formatting.html" -%}
-				<a class="feed-button" href="{{ site.feed.path }}"
-					target="_blank" title="Subscribe via Atom!"></a>
+				<a class="feed-button" href="{{ site.feed.path }}" target="_blank"
+					title="Subscribe via Atom!"
+					aria-label="Blog post Atom feed subscribe button"></a>
 			{%- endif -%}
 			{{ content }}
 		</article>

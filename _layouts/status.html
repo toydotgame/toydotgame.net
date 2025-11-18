@@ -21,9 +21,9 @@ layout: compress
 		{%- include head-meta-tags.html -%}
 	</head>
 	<body>
-		<a class="feed-button" href="{{ site.feed.status_path }}"
-			target="_blank"
-			title="Subscribe to status updates via Atom!"></a>
+		<a class="feed-button" href="{{ site.feed.status_path }}" target="_blank"
+			title="Subscribe to status updates via Atom!"
+			aria-label="Status update Atom feed subscribe button"></a>
 		<article role="main">
 			<h1>Status on {{ page.date | date: "%A, %e %B %Y at %l:%M %P" }}</h1>
 			{{ content }}
