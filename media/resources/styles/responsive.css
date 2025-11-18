@@ -1,0 +1,58 @@
+/*
+ * AUTHOR: toydotgame
+ * CREATED: 2025-11-18
+ * Responsive CSS loaded via <link> media query when the viewport is ≤400px. It
+ * WON'T render-block if the viewport width is >400px, but will still apply when
+ * the viewport changes and it's needed. It WILL render-block if the viewport is
+ * ≤400px wide whilst the page is parsing, however.
+ * As such, the 400px-specific styles are loaded here outside of any further CSS
+ * @media stuff:
+ */
+
+/* Viewport too small to display text without colliding with close button: */
+@media only screen and (max-width: 158px) {
+	:is(header, article, footer)::before {
+		padding:	5px 8px 0 8px;
+		background:	var(--aero); /* Remove icon */
+	}
+
+	:is(header, article, footer)::after {
+		display:	none;
+	}
+}
+
+/* Viewport too small to comfortably fit any section title text: */
+@media only screen and (max-width: 78px) {
+	body {
+		padding-top:	16px;
+		gap:			24px;
+	}
+
+	:is(header, article, footer)::before {
+		content:	"";
+		height:		calc(100% + 16px);
+		top:		-8px;
+		padding:	0;
+	}
+}
+
+@media only screen and (max-width: 304px) {
+	#header-pfp {
+		display:	none;
+	}
+}
+
+/* Once the viewport gets itty bitty, we start disrespecting intended widths: */
+figure, article img, aside[style] {
+	min-width:	25%;
+}
+
+figcaption {
+	font-size:		0.6em;
+	line-height:	1;
+}
+
+
+.footnotes {
+	column-count:	1;
+}

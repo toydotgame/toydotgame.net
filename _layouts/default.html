@@ -10,20 +10,41 @@ layout: compress
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="preload" href="/media/resources/styles/styles.css" as="style">
-		<link rel="preload" href="/media/resources/js/random-bg.js" as="script">
+
+		<link rel="preload" href="/media/resources/styles/layout.css" as="style" fetchpriority="high">
+		<link rel="preload" href="/media/resources/styles/responsive.css" as="style" fetchpriority="low">
+
+		<link rel="preload" href="/media/resources/js/random-bg.js" as="script" fetchpriority="high">
 		<link rel="modulepreload" href="/media/resources/js/loader.js">
 		<link rel="modulepreload" href="/media/resources/js/modal.js">
 		<link rel="preload" href="/media/resources/js/oneko.js" as="script" fetchpriority="low">
 		<link rel="preload" href="/media/resources/oneko.gif" as="image" fetchpriority="low">
 		{%- if page.mathjax -%}
 			<link rel="preload" href="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
-				as="script">
+				as="script" fetchpriority="low">
+		{%- endif -%}
+
+		<link rel="prefetch" href="https://raw.githubusercontent.com/toydotgame/toydotgame.net/refs/heads/visitor-count/visitor-count">
+		{%- if page.url == "/status/" or page.url == "/status/all" -%}
+			<link rel="prefetch" href="/media/resources/styles/status.css">
 		{%- endif -%}
 
 		<title>{{ page.title }} - {{ site.title }}</title>
 
-		<link rel="stylesheet" href="/media/resources/styles/styles.css">
+		{%- comment -%}
+			Nasty hax to preload (defer/async) request stylesheets as if we are
+			intending to later render-blocking-ly load them in a <link>
+			/whatever, but instead we use the onload JS to transform the element
+			inline into a <link rel="stylesheet" ...>—thereby effectively defer
+			loading the CSS without render-blocking.
+		{%- endcomment -%}
+		<link rel="stylesheet" href="/media/resources/styles/layout.css">
+		<link rel="preload" href="/media/resources/styles/styles.css" as="style"
+			onload="this.onload=null; this.rel='stylesheet'; this.as=null">
+		<link rel="stylesheet" href="/media/resources/styles/responsive.css"
+			media="screen and (width <= 400px)">
+		<link rel="preload" href="/media/resources/styles/syntax.css" as="style" fetchpriority="low"
+			onload="this.onload=null; this.rel='stylesheet'; this.as=null">
 		{%- comment -%}
 			The above style tag will block rendering until it is downloaded, but
 			will not block further parsing of the below tags. The below script will

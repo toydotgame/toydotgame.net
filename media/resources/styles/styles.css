@@ -10,178 +10,6 @@
  *    elements
  */
 
-/*
- * GLOBAL STYLES
- */
-
-@import url("/media/resources/styles/syntax.css");
-
-@font-face {
-	font-family:	"Ubuntu";
-	src:			local("Ubuntu Sans"),
-					url("/media/resources/fonts/Ubuntu Sans Variable.ttf");
-	font-display:	swap;
-	/* `font-style`s `normal` _and_ `italic` are included */
-	font-weight:	100 800;
-} @font-face {
-	/*
-	 * DejaVu Sans Mono is an incredibly static font, it has no italic face, and
-	 * its oblique and bold faces are static transformations. We can get away
-	 * with letting the browser create the oblique face on-the-fly, but IMO it
-	 * looks better to use the static bold face file instead of making it up.
-	 */
-	font-family:	"DejaVu Sans Mono";
-	src:			local("DejaVu Sans Mono Book"),
-					url("/media/resources/fonts/DejaVu Sans Mono Regular.ttf");
-	font-display:	swap;
-	font-weight:	normal;
-} @font-face {
-	font-family:	"DejaVu Sans Mono";
-	src:			local("DejaVu Sans Mono Bold"),
-					url("/media/resources/fonts/DejaVu Sans Mono Bold.ttf");
-	font-display:	swap;
-	font-weight:	bold;
-} @font-face {
-	font-family:	"EB Garamond";
-	src:			local("EB Garamond"),
-					url("/media/resources/fonts/EB Garamond Variable.ttf"),
-					local("Garamond");
-	font-display:	swap;
-	font-style:		normal;
-	font-weight:	400 800;
-} @font-face {
-	font-family:	"EB Garamond";
-	src:			local("EB Garamond"),
-					url("/media/resources/fonts/EB Garamond Variable Italic.ttf"),
-					local("Garamond");
-	font-display:	swap;
-	font-style:		italic;
-	font-weight:	400 800;
-} @font-face {
-	font-family:	"Silkscreen";
-	src:			local("Silkscreen"),
-					url("/media/resources/fonts/Silkscreen Regular.ttf");
-	font-display:	swap;
-	/*
-	 * NOTE FOR THE FUTURE: If you ever wanna use the bold face, add the TTF for
-	 * it. DO NOT let the browser do it because EW.
-	 */
-} @font-face {
-	font-family:	"Twemoji";
-	src:			url("/media/resources/fonts/Twemoji.ttf");
-	font-display:	swap;
-}
-
-:root {
-	--accent:		#ac94b5;
-	--secondary:	#c8c8c8;
-	--link:			#5865f2;
-	--text:			#fff;
-	--bg1:			#1c1c1c;
-	--bg2:			#2a2a2f;
-
-	--heading-size-multiplier:	1.25;
-	/* Fallback value, usually overridden by JS: */
-	--bg-img:					url("/media/resources/bg/clouds-crazy.jpg");
-
-	/* --aero-shine is of type `background-image` */
-	--aero-shine: linear-gradient(61deg, /* sic */
-		#fff0		0%,
-		#ffffff28	5%,
-		#fff0		7.2%,
-		#ffffff1e	10.5%,
-		#fff0		11.6%	16%,
-		#ffffff28	17.6%,
-		#ffffff22	22.2%,
-		#fff0		24%		37%,
-		#ffffff28	44.7%	48%,
-		#fff0		53.7%,
-		#ffffff28	55.2%	55.7%,
-		#fff0		59.7%,
-		#ffffff28	61.4%	64.4%,
-		#ffffff22	67.5%,
-		#fff0		70%		78.5%,
-		#ffffff1e	80.8%,
-		#fff0		82.5%,
-		#ffffff1e	85.3%	86.3%,
-		#fff0		94.6%
-	);
-	/* --aero is of type `background` */
-	--aero: linear-gradient(
-			#ccc2	0,
-			#cccc	calc(min(25%, 50svh) + 30px),
-			#ccc0	calc(min(26%, 51svh) + 30px)
-		),
-		hsl(from var(--accent) h calc(s + 67) calc(l - 30) / 40%) /* Glass colour */
-		var(--aero-shine)
-		0 0 / 100svw 100svh fixed; /* Absolute to viewport */
-
-	scrollbar-color:	var(--accent) var(--bg1);
-}
-
-*, ::before, ::after {
-	margin:				0;
-	padding:			0;
-	box-sizing:			border-box;
-	scrollbar-width:	thin; /* Baseline 2023 excludes Safari support, but they
-						         use overlay scrollbars so idc. Doesn't cascade
-						         well from :root like scrollbar-color does */
-}
-
-body {
-	/*
-	 * ABOUT SPACING:
-	 * - Window borders and content padding are 8px wide
-	 * - Spacing between windows are 8 px wide
-	 * - Window titles are 22px high (text), therefore 30px incl. the top border
-	 * Therefore:
-	 * - Page padding is 16px (border+spacing)
-	 * - Flex gap is 46px (border+title (incl. top border)+spacing)
-	 * 	- Page padding top is 48px (title (incl. top border)+spacing)
-	 * 
-	 * This applies to the positioning of the flex items (container is `body`)
-	 * and is based on the values in their ::before and ::after pseudo-elements.
-	 */
-	min-height:			100svh; /* Baseline 2023; fix for Safari UI */
-	display:			flex;
-		flex-direction:		column;
-		justify-content:	flex-start;
-		align-items:		center;
-		gap:				46px;
-	padding:			16px;
-		padding-top:	38px;
-
-	color:				var(--text);
-	background:			var(--bg-img) center bottom / cover fixed,
-	           			var(--bg1) linear-gradient(var(--bg2), var(--bg1)) fixed;
-	font-family:		"Ubuntu", "Twemoji", sans-serif;
-		font-weight:	475;
-	overflow-wrap:		anywhere;
-	word-break:			normal;
-}
-
-/* Mobile Safari disables fixed backgrounds because apparently them being
- * computationally crap in 2010 hasn't been fixed by Apple in 15+ years.
- * Brilliant. I'll fix the damn background to the viewport MYSELF then: */
-@supports (-webkit-touch-callout: none) {
-	body {
-		/* Only use the fallback here: */
-		background:	var(--bg1) linear-gradient(var(--bg2), var(--bg1)) fixed;
-	}
-
-	/* https://jsfiddle.net/saeokn81/ */
-	body::before {
-		content:	"";
-
-		position:	fixed;
-			width:		100lvw;
-			height:		100lvh;
-			top:		0;
-			z-index:	-1; /* Don't mess with Aero! */
-		background:	var(--bg-img) center bottom / cover;
-	}
-}
-
 ::selection {
 	color:				var(--bg2);
 	background-color:	var(--accent);
@@ -204,112 +32,6 @@ a::selection {
 	/* Specify !important otherwise conflicts with nav styles */
 	box-shadow:	0 0 0 3px var(--secondary),
 				4px 4px 10px var(--accent) !important;
-}
-
-/*
- * AERO SECTIONS
- */
-
-header, article, footer {
-	width:			100%;
-		max-width:	800px;
-	padding:		8px;
-	position:		relative; /* So ::before and ::after can inherit */
-	background:		linear-gradient(var(--bg2), var(--bg1)) fixed;
-	border-radius:	0.5px;
-	box-shadow:		0 0 0 1px #0008, /* Box shadow outset, overlaps with Aero glass */
-					0 0 0 2px #f0f0f080;
-}
-
-:is(header, article, footer)::before { /* Decoration for sections */
-	content:	attr(data-aero-title);
-	width:		calc(100% + 16px);
-		max-width:	calc(100vw - 16px);
-	height:		calc(100% + 38px);
-	position:	absolute;
-		top:		-30px;
-		left:		-8px;
-		z-index:	-1;
-	
-	/* Title text: */
-	padding:			5px 64px 0 32px; /* Nominally should be 4px but looks
-						                    bad on all but article::before */
-	text-shadow:		0 0 6px #fff;
-	overflow:			hidden;
-	color:				#000;
-	white-space:		nowrap;
-	text-overflow:		ellipsis;
-	
-	background:			var(--aero-icon, url("/favicon.ico")) 8px 5px / 20px no-repeat,
-						var(--aero);
-	border-radius:		6px;
-	backdrop-filter:	blur(8px);
-	box-shadow:			0 0 0 1px	#000	inset,
-						0 0 0 2px	#f0f0f0	inset,
-						4px 4px 12px #000c; /* Aero window shadow */
-}
-
-header::before {
-	width:		calc(100% + 4px);
-	left:		-2px;
-	text-align:	left;
-}
-
-article::before {
-	padding-top:	3px; /* Sucks here too but in a different way */
-}
-
-:is(header, article, footer)::after { /* "Close button" decoration for sections */
-	content:			"x";
-	width:				44px;
-	height:				16px;
-	position:			absolute;
-		top:	-28px;
-		right:	0;
-	border-radius:		0 0 2px 2px;
-	color:				#fff;
-		-webkit-text-stroke: 0.5px #535666c0;
-	font-size:			18px;
-	line-height:		0.8;
-	text-align:			center;
-	font-weight:		bolder;
-	cursor:				not-allowed;
-	box-shadow:			0 0 0 1px #f0f0f0,
-						0 0 0 2px #000;
-	background-image:	linear-gradient(#eee5 0, #fff6 48%, #1111 52%, #ff85 100%),
-						radial-gradient(#db582c 0, #a34329 100%);
-	opacity:			65%;
-}
-
-header::after {
-	right:	6px;
-}
-
-/* Viewport too small to display text without colliding with close button: */
-@media only screen and (max-width: 158px) {
-	:is(header, article, footer)::before {
-		padding:	5px 8px 0 8px;
-		background:	var(--aero); /* Remove icon */
-	}
-
-	:is(header, article, footer)::after {
-		display:	none;
-	}
-}
-
-/* Viewport too small to comfortably fit any section title text: */
-@media only screen and (max-width: 78px) {
-	body {
-		padding-top:	16px;
-		gap:			24px;
-	}
-
-	:is(header, article, footer)::before {
-		content:	"";
-		height:		calc(100% + 16px);
-		top:		-8px;
-		padding:	0;
-	}
 }
 
 /*
@@ -364,12 +86,6 @@ header {
 .animating { /* #header-pfp */
 	animation:	0.15s ease-in-out pfp-spin;
 	cursor:		grabbing;
-}
-
-@media only screen and (max-width: 304px) {
-	#header-pfp {
-		display:	none;
-	}
 }
 
 nav {
@@ -690,18 +406,6 @@ figure.fright {
 	padding-right:	8px;
 }
 
-/* Once the viewport gets itty bitty, we start disrespecting intended widths: */
-@media only screen and (max-width: 400px) {
-	figure, article img, aside[style] {
-		min-width:	25%;
-	}
-
-	figcaption {
-		font-size:		0.6em;
-		line-height:	1;
-	}
-}
-
 /* Unset `article img` styles and make figure images fit to their containers: */
 figure > img {
 	width:			100%;
@@ -979,12 +683,6 @@ aside {
 	column-count:	2;
 }
 
-@media only screen and (max-width: 400px) {
-	.footnotes {
-		column-count:	1;
-	}
-}
-
 .footnotes > ol {
 	padding-left:	0; /* Unset global `ol, ul` style */
 }
@@ -1097,29 +795,4 @@ body:has(> #modaldim:not(.hidden)) {
 	user-select:		none;
 		-webkit-user-select:	none; /* Safari */
 	image-rendering:	pixelated;
-}
-
-/* Unset Aero section styles: */
-:is(#modaldim, #oneko)::before, :is(#modaldim, #oneko)::after {
-	display:	none;
-}
-
-#oneko {
-	all:	unset;
-}
-
-/*
- * GLOBAL UTILITY CLASSES
- */
-
-.hidden {
-	display:	none;
-}
-
-.noclear {
-	clear:	initial;
-}
-
-.nomodal {
-	cursor:	unset;
 }
