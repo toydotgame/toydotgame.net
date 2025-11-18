@@ -11,25 +11,27 @@ layout: compress
 	<head>
 		<meta charset="UTF-8">
 
-		<link rel="preload" href="/media/resources/styles/layout.css" as="style" fetchpriority="high">
-		<link rel="preload" href="/media/resources/styles/responsive.css" as="style" fetchpriority="low">
+		{%- comment -%} Inlining truly can halve the FCP delay so… {%- endcomment -%}
+		<style>{%- include layout.css -%}</style>
 
-		<link rel="preload" href="/media/resources/js/random-bg.js" as="script" fetchpriority="high">
-		<link rel="modulepreload" href="/media/resources/js/loader.js">
-		<link rel="modulepreload" href="/media/resources/js/modal.js">
-		<link rel="preload" href="/media/resources/js/oneko.js" as="script" fetchpriority="low">
-		<link rel="preload" href="/media/resources/oneko.gif" as="image" fetchpriority="low">
+		<link rel="preload" href="/media/resources/js/random-bg.js" as="script"
+			fetchpriority="high">
+		<link rel="preload" href="/media/resources/js/modal.js" as="script">
+		<link rel="preload" href="/media/resources/js/loader.js" as="script">
+		<link rel="preload" href="/media/resources/aerico/globe.png" as="image">
+		<link rel="preload" href="{{ page.aero-icon
+			| default:"/media/resources/aerico/info.png" }}" as="image">
+		<link rel="preload" href="/media/resources/aerico/msn.png" as="image">
+		<link rel="preload" href="/media/resources/styles/responsive.css" as="style"
+			fetchpriority="low">
+		<link rel="preload" href="/media/resources/js/oneko.js" as="script"
+			fetchpriority="low">
+		<link rel="preload" href="/media/resources/oneko.gif" as="image"
+			fetchpriority="low">
 		{%- if page.mathjax -%}
 			<link rel="preload" href="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
 				as="script" fetchpriority="low">
 		{%- endif -%}
-
-		<link rel="prefetch" href="https://raw.githubusercontent.com/toydotgame/toydotgame.net/refs/heads/visitor-count/visitor-count">
-		{%- if page.url == "/status/" or page.url == "/status/all" -%}
-			<link rel="prefetch" href="/media/resources/styles/status.css">
-		{%- endif -%}
-
-		<title>{{ page.title }} - {{ site.title }}</title>
 
 		{%- comment -%}
 			Nasty hax to preload (defer/async) request stylesheets as if we are
@@ -38,51 +40,53 @@ layout: compress
 			inline into a <link rel="stylesheet" ...>—thereby effectively defer
 			loading the CSS without render-blocking.
 		{%- endcomment -%}
-		<link rel="stylesheet" href="/media/resources/styles/layout.css">
-		<link rel="preload" href="/media/resources/styles/styles.css" as="style"
-			onload="this.onload=null; this.rel='stylesheet'; this.as=null">
+		<link rel="preload" href="/media/resources/styles/styles.css"
+			as="style"
+			onload="this.removeAttribute('onload'); this.rel='stylesheet'; this.removeAttribute('as')">
 		<link rel="stylesheet" href="/media/resources/styles/responsive.css"
 			media="screen and (width <= 400px)">
-		<link rel="preload" href="/media/resources/styles/syntax.css" as="style" fetchpriority="low"
-			onload="this.onload=null; this.rel='stylesheet'; this.as=null">
-		{%- comment -%}
-			The above style tag will block rendering until it is downloaded, but
-			will not block further parsing of the below tags. The below script will
-			induce a parser-block where it'll wait for the CSS to download before
-			it can evaluate and the tags below _it_ can be parsed.
-			Additionally, the `blocking="rendering"` attribute will prevent CSS
-			rendering from occurring until evaluation is complete as well.
-		{%- endcomment -%}
-		<script blocking="rendering" src="/media/resources/js/random-bg.js"></script>
-		
-		<script type="module" src="/media/resources/js/loader.js"></script>
-		<script defer src="/media/resources/js/oneko.js"
+		<link rel="preload" href="/media/resources/styles/syntax.css"
+			as="style" fetchpriority="low"
+			onload="this.removeAttribute('onload'); this.rel='stylesheet'; this.removeAttribute('as')">
+
+		<title>{{ page.title }} - {{ site.title }}</title>
+
+		<script async src="/media/resources/js/random-bg.js"></script>
+		<script async src="/media/resources/js/modal.js"></script>
+		<script async src="/media/resources/js/loader.js"></script>
+		<script async src="/media/resources/js/oneko.js"
 			data-cat="/media/resources/oneko.gif"></script>
 		
 		{%- if page.mathjax -%}
 			<script>
-			MathJax = {
-				options: {
-					enableExplorer: false,
-					enableMenu: false,
-					menuOptions: {
-						settings: {
-							enrich: false,
-							speech: false,
-							braille: false
+				MathJax = {
+					options: {
+						enableExplorer: false,
+						enableMenu: false,
+						menuOptions: {
+							settings: {
+								enrich: false,
+								speech: false,
+								braille: false
+							}
 						}
+					},
+					tex: {
+						inlineMath: {"[+]": [["$","$"], ["$`", "`$"]]}
+					},
+					svg: {
+						fontCache: "global"
 					}
-				},
-				tex: {
-					inlineMath: {"[+]": [["$","$"], ["$`", "`$"]]}
-				},
-				svg: {
-					fontCache: "global"
-				}
-			};
+				};
 			</script>
-			<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+			<script async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
 		{%- endif -%}
+
+		<link rel="prefetch" href="https://raw.githubusercontent.com/toydotgame/toydotgame.net/refs/heads/visitor-count/visitor-count">
+		{%- if page.url == "/status/" or page.url == "/status/all" -%}
+			<link rel="prefetch" href="/media/resources/styles/status.css">
+		{%- endif -%}
+
 		{%- include head-meta-tags.html -%}
 	</head>
 	<body>

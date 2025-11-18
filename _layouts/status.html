@@ -11,13 +11,13 @@ layout: compress
 	<head>
 		<meta charset="UTF-8">
 		<link rel="preload" href="/media/resources/styles/status.css" as="style">
-		<link rel="modulepreload" href="/media/resources/js/modal.js">
+		<link rel="preload" href="/media/resources/js/modal.js" as="script">
 		
 		{%- comment -%} `page.title` defaults to :slug thankfully: {%- endcomment -%}
 		<title>Status #{{ page.title }} - {{ site.title }}</title>
 
 		<link rel="stylesheet" href="/media/resources/styles/status.css">
-		<script type="module" src="/media/resources/js/modal.js"></script>
+		<script async src="/media/resources/js/modal.js"></script>
 		{%- include head-meta-tags.html -%}
 	</head>
 	<body>

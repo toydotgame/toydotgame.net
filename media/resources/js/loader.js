@@ -8,10 +8,6 @@
  * once the entire page is downloaded.
  */
 
-// IMAGE MODAL
-
-import {} from "./modal.js";
-
 // EXTERNAL LINK MARKING
 
 for(let i of document.querySelectorAll("article a"))
@@ -69,7 +65,7 @@ function getLocalizedOrdinalSuffix(number) {
 
 // NAV PFP SPIN ANIMATION (Let it complete)
 
-const NAV_PFP = document.querySelector("header h1 img");
+const NAV_PFP = document.querySelector("#header-pfp");
 NAV_PFP.addEventListener("click", () => {
 	NAV_PFP.classList.add("animating");
 });
