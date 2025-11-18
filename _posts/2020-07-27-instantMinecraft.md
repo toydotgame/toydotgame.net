@@ -15,7 +15,7 @@ updated: 2021-10-09
 	2020 article's markup (see
 	https://web.archive.org/web/20230329120614if_/https://toydotgame.github.io/pages/tutorials/instantMinecraft.html)
 	and how consecutive <ul>s were grouped apart.
-{%- endcomment -%}
+{%- endcomment %}
 
 ## Step 1: Preperation
 ### 1A: Download ProcessExplorer
