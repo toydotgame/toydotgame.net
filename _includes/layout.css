@@ -53,7 +53,7 @@
 	font-family:	"Silkscreen";
 	src:			local("Silkscreen"),
 					url("/media/resources/fonts/Silkscreen Regular.ttf");
-	font-display:	swap;
+	font-display:	fallback;
 	/*
 	 * NOTE FOR THE FUTURE: If you ever wanna use the bold face, add the TTF for
 	 * it. DO NOT let the browser do it because EW.
@@ -61,7 +61,7 @@
 } @font-face {
 	font-family:	"Twemoji";
 	src:			url("/media/resources/fonts/Twemoji.ttf");
-	font-display:	swap;
+	font-display:	fallback;
 }
 
 :root {
@@ -251,6 +251,11 @@ article::before {
 
 header::after {
 	right:	6px;
+}
+
+#header-pfp {
+	width:	1lh;
+	height:	1lh;
 }
 
 /* Unset Aero section styles: */
