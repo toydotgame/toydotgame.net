@@ -16,17 +16,31 @@ layout: compress
 
 		<link rel="preload" href="/media/resources/js/random-bg.js" as="script"
 			fetchpriority="high">
+		<link rel="preload" href="/media/resources/fonts/Ubuntu Sans Variable.ttf" as="font" type="font/ttf"
+			fetchpriority="high">
+		<link rel="preload" href="/media/resources/fonts/DejaVu Sans Mono Regular.ttf" as="font" type="font/ttf"
+			fetchpriority="high">
+		<link rel="preload" href="/media/resources/fonts/DejaVu Sans Mono Bold.ttf" as="font" type="font/ttf"
+			fetchpriority="high">
+		<link rel="preload" href="/media/resources/fonts/EB Garamond Variable.ttf" as="font" type="font/ttf"
+			fetchpriority="high">
+		<link rel="preload" href="/media/resources/fonts/EB Garamond Variable Italic.ttf" as="font" type="font/ttf"
+			fetchpriority="high">
+		<link rel="preload" href="/media/resources/fonts/Silkscreen Regular.ttf" as="font" type="font/ttf"
+			fetchpriority="high">
 		<link rel="preload" href="/media/resources/js/modal.js" as="script">
 		<link rel="preload" href="/media/resources/js/loader.js" as="script">
-		<link rel="preload" href="/media/resources/aerico/globe.png" as="image">
+		<link rel="preload" href="/media/resources/aerico/globe.png" as="image" type="image/png">
 		<link rel="preload" href="{{ page.aero-icon
-			| default:"/media/resources/aerico/info.png" }}" as="image">
-		<link rel="preload" href="/media/resources/aerico/msn.png" as="image">
+			| default:"/media/resources/aerico/info.png" }}" as="image" type="image/png">
+		<link rel="preload" href="/media/resources/aerico/msn.png" as="image" type="image/png">
 		<link rel="preload" href="/media/resources/styles/responsive.css" as="style"
+			fetchpriority="low">
+		<link rel="prefetch" href="/media/resources/fonts/Twemoji.ttf" as="font" type="font/ttf"
 			fetchpriority="low">
 		<link rel="preload" href="/media/resources/js/oneko.js" as="script"
 			fetchpriority="low">
-		<link rel="preload" href="/media/resources/oneko.gif" as="image"
+		<link rel="preload" href="/media/resources/oneko.gif" as="image" type="image/gif"
 			fetchpriority="low">
 		{%- if page.mathjax -%}
 			<link rel="preload" href="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
