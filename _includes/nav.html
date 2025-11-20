@@ -7,8 +7,12 @@
 
 <header data-aero-title="Navigation" role="banner"
 	style="--aero-icon:url('/media/resources/aerico/globe.webp')">
+	{%- comment -%} Profile image width and height attributes overridden by CSS,
+	but specified here anyway to minimise the impact of CLS if the image loads
+	before styles. (Actual size 61.4333...px) {%- endcomment -%}
 	<h1 id="header-title"><img id="header-pfp" src="/media/resources/profile.webp"
-		draggable="false" alt="Profile picture of toydotgame">toy&#x200B;dot&#x200B;game</h1>
+		width="61" height="61" draggable="false"
+		alt="Profile picture of toydotgame">toy&#x200B;dot&#x200B;game</h1>
 
 	<nav role="navigation">
 		{%- assign urlFrags = page.url | url_decode | split: "." -%}

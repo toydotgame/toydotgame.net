@@ -336,6 +336,7 @@ header {
 }
 
 #header-pfp {
+	width:				1lh;
 	height:				1lh;
 	margin-right:		0.25em;
 	vertical-align: 	top; /* Since we match the image and text's heights */
