@@ -22,12 +22,15 @@ layout: compress
 			fetchpriority="low">
 		<link rel="preload" href="/media/resources/oneko.gif" as="image" type="image/gif"
 			fetchpriority="low">
+		<link rel="preload" href="/media/resources/styles/responsive.css" as="style">
 
 		<title>{{ page.title }} - {{ site.title }}</title>
 
 		<link rel="preload" href="/media/resources/styles/syntax.css" as="style"
 			onload="this.removeAttribute('onload'); this.rel='stylesheet'; this.removeAttribute('as')">
 		<link rel="stylesheet" href="/media/resources/styles/styles.css">
+		<link rel="stylesheet" href="/media/resources/styles/responsive.css"
+			media="screen and (width <= 400px)">
 		<script async src="/media/resources/js/random-bg.js"></script>
 		
 		<script type="module" src="/media/resources/js/loader.js"></script>

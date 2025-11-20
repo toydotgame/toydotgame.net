@@ -304,33 +304,6 @@ header::after {
 	right:	6px;
 }
 
-/* Viewport too small to display text without colliding with close button: */
-@media only screen and (max-width: 158px) {
-	:is(header, article, footer)::before {
-		padding:	5px 8px 0 8px;
-		background:	var(--aero); /* Remove icon */
-	}
-
-	:is(header, article, footer)::after {
-		display:	none;
-	}
-}
-
-/* Viewport too small to comfortably fit any section title text: */
-@media only screen and (max-width: 78px) {
-	body {
-		padding-top:	16px;
-		gap:			24px;
-	}
-
-	:is(header, article, footer)::before {
-		content:	"";
-		height:		calc(100% + 16px);
-		top:		-8px;
-		padding:	0;
-	}
-}
-
 /*
  * SECTIONS
  */
@@ -383,12 +356,6 @@ header {
 .animating { /* #header-pfp */
 	animation:	0.15s ease-in-out pfp-spin;
 	cursor:		grabbing;
-}
-
-@media only screen and (max-width: 304px) {
-	#header-pfp {
-		display:	none;
-	}
 }
 
 nav {
@@ -709,18 +676,6 @@ figure.fright {
 	padding-right:	8px;
 }
 
-/* Once the viewport gets itty bitty, we start disrespecting intended widths: */
-@media only screen and (max-width: 400px) {
-	figure, article img, aside[style] {
-		min-width:	25%;
-	}
-
-	figcaption {
-		font-size:		0.6em;
-		line-height:	1;
-	}
-}
-
 /* Unset `article img` styles and make figure images fit to their containers: */
 figure > img {
 	width:			100%;
@@ -996,12 +951,6 @@ aside {
 .footnotes {
 	clear:			both;
 	column-count:	2;
-}
-
-@media only screen and (max-width: 400px) {
-	.footnotes {
-		column-count:	1;
-	}
 }
 
 .footnotes > ol {
