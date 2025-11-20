@@ -16,6 +16,8 @@ layout: compress
 		{%- comment -%} `page.title` defaults to :slug thankfully: {%- endcomment -%}
 		<title>Status #{{ page.title }} - {{ site.title }}</title>
 
+		<link rel="preload" href="/media/resources/styles/syntax.css" as="style"
+			onload="this.removeAttribute('onload'); this.rel='stylesheet'; this.removeAttribute('as')">
 		<link rel="stylesheet" href="/media/resources/styles/status.css">
 		<script type="module" src="/media/resources/js/modal.js"></script>
 		{%- include head-meta-tags.html -%}

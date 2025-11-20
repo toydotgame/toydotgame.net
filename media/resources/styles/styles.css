@@ -14,8 +14,6 @@
  * GLOBAL STYLES
  */
 
-@import url("/media/resources/styles/syntax.css");
-
 @font-face {
 	font-family:	"Ubuntu";
 	src:			local("Ubuntu Sans"),

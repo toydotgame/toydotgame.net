@@ -5,8 +5,6 @@
  */
 
 /* Copy/sync from styles.css: */
-@import url("/media/resources/styles/syntax.css");
-
 @font-face {
 	font-family:	"DejaVu Sans Mono";
 	src:			local("DejaVu Sans Mono Book"),
