@@ -1,8 +1,9 @@
 /*
  * AUTHOR: toydotgame
  * CREATED: 2025-11-08
- * Simple script that runs directly after styles downloading and blocks the
- * render so it can replace the default --bg-img with a randomised one.
+ * Simple script that downloads and runs in async to HTML parse purely to add
+ * an inline style to :root to change the bg as the page is loading (hopefully
+ * unnoticeably).
  */
 
 const BACKGROUNDS = ["clouds-crazy.jpg", "dark-sky.jpg", "tree-clouds.jpg"];
