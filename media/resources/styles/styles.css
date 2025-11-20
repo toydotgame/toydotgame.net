@@ -510,7 +510,7 @@ a, a b, a strong {
 	display:			inline-block;
 	width:				1em;
 	height:				1em;
-	margin-left:		0.125em;
+	margin:				0 -4px 0 0.125em;
 	background-color:	var(--link);
 	clip-path:			path("M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1");
 	vertical-align:		middle;
