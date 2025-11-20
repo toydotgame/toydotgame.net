@@ -747,7 +747,7 @@ th[colspan] {
  * since 2013, we just kinda have to accept that the <tr>s with _only_ <th>s in
  * them _will_ count towards the row count for this.
  * Use your HTML5, kids. */
-tbody tr:nth-of-type(even) td {
+tr:nth-of-type(even) > td {
 	background-color:	rgb(from var(--accent) r g b / 10%);
 }
 
