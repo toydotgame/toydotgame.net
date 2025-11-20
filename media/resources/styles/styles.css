@@ -18,6 +18,9 @@
 	font-family:	"Ubuntu";
 	src:			local("Ubuntu Sans"),
 					url("/media/resources/fonts/Ubuntu Sans Variable.ttf");
+	ascent-override:	94%;
+	descent-override:	26%;
+	line-gap-override:	0;
 	font-display:	swap;
 	/* `font-style`s `normal` _and_ `italic` are included */
 	font-weight:	100 800;
@@ -31,12 +34,18 @@
 	font-family:	"DejaVu Sans Mono";
 	src:			local("DejaVu Sans Mono Book"),
 					url("/media/resources/fonts/DejaVu Sans Mono Regular.ttf");
+	ascent-override:	92.82%;
+	descent-override:	23.58%;
+	line-gap-override:	0;
 	font-display:	swap;
 	font-weight:	normal;
 } @font-face {
 	font-family:	"DejaVu Sans Mono";
 	src:			local("DejaVu Sans Mono Bold"),
 					url("/media/resources/fonts/DejaVu Sans Mono Bold.ttf");
+	ascent-override:	92.82%;
+	descent-override:	23.58%;
+	line-gap-override:	0;
 	font-display:	swap;
 	font-weight:	bold;
 } @font-face {
@@ -44,6 +53,9 @@
 	src:			local("EB Garamond"),
 					url("/media/resources/fonts/EB Garamond Variable.ttf"),
 					local("Garamond");
+	ascent-override:	100.7%;
+	descent-override:	29.8%;
+	line-gap-override:	0;
 	font-display:	swap;
 	font-style:		normal;
 	font-weight:	400 800;
@@ -52,6 +64,9 @@
 	src:			local("EB Garamond"),
 					url("/media/resources/fonts/EB Garamond Variable Italic.ttf"),
 					local("Garamond");
+	ascent-override:	100.7%;
+	descent-override:	29.8%;
+	line-gap-override:	0;
 	font-display:	swap;
 	font-style:		italic;
 	font-weight:	400 800;
@@ -59,6 +74,9 @@
 	font-family:	"Silkscreen";
 	src:			local("Silkscreen"),
 					url("/media/resources/fonts/Silkscreen Regular.ttf");
+	ascent-override:	103%;
+	descent-override:	25%;
+	line-gap-override:	0;
 	font-display:	swap;
 	/*
 	 * NOTE FOR THE FUTURE: If you ever wanna use the bold face, add the TTF for
@@ -67,6 +85,9 @@
 } @font-face {
 	font-family:	"Twemoji";
 	src:			url("/media/resources/fonts/Twemoji.ttf");
+	ascent-override:	95.9%;
+	descent-override:	10%;
+	line-gap:			8.98%;
 	font-display:	swap;
 }
 
