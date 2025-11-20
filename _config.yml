@@ -98,7 +98,6 @@ exclude:
   - vendor/
   - jekyll-serve.sh
   - README.txt
-  - TODO.txt
 future: true # Just in case
 kramdown:
   auto_ids:          false

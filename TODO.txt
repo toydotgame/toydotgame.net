@@ -1,2 +1,0 @@
-more css cascading/general performance optimisation rather than crazy selectors
-damn
