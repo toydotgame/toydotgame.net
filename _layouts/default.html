@@ -40,9 +40,10 @@ layout: compress
 			inline into a <link rel="stylesheet" ...>—thereby effectively defer
 			loading the CSS without render-blocking.
 		{%- endcomment -%}
-		<link rel="preload" href="/media/resources/styles/styles.css"
+		<link rel="preload" href="/media/resources/styles/styles copy.css"
 			as="style"
 			onload="this.removeAttribute('onload'); this.rel='stylesheet'; this.removeAttribute('as')">
+
 		<link rel="stylesheet" href="/media/resources/styles/responsive.css"
 			media="screen and (width <= 400px)">
 		<link rel="preload" href="/media/resources/styles/syntax.css"

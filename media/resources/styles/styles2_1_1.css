@@ -1,0 +1,15 @@
+header {
+	width:			calc(100% + 12px);
+		max-width:	812px;
+	padding:		8px 14px;
+	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%),
+					rgba(from var(--bg1) r g b / 50%)) fixed;
+	border-radius:	0;
+	box-shadow:		0 -1px	#f0f0f080,
+					0 -2px	#0008,
+					0 1px	#0008,
+					0 2px	#f0f0f080;
+	
+	text-align:		center;
+	user-select:	none;
+}

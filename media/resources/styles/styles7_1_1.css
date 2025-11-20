@@ -1,0 +1,3 @@
+footer {
+	margin-top:	auto; /* Sticky to bottom if body height < 100 vh */
+}

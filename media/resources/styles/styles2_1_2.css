@@ -1,0 +1,9 @@
+#header-title {
+	/*min-height:		50px;*/
+	/* Leave line-height unspecified such that img inline can inherit auto 1lh */
+	font-size:		min(48px, 10cqw); /* 10cqw is arbitrary as hell */
+	font-family:	"Silkscreen", monospace;
+	font-weight:	normal;
+	letter-spacing:	-0.15em;
+	filter:			drop-shadow(2px 2px 4px #0008);
+}

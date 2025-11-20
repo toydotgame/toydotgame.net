@@ -1,0 +1,23 @@
+::selection {
+	color:				var(--bg2);
+	background-color:	var(--accent);
+}
+
+:is(h1, h2, h3, b)::selection {
+	color:			var(--text);
+	text-shadow:	none;
+}
+
+a::selection {
+	color:			unset; /* Normal unselected colour */
+	text-shadow:	0.5px 0.5px 2px #0008;
+}
+
+:focus-visible {
+	position:	relative;
+		z-index:	1;
+	outline:	2px solid hsl(from var(--accent) h calc(2*s) l);
+	/* Specify !important otherwise conflicts with nav styles */
+	box-shadow:	0 0 0 3px var(--secondary),
+				4px 4px 10px var(--accent) !important;
+}

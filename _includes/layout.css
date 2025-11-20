@@ -1,67 +1,92 @@
-/*
- * AUTHOR: toydotgame
- * CREATED: 2025-11-18
- * Render-blocking essential styles needed for page layout/FCP.
- */
+{%- comment -%}
+	AUTHOR: toydotgame
+	CREATED: 2025-11-18
+	Render-blocking essential styles needed for page layout/FCP. Additional
+	general styles are inlined here for CLS optimisation, as they have an effect
+	≥0.1, which inlining always* makes 0 so :3.
 
-/*
- * GLOBAL STYLES
- */
+	*: The heading styles have a CLS impact of 0.02 even when inlined :(
+{%- endcomment -%}
+
+{%- comment -%}
+	GLOBAL STYLES
+{%- endcomment -%}
 
 @font-face {
 	font-family:	"Ubuntu";
 	src:			local("Ubuntu Sans"),
 					url("/media/resources/fonts/Ubuntu Sans Variable.ttf");
+	ascent-override:	94%;
+	descent-override:	26%;
+	line-gap-override:	0;
 	font-display:	swap;
-	/* `font-style`s `normal` _and_ `italic` are included */
+	{%- comment -%} `font-style`s `normal` _and_ `italic` are included {%- endcomment -%}
 	font-weight:	100 800;
 } @font-face {
-	/*
-	 * DejaVu Sans Mono is an incredibly static font, it has no italic face, and
-	 * its oblique and bold faces are static transformations. We can get away
-	 * with letting the browser create the oblique face on-the-fly, but IMO it
-	 * looks better to use the static bold face file instead of making it up.
-	 */
-	font-family:	"DejaVu Sans Mono";
-	src:			local("DejaVu Sans Mono Book"),
-					url("/media/resources/fonts/DejaVu Sans Mono Regular.ttf");
-	font-display:	swap;
-	font-weight:	normal;
+	{%- comment -%}
+		DejaVu Sans Mono is an incredibly static font, it has no italic face, and
+		its oblique and bold faces are static transformations. We can get away
+		with letting the browser create the oblique face on-the-fly, but IMO it
+		looks better to use the static bold face file instead of making it up.
+	{%- endcomment -%}
+	font-family:		"DejaVu Sans Mono";
+	src:				local("DejaVu Sans Mono Book"),
+						url("/media/resources/fonts/DejaVu Sans Mono Regular.ttf");
+	ascent-override:	92.82%;
+	descent-override:	23.58%;
+	line-gap-override:	0;
+	font-display:		swap;
+	font-weight:		normal;
 } @font-face {
-	font-family:	"DejaVu Sans Mono";
-	src:			local("DejaVu Sans Mono Bold"),
-					url("/media/resources/fonts/DejaVu Sans Mono Bold.ttf");
-	font-display:	swap;
-	font-weight:	bold;
+	font-family:		"DejaVu Sans Mono";
+	src:				local("DejaVu Sans Mono Bold"),
+						url("/media/resources/fonts/DejaVu Sans Mono Bold.ttf");
+	ascent-override:	92.82%;
+	descent-override:	23.58%;
+	line-gap-override:	0;
+	font-display:		swap;
+	font-weight:		bold;
 } @font-face {
-	font-family:	"EB Garamond";
-	src:			local("EB Garamond"),
-					url("/media/resources/fonts/EB Garamond Variable.ttf"),
-					local("Garamond");
-	font-display:	swap;
-	font-style:		normal;
-	font-weight:	400 800;
+	font-family:		"EB Garamond";
+	src:				local("EB Garamond"),
+						url("/media/resources/fonts/EB Garamond Variable.ttf"),
+						local("Garamond");
+	ascent-override:	100.7%;
+	descent-override:	29.8%;
+	line-gap-override:	0;
+	font-display:		swap;
+	font-style:			normal;
+	font-weight:		400 800;
 } @font-face {
-	font-family:	"EB Garamond";
-	src:			local("EB Garamond"),
-					url("/media/resources/fonts/EB Garamond Variable Italic.ttf"),
-					local("Garamond");
-	font-display:	swap;
-	font-style:		italic;
-	font-weight:	400 800;
+	font-family:		"EB Garamond";
+	src:				local("EB Garamond"),
+						url("/media/resources/fonts/EB Garamond Variable Italic.ttf"),
+						local("Garamond");
+	ascent-override:	100.7%;
+	descent-override:	29.8%;
+	line-gap-override:	0;
+	font-display:		swap;
+	font-style:			italic;
+	font-weight:		400 800;
 } @font-face {
-	font-family:	"Silkscreen";
-	src:			local("Silkscreen"),
-					url("/media/resources/fonts/Silkscreen Regular.ttf");
-	font-display:	fallback;
-	/*
-	 * NOTE FOR THE FUTURE: If you ever wanna use the bold face, add the TTF for
-	 * it. DO NOT let the browser do it because EW.
-	 */
+	font-family:		"Silkscreen";
+	src:				local("Silkscreen"),
+						url("/media/resources/fonts/Silkscreen Regular.ttf");
+	ascent-override:	103%;
+	descent-override:	25%;
+	line-gap-override:	0;
+	font-display:		swap;
+	{%- comment -%}
+		NOTE FOR THE FUTURE: If you ever wanna use the bold face, add the TTF for
+		it. DO NOT let the browser do it because EW.
+	{%- endcomment -%}
 } @font-face {
-	font-family:	"Twemoji";
-	src:			url("/media/resources/fonts/Twemoji.ttf");
-	font-display:	fallback;
+	font-family:		"Twemoji";
+	src:				url("/media/resources/fonts/Twemoji.ttf");
+	ascent-override:	95.9%;
+	descent-override:	10%;
+	line-gap:			8.98%;
+	font-display:		swap;
 }
 
 :root {
@@ -73,11 +98,11 @@
 	--bg2:			#2a2a2f;
 
 	--heading-size-multiplier:	1.25;
-	/* Fallback value, usually overridden by JS: */
+	{%- comment -%} Fallback value, usually overridden by JS: {%- endcomment -%}
 	--bg-img:					url("/media/resources/bg/clouds-crazy.jpg");
 
-	/* --aero-shine is of type `background-image` */
-	--aero-shine: linear-gradient(61deg, /* sic */
+	{%- comment -%} --aero-shine is of type `background-image` {%- endcomment -%}
+	--aero-shine: linear-gradient(61deg, {%- comment -%} sic {%- endcomment -%}
 		#fff0		0%,
 		#ffffff28	5%,
 		#fff0		7.2%,
@@ -98,15 +123,15 @@
 		#ffffff1e	85.3%	86.3%,
 		#fff0		94.6%
 	);
-	/* --aero is of type `background` */
+	{%- comment -%} --aero is of type `background` {%- endcomment -%}
 	--aero: linear-gradient(
 			#ccc2	0,
 			#cccc	calc(min(25%, 50svh) + 30px),
 			#ccc0	calc(min(26%, 51svh) + 30px)
 		),
-		hsl(from var(--accent) h calc(s + 67) calc(l - 30) / 40%) /* Glass colour */
+		hsl(from var(--accent) h calc(s + 67) calc(l - 30) / 40%) {%- comment -%} Glass colour {%- endcomment -%}
 		var(--aero-shine)
-		0 0 / 100svw 100svh fixed; /* Absolute to viewport */
+		0 0 / 100svw 100svh fixed; {%- comment -%} Absolute to viewport {%- endcomment -%}
 
 	scrollbar-color:	var(--accent) var(--bg1);
 }
@@ -115,26 +140,26 @@
 	margin:				0;
 	padding:			0;
 	box-sizing:			border-box;
-	scrollbar-width:	thin; /* Baseline 2023 excludes Safari support, but they
+	scrollbar-width:	thin; {%- comment -%} Baseline 2023 excludes Safari support, but they
 						         use overlay scrollbars so idc. Doesn't cascade
-						         well from :root like scrollbar-color does */
+						         well from :root like scrollbar-color does {%- endcomment -%}
 }
 
 body {
-	/*
-	 * ABOUT SPACING:
-	 * - Window borders and content padding are 8px wide
-	 * - Spacing between windows are 8 px wide
-	 * - Window titles are 22px high (text), therefore 30px incl. the top border
-	 * Therefore:
-	 * - Page padding is 16px (border+spacing)
-	 * - Flex gap is 46px (border+title (incl. top border)+spacing)
-	 * 	- Page padding top is 48px (title (incl. top border)+spacing)
-	 * 
-	 * This applies to the positioning of the flex items (container is `body`)
-	 * and is based on the values in their ::before and ::after pseudo-elements.
-	 */
-	min-height:			100svh; /* Baseline 2023; fix for Safari UI */
+	{%- comment -%}
+		ABOUT SPACING:
+		- Window borders and content padding are 8px wide
+		- Spacing between windows are 8 px wide
+		- Window titles are 22px high (text), therefore 30px incl. the top border
+		Therefore:
+		- Page padding is 16px (border+spacing)
+		- Flex gap is 46px (border+title (incl. top border)+spacing)
+			- Page padding top is 48px (title (incl. top border)+spacing)
+
+		This applies to the positioning of the flex items (container is `body`)
+		and is based on the values in their ::before and ::after pseudo-elements.
+	{%- endcomment -%}
+	min-height:			100svh; {%- comment -%} Baseline 2023; fix for Safari UI {%- endcomment -%}
 	display:			flex;
 		flex-direction:		column;
 		justify-content:	flex-start;
@@ -152,16 +177,16 @@ body {
 	word-break:			normal;
 }
 
-/* Mobile Safari disables fixed backgrounds because apparently them being
- * computationally crap in 2010 hasn't been fixed by Apple in 15+ years.
- * Brilliant. I'll fix the damn background to the viewport MYSELF then: */
+{%- comment -%} Mobile Safari disables fixed backgrounds because apparently them being
+	computationally crap in 2010 hasn't been fixed by Apple in 15+ years.
+	Brilliant. I'll fix the damn background to the viewport MYSELF then: {%- endcomment -%}
 @supports (-webkit-touch-callout: none) {
 	body {
-		/* Only use the fallback here: */
+		{%- comment -%} Only use the fallback here: {%- endcomment -%}
 		background:	var(--bg1) linear-gradient(var(--bg2), var(--bg1)) fixed;
 	}
 
-	/* https://jsfiddle.net/saeokn81/ */
+	{%- comment -%} https://jsfiddle.net/saeokn81/ {%- endcomment -%}
 	body::before {
 		content:	"";
 
@@ -169,27 +194,27 @@ body {
 			width:		100lvw;
 			height:		100lvh;
 			top:		0;
-			z-index:	-1; /* Don't mess with Aero! */
+			z-index:	-1; {%- comment -%} Don't mess with Aero! {%- endcomment -%}
 		background:	var(--bg-img) center bottom / cover;
 	}
 }
 
-/*
- * AERO SECTIONS
- */
+{%- comment -%}
+	AERO SECTIONS
+{%- endcomment -%}
 
 header, article, footer {
 	width:			100%;
 		max-width:	800px;
 	padding:		8px;
-	position:		relative; /* So ::before and ::after can inherit */
+	position:		relative; {%- comment -%} So ::before and ::after can inherit {%- endcomment -%}
 	background:		linear-gradient(var(--bg2), var(--bg1)) fixed;
 	border-radius:	0.5px;
-	box-shadow:		0 0 0 1px #0008, /* Box shadow outset, overlaps with Aero glass */
+	box-shadow:		0 0 0 1px #0008, {%- comment -%} Box shadow outset, overlaps with Aero glass {%- endcomment -%}
 					0 0 0 2px #f0f0f080;
 }
 
-:is(header, article, footer)::before { /* Decoration for sections */
+:is(header, article, footer)::before { {%- comment -%} Decoration for sections {%- endcomment -%}
 	content:	attr(data-aero-title);
 	width:		calc(100% + 16px);
 		max-width:	calc(100vw - 16px);
@@ -199,9 +224,9 @@ header, article, footer {
 		left:		-8px;
 		z-index:	-1;
 	
-	/* Title text: */
-	padding:			5px 64px 0 32px; /* Nominally should be 4px but looks
-						                    bad on all but article::before */
+	{%- comment -%} Title text: {%- endcomment -%}
+	padding:			5px 64px 0 32px; {%- comment -%} Nominally should be 4px but looks
+						                    bad on all but article::before {%- endcomment -%}
 	text-shadow:		0 0 6px #fff;
 	overflow:			hidden;
 	color:				#000;
@@ -214,7 +239,7 @@ header, article, footer {
 	backdrop-filter:	blur(8px);
 	box-shadow:			0 0 0 1px	#000	inset,
 						0 0 0 2px	#f0f0f0	inset,
-						4px 4px 12px #000c; /* Aero window shadow */
+						4px 4px 12px #000c; {%- comment -%} Aero window shadow {%- endcomment -%}
 }
 
 header::before {
@@ -224,10 +249,10 @@ header::before {
 }
 
 article::before {
-	padding-top:	3px; /* Sucks here too but in a different way */
+	padding-top:	3px; {%- comment -%} Sucks here too but in a different way {%- endcomment -%}
 }
 
-:is(header, article, footer)::after { /* "Close button" decoration for sections */
+:is(header, article, footer)::after { {%- comment -%} "Close button" decoration for sections {%- endcomment -%}
 	content:			"x";
 	width:				44px;
 	height:				16px;
@@ -253,12 +278,87 @@ header::after {
 	right:	6px;
 }
 
+header {
+	width:			calc(100% + 12px);
+		max-width:	812px;
+	padding:		8px 14px;
+	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%),
+					rgba(from var(--bg1) r g b / 50%)) fixed;
+	border-radius:	0;
+	box-shadow:		0 -1px	#f0f0f080,
+					0 -2px	#0008,
+					0 1px	#0008,
+					0 2px	#f0f0f080;
+	
+	text-align:		center;
+	user-select:	none;
+}
+
+#header-title {
+	{%- comment -%}min-height:		50px;{%- endcomment -%}
+	{%- comment -%} Leave line-height unspecified such that img inline can inherit auto 1lh {%- endcomment -%}
+	font-size:		min(48px, 10cqw); {%- comment -%} 10cqw is arbitrary as hell {%- endcomment -%}
+	font-family:	"Silkscreen", monospace;
+	font-weight:	normal;
+	letter-spacing:	-0.15em;
+	filter:			drop-shadow(2px 2px 4px #0008);
+}
+
 #header-pfp {
 	width:	1lh;
 	height:	1lh;
 }
 
-/* Unset Aero section styles: */
+article {
+	line-height:	1.5;
+}
+
+h1 { font-size: calc(var(--heading-size-multiplier)*2em); }
+h2 { font-size: calc(var(--heading-size-multiplier)*1.5em); }
+h3 { font-size: calc(var(--heading-size-multiplier)*1.17em); }
+h4 { font-size: calc(var(--heading-size-multiplier)*1em); }
+h5 { font-size: calc(var(--heading-size-multiplier)*0.83em); }
+h6 { font-size: calc(var(--heading-size-multiplier)*0.67em); }
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top:		0.5lh; {%- comment -%} This may collapse with `p`'s margin-bottom {%- endcomment -%}
+	clear:			both;
+	color:			var(--accent);
+	font-family:	"EB Garamond", "Twemoji", serif;
+}
+
+h4, h5, h6, #subtitle {
+	color:	var(--secondary);
+}
+
+#subtitle {
+	font-size:	smaller;
+}
+
+footer > p, footer > small {
+	color:			var(--secondary);
+	font-family:	"DejaVu Sans Mono", "Twemoji", monospace;
+	text-align:		center;
+}
+
+footer > small {
+	display:	block;
+	max-width:	400px;
+	margin:		0 auto 1lh auto;
+	font-size:	0.5em;
+}
+
+#badges {
+	margin:		1lh 0;
+	text-align:	center;
+	font-size:	0.5em;
+}
+
+#badges > :hover {
+	filter:	drop-shadow(1px 1px 2px var(--link));
+}
+
+{%- comment -%} Unset Aero section styles: {%- endcomment -%}
 :is(#modaldim, #oneko)::before, :is(#modaldim, #oneko)::after {
 	display:	none;
 }
@@ -267,9 +367,9 @@ header::after {
 	all:	unset;
 }
 
-/*
- * GLOBAL UTILITY CLASSES
- */
+{%- comment -%}
+	GLOBAL UTILITY CLASSES
+{%- endcomment -%}
 
 .hidden {
 	display:	none;

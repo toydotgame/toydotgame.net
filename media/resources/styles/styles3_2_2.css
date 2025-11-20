@@ -1,0 +1,11 @@
+/*
+ * Paragraph spacing: Jekyll (thankfully) wraps things like images etc in <p>
+ * tags. Exceptions include: <pre>, <ol>, <ul>, and <dl>.
+ */
+article :is(p, blockquote, aside, pre, ol, ul, dl) {
+	margin-bottom:	0.5lh; /* Not using rlh because I want p spacing to scale
+					          with text */
+}
+article :is(:last-child, li > p, p:has(+ ol, + ul)):not(pre.highlight) {
+	margin-bottom:	unset;
+}

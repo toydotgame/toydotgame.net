@@ -1,0 +1,119 @@
+header {
+	width:			calc(100% + 12px);
+		max-width:	812px;
+	padding:		8px 14px;
+	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%),
+					rgba(from var(--bg1) r g b / 50%)) fixed;
+	border-radius:	0;
+	box-shadow:		0 -1px	#f0f0f080,
+					0 -2px	#0008,
+					0 1px	#0008,
+					0 2px	#f0f0f080;
+	
+	text-align:		center;
+	user-select:	none;
+}
+
+#header-title {
+	/*min-height:		50px;*/
+	/* Leave line-height unspecified such that img inline can inherit auto 1lh */
+	font-size:		min(48px, 10cqw); /* 10cqw is arbitrary as hell */
+	font-family:	"Silkscreen", monospace;
+	font-weight:	normal;
+	letter-spacing:	-0.15em;
+	filter:			drop-shadow(2px 2px 4px #0008);
+}
+
+#header-pfp {
+	/* Width and height set in _includes/layout.css to avoid CLS */
+	margin-right:		0.25em;
+	vertical-align: 	top; /* Since we match the image and text's heights */
+	border-radius:		4px;
+	image-rendering:	pixelated;
+	cursor:				grab;
+}
+
+#header-pfp:hover {
+	transform:	scale(0.9);
+}
+
+@keyframes pfp-spin {
+	from	{ transform: scale(0.9) rotate(0deg); }
+	to		{ transform: scale(0.9) rotate(360deg); }
+}
+
+.animating { /* #header-pfp */
+	animation:	0.15s ease-in-out pfp-spin;
+	cursor:		grabbing;
+}
+
+nav {
+	display:		flex;
+		flex-wrap:	wrap;
+	/* Margin below means width is 100% of what we "expect:" */
+	margin:			8px -8px -8px -8px;
+	padding-top:	2px;
+	overflow:		hidden;
+}
+
+nav > a {
+	--border:	hsl(from var(--accent) h 5% 56%);
+	--tab-tint:	#fff;
+	--tab-aero:	linear-gradient(
+					rgb(from var(--tab-tint) r g b / 18.8%) 0,
+					rgb(from var(--tab-tint) r g b / 13.3%) 34.8%,
+					rgb(from var(--tab-tint) r g b / 07.8%) 39.1%,
+					rgb(from var(--tab-tint) r g b / 05.0%) 100%
+				);
+
+	min-width:			min-content;
+	margin-bottom:		-1px;
+	/* 4px hor./1px ver. padding + 1/2px around for inset "borders:" */
+	padding:			3px 6px 2px 6px;
+	flex:				1; /* Equiv. to 1 1 0 */
+	overflow:			hidden;
+	color:				var(--accent);
+	background:			var(--bg2) var(--tab-aero);
+	box-shadow:		0 0	0 1px	var(--border)	inset,
+						0 2px	var(--bg2)		inset,
+						2px 0	var(--bg2)		inset,
+						-2px 0	var(--bg2)		inset;
+	white-space:		nowrap;
+	text-align:			left; /* Revert `header` style */
+	text-decoration:	none;
+}
+
+a:hover, a:focus-visible {
+	text-decoration:	underline;
+	text-shadow:		1px 1px 2px;
+}
+
+nav > :hover, nav > :focus-visible {
+	color:				hsl(from var(--link) h calc(0.75*s) calc(l + 5));
+	background:			hsl(from var(--accent) h s calc(0.5*l)) var(--tab-aero);
+	box-shadow:			0 -1px	var(--border) inset,
+						0 1px	hsl(from var(--accent) h s 46%) inset,
+						1px 0	hsl(from var(--accent) h s 46%) inset,
+						-1px 0	hsl(from var(--accent) h s 46%) inset,
+						0 2px	hsl(from var(--accent) h 76% 17%) inset,
+						2px 0	hsl(from var(--accent) h 76% 17%) inset,
+						-2px 0	hsl(from var(--accent) h 76% 17%) inset;
+	text-shadow:		0 0 2px rgb(from var(--accent) r g b / 25%);
+	text-decoration:	none; /* Avoid later general `a` style below */
+}
+
+#nav-active {
+	/* Make 2px taller and let that extra height overlap with above rows: */
+	margin-top:		-2px;
+	padding-top:	5px;
+	color:			var(--text);
+	background:		var(--bg2);
+	box-shadow:		0 1px	var(--border) inset,
+					1px 0	var(--border) inset,
+					-1px 0	var(--border) inset;
+}
+
+#nav-active, #nav-active:hover, #nav-active:focus-visible {
+	text-decoration:	none;
+	text-shadow:		unset;
+}
