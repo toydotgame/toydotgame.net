@@ -1,8 +1,0 @@
-/* Consecutive headings (excl. `h1` titles) of lesser levels shouldn't have gaps: */
-:is(#article-banner, h1, #subtitle, #feed-button) + :is(h2, h3, h4, h5, h6),
-:is(#article-banner, h1, #subtitle, #feed-button, h2) + :is(h3, h4, h5, h6),
-:is(#article-banner, h1, #subtitle, #feed-button, h2, h3) + :is(h4, h5, h6),
-:is(#article-banner, h1, #subtitle, #feed-button, h2, h3, h4) + :is(h5, h6),
-:is(#article-banner, h1, #subtitle, #feed-button, h2, h3, h4, h5) + h6 {
-	margin-top:	unset;
-}

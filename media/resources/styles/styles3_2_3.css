@@ -1,9 +1,0 @@
-b, strong {
-	color:			var(--accent);
-	font-weight:	800;
-}
-
-a, a b, a strong {
-	color:				var(--link);
-	text-decoration:	none;
-}

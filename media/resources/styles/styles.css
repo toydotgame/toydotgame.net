@@ -39,32 +39,6 @@ a::selection {
  */
 
 /* NAV */
-header {
-	width:			calc(100% + 12px);
-		max-width:	812px;
-	padding:		8px 14px;
-	background:		linear-gradient(rgba(from var(--bg2) r g b / 50%),
-					rgba(from var(--bg1) r g b / 50%)) fixed;
-	border-radius:	0;
-	box-shadow:		0 -1px	#f0f0f080,
-					0 -2px	#0008,
-					0 1px	#0008,
-					0 2px	#f0f0f080;
-	
-	text-align:		center;
-	user-select:	none;
-}
-
-#header-title {
-	/*min-height:		50px;*/
-	/* Leave line-height unspecified such that img inline can inherit auto 1lh */
-	font-size:		min(48px, 10cqw); /* 10cqw is arbitrary as hell */
-	font-family:	"Silkscreen", monospace;
-	font-weight:	normal;
-	letter-spacing:	-0.15em;
-	filter:			drop-shadow(2px 2px 4px #0008);
-}
-
 #header-pfp {
 	/* Width and height set in _includes/layout.css to avoid CLS */
 	margin-right:		0.25em;
@@ -160,24 +134,6 @@ nav > :hover, nav > :focus-visible {
 }
 
 /* CONTENT */
-article {
-	line-height:	1.5;
-}
-
-h1 { font-size: calc(var(--heading-size-multiplier)*2em); }
-h2 { font-size: calc(var(--heading-size-multiplier)*1.5em); }
-h3 { font-size: calc(var(--heading-size-multiplier)*1.17em); }
-h4 { font-size: calc(var(--heading-size-multiplier)*1em); }
-h5 { font-size: calc(var(--heading-size-multiplier)*0.83em); }
-h6 { font-size: calc(var(--heading-size-multiplier)*0.67em); }
-
-h1, h2, h3, h4, h5, h6 {
-	margin-top:		0.5lh; /* This may collapse with `p`'s margin-bottom */
-	clear:			both;
-	color:			var(--accent);
-	font-family:	"EB Garamond", "Twemoji", serif;
-}
-
 /* Consecutive headings (excl. `h1` titles) of lesser levels shouldn't have gaps: */
 :is(#article-banner, h1, #subtitle, #feed-button) + :is(h2, h3, h4, h5, h6),
 :is(#article-banner, h1, #subtitle, #feed-button, h2) + :is(h3, h4, h5, h6),
@@ -202,14 +158,6 @@ article h1, article h2, footer h2 {
 	border-bottom:	1px solid var(--accent);
 	text-shadow:	0 0 4px #000c; /* Kinda looks mid when overlapping the border
 					                 -bottom, so this is the best we got :/ */
-}
-
-h4, h5, h6, #subtitle {
-	color:	var(--secondary);
-}
-
-#subtitle {
-	font-size:	smaller;
 }
 
 /*
@@ -703,19 +651,6 @@ footer {
 	margin-top:	auto; /* Sticky to bottom if body height < 100 vh */
 }
 
-footer > p, footer > small {
-	color:			var(--secondary);
-	font-family:	"DejaVu Sans Mono", "Twemoji", monospace;
-	text-align:		center;
-}
-
-footer > small {
-	display:	block;
-	max-width:	400px;
-	margin:		0 auto 1lh auto;
-	font-size:	0.5em;
-}
-
 #recent-blogs {
 	max-width:	600px;
 	margin:		0 auto;
@@ -743,16 +678,6 @@ footer > small {
 
 .footer-page-turner.fright {
 	text-align:	right;
-}
-
-#badges {
-	margin:		1lh 0;
-	text-align:	center;
-	font-size:	0.5em;
-}
-
-#badges > :hover {
-	filter:	drop-shadow(1px 1px 2px var(--link));
 }
 
 .badge {
