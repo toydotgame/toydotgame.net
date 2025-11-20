@@ -33,8 +33,8 @@ author:             toydotgame
 twitter:
   username:         toydotgame
   card:             summary
-logo:               &logo /media/resources/profile.png
-banner:             &banner /media/resources/banner.png
+logo:               &logo /media/resources/profile.webp
+banner:             &banner /media/resources/banner.webp
 feed:               # My custom implementation:
   length:          -1      # 0–infty. Set negative to disable
   icon:            *logo   # Should be 1:1
@@ -79,7 +79,7 @@ defaults:
       path: _posts
       type: posts
     values:
-      aero-icon: /media/resources/aerico/book.png
+      aero-icon: /media/resources/aerico/book.webp
   -
     scope:
       path: _status

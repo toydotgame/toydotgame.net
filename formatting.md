@@ -15,9 +15,9 @@ mathjax:   true       # Won't download by default; specify `true` to load JS
 published: false      # Only built by the dev config. Typically, draft pages
                       # are put in _drafts/ and only rendered by the dev
                       # launch script, but some pages (like this) are special
-aero-icon: /media/resources/aerico/book.png # Passed to the CSS; defaults to
-                                            # info.png for all pages, and
-                                            # book.png for _posts
+aero-icon: /media/resources/aerico/book.webp # Passed to the CSS; defaults to
+                                             # info.webp for all pages, and
+                                             # book.webp for _posts
 image:     http://placecats.com/200/50 # Won't render if unspecified
 ---
 
@@ -281,7 +281,7 @@ published: true       # Build in production?; default true
 aero-icon: # Path to image for icon in the article "window" title; default
            # book.png (_posts) or info.png (otherwise)
 image:     # Path to image for page title background/embed image; default
-           # banner.png
+           # banner.webp
 ```
 Then just start typing away!
 

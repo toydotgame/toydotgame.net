@@ -101,7 +101,7 @@
 
 	--heading-size-multiplier:	1.25;
 	/* Fallback value, usually overridden by JS: */
-	--bg-img:					url("/media/resources/bg/clouds-crazy.jpg");
+	--bg-img:					url("/media/resources/bg/clouds-crazy.webp");
 
 	/* --aero-shine is of type `background-image` */
 	--aero-shine: linear-gradient(61deg, /* sic */
@@ -582,7 +582,7 @@ code:not(pre > code), u:has(> code), abbr:has(> code) {
 		right:	8px;
 	width:		16px;
 	height:		16px;
-	background:	url("/media/resources/rss.png") 0 / 100%;
+	background:	url("/media/resources/rss.webp") 0 / 100%;
 }
 
 article:has(> #feed-button) h1:first-of-type {
@@ -913,17 +913,17 @@ blockquote > h2:first-child {
 .callout-warning	{ --accent: #e2c02c; }
 
 .callout-error > :first-child::before	{
-	background-image:	url("/media/resources/aerico/error.png");
+	background-image:	url("/media/resources/aerico/error.webp");
 } .callout-info > :first-child::before {
 	width:				20px;
 	left:				10px;
-	background-image:	url("/media/resources/aerico/info.png");
+	background-image:	url("/media/resources/aerico/info.webp");
 } .callout-success > :first-child::before {
-	background-image:	url("/media/resources/aerico/success.png");
+	background-image:	url("/media/resources/aerico/success.webp");
 } .callout-warning > :first-child::before {
 	width:				22px;
 	left:				9px;
-	background-image:	url("/media/resources/aerico/warning.png");
+	background-image:	url("/media/resources/aerico/warning.webp");
 }
 
 aside {

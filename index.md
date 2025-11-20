@@ -14,7 +14,7 @@ own personal web services, and a Home Assistant configuration too.
 
 *[BSc]: Bachelor of Science
 
-<img class="fright nomodal" width="64px" src="/media/resources/profile.png" style="image-rendering:pixelated" />
+<img class="fright nomodal" width="64px" src="/media/resources/profile.webp" style="image-rendering:pixelated" />
 What you're looking at now is the **_sixth_** iteration of my personal website,
 with the first being from 2017. This is also my first serious attempt at using a
 static site generator (Jekyll). <small>(Although technically my second attempt

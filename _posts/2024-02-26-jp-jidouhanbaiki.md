@@ -1,7 +1,7 @@
 ---
 title: 自動販売機
 updated: 2025-10-14
-aero-icon: /media/resources/aerico/globe.png
+aero-icon: /media/resources/aerico/globe.webp
 locale: ja_JP
 ---
 

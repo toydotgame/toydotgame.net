@@ -6,7 +6,7 @@
  * unnoticeably).
  */
 
-const BACKGROUNDS = ["clouds-crazy.jpg", "dark-sky.jpg", "tree-clouds.jpg"];
+const BACKGROUNDS = ["clouds-crazy.webp", "dark-sky.webp", "tree-clouds.webp"];
 
 document.documentElement.style
 	.setProperty("--bg-img", 'url("/media/resources/bg/'
