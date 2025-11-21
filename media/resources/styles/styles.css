@@ -206,7 +206,7 @@ body {
 	background-color:	var(--accent);
 }
 
-:is(h1, h2, h3, b)::selection {
+:is(h1, h2, h3, b, kbd)::selection {
 	color:			var(--text);
 	text-shadow:	none;
 }
@@ -555,7 +555,7 @@ code, pre { /* Jekyll's <pre>s contain <code> tags for the text, but better to
 	font-family:	"DejaVu Sans Mono", "Twemoji", monospace;
 }
 
-code:not(pre > code) { /* Thanks Jekyll for putting <code> in <pre>s when not needed /s */
+code:not(pre > code), kbd { /* Thanks Jekyll for putting <code> in <pre>s when not needed /s */
 	padding:	0 4px;
 	background-color:	var(--bg1);
 	border:		1px solid rgb(from var(--secondary) r g b / 40%);
@@ -566,6 +566,12 @@ code:not(pre > code), u:has(> code), abbr:has(> code) {
 	text-underline-offset:	3.5px; /* Add 4px padding from `code` style - 1.5px
 							          text-decoration-thickness + 1px browser
 							          idk */
+}
+
+kbd {
+	color:		var(--bg1);
+	background:	linear-gradient(var(--text), var(--secondary) 25%);
+	border:		1px solid hsl(from var(--secondary) h s calc(0.75*l));
 }
 
 .footnote::before {
