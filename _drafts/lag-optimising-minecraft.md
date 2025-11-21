@@ -6,41 +6,126 @@ title: "More is not better: A guide to making Minecraft less laggy"
 comment](https://github.com/embeddedt/ModernFix/issues/595#issuecomment-3193424218)
 I wrote on this topic. But better.</small>
 
-<!--
-	TOPICS:
-	* CS
-    	* Garbage collector
-        	* Flaws: It exists and it needs to do its job at some point
-    	* Heap: Allocated and used
-    	* Threads
-  	* Minecraft
-    	* GC specifics
-    	* MSPT vs fps
-    	* gt vs rt
-    	* Tick phases
-    	* F3 useful info fields
-        	* explanation of the profiler
-    	* Internal server
-  	* Misconceptions
-    	* OptiFine
-    	* Forge
-    	* More CPU cores/threads or GPU will impact anything
-    	* More ram is not more better
-    	* Thread priority (win)/niceness (unix)
-    	* Render distance
-  	* What do I do?
-    	* RAM allocation
-        	* What else is running on ur PC? (e.g. if it crashes)
-    	* Mods
-        	* Client
-        	* Server (incl. internal server)
-      	* Mod loader
-    	* JVM
-    	* Settings
-        	* Vanilla
-        	* By mod
-      	* Sometimes custom libraries help
--->
+Quite often I hear a lot of dated and outright wrong information online or in
+person as to what's good for making Minecraft run nice. I figure it's my moral
+duty as someone on the internet who has opinions to release a combo meal of
+education, infodumping, and yes, a nice mod list at the end for
+9&#x200B;812&#x200B;340&#x200B;914&#x200B;298&#x200B;432 fps too.
+
+A lot of concepts like the heap, garbage collection, and frame timings
+_generally_ go right over many people's heads because they just don't know.
+There's still a lot of people who will just download OptiFine and call it a day,
+and I hope to change that by educating them in as lay terms as I can.
+
+> ## Contents
+> 1. [Concepts](#concepts)
+> 	1. [General Java stuff](#java-concepts)
+> 		* Compiled vs interpreted languages
+> 		* The JVM
+> 		* Garbage collection
+> 		* Allocated heap
+> 		* Heap size (used heap)
+> 		* Processor cores and threads
+> 		* JVM threads
+> 	2. [Minecraft-specific](#mc-concepts)
+> 		* The garbage collector in Minecraft
+> 		* Client lag vs server lag
+> 		* Game ticks and Redstone ticks
+> 		* Tick phases/subticks
+> 		* Internal server
+> 	3. [Using the F3 screen](#using-f3)
+> 2. [Misconceptions](#misconceptions)
+> 	1. [OptiFine sucks](#optifine)
+> 	2. [Forge sucks kinda too](#forge)
+> 	3. [A better CPU\* or GPU will _not_ improve anything](#better-hardware-wont-help)
+> 	4. [More RAM is not more better](#more-ram-is-not-more-better)
+> 	5. [Process priority/niceness doesn't affect anything](#process-priority)
+> 	6. [Render distance doesn't matter as much as you think it does](#render-distance)
+> 3. [How to do it Right™](#do-it-gud)
+> 	1. [Launcher](#launcher)
+> 		1. [Alternate launcher](#alt-launcher)
+> 		2. [Launch args](#launch-args)
+> 		3. [Libraries](#libraries)
+> 	2. [Mods](#mods)
+> 		1. [Modpacks](#modpacks)
+> 		2. [Client mods](#client-mods)
+> 		3. [Server mods](#server-mods)
+> 	3. [Settings](#settings)
+> 		1. [Vanilla](#vanilla-settings)
+> 		2. [By mod](#settings-by-mod)
+
+## Concepts {#concepts}
+### General Java stuff {#java-concepts}
+Compiled vs interpreted languages
+// Java bytecode, interpreted language but also compiled
+The JVM
+Garbage collection
+Allocated heap
+Heap size (used heap)
+Processor cores and threads
+JVM threads
+### Minecraft-specific {#mc-concepts}
+The garbage collector in Minecraft
+Client lag vs server lag
+// MSPT, TPS, mspf, and fps
+Game ticks and Redstone ticks
+Tick phases/subticks
+Internal server
+#### Using the F3 screen {#using-f3}
+<kbd>F3</kbd>
+
+## Misconceptions {#misconceptions}
+Probably the worst thing to see is the idea that nothing has changed in the
+optimisation scene since 2011. <small>Spoiler: Stuff has.</small>
+
+### OptiFine sucks {#optifine}
+### Forge sucks kinda too {#forge}
+### A better CPU\* or GPU will _not_ improve anything {#better-hardware-wont-help}
+### More RAM is not more better {#more-ram-is-not-more-better}
+### Process priority/niceness doesn't affect anything {#process-priority}
+### Render distance doesn't matter as much as you think it does {#render-distance}
+
+## How to do it Right™ {#do-it-gud}
+// Note: Fabric focus
+### Launcher {#launcher}
+#### Alternate launcher {#alt-launcher}
+#### Launch args {#launch-args}
+// -Xmx and -Xms!!! (dedodated wam)
+// GC options (Shenandoah etc, dependant on Java version)
+// Other JVM
+#### Libraries {#libraries}
+
+### Mods {#mods}
+#### Modpacks {#modpacks}
+#### Client mods {#client-mods}
+#### Server mods {#server-mods}
+
+### Settings {#settings}
+#### Vanilla {#vanilla-settings}
+#### By mod {#settings-by-mod}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 
 A lot of the advice you hear about optimising Minecraft performance generally
 seems to give the idea that if you get a RTX 9999 Ti Pro Max Plus+, dedicate 2
