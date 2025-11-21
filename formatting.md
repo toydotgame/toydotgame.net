@@ -563,6 +563,12 @@ These are effectively **low-priority**; but, for a *perfect* stylesheet:
 - [ ] Heading banners inherit their heights and stuff weirdly and backwards. I
       think they should be made a little more permissive given what it's like
       right now
+- [ ] The `:focus-visible`{:.highlight.language-css} focus ring is often clipped
+      by the parent having `overflow: hidden`{:.highlight.language-css} or
+      similar. This can be adjusted for by expanding the margin (breaks stuff)
+      or (ideally) making the `box-shadow`{:.highlight.language-css} and
+      `outline`{:.highlight.language-css}s inset to avoid escaping the element
+	  area. (*But will it look good?*)
 
 ### Feature ideas/*look into*
 These are even *less* priority, but would be nice to look into:

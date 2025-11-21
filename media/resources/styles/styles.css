@@ -1039,7 +1039,8 @@ footer > small {
 /* IMAGE MODAL */
 #modaldim {
 	position:			fixed;
-		top:	0;
+		top:		0;
+		z-index:	3;
 	width:				100%;
 	height:				100%;
 	/* If hor. padding < 0, calc() will constrain it to 0: */
