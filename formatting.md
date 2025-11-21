@@ -424,6 +424,12 @@ Superscript `~`{:.highlight.language-markdown}, subscript `^`{:.highlight.langua
   {:.callout-warning}
   Also note that for non-Posts, the slug value isn't used in the aero section
   title
+* When floating block quotes or asides, note that they use margins to establish
+  a gap between themselves and the surrounding text. If you don't specify a
+  width, and the auto-sizing makes it 100% of the content, note that this 8px
+  gap *won't* collapse into the article padding. If you manually inline
+  `width:100%`{:.highlight.language-css}, however, it will. Either do that or
+  beware that **floating *generally* implies you'll be setting a width too**
 
 ## Useful features
 * Use the `.hidden`{:.highlight.language-css} class (i.e. in an IAL) to set

@@ -872,6 +872,14 @@ blockquote, aside {
 	border-left:		4px solid var(--accent);
 }
 
+:is(blockquote, aside).fleft {
+	margin-right:	8px;
+}
+
+:is(blockquote, aside).fright {
+	margin-left:	8px;
+}
+
 blockquote > :first-child, aside > :first-child {
 	margin-top:	unset;
 }
