@@ -34,3 +34,6 @@ internet and *not* an algorithm! Swag!
 * [you&#x200B;are&#x200B;an&#x200B;idiot&#x200B;.cc](https://youareanidiot.cc/),
   [Enderman](https://enderman.ch/){:.noexternal}'s recreation of the original
   You&#x200B;Are&#x200B;An&#x200B;Idiot&#x200B;.org
+* [Horsle](https://cabletwo.net/horsle/) by [Mike
+  O'Dyllan](https://bsky.app/profile/mikkaio.bsky.social){:.noexternal} — finally
+  back after forever (since Glitch stopped hosting their original)
