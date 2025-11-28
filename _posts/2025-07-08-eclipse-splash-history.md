@@ -1,8 +1,6 @@
 ---
 title: History of the Eclipse IDE Splash Screen
-updated: 2025-11-10
-# TODO: Absolutely try from scratch and make this properly Markdown and not
-# half-arsed.
+updated: 2025-11-28
 ---
 
 I use Eclipse to program in Java. I love it (please throw your comments about
@@ -820,9 +818,29 @@ XCF template. Text colour is now an off-white. Added release date to the splash.
 	<img src="/media/blog/2025/07-08_eclipse-splash-history/4.37.png">
 	<figcaption>2025-06-01: Eclipse 4.37 "2025-09"</figcaption>
 </figure>
+<figure class="fright" style="width:25%">
+    <img src="/media/blog/2025/07-08_eclipse-splash-history/4.39.png">
+<figcaption markdown="1">
+2025-09-04: We get a new "futureSplashScreens" directory[^fss], which shows
+the new(?) process for each development stint and how future art goes
+_here_ (presumably so that contemporary dev builds for \<upcoming\> show
+the art for \<latest stable\>, and the \<upcoming\> art is still _prepared_
+to ship).
+</figcaption>
+</figure>
+<figure class="fright" style="width:25%">
+    <img src="/media/blog/2025/07-08_eclipse-splash-history/4.38.png">
+    <figcaption>2025-09-01: Eclipse 4.38 "2025-12"</figcaption>
+</figure>
+
+[^fss]:
+    ["[RelEng] Add release preparation script to update the
+    Splash-screen"](https://github.com/eclipse-platform/eclipse.platform/commit/316cc9cb027fc2fff1cadcd0e5cf7048a80046aa).
+    GitHub. Commit `316cc9c`.
 
 …And so that leaves us off where we are right now. The current version of
-Eclipse is 2025-06, with development builds out for 2025-09.
+Eclipse is 2025-09, with development builds out for 2025-12, and even a splash
+ready for 2026-03.
 
 <p class="freset">
 	Ideally, I'll try to keep this article updated in the future with future
