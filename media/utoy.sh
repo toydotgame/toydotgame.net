@@ -224,7 +224,7 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
 		AEROTHEMEPLASMA_DIR="$HOME/pkgs/aerothemeplasma/"
 		cd "$AEROTHEMEPLASMA_DIR"
 		# Force git pull:
-		git fetch && \
+		git pull && \
 		git reset --hard HEAD && \
 		git merge origin/main
 
