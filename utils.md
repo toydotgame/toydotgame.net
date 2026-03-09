@@ -1,5 +1,6 @@
 ---
 title: toy's Utilities
+compress_html: false
 ---
 
 <style> /* Styles specific to this page */
