@@ -1,5 +1,6 @@
 ---
 title: How to Downgrade from iOS 9 to iOS 6
+updated: 2026-07-07
 ---
 
 <small>Or technically from iOS 9.3.5/9.3.6 to iOS 6.0–9.3.5.</small>
@@ -50,7 +51,7 @@ back into this thing?_ And so it began.
   sudo apt update && sudo apt install git ssh curl
   ```
 * A 32-bit iDevice, specifically one with an A5 SoC, **<u>running iOS 8.4.1,
-  9.3.5, or 9.3.5</u>**. (If you're running iOS 9.0–9.3.4, you'll need to update
+  9.3.5, or 9.3.6</u>**. (If you're running iOS 9.0–9.3.4, you'll need to update
   iOS through Settings or using Legacy-iOS-Kit similarly to how it's used in
   [Stage 1](#stage1)) If you're not sure what devices that is, it's one of
   these:
