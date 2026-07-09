@@ -37,6 +37,8 @@ cool:          # Things I care about
     lnk: https://yesterweb.org/no-to-web3/
   - img: transnow2
 random:        # Brand stuff etc
+  - img: pebble
+    lnk: https://repebble.com/
   - img: png
     lnk: http://www.libpng.org/pub/png/
   - img: vanillajs
@@ -67,3 +69,4 @@ random:        # Brand stuff etc
     lnk: https://minecraft.net/
   - img: donate-wikipedia
     lnk: https://donate.wikimedia.org/
+
