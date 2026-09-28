@@ -37,3 +37,7 @@ internet and *not* an algorithm! Swag!
 * [Horsle](https://cabletwo.net/horsle/) by [Mike
   O'Dyllan](https://bsky.app/profile/mikkaio.bsky.social){:.noexternal} — finally
   back after forever (since Glitch stopped hosting their original)
+* [Zombo.com](https://html5zombo.com/), [Bertrand
+  Fan](https://bert.org/){:.noexternal}'s 2010 HTML5 recreation[^fuck-ai]
+
+[^fuck-ai]: ["Anything a tech bro touches dies."](https://youtube.com/watch?v=xHgDVowud1Q&lc=UgzSMv419RNrbwt3wyB4AaABAg)
