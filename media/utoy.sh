@@ -221,13 +221,15 @@ module_post_update() { # Fix Vencord, KWin, & Yay post-update
         #### Quick script to recompile KWin Aero effects after a system upgrade #
         #########################################################################
         
-        AEROTHEMEPLASMA_DIR="$HOME/pkgs/aerothemeplasma/"
+        AEROTHEMEPLASMA_DIR="$HOME/pkgs/vistathemeplasma/"
         cd "$AEROTHEMEPLASMA_DIR"
-        # Force git pull:
         git pull && \
-        git reset --hard HEAD && \
-        git merge origin/main
+        sh install.sh
 
+        # Force git pull:
+        #git pull && \
+        #git reset --hard HEAD && \
+        #git merge origin/main
         # See https://gitgud.io/aeroshell/atp/aerothemeplasma/-/blob/Plasma/6.6/INSTALL.md?ref_type=heads#getting-started-
         # sh install.sh
 
