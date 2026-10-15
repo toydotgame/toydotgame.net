@@ -26,6 +26,8 @@ internet and *not* an algorithm! Swag!
   a resource hub for that newfangled[^oldfangled] *PNG* image format for them
   there interwebs. The site reeks of mid-'90s design, because that's what it is.
   It's gorgeous.
+* [Vintage 3D](https://www.vintage3d.org/): "A _carnival ride_" —
+  [CRD](https://gekk.info/){:.noexternal}
 
 [^oldfangled]: If you're in 1995.
 
